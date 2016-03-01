@@ -314,7 +314,7 @@ JS:
     <link href="http://www.qianduaner.com//blog/2013-07-29-%E8%BF%91%E6%9C%9F%20Hybird%20APP%20%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%87%A0%E4%B8%AA%E8%AF%A1%E5%BC%82%E9%97%AE%E9%A2%98.html"/>
     <id>http://www.qianduaner.com//blog/2013-07-29-近期 Hybird APP 项目中的几个诡异问题.html</id>
     <published>2013-07-29T10:18:29.000Z</published>
-    <updated>2016-03-01T10:07:07.240Z</updated>
+    <updated>2016-03-01T10:09:26.964Z</updated>
     
     <content type="html">&lt;p&gt;我只负责HTML/CSS，其他的部分均由其他开发人员进行，他们使用 &amp;nbsp;phonegap 打包及开发。&lt;/p&gt;
 &lt;p&gt;此 APP 近期发布安卓版本，全自适应兼容手机、平板。&lt;/p&gt;
@@ -488,7 +488,7 @@ JS:
     <link href="http://www.qianduaner.com//blog/2013-04-03-e6-89-93-e5-8d-b0css-e6-a0-b7-e5-bc-8f-e7-9a-84-e6-8a-80-e5-b7-a7-e5-92-8c-e8-a6-81-e7-82-b9.html"/>
     <id>http://www.qianduaner.com//blog/2013-04-03-e6-89-93-e5-8d-b0css-e6-a0-b7-e5-bc-8f-e7-9a-84-e6-8a-80-e5-b7-a7-e5-92-8c-e8-a6-81-e7-82-b9.html</id>
     <published>2013-04-03T01:02:51.000Z</published>
-    <updated>2016-03-01T09:11:26.494Z</updated>
+    <updated>2016-03-01T10:16:13.458Z</updated>
     
     <content type="html">&lt;p&gt;不经过任何处理而直接打印网站上的页面会得到一个不理想的效果。我们WEB开发人员可以简单的采用几个要点来使之达到较为合适的效果：&lt;/p&gt;
 &lt;ul&gt;
@@ -1225,7 +1225,7 @@ IE7下需要加入下列代码支持：
     <link href="http://www.qianduaner.com//blog/2012-12-21-javascript-e5-ae-9e-e7-8e-b0360-e5-ba-a6-e5-85-a8-e6-99-af-e5-9b-be-e7-89-87-e5-b1-95-e7-a4-ba-e6-95-88-e6-9e-9c.html"/>
     <id>http://www.qianduaner.com//blog/2012-12-21-javascript-e5-ae-9e-e7-8e-b0360-e5-ba-a6-e5-85-a8-e6-99-af-e5-9b-be-e7-89-87-e5-b1-95-e7-a4-ba-e6-95-88-e6-9e-9c.html</id>
     <published>2012-12-21T00:12:22.000Z</published>
-    <updated>2016-03-01T09:11:29.034Z</updated>
+    <updated>2016-03-01T10:16:13.929Z</updated>
     
     <content type="html">&lt;p&gt;360全景照片展示由于它的真实性、全视角等特点能够很好的展现产品。而我在工作之余写了一个360度图片展示效果，改变了普通图片平淡的特点，让人们在网上能够进行 360 度全视角观察，而且通过交互操作，可以实现自由浏览，从而震撼的视觉效果。&lt;/p&gt;
 &lt;p&gt;&lt;iframe style=&quot;border: 0; width: 100%; height: 294px;&quot; src=&quot;wp-content/themes/lightcolors/code.php?id=1503&quot; width=&quot;320&quot; height=&quot;240&quot;&gt;&lt;/iframe&gt;&lt;br&gt;&lt;strong&gt;全景照片：&lt;/strong&gt;所谓“全景拍摄”就是将所有拍摄的多张图片拼成一张全景图片。它的基本拍摄原理是搜索两张图片的边缘部分，并将成像效果最为接近的区域加以重合，以完成图片的自动拼接。现在的智能手机也基本带这个功能。&lt;/p&gt;
