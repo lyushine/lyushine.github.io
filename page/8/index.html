@@ -24,15 +24,17 @@
       <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" type="text/css">
   
   
+      <link href="//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css" rel="stylesheet">
+  
   <link rel="stylesheet" href="/css/style.css" type="text/css">
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   
     
     
   
   
-      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
   
   <script>
       var yiliaConfig = {
@@ -43,9 +45,16 @@
           isArchive: false,
           isTag: false,
           isCategory: false,
-          open_in_new: false
+          open_in_new: false,
       }
   </script>
+
+  
+      <script>
+          yiliaConfig.rootUrl = "/";
+      </script>
+  
+
   
 </head>
 <body>
@@ -55,11 +64,8 @@
 <div class="intrude-less">
     <header id="header" class="inner">
         <a href="/" class="profilepic">
-            
-            <img lazy-src="/img/avatar.png" class="js-avatar">
-            
+            <img src="/img/avatar.png" class="animated zoomIn">
         </a>
-
         <hgroup>
           <h1 class="header-author"><a href="/">前端者</a></h1>
         </hgroup>
@@ -124,6 +130,8 @@
                         
                             <li><a href="/about/">关于我</a></li>
                         
+                            <li><a href="/links/">友情链接</a></li>
+                        
                         </ul>
                     </nav>
                     <nav class="header-nav">
@@ -153,7 +161,7 @@
                     
                       <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
                     
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/lyushine">GitHub</a>
                     
                       <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
                     
@@ -182,9 +190,7 @@
     <div class="intrude-less">
         <header id="header" class="inner">
             <a href="/" class="profilepic">
-                
-                    <img lazy-src="/img/avatar.png" class="js-avatar">
-                
+                <img src="/img/avatar.png" class="animated zoomIn">
             </a>
             <hgroup>
               <h1 class="header-author"><a href="/" title="回到主页">前端者</a></h1>
@@ -200,6 +206,8 @@
                     <li><a href="/tags/">标签云</a></li>
                 
                     <li><a href="/about/">关于我</a></li>
+                
+                    <li><a href="/links/">友情链接</a></li>
                 
                 <div class="clearfix"></div>
                 </ul>
@@ -220,11 +228,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-css-e5-88-92-e5-88-86-e6-a8-a1-e5-9d-97-e5-8d-95-e4-b8-80-e8-81-8c-e8-b4-a3" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2012-07-17第七届-D2前端交流论坛感受" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/blog/2011-05-30-css-e5-88-92-e5-88-86-e6-a8-a1-e5-9d-97-e5-8d-95-e4-b8-80-e8-81-8c-e8-b4-a3.html" class="article-date">
-      <time datetime="2011-05-30T04:11:47.000Z" itemprop="datePublished">2011-05-30</time>
+      <a href="/blog/2012-07-17-2012-07-17第七届-D2前端交流论坛感受.html" class="article-date">
+      <time datetime="2012-07-17T01:17:03.000Z" itemprop="datePublished">2012-07-17</time>
 </a>
     </div>
   
@@ -237,7 +245,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2011-05-30-css-e5-88-92-e5-88-86-e6-a8-a1-e5-9d-97-e5-8d-95-e4-b8-80-e8-81-8c-e8-b4-a3.html">CSS 划分模块--单一职责</a>
+      <a class="article-title" href="/blog/2012-07-17-2012-07-17第七届-D2前端交流论坛感受.html">第七届 D2前端交流论坛感受</a>
     </h1>
   
 
@@ -247,17 +255,13 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><strong>划分模块</strong>–单一职责</p>
-<p>样式和功能相对独立且稳定的一部分就可以视为模块。<br>1 模块和模块之间尽量不要包含相同的部分，如果有相同部分，应将它们提取出来，拆分成一个独立的模块。<br>2 模块应在保证数量尽可能少的原则下，做到尽可能简单，以提高重用性。</p>
-<hr>
-<p><strong><br>css 的命名</strong></p>
-<p><strong> </strong> 可以根据内容选用合适的英文单词命名 css，如头部用 head，底部用 foot，主体用 main，导航用 nav，菜单用 menu 等。如命名需用到两个或两个以上单词，可用骆驼命名法和划线命名法，骆驼命名法是从第二个单词开始，将每个单词的首字母大写，区别不同单词，如 timeList。划线命名法是将每个单词用中划线“-”或下划线“_”分隔，表明从属关系，如 sub_nav_menu。推荐两种方法组合使用。为降低团队合作中的冲突隐患，不能轻易使用子选择符。base 层和 common 层通常只由一人负责，不会出现冲突问题，但 page 层可能由多人完成，需考虑如何避免冲突（可以用各人姓名首字母缩写作为代码的前缀）。<br><strong>多用组合，少用继承</strong></p>
-<p>继承是将一个复杂且包含变化的类，拆分成几个复杂但稳定的子类，很容易引起爆炸式增长，产生一大堆有着细微不同的子类。而组合是将一个复杂的类 分成容易产生变化和相对稳定的部分，将容易变化的部分拆分出去，每种可能的变化设计成一个个单独的类，相对稳定的部分设计成一个主体类，可以大大减少类的 数量。由于 HTML 标签的 class 属性和 id 属性不同，id 只能挂一个，而 class 可以挂多个，用空格分隔，即从技术上支持了“组合”的用法。</p>
-<p><strong>处理上下 margin </strong>–类的组合的典型应用</p>
-<p>如果不确定模块的上下 margin 是否特别稳定，最好不要将它写到模块的类里，应使用类的组合，单独为上下 margin 挂用于边距的原子类（如 mt20、mt100）。模块最好不要混用 margin-top 和 margin-bottom（相邻的 margin-top 和 margin-bottom 会产生重合），统一使用 margin-top 或 margin-bottom。<br><strong>低权重原则</strong>–避免滥用子选择器</p>
-<p>css 的选择符是有权重的，当不同选择符的样式设置有冲突时，会采用权重高的选择符设置的样式。权重规则：HTML 标签的权重是 1，class 的权重是 10，id 的是 100，如 p 的权重是 1，#test.red 的权重是 100 + 10 = 110。如果 css 选择符权重相同，那么样式遵循就近原则，哪个选择符最后定义（不是挂 css 名的先后顺序），就采用哪个选择符的样式。</p>
-<p>使用子选择器，会增加 css 选择符的权重，css 选择符的权重越高，样式越不易被覆盖。所以，除非确定 HTML 结构非常稳定，一定不会再修改了，否则尽量不要使用子选择器。而且，为了保证样式容易被覆盖，提高可维护性，css 选择符需保证权重尽可能低。<br><strong>css sprite</strong></p>
-<p>将网站的多张背景图片合并到一张大图片上，然后利用 background-position 属性来展示需要的部分，即 css sprite，它不仅能解决滑过状态时背景图片出现空白，还会大大减少网页的 HTTP 请求数，减小服务器压力。但由于该技术不易掌握，对于流量不大的网站来说，css sprite 其实并不划算。</p>
+        <p>以前在网上看过D2的PPT，也一直希望能够亲身前往前听，这次终于圆了我的想法。可能是由于自己的境界不够吧，感受不多，体会不深，也稍微讲下。这次D2应该是办的最大的一次，不止有主会场，还有各分会场，我听的是D2的主会场第一天。</p>
+<p>第一个体会： javascript趋势很强劲，D2主会场讲的都是javascript方面的东西。</p>
+<p>第二个体会： 网站的前端性能对于前端开发非常重要，特别是对于访问量大的系统。整个上午都是讲前端性能方面的东西。如何发现前端性能问题、如何优化前端性能、如何监控前端性能。当然我也基本了解了监控前端性能的大概方法，如何优化前端性能。</p>
+<p>第三个体会：工具化对公司很重要，整个D2主会场基本都是讲工具，讲演讲者所开发的工具，利用工具解决前端问题，提高工作效率。一个有效的工具能大规模提高团队战斗力。当然，个人觉得写前端的工具是一层境界。</p>
+<p>第四个体会：技术分享会基本都是分享新技术或者分享工具，所以在选择听的时候要有自己的取舍，譬如有很多人后来去看分会场的新技术分享了，而我却一直流在原地。应该学会选择取舍。</p>
+<p>整个会场让我感受最深的是百度的berg分享的《百度前端集成解决方案》虽然也是讲工具，不过却讲的很不错。讲述如何解决前端开发过程中的历史遗留问题，譬如样式越来越多，旧的样式不敢删 等引起我们的共鸣，并介绍了他的项目将如何全自动解决。</p>
+<p>哎，是不是自己境界不够哦，体会不多~~收获的东西也不多。</p>
 
       
     </div>
@@ -283,11 +287,11 @@
 
 
   
-    <article id="post-e7-a1-ae-e5-ae-9a-e5-ae-bd-e9-ab-98-e5-ba-a6-e4-b8-8e-e4-b8-8d-e7-a1-ae-e5-ae-9a-e5-ae-bd-e9-ab-98-e5-ba-a6-e7-9a-84-e5-9d-97-e7-ba-a7-e5-85-83-e7-b4-a0-e7-9a-84-e6-b0-b4-e5-b9-b3-ef-bc-88" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2012-07-17第七届-D2前端交流论坛感受-副本" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/blog/2011-05-27-e7-a1-ae-e5-ae-9a-e5-ae-bd-e9-ab-98-e5-ba-a6-e4-b8-8e-e4-b8-8d-e7-a1-ae-e5-ae-9a-e5-ae-bd-e9-ab-98-e5-ba-a6-e7-9a-84-e5-9d-97-e7-ba-a7-e5-85-83-e7-b4-a0-e7-9a-84-e6-b0-b4-e5-b9-b3-ef-bc-88.html" class="article-date">
-      <time datetime="2011-05-27T02:29:01.000Z" itemprop="datePublished">2011-05-27</time>
+      <a href="/blog/2012-07-17-2012-07-17第七届-D2前端交流论坛感受-副本.html" class="article-date">
+      <time datetime="2012-07-17T01:17:03.000Z" itemprop="datePublished">2012-07-17</time>
 </a>
     </div>
   
@@ -300,7 +304,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2011-05-27-e7-a1-ae-e5-ae-9a-e5-ae-bd-e9-ab-98-e5-ba-a6-e4-b8-8e-e4-b8-8d-e7-a1-ae-e5-ae-9a-e5-ae-bd-e9-ab-98-e5-ba-a6-e7-9a-84-e5-9d-97-e7-ba-a7-e5-85-83-e7-b4-a0-e7-9a-84-e6-b0-b4-e5-b9-b3-ef-bc-88.html">确定宽(高)度与不确定宽(高)度的块级元素的水平（垂直）居中方法</a>
+      <a class="article-title" href="/blog/2012-07-17-2012-07-17第七届-D2前端交流论坛感受-副本.html">第七届 D2前端交流论坛感受</a>
     </h1>
   
 
@@ -310,18 +314,13 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><strong>一.水平居中</strong><br>1.给父元素设置text-align:center可以实现文本、图片等行内元素的水平居中；<br>2.确定宽度的块级元素通过设置：margin:0 auto;来设置居中；<br>3.不确定宽度的块级元素的水平居中<br>方法一：<br>用table包含住需要居中的块级元素，设置table的属性为：margin:0 auto;</p>
-<p><span style="color: #00ffff;"> <span style="color: #0000ff;">利用的是table元素，table不是块级，他的宽度由内部元素的宽度“撑起”，仅设置margin-left:auto; margin-right:auto就可以实现水平居中！将ul包含在table标签里面，对table 设置 margin 间接使ul实现了水平。</span></span></p>
-<p><span style="color: #ff0000;"> 这种方法很巧妙，但缺点是增加了无语义的标签，加深了标签的嵌套层数。</span><br>方法二：<br>设置display:inline解决<br><span style="color: #0000ff;"> 这个思路是，改变块级元素的display为inline 类型，然后使用text-align:center来实现居中。</span></p>
-<p><span style="color: #ff0000;">不用增加无语义标签，简化标签嵌套的深度，缺点是块级元素变为了行内元素会缺少一些支持属性，如设定长宽，这种方法带来一定的限制。</span><br>方法三：<br>设置父元素和子元素：float:left;position:relative;<br>然后父元素:left:50%;<br>子元素:left:-50%;<br><span style="color: #ff0000;">保留了块级元素的属性，不会添加无语义标签，不增加嵌套深度，缺点是设置了position:relative,带来了一定副作用。</span></p>
-<p><strong>二.垂直居中</strong><br>1.父元素高度不确定的，文本、图片、块级元素<br>给父容器设置上下边距;</p>
-<p>2.父元素高度确定，单行文本<br>给父元素设置line-height值等于高度</p>
-<p>3.父元素高度确定，文本、图片、块级元素<br>方法一：</p>
-<p>用table包含，设置vertical-align值为middle<br><span style="color: #ff0000;">不会给样式带来任何副作用，添加了无语义的标签，并增加了嵌套深度。</span></p>
-<p>方法二：</p>
-<p>对支持display:table-cell的IE8和FF用display:table-cell和vertical-align:middle来实现居中，对不支持display:table-cell的IE6和IE7，使用特定格式的hack,  hack内容为方法3的定位</p>
-<p><span style="color: #ff0000;">一方面使用了hack，不利于维护，另一方面需要设置position:relative和position:absolute,带来了副作用。</span></p>
-<p>方法三：<br>设置父元素和子元素：float:left;position:relative;<br>然后父元素:top:50%;<br>子元素:top:-50%;</p>
+        <p>以前在网上看过D2的PPT，也一直希望能够亲身前往前听，这次终于圆了我的想法。可能是由于自己的境界不够吧，感受不多，体会不深，也稍微讲下。这次D2应该是办的最大的一次，不止有主会场，还有各分会场，我听的是D2的主会场第一天。</p>
+<p>第一个体会： javascript趋势很强劲，D2主会场讲的都是javascript方面的东西。</p>
+<p>第二个体会： 网站的前端性能对于前端开发非常重要，特别是对于访问量大的系统。整个上午都是讲前端性能方面的东西。如何发现前端性能问题、如何优化前端性能、如何监控前端性能。当然我也基本了解了监控前端性能的大概方法，如何优化前端性能。</p>
+<p>第三个体会：工具化对公司很重要，整个D2主会场基本都是讲工具，讲演讲者所开发的工具，利用工具解决前端问题，提高工作效率。一个有效的工具能大规模提高团队战斗力。当然，个人觉得写前端的工具是一层境界。</p>
+<p>第四个体会：技术分享会基本都是分享新技术或者分享工具，所以在选择听的时候要有自己的取舍，譬如有很多人后来去看分会场的新技术分享了，而我却一直流在原地。应该学会选择取舍。</p>
+<p>整个会场让我感受最深的是百度的berg分享的《百度前端集成解决方案》虽然也是讲工具，不过却讲的很不错。讲述如何解决前端开发过程中的历史遗留问题，譬如样式越来越多，旧的样式不敢删 等引起我们的共鸣，并介绍了他的项目将如何全自动解决。</p>
+<p>哎，是不是自己境界不够哦，体会不多~~收获的东西也不多。</p>
 
       
     </div>
@@ -347,11 +346,11 @@
 
 
   
-    <article id="post-display-ef-bc-9ainline-block-e8-a7-a3-e6-9e-90" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-大学四年总结" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/blog/2011-05-27-display-ef-bc-9ainline-block-e8-a7-a3-e6-9e-90.html" class="article-date">
-      <time datetime="2011-05-27T00:44:06.000Z" itemprop="datePublished">2011-05-27</time>
+      <a href="/blog/2012-07-15-大学四年总结.html" class="article-date">
+      <time datetime="2012-07-15T12:27:32.000Z" itemprop="datePublished">2012-07-15</time>
 </a>
     </div>
   
@@ -364,7 +363,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2011-05-27-display-ef-bc-9ainline-block-e8-a7-a3-e6-9e-90.html">display：inline-block 解析</a>
+      <a class="article-title" href="/blog/2012-07-15-大学四年总结.html">大学四年总结</a>
     </h1>
   
 
@@ -374,10 +373,17 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>IE6和IE7不是不支持display:inline-block属性而是通过HACK-触发行内元素的hasLayout实现的。如果触发行内元素的hasLayout,就会让行内元素拥有一些块级元素的特性。</p>
-<p><span style="color: #ff0000;"> 拥有的块级元素的特点是，可以设置长宽，可以设置margin和padding值，但它却不是独占一行的</span>。<span style="color: #000000;">这个属性集块级元素和行内元素的特点与一身，非常有用。</span></p>
-<p><span style="color: #000000;"> 这个属性如果对块级元素应用 FF和IE8可以正常解析，而IE6和I还不支持，会换行，所以了不要应用到块级元素上，我们舍弃这种用法。</span></p>
-<p><span style="color: #000000;"> 如:<body>abcdefg<span>12345</span></body>      我们应用的时候注意到左边的文字abcdefg和span是底对齐的，而IE8和FF是顶对齐的。<span style="color: #ff0000;"> 可以通过设置  span 的 vertical-align:来解决</span>，如例子中的 *vertical-align:-10px。<br></span></p>
+        <p>其实已经毕业很多天了，一直各种原因导致我没有对此做一个简单的自我总结。毕业后才知道其实大学生活是多么的美好。岁月毫不留情，转瞬即逝。大学的学习和生活也是我人生中的一大转折点，我很享受这四年的美好生活，也很留恋，但是最终我还是必须不断的前进继续奋斗迎接接下来的一年又一年。</p>
+<p>四年的大学生活是总结不完的，不过我我简单的自我总结一下。</p>
+<h3 id="学习方面"><a href="#学习方面" class="headerlink" title="学习方面:"></a>学习方面:</h3><p>从最初的认认真真上课听老师讲课学习，到后来的基本不听课，按自我方向自行学习。实践证明，我的选择是正确的。对以后的工作方面重要的是能有自己拿的出手的一门技能。正如我们专业以前有位说的“其实无所谓学校好不好,专业垃圾不垃圾,前途是光明的,道路是曲折的,老师是靠不住的,一切都是要自学的”。所以大学四年，其主要精力用在了学习CSS上，并且适当的学习了一点photoshop、javascript和php。而迫于学院气氛，尽力把英语四级过了，也拿了一大把荣誉证书，但是后来发现签合同的时候也根本不看这些，全看能力，暂时没有用。实践也证明很多每天上课认认真真听老师讲课的同学找工作的时候不突出，最后大四去报名参加培训然后再找工作。总之，能力代表未来。</p>
+<h3 id="工作方面："><a href="#工作方面：" class="headerlink" title="工作方面："></a>工作方面：</h3><p>在学生会打过酱油，就挂挂职位，锻炼效果不大。不过利用自己学习的css和php(织梦CMS)在整个大学期间也零零散散赚取了万元左右生活费，相对还是比较不错的。在大二期间旷了几个月课在市里一家小网络公司兼职了3个月，期间学院对我各种警告不过后来时间证明都是吓人的，虽然一个月就几百块钱的兼职费，但是在这里我的技术水平在实际的公司项目开发中得到了较大进步。抓住每一次工作锻炼的机会，让自己进步，因为我知道每一次机会来之不易，抓紧眼前的机会。也是因为知道每次机会来之不易，所以那时每天花1-2个小时帮一位学长发帖担任网站编辑（寝室断网了的时候跑网吧发），只是为了跟他学习CSS。大学的四年工作方面挂过职位、做过兼职、赚过私单、摆过地摊、搞过自己的网站。</p>
+<h3 id="生活方面："><a href="#生活方面：" class="headerlink" title="生活方面："></a>生活方面：</h3><p>收获了一些知心朋友，正如有人说虽然我不是那种有很多朋友满天下的那种，但是我对朋友非常用心，所以和我做朋友的基本知心朋友。除了偶尔起早贪黑为了完成项目，我的生活作息还是非常标准的。因为有个时候我喜欢一气呵成，不喜欢拖拉，所以显得激愤而执着造成睡眠晚，不过只是偶尔的特定需求。而生活方面一大不足是平常没有注重锻炼只是偶尔打打球，迫于程序员可持续发展的个人看法我觉得以后应该保持好身体。一大遗憾还有就是自己太宅了，没有利用这四年的时间多玩玩，看看周围的风景。</p>
+<h3 id="几点重要的体会："><a href="#几点重要的体会：" class="headerlink" title="几点重要的体会："></a>几点重要的体会：</h3><h4 id="抓住每一次机会"><a href="#抓住每一次机会" class="headerlink" title="抓住每一次机会"></a>抓住每一次机会</h4><p>抓住学长招编辑的机会，我CSS入门了。抓住兼职的机会，我进一步提高了。在校园招聘末期，抓住了最后一次机会，我进入了现在的公司。</p>
+<h4 id="学习靠自己"><a href="#学习靠自己" class="headerlink" title="学习靠自己"></a>学习靠自己</h4><p>引用室友的信奉名言“古之成大事者不惟有超世之才已有坚韧不拔之志”，现在想想，自己学习的进步主要还是自己一行一行代码敲下来，一个视频一个视频的观看来的。</p>
+<h4 id="专注"><a href="#专注" class="headerlink" title="专注"></a>专注</h4><p>专注做好自己的事，把一件事情做到极致，方能有所达成。</p>
+<h4 id="注重基础"><a href="#注重基础" class="headerlink" title="注重基础"></a>注重基础</h4><p>工作的体会，技巧是在基础上得来的，很多没见过的东西是自己用基础“想”出来的。基础方能以不变应万变，花架子是靠不住的。</p>
+<h4 id="不断重构自己"><a href="#不断重构自己" class="headerlink" title="不断重构自己"></a>不断重构自己</h4><p>人容易犯经验主义错误，人容易满足于目前的状况， 要不断的充实自己、重新认知自己，去除自己不好的东西，吸收好的先进的东西才能进步。切莫固步自封。</p>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>大学的这四年相对于以前的人生路上是比较成功的。遗憾的事情就不多说（人往前走）还有很多地方我做的不好，疼痛是成长所必须的。我认为下一个阶段是工作的第一个三年，第一个三年必将是充满期待和自我挑战的三年。路漫漫其修远兮吾将上下而求索，往大牛之路前进吧！</p>
 
       
     </div>
@@ -403,11 +409,11 @@
 
 
   
-    <article id="post-e4-b8-80-e4-b8-aa-e5-be-88-e5-a5-bd-e7-9a-84haslayout-e8-a7-a3-e9-87-8a" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-大学四年总结 - 副本" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/blog/2011-05-27-e4-b8-80-e4-b8-aa-e5-be-88-e5-a5-bd-e7-9a-84haslayout-e8-a7-a3-e9-87-8a.html" class="article-date">
-      <time datetime="2011-05-27T00:18:23.000Z" itemprop="datePublished">2011-05-27</time>
+      <a href="/blog/2012-07-15-大学四年总结 - 副本.html" class="article-date">
+      <time datetime="2012-07-15T12:27:32.000Z" itemprop="datePublished">2012-07-15</time>
 </a>
     </div>
   
@@ -420,7 +426,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2011-05-27-e4-b8-80-e4-b8-aa-e5-be-88-e5-a5-bd-e7-9a-84haslayout-e8-a7-a3-e9-87-8a.html">一个很好的hasLayout解释</a>
+      <a class="article-title" href="/blog/2012-07-15-大学四年总结 - 副本.html">大学四年总结</a>
     </h1>
   
 
@@ -430,10 +436,17 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>很多时候，CSS在IE下的解析十分奇怪，明明其他浏览器好好的，而在IE下却出了问题，并且问题十分诡异—-例如一个比较典型的BUG就是<span style="color: #ff0000;">设置border的时候，有时候border会分开，刷新或者滚动条的时候，又会自动连接起来</span>（这个我碰到过）。<span style="color: #ff0000;"> 那么我认为碰到这样的诡异现象的时候第一印象考虑出发hasLayout</span>。</p>
-<p>hasLayout到底是什么了？ hasLayout是IE浏览器专有的一个属性，用于CSS的解析引擎。有时候在IE下复杂的CSS设置解析起来会出现BUG，<span style="color: #ff0000;">其原因可能与hasLayout没有被自动触发有关，我们通过一些技巧，手动触发hasLayout属性就可以解决Bug了</span>。这是针对IE的偏方。</p>
-<p>hasLayout的触发方法有很多种，例如 width height 值，设置postion 为relative等。 width heigh  postion 都会带来一定的副作用。一个很好的<span style="color: #ff0000;">流行的解决方法是 “zoom:1” </span>。在极少数情况下也是会失效的例如DHTML的时候。  这时借助 “position:relative”来触发尽管会带来副作用。 <span style="color: #ff0000;"> 总之,“zoom”是最常用、最安全、成本最小的触发hasLayout的方式，一般情况下使用该方式。</span></p>
-<p><span style="color: #ff0000;"><span style="color: #888888;">参考自《编写高质量代码 Web前端开发修炼之路》</span><br></span></p>
+        <p>其实已经毕业很多天了，一直各种原因导致我没有对此做一个简单的自我总结。毕业后才知道其实大学生活是多么的美好。岁月毫不留情，转瞬即逝。大学的学习和生活也是我人生中的一大转折点，我很享受这四年的美好生活，也很留恋，但是最终我还是必须不断的前进继续奋斗迎接接下来的一年又一年。</p>
+<p>四年的大学生活是总结不完的，不过我我简单的自我总结一下。</p>
+<h3 id="学习方面"><a href="#学习方面" class="headerlink" title="学习方面:"></a>学习方面:</h3><p>从最初的认认真真上课听老师讲课学习，到后来的基本不听课，按自我方向自行学习。实践证明，我的选择是正确的。对以后的工作方面重要的是能有自己拿的出手的一门技能。正如我们专业以前有位说的“其实无所谓学校好不好,专业垃圾不垃圾,前途是光明的,道路是曲折的,老师是靠不住的,一切都是要自学的”。所以大学四年，其主要精力用在了学习CSS上，并且适当的学习了一点photoshop、javascript和php。而迫于学院气氛，尽力把英语四级过了，也拿了一大把荣誉证书，但是后来发现签合同的时候也根本不看这些，全看能力，暂时没有用。实践也证明很多每天上课认认真真听老师讲课的同学找工作的时候不突出，最后大四去报名参加培训然后再找工作。总之，能力代表未来。</p>
+<h3 id="工作方面："><a href="#工作方面：" class="headerlink" title="工作方面："></a>工作方面：</h3><p>在学生会打过酱油，就挂挂职位，锻炼效果不大。不过利用自己学习的css和php(织梦CMS)在整个大学期间也零零散散赚取了万元左右生活费，相对还是比较不错的。在大二期间旷了几个月课在市里一家小网络公司兼职了3个月，期间学院对我各种警告不过后来时间证明都是吓人的，虽然一个月就几百块钱的兼职费，但是在这里我的技术水平在实际的公司项目开发中得到了较大进步。抓住每一次工作锻炼的机会，让自己进步，因为我知道每一次机会来之不易，抓紧眼前的机会。也是因为知道每次机会来之不易，所以那时每天花1-2个小时帮一位学长发帖担任网站编辑（寝室断网了的时候跑网吧发），只是为了跟他学习CSS。大学的四年工作方面挂过职位、做过兼职、赚过私单、摆过地摊、搞过自己的网站。</p>
+<h3 id="生活方面："><a href="#生活方面：" class="headerlink" title="生活方面："></a>生活方面：</h3><p>收获了一些知心朋友，正如有人说虽然我不是那种有很多朋友满天下的那种，但是我对朋友非常用心，所以和我做朋友的基本知心朋友。除了偶尔起早贪黑为了完成项目，我的生活作息还是非常标准的。因为有个时候我喜欢一气呵成，不喜欢拖拉，所以显得激愤而执着造成睡眠晚，不过只是偶尔的特定需求。而生活方面一大不足是平常没有注重锻炼只是偶尔打打球，迫于程序员可持续发展的个人看法我觉得以后应该保持好身体。一大遗憾还有就是自己太宅了，没有利用这四年的时间多玩玩，看看周围的风景。</p>
+<h3 id="几点重要的体会："><a href="#几点重要的体会：" class="headerlink" title="几点重要的体会："></a>几点重要的体会：</h3><h4 id="抓住每一次机会"><a href="#抓住每一次机会" class="headerlink" title="抓住每一次机会"></a>抓住每一次机会</h4><p>抓住学长招编辑的机会，我CSS入门了。抓住兼职的机会，我进一步提高了。在校园招聘末期，抓住了最后一次机会，我进入了现在的公司。</p>
+<h4 id="学习靠自己"><a href="#学习靠自己" class="headerlink" title="学习靠自己"></a>学习靠自己</h4><p>引用室友的信奉名言“古之成大事者不惟有超世之才已有坚韧不拔之志”，现在想想，自己学习的进步主要还是自己一行一行代码敲下来，一个视频一个视频的观看来的。</p>
+<h4 id="专注"><a href="#专注" class="headerlink" title="专注"></a>专注</h4><p>专注做好自己的事，把一件事情做到极致，方能有所达成。</p>
+<h4 id="注重基础"><a href="#注重基础" class="headerlink" title="注重基础"></a>注重基础</h4><p>工作的体会，技巧是在基础上得来的，很多没见过的东西是自己用基础“想”出来的。基础方能以不变应万变，花架子是靠不住的。</p>
+<h4 id="不断重构自己"><a href="#不断重构自己" class="headerlink" title="不断重构自己"></a>不断重构自己</h4><p>人容易犯经验主义错误，人容易满足于目前的状况， 要不断的充实自己、重新认知自己，去除自己不好的东西，吸收好的先进的东西才能进步。切莫固步自封。</p>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>大学的这四年相对于以前的人生路上是比较成功的。遗憾的事情就不多说（人往前走）还有很多地方我做的不好，疼痛是成长所必须的。我认为下一个阶段是工作的第一个三年，第一个三年必将是充满期待和自我挑战的三年。路漫漫其修远兮吾将上下而求索，往大牛之路前进吧！</p>
 
       
     </div>
@@ -459,11 +472,11 @@
 
 
   
-    <article id="post-e3-80-90-e7-ac-94-e8-ae-b0-e3-80-91html-e5-b8-b8-e8-a7-81-e6-a8-a1-e5-9d-97-e8-af-ad-e4-b9-89-e5-8c-96-e6-96-b9-e6-a1-88-e3-80-90-e4-b9-a6-e3-80-91-e7-bc-96-e5-86-99-e9-ab-98-e8-b4-a8-e9-87-8f" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-&#39;按钮紧跟标题,要求标题如果过长换行右侧时间依旧在右上方“紧跟位置”&#39;" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/blog/2011-05-25-e3-80-90-e7-ac-94-e8-ae-b0-e3-80-91html-e5-b8-b8-e8-a7-81-e6-a8-a1-e5-9d-97-e8-af-ad-e4-b9-89-e5-8c-96-e6-96-b9-e6-a1-88-e3-80-90-e4-b9-a6-e3-80-91-e7-bc-96-e5-86-99-e9-ab-98-e8-b4-a8-e9-87-8f.html" class="article-date">
-      <time datetime="2011-05-25T15:22:51.000Z" itemprop="datePublished">2011-05-25</time>
+      <a href="/blog/2012-07-14-'按钮紧跟标题,要求标题如果过长换行右侧时间依旧在右上方“紧跟位置”'.html" class="article-date">
+      <time datetime="2012-07-14T01:05:46.000Z" itemprop="datePublished">2012-07-14</time>
 </a>
     </div>
   
@@ -476,7 +489,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2011-05-25-e3-80-90-e7-ac-94-e8-ae-b0-e3-80-91html-e5-b8-b8-e8-a7-81-e6-a8-a1-e5-9d-97-e8-af-ad-e4-b9-89-e5-8c-96-e6-96-b9-e6-a1-88-e3-80-90-e4-b9-a6-e3-80-91-e7-bc-96-e5-86-99-e9-ab-98-e8-b4-a8-e9-87-8f.html">【笔记】HTML常见模块语义化方案【书】编写高质量代码 WEB开发修炼之道</a>
+      <a class="article-title" href="/blog/2012-07-14-'按钮紧跟标题,要求标题如果过长换行右侧时间依旧在右上方“紧跟位置”'.html">按钮紧跟标题,要求标题如果过长换行右侧时间依旧在右上方“紧跟位置”</a>
     </h1>
   
 
@@ -486,48 +499,146 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h4 id="1、标题和内容"><a href="#1、标题和内容" class="headerlink" title="1、标题和内容"></a>1、标题和内容</h4><blockquote>
-<div class="title"><br><br><br>## 标签的寓意<br><br><a href="#">更多</a><br><br><br></div>
+        <p>今天组内分享会听到这个内容，自己以前没碰到过，存档。<br>需求：左侧的标题无论多长右边的按钮要求紧跟左侧，即使左侧的标题换行了，右侧的按钮依然要在紧跟的右上方。</p>
+<p>效果：<br><a href="wp-content/uploads/2012/07/abc.jpg"><img src="wp-content/uploads/2012/07/abc.jpg" alt="" title="要求标题如果过长换行右侧时间依旧在右上方“紧跟位置”效果图"></a></p>
+<p>代码:<br>组内分享的方法：</p>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">position_method</span>{<span style="color: #000;">position</span>:<span style="color: #164;">relative</span>; <span style="color: #000;">overflow</span>:<span style="color: #164;">hidden</span>; *<span style="color: #164;">zoom</span>:<span style="color: #164;">1</span>; <span style="color: #000;">width</span>:<span style="color: #164;">178px</span>; <span style="color: #000;">padding-right</span>: <span style="color: #164;">32px</span>}
+.<span style="color: #170;">position_method</span> <span style="color: #170;">a</span>{<span style="color: #000;">float</span>:<span style="color: #164;">left</span>;}
+.<span style="color: #170;">position_method</span> <span style="color: #170;">span</span>{<span style="color: #000;">position</span>:<span style="color: #164;">absolute</span>;}<span style="color: #170;">&lt;</span>/<span style="color: #170;">pre</span>&gt;
+<span style="color: #170;">&lt;div</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"position_method"</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">"#"</span>&gt;<span style="color: #170;">这</span><span style="color: #170;">里</span><span style="color: #170;">是</span><span style="color: #170;">新</span><span style="color: #170;">闻</span><span style="color: #170;">的</span><span style="color: #170;">标</span><span style="color: #170;">题</span><span style="color: #170;">，</span><span style="color: #170;">足</span><span style="color: #170;">够</span><span style="color: #170;">足</span><span style="color: #170;">够</span><span style="color: #170;">的</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;span</span>&gt;<span style="color: #170;">按</span><span style="color: #170;">钮</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">span</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">div</span>&gt;</pre>
+《CSS那些事儿》里的方法：
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">margin_method</span>{<span style="color: #000;">width</span>:<span style="color: #164;">210px</span>; <span style="color: #000;">overflow</span>:<span style="color: #164;">hidden</span>; *<span style="color: #164;">zoom</span>:<span style="color: #164;">1</span>}
+.<span style="color: #170;">margin_method</span> <span style="color: #170;">a</span>{<span style="color: #000;">float</span>:<span style="color: #164;">left</span>; <span style="color: #000;">padding-right</span>:<span style="color: #164;">32px</span>}
+.<span style="color: #170;">margin_method</span> <span style="color: #170;">span</span>{<span style="color: #000;">margin-left</span>:<span style="color: #164;">-32px</span>;}<span style="color: #170;">&lt;</span>/<span style="color: #170;">pre</span>&gt;
+<span style="color: #170;">&lt;div</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"margin_method"</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">"#"</span>&gt;<span style="color: #170;">这</span><span style="color: #170;">里</span><span style="color: #170;">是</span><span style="color: #170;">新</span><span style="color: #170;">闻</span><span style="color: #170;">的</span><span style="color: #170;">标</span><span style="color: #170;">题</span><span style="color: #170;">，</span><span style="color: #170;">足</span><span style="color: #170;">够</span><span style="color: #170;">足</span><span style="color: #170;">够</span><span style="color: #170;">的</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;span</span>&gt;<span style="color: #170;">按</span><span style="color: #170;">钮</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">span</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">div</span>&gt;</pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
 
 
-<p>段落一的内容……<strong>根据浏览器的默认样式</strong>……</p>
-<p>段落二的内容<br>其中 更多是不应该属于二级标题h2的，那么为了为了通过在css完成设计则增加div</p>
-</blockquote>
-<h4 id="2、表单"><a href="#2、表单" class="headerlink" title="2、表单"></a>2、表单</h4><blockquote>
-<from action="" method="">
 
 
-<fieldset>
 
 
-<legend>登陆表单</legend>
 
 
-<p><label for="name">账号:</label><input type="text" id="name"></p>
-<p><label for="pw">密码:</label><input type="password" id="pw"></p>
-<input type="submit" value="登陆" class="subBtn">
+  
+    <article id="post-&#39;按钮紧跟标题,要求标题如果过长换行右侧时间依旧在右上方“紧跟位置”&#39; - 副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2012-07-14-'按钮紧跟标题,要求标题如果过长换行右侧时间依旧在右上方“紧跟位置”' - 副本.html" class="article-date">
+      <time datetime="2012-07-14T01:05:46.000Z" itemprop="datePublished">2012-07-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2012-07-14-'按钮紧跟标题,要求标题如果过长换行右侧时间依旧在右上方“紧跟位置”' - 副本.html">按钮紧跟标题,要求标题如果过长换行右侧时间依旧在右上方“紧跟位置”</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>今天组内分享会听到这个内容，自己以前没碰到过，存档。<br>需求：左侧的标题无论多长右边的按钮要求紧跟左侧，即使左侧的标题换行了，右侧的按钮依然要在紧跟的右上方。</p>
+<p>效果：<br><a href="wp-content/uploads/2012/07/abc.jpg"><img src="wp-content/uploads/2012/07/abc.jpg" alt="" title="要求标题如果过长换行右侧时间依旧在右上方“紧跟位置”效果图"></a></p>
+<p>代码:<br>组内分享的方法：</p>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">position_method</span>{<span style="color: #000;">position</span>:<span style="color: #164;">relative</span>; <span style="color: #000;">overflow</span>:<span style="color: #164;">hidden</span>; *<span style="color: #164;">zoom</span>:<span style="color: #164;">1</span>; <span style="color: #000;">width</span>:<span style="color: #164;">178px</span>; <span style="color: #000;">padding-right</span>: <span style="color: #164;">32px</span>}
+.<span style="color: #170;">position_method</span> <span style="color: #170;">a</span>{<span style="color: #000;">float</span>:<span style="color: #164;">left</span>;}
+.<span style="color: #170;">position_method</span> <span style="color: #170;">span</span>{<span style="color: #000;">position</span>:<span style="color: #164;">absolute</span>;}<span style="color: #170;">&lt;</span>/<span style="color: #170;">pre</span>&gt;
+<span style="color: #170;">&lt;div</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"position_method"</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">"#"</span>&gt;<span style="color: #170;">这</span><span style="color: #170;">里</span><span style="color: #170;">是</span><span style="color: #170;">新</span><span style="color: #170;">闻</span><span style="color: #170;">的</span><span style="color: #170;">标</span><span style="color: #170;">题</span><span style="color: #170;">，</span><span style="color: #170;">足</span><span style="color: #170;">够</span><span style="color: #170;">足</span><span style="color: #170;">够</span><span style="color: #170;">的</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;span</span>&gt;<span style="color: #170;">按</span><span style="color: #170;">钮</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">span</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">div</span>&gt;</pre>
+《CSS那些事儿》里的方法：
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">margin_method</span>{<span style="color: #000;">width</span>:<span style="color: #164;">210px</span>; <span style="color: #000;">overflow</span>:<span style="color: #164;">hidden</span>; *<span style="color: #164;">zoom</span>:<span style="color: #164;">1</span>}
+.<span style="color: #170;">margin_method</span> <span style="color: #170;">a</span>{<span style="color: #000;">float</span>:<span style="color: #164;">left</span>; <span style="color: #000;">padding-right</span>:<span style="color: #164;">32px</span>}
+.<span style="color: #170;">margin_method</span> <span style="color: #170;">span</span>{<span style="color: #000;">margin-left</span>:<span style="color: #164;">-32px</span>;}<span style="color: #170;">&lt;</span>/<span style="color: #170;">pre</span>&gt;
+<span style="color: #170;">&lt;div</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"margin_method"</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">"#"</span>&gt;<span style="color: #170;">这</span><span style="color: #170;">里</span><span style="color: #170;">是</span><span style="color: #170;">新</span><span style="color: #170;">闻</span><span style="color: #170;">的</span><span style="color: #170;">标</span><span style="color: #170;">题</span><span style="color: #170;">，</span><span style="color: #170;">足</span><span style="color: #170;">够</span><span style="color: #170;">足</span><span style="color: #170;">够</span><span style="color: #170;">的</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">长</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;span</span>&gt;<span style="color: #170;">按</span><span style="color: #170;">钮</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">span</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">div</span>&gt;</pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
 
 
-<p></p></fieldset><br>表单域要用fieldset标签抱起来，并用legend标签说明表单的用途。每个input标签对应的说明文本都需要使用label标签，并且通过input 设置id属性，在label中设置”for=someld” 来让说明文本和相应的input关联起来。<br></from><br>3、表格<p></p>
-<table border="1">
 
 
-<caption>集中页面表现的比较</caption>
 
 
-<thead><br><br><br><tr><br><br><br><th>实现方式</th><th>代码量</th><br><br><br><th>搜索引擎友好</th><th>特殊终端兼容</th><br><br><br></tr><br><br><br></thead>
 
 
-<tbody><br><br><br><tr><th>table 布局</th><td>多</td><td>差</td><td>一般</td></tr><br><br><br><tr><th>乱用标签的CSS布局</th><td>少</td><td>一般</td><td>差</td></tr><br><br><br><tr><th>标签寓意良好的CSS布局</th><td>少</td><td>好</td><td>好</td></tr><br><br><br></tbody>
+  
+    <article id="post-未知宽度水平居中的几种方法 - 副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2012-05-27-未知宽度水平居中的几种方法 - 副本.html" class="article-date">
+      <time datetime="2012-05-27T00:01:53.000Z" itemprop="datePublished">2012-05-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2012-05-27-未知宽度水平居中的几种方法 - 副本.html">未知宽度水平居中的几种方法</a>
+    </h1>
+  
 
-
-<p></p></table><br>表格标题要用caption，表头要用thead包围，主题部分用tbody包围，尾部要用tfoot包围，表头和一般单元格要区分开，表头用th，一般单元格用td。<p></p>
-</blockquote>
-<p><span style="color: #ff0000;">我在平时的练习中 表单和表格的练习较少，表格和表单的符合语义的HTML更是没印象，正好可以查漏补缺一下。另外 hx 标题标签  尽可能不要出现断层。</span></p>
-<p><span style="color: #ff0000;"><span style="color: #000000;">为了保证网页去央视后的可读性，并且符合WEB标准</span></span></p>
-<p><span style="color: #ff0000;"><span style="color: #000000;"> <span style="color: #993366;">尽可能少地使用无语义标签DIV和SPAN</span></span></span></p>
-<p><span style="color: #993366;"> 在语义不明显，既可以用P也可以用DIV的地方，尽量用P，因为P默认情况下有上下间距，去央视后可读性更好，对兼容特殊终端有利。</span></p>
-<p><span style="color: #ff0000;"><span style="color: #000000;"><span style="color: #993366;"> 不要使用纯样式标签，如   b     font     u   等，语义上需要强调的文本可以包在strong 或者em标签里，都有强调的语意，其中strong 默认加粗,em默认斜体。</span><br></span></span></p>
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>在某些特定的场合，在没有知道宽度的情况下却要求水平居中，前段时间在写分页的时候碰到了这个问题。当时在网上找了一些解决方法，并选了一个最合适的方法，现将当时整理的一些方法发出。下列以分页作为演示说明：</p>
+<p><strong>方案一、利用浮动的包裹性和相对定位百分比数据值特性,传说称之为“相对浮动”</strong></p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">unknow_width_center1</span> {<span style="color: #000;">position</span>:<span style="color: #164;">relative</span>;    <span style="color: #000;">left</span>:<span style="color: #164;">50%</span>;    <span style="color: #000;">float</span>:<span style="color: #164;">left</span>;}<br>.<span style="color: #170;">unknow_width_center1</span> <span style="color: #170;">li</span> {<span style="color: #000;">position</span>:<span style="color: #164;">relative</span>;    <span style="color: #000;">right</span>:<span style="color: #164;">50%</span>; <span style="color: #000;">z-index</span>:<span style="color: #164;">2</span>;    <span style="color: #000;">float</span>:<span style="color: #164;">left</span>}<span style="color: #170;">&lt;</span>/<span style="color: #170;">pre</span>&gt;<br><span style="color: #170;">&lt;ul</span> <span style="color: #170;">class</span>=<span style="color: #a11;">“unknow_width_center1”</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">1</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">2</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">3</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">4</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">5</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">7</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">8</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">9</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">10</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br><span style="color: #170;">&lt;</span>/<span style="color: #170;">ul</span>&gt;</pre><br>通过给父元素设置浮动float,再设置父元素的position属性为relative和left:50%;子元素设置position:relative和left:-50%来实现水平居中。</p>
+<p>可以保留块级元素仍然是以display:block的形式显示,不会添加无意义的标签,不添加嵌套深度。缺点是设置了position:relative;带来了一些副作用，并且需要闭合（清除）浮动。</p>
+<p><strong>方案二、利用text-align属性特性（text-align:center 对于ie6、7块级和内联级都可以水平居中。其它浏览器内联级(内联块级，文字)元素才可以水平居中，块级无效。 ）强制定义为内联 display:inline</strong></p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">unknow_width_center2</span> {<span style="color: #000;">text-align</span>:<span style="color: #164;">center</span>; <span style="color: #000;">padding</span>:<span style="color: #164;">5px</span>;}<br>.<span style="color: #170;">unknow_width_center2</span> <span style="color: #170;">li</span> {<span style="color: #000;">display</span>:<span style="color: #164;">inline</span>;}<span style="color: #170;">&lt;</span>/<span style="color: #170;">pre</span>&gt;<br><span style="color: #170;">&lt;ul</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">1</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">2</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">3</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">4</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">5</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">7</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">8</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">9</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">10</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br><span style="color: #170;">&lt;</span>/<span style="color: #170;">ul</span>&gt;</pre><br>将子元素设置为内联居中，那么大家都知道的display:inline内联元素宽高是不可以设定的，局限性太大，不宜使用。</p>
+<p><strong>方案三、利用table的属性特性</strong></p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">unknow_width_center3</span>{<span style="color: #000;">margin</span>:<span style="color: #164;">0</span> <span style="color: #164;">auto</span>}<br>.<span style="color: #170;">unknow_width_center3</span> <span style="color: #170;">ul</span> {<span style="color: #000;">overflow</span>:<span style="color: #164;">hidden</span>; *<span style="color: #164;">zoom</span>:<span style="color: #164;">1</span>}<br>.<span style="color: #170;">unknow_width_center3</span> <span style="color: #170;">ul</span> <span style="color: #170;">li</span> {<span style="color: #000;">float</span>:<span style="color: #164;">left</span>;}<span style="color: #170;">&lt;</span>/<span style="color: #170;">pre</span>&gt;<br><span style="color: #170;">&lt;table</span> <span style="color: #170;">class</span>=<span style="color: #a11;">“unknow_width_center3”</span>&gt;<br><span style="color: #170;">&lt;tbody</span>&gt;<br><span style="color: #170;">&lt;tr</span>&gt;<br><span style="color: #170;">&lt;td</span>&gt;<br><span style="color: #170;">&lt;ul</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">1</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">2</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">3</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">4</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">5</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">7</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">8</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">9</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">10</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br><span style="color: #170;">&lt;</span>/<span style="color: #170;">ul</span>&gt;<br><span style="color: #170;">&lt;</span>/<span style="color: #170;">td</span>&gt;<br><span style="color: #170;">&lt;</span>/<span style="color: #170;">tr</span>&gt;<br><span style="color: #170;">&lt;</span>/<span style="color: #170;">tbody</span>&gt;<br><span style="color: #170;">&lt;</span>/<span style="color: #170;">table</span>&gt;</pre><br>是使用table作为容器的方法来实现。添加了无意义的标签。Table标签本身并不是块级元素,当我们不设置table的宽度的话,他里面的宽度是由他内部元素的宽度撑起来的。但即使我们没有设置table的宽度,直接设置table的外边距margin:0 auto;就可以实现水平居中了!这样我们就可以通过设置table水平居中,间接使里面的内容居中。</p>
+<p><strong>方案四、利用内联块display:inline-block的text-align属性</strong></p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">unknow_width_center4</span> {<span style="color: #000;">text-align</span>:<span style="color: #164;">center</span>}<br>.<span style="color: #170;">unknow_width_center4</span> <span style="color: #170;">ul</span> <span style="color: #170;">li</span> {<span style="color: #000;">display</span>:<span style="color: #164;">inline-block</span>; <em><span style="color: #164;">display</span>:<span style="color: #164;">inline</span>; </em><span style="color: #164;">zoom</span>:<span style="color: #164;">1</span>;}<span style="color: #170;">&lt;</span>/<span style="color: #170;">pre</span>&gt;<br><span style="color: #170;">&lt;ul</span> <span style="color: #170;">class</span>=<span style="color: #a11;">“unknow_width_center4 “</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">1</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">2</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">3</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br><span style="color: #170;">&lt;</span>/<span style="color: #170;">ul</span>&gt;</pre><br>IE6/7下直接设置display:inline-block的居中无效，这里在IE6/7下设置了display:inline，神奇的是竟然可以设置宽高及其垂直方向的内外边距。缺点是display:inline-block会引起一些间隙，当然有看起来碍眼解决方案。</p>
+<p><strong>方案五、利用table table-cell</strong></p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">unknow_width_center5</span> <span style="color: #170;">ul</span>{  <span style="color: #000;">display</span>:<span style="color: #164;">table</span>; <span style="color: #000;">margin</span>:<span style="color: #164;">0</span> <span style="color: #164;">auto</span>; }<br>.<span style="color: #170;">unknow_width_center5</span> <span style="color: #170;">li</span>{<span style="color: #000;">display</span>:<span style="color: #164;">table-cell</span>;}<span style="color: #170;">&lt;</span>/<span style="color: #170;">pre</span>&gt;<br><span style="color: #170;">&lt;ul</span> <span style="color: #170;">class</span>=<span style="color: #a11;">“unknow_width_center5 “</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">1</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">2</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">3</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">4</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">5</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">7</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">8</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">9</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">10</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br><span style="color: #170;">&lt;</span>/<span style="color: #170;">ul</span>&gt;</pre><br>ie6/ie7不支持table-cell属性，所以该方法也不适用ie6/ie7,如果需要兼容在这基础上加东西也很蛋疼。</p>
+<p>&nbsp;</p>
+<p><strong>个人偏向使用方法一”相对浮动”，适用广泛代码简洁且不会出现什么问题，可惜就是每次使用的时候要考虑浮动的处理。</strong></p>
 
       
     </div>
@@ -553,11 +664,11 @@
 
 
   
-    <article id="post-e7-83-ad-e7-83-88-e7-a5-9d-e8-b4-ba-e6-b9-96-e5-8d-97-e7-a7-91-e6-8a-80-e5-a4-a7-e5-ad-a6-e6-a0-a1-e5-8d-ab-e9-98-9f-e7-bd-91-e7-ab-99-e6-88-90-e5-8a-9f-e4-b8-8a-e7-ba-bf-e3-80-90-e6-a8-b1-e7-bc-98" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-未知宽度水平居中的几种方法" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/blog/2011-05-19-e7-83-ad-e7-83-88-e7-a5-9d-e8-b4-ba-e6-b9-96-e5-8d-97-e7-a7-91-e6-8a-80-e5-a4-a7-e5-ad-a6-e6-a0-a1-e5-8d-ab-e9-98-9f-e7-bd-91-e7-ab-99-e6-88-90-e5-8a-9f-e4-b8-8a-e7-ba-bf-e3-80-90-e6-a8-b1-e7-bc-98.html" class="article-date">
-      <time datetime="2011-05-19T08:59:57.000Z" itemprop="datePublished">2011-05-19</time>
+      <a href="/blog/2012-05-27-未知宽度水平居中的几种方法.html" class="article-date">
+      <time datetime="2012-05-27T00:01:53.000Z" itemprop="datePublished">2012-05-27</time>
 </a>
     </div>
   
@@ -570,7 +681,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2011-05-19-e7-83-ad-e7-83-88-e7-a5-9d-e8-b4-ba-e6-b9-96-e5-8d-97-e7-a7-91-e6-8a-80-e5-a4-a7-e5-ad-a6-e6-a0-a1-e5-8d-ab-e9-98-9f-e7-bd-91-e7-ab-99-e6-88-90-e5-8a-9f-e4-b8-8a-e7-ba-bf-e3-80-90-e6-a8-b1-e7-bc-98.html">热烈祝贺湖南科技大学校卫队网站成功上线【樱缘网络视觉工作室】</a>
+      <a class="article-title" href="/blog/2012-05-27-未知宽度水平居中的几种方法.html">未知宽度水平居中的几种方法</a>
     </h1>
   
 
@@ -580,11 +691,20 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>首先，我个人认为作为一个学生组织能够有一个属于自己的网站，这样有利于部门的宣传，有利于部门工作的展现和与广大师生互动做好本职工作。而作为一个学生组织在保卫处领导的要求下自己处理网站制作事宜也不容易。在我们帮助校卫队制作网站的过程中，也充满了一些经历。比如 约见处领导的时间冲突，要等领导很久。在这过程中校卫队队长有个时候也因为一点小事就被领导批评，在领导下面，网站的栏目，文章等都需要认真审核，不允许有一点差错。并且我们在提交给处领导的时候，处领导也会提出许多改进，修改也很麻烦，无论是界面要求还是程序都做了很多修改，这一点确实很繁琐。校卫队长在协调工作中尽心尽责。当然很高兴今天湖南科技大学校卫队的网站终于上线了。</p>
-<p><a href="wp-content/uploads/2011/05/xiaoweidui.jpg"><img src="wp-content/uploads/2011/05/xiaoweidui-189x300.jpg" alt="" title="xiaoweidui"></a></p>
-<p>查看演示：<a href="http://dep.hnust.cn/xwd/index.aspx" target="_blank" rel="external">http://dep.hnust.cn/xwd/index.aspx</a></p>
-<p>校卫队网站 以突出保卫安全的风格体现主题。前端 页面 主要继续采用html+css布局，并以jquery为主体的javascript下加入了多个动态元素，提高用户体验。后端程序采用 asp.net 书写。</p>
-<p>这个网站，也是<a href="http://www.yingyuans.com" target="_blank" rel="external">【樱缘网络工作室】</a> 自正式组建以来，第一次以校园团队组员多人进行制作，其中更得到了宝贵的分工合作经验。</p>
+        <p>在某些特定的场合，在没有知道宽度的情况下却要求水平居中，前段时间在写分页的时候碰到了这个问题。当时在网上找了一些解决方法，并选了一个最合适的方法，现将当时整理的一些方法发出。下列以分页作为演示说明：</p>
+<p><strong>方案一、利用浮动的包裹性和相对定位百分比数据值特性,传说称之为“相对浮动”</strong></p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">unknow_width_center1</span> {<span style="color: #000;">position</span>:<span style="color: #164;">relative</span>;    <span style="color: #000;">left</span>:<span style="color: #164;">50%</span>;    <span style="color: #000;">float</span>:<span style="color: #164;">left</span>;}<br>.<span style="color: #170;">unknow_width_center1</span> <span style="color: #170;">li</span> {<span style="color: #000;">position</span>:<span style="color: #164;">relative</span>;    <span style="color: #000;">right</span>:<span style="color: #164;">50%</span>; <span style="color: #000;">z-index</span>:<span style="color: #164;">2</span>;    <span style="color: #000;">float</span>:<span style="color: #164;">left</span>}<span style="color: #170;">&lt;</span>/<span style="color: #170;">pre</span>&gt;<br><span style="color: #170;">&lt;ul</span> <span style="color: #170;">class</span>=<span style="color: #a11;">“unknow_width_center1”</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">1</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">2</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">3</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">4</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">5</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">7</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">8</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">9</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">10</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br><span style="color: #170;">&lt;</span>/<span style="color: #170;">ul</span>&gt;</pre><br>通过给父元素设置浮动float,再设置父元素的position属性为relative和left:50%;子元素设置position:relative和left:-50%来实现水平居中。</p>
+<p>可以保留块级元素仍然是以display:block的形式显示,不会添加无意义的标签,不添加嵌套深度。缺点是设置了position:relative;带来了一些副作用，并且需要闭合（清除）浮动。</p>
+<p><strong>方案二、利用text-align属性特性（text-align:center 对于ie6、7块级和内联级都可以水平居中。其它浏览器内联级(内联块级，文字)元素才可以水平居中，块级无效。 ）强制定义为内联 display:inline</strong></p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">unknow_width_center2</span> {<span style="color: #000;">text-align</span>:<span style="color: #164;">center</span>; <span style="color: #000;">padding</span>:<span style="color: #164;">5px</span>;}<br>.<span style="color: #170;">unknow_width_center2</span> <span style="color: #170;">li</span> {<span style="color: #000;">display</span>:<span style="color: #164;">inline</span>;}<span style="color: #170;">&lt;</span>/<span style="color: #170;">pre</span>&gt;<br><span style="color: #170;">&lt;ul</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">1</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">2</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">3</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">4</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">5</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">7</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">8</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">9</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">10</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br><span style="color: #170;">&lt;</span>/<span style="color: #170;">ul</span>&gt;</pre><br>将子元素设置为内联居中，那么大家都知道的display:inline内联元素宽高是不可以设定的，局限性太大，不宜使用。</p>
+<p><strong>方案三、利用table的属性特性</strong></p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">unknow_width_center3</span>{<span style="color: #000;">margin</span>:<span style="color: #164;">0</span> <span style="color: #164;">auto</span>}<br>.<span style="color: #170;">unknow_width_center3</span> <span style="color: #170;">ul</span> {<span style="color: #000;">overflow</span>:<span style="color: #164;">hidden</span>; *<span style="color: #164;">zoom</span>:<span style="color: #164;">1</span>}<br>.<span style="color: #170;">unknow_width_center3</span> <span style="color: #170;">ul</span> <span style="color: #170;">li</span> {<span style="color: #000;">float</span>:<span style="color: #164;">left</span>;}<span style="color: #170;">&lt;</span>/<span style="color: #170;">pre</span>&gt;<br><span style="color: #170;">&lt;table</span> <span style="color: #170;">class</span>=<span style="color: #a11;">“unknow_width_center3”</span>&gt;<br><span style="color: #170;">&lt;tbody</span>&gt;<br><span style="color: #170;">&lt;tr</span>&gt;<br><span style="color: #170;">&lt;td</span>&gt;<br><span style="color: #170;">&lt;ul</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">1</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">2</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">3</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">4</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">5</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">7</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">8</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">9</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">10</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br><span style="color: #170;">&lt;</span>/<span style="color: #170;">ul</span>&gt;<br><span style="color: #170;">&lt;</span>/<span style="color: #170;">td</span>&gt;<br><span style="color: #170;">&lt;</span>/<span style="color: #170;">tr</span>&gt;<br><span style="color: #170;">&lt;</span>/<span style="color: #170;">tbody</span>&gt;<br><span style="color: #170;">&lt;</span>/<span style="color: #170;">table</span>&gt;</pre><br>是使用table作为容器的方法来实现。添加了无意义的标签。Table标签本身并不是块级元素,当我们不设置table的宽度的话,他里面的宽度是由他内部元素的宽度撑起来的。但即使我们没有设置table的宽度,直接设置table的外边距margin:0 auto;就可以实现水平居中了!这样我们就可以通过设置table水平居中,间接使里面的内容居中。</p>
+<p><strong>方案四、利用内联块display:inline-block的text-align属性</strong></p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">unknow_width_center4</span> {<span style="color: #000;">text-align</span>:<span style="color: #164;">center</span>}<br>.<span style="color: #170;">unknow_width_center4</span> <span style="color: #170;">ul</span> <span style="color: #170;">li</span> {<span style="color: #000;">display</span>:<span style="color: #164;">inline-block</span>; <em><span style="color: #164;">display</span>:<span style="color: #164;">inline</span>; </em><span style="color: #164;">zoom</span>:<span style="color: #164;">1</span>;}<span style="color: #170;">&lt;</span>/<span style="color: #170;">pre</span>&gt;<br><span style="color: #170;">&lt;ul</span> <span style="color: #170;">class</span>=<span style="color: #a11;">“unknow_width_center4 “</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">1</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">2</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">3</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br><span style="color: #170;">&lt;</span>/<span style="color: #170;">ul</span>&gt;</pre><br>IE6/7下直接设置display:inline-block的居中无效，这里在IE6/7下设置了display:inline，神奇的是竟然可以设置宽高及其垂直方向的内外边距。缺点是display:inline-block会引起一些间隙，当然有看起来碍眼解决方案。</p>
+<p><strong>方案五、利用table table-cell</strong></p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">unknow_width_center5</span> <span style="color: #170;">ul</span>{  <span style="color: #000;">display</span>:<span style="color: #164;">table</span>; <span style="color: #000;">margin</span>:<span style="color: #164;">0</span> <span style="color: #164;">auto</span>; }<br>.<span style="color: #170;">unknow_width_center5</span> <span style="color: #170;">li</span>{<span style="color: #000;">display</span>:<span style="color: #164;">table-cell</span>;}<span style="color: #170;">&lt;</span>/<span style="color: #170;">pre</span>&gt;<br><span style="color: #170;">&lt;ul</span> <span style="color: #170;">class</span>=<span style="color: #a11;">“unknow_width_center5 “</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">1</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">2</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">3</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">4</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">5</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">7</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">8</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">9</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br>    <span style="color: #170;">&lt;li</span>&gt;<span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">“#”</span>&gt;<span style="color: #164;">10</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">li</span>&gt;<br><span style="color: #170;">&lt;</span>/<span style="color: #170;">ul</span>&gt;</pre><br>ie6/ie7不支持table-cell属性，所以该方法也不适用ie6/ie7,如果需要兼容在这基础上加东西也很蛋疼。</p>
+<p>&nbsp;</p>
+<p><strong>个人偏向使用方法一”相对浮动”，适用广泛代码简洁且不会出现什么问题，可惜就是每次使用的时候要考虑浮动的处理。</strong></p>
 
       
     </div>
@@ -610,11 +730,11 @@
 
 
   
-    <article id="post-php-e6-95-b0-e7-bb-84-e8-be-93-e5-87-ba-e7-9a-84-e6-96-b9-e6-b3-95-e3-80-90-e7-89-b9-e5-88-ab-e9-80-82-e7-94-a8-e4-ba-8e-e8-b0-83-e8-af-95-e3-80-91" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-CSS七种方法实现分割中线" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/blog/2011-05-18-php-e6-95-b0-e7-bb-84-e8-be-93-e5-87-ba-e7-9a-84-e6-96-b9-e6-b3-95-e3-80-90-e7-89-b9-e5-88-ab-e9-80-82-e7-94-a8-e4-ba-8e-e8-b0-83-e8-af-95-e3-80-91.html" class="article-date">
-      <time datetime="2011-05-17T16:35:30.000Z" itemprop="datePublished">2011-05-18</time>
+      <a href="/blog/2012-05-23-CSS七种方法实现分割中线.html" class="article-date">
+      <time datetime="2012-05-23T00:10:55.000Z" itemprop="datePublished">2012-05-23</time>
 </a>
     </div>
   
@@ -627,7 +747,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2011-05-18-php-e6-95-b0-e7-bb-84-e8-be-93-e5-87-ba-e7-9a-84-e6-96-b9-e6-b3-95-e3-80-90-e7-89-b9-e5-88-ab-e9-80-82-e7-94-a8-e4-ba-8e-e8-b0-83-e8-af-95-e3-80-91.html">php数组输出的方法【特别适用于调试】</a>
+      <a class="article-title" href="/blog/2012-05-23-CSS七种方法实现分割中线.html">CSS七种方法实现分割中线</a>
     </h1>
   
 
@@ -637,20 +757,180 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>PHP编程过程中常常需要对查询出来的数据进行检测和调试，特别是对从表中查询出来的数据在一个数组中，那么现在以下数据的三种输出方法：</p>
-<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #555;">&lt;?php</span>
-<span style="color: #000-2;">$bbbb</span><span style="color: #000;">=</span><span style="color: #708;">array</span>(<span style="color: #a11;">"11"</span><span style="color: #000;">=&amp;</span><span style="color: #@cm-word;">gt</span>;<span style="color: #a11;">"aaa"</span>,<span style="color: #a11;">"22"</span><span style="color: #000;">=&amp;</span><span style="color: #@cm-word;">gt</span>;<span style="color: #a11;">"bbb"</span>);
-<span style="color: #a50;">//只能输出值value不能输出key</span>
-<span style="color: #708;">foreach</span>(<span style="color: #000-2;">$bbbb</span> <span style="color: #708;">as</span> <span style="color: #000-2;">$color</span>)
-<span style="color: #708;">echo</span> <span style="color: #000-2;">$color</span>;
-<span style="color: #a50;">//value与key都可输出</span>
-<span style="color: #708;">foreach</span>(<span style="color: #000-2;">$bbbb</span> <span style="color: #708;">as</span> <span style="color: #000-2;">$key</span><span style="color: #000;">=&amp;</span><span style="color: #@cm-word;">gt</span>;<span style="color: #000-2;">$value</span>)
-<span style="color: #708;">echo</span> <span style="color: #000-2;">$key</span>.<span style="color: #a11;">"=&amp;gt;"</span>.<span style="color: #000-2;">$value</span>;
-<span style="color: #a50;">//value与key都可输出</span>
-<span style="color: #708;">while</span>(<span style="color: #000-2;">$color</span><span style="color: #000;">=</span><span style="color: #@cm-word;">each</span>(<span style="color: #000-2;">$bbbb</span>)){
-<span style="color: #708;">echo</span> <span style="color: #000-2;">$color</span>[<span style="color: #a11;">'key'</span>];
+        <p>在项目开发过程中的会员中心页碰到了一个中线，然后发散思维，要求中间的线自适应高度，想了七种方案。</p>
+<p><a href="wp-content/uploads/2012/05/middle_line.jpg">如图效果：<img src="wp-content/uploads/2012/05/middle_line.jpg" alt="" title="middle_line"></a></p>
+<p>&nbsp;</p>
+<p><strong>方案一：左边标签设置左边框，右边标签设置左边框，利用负margin边框重叠</strong></p>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">middle_line_wrap1</span> .<span style="color: #170;">row</span> {
+    <span style="color: #000;">padding-left</span>:<span style="color: #164;">100px</span>;    <span style="color: #a50;">/* 保证dd的位置，不管有没有dt，dd的位置都距离左边这么远 */</span>
+    <span style="color: #000;">zoom</span>:<span style="color: #164;">1</span>         <span style="color: #a50;">/*闭合浮动，针对IE*/</span>
 }
-<span style="color: #555;">?&gt;</span></pre>
+.<span style="color: #170;">middle_line_wrap1</span> .<span style="color: #170;">row</span>:<span style="color: #170;">after</span> {    <span style="color: #a50;">/*闭合浮动针对支持该伪类的现代浏览器*/</span>
+    <span style="color: #000;">content</span>:<span style="color: #a11;">"\20"</span>;
+    <span style="color: #000;">clear</span>:<span style="color: #164;">both</span>;
+    <span style="color: #000;">visibility</span>:<span style="color: #164;">hidden</span>;
+    <span style="color: #000;">display</span>:<span style="color: #164;">block</span>;
+    <span style="color: #000;">height</span>:<span style="color: #164;">0</span>
+}
+.<span style="color: #170;">middle_line_wrap1</span> <span style="color: #170;">dt</span> {
+    <span style="color: #000;">width</span>:<span style="color: #164;">99px</span>;
+    <span style="color: #000;">margin-left</span>:<span style="color: #164;">-100px</span>; <span style="color: #a50;">/* 保证dd的位置，不管有没有dt，dd的位置都距离左边这么远 */</span>
+    <span style="color: #000;">float</span>:<span style="color: #164;">left</span>;        <span style="color: #a50;">/*让元素可以定宽，而又保持布局，不可以用inline-block,inline-block会引起文字元素间的莫名间隙*/</span>
+    <span style="color: #000;">text-align</span>:<span style="color: #164;">right</span>;
+    <span style="color: #000;">position</span>:<span style="color: #164;">relative</span>;
+    <span style="color: #000;">z-index</span>:<span style="color: #164;">1</span>;        <span style="color: #a50;">/*兼容IE6，为什么需要使用，原因不详*/</span>
+    <span style="color: #000;">border-right</span>:<span style="color: #164;">1px</span> <span style="color: #164;">solid</span> <span style="color: #219;">#CECECE</span>
+}
+.<span style="color: #170;">middle_line_wrap1</span> <span style="color: #170;">dd</span> {
+    <span style="color: #000;">border-left</span>:<span style="color: #164;">1px</span> <span style="color: #164;">solid</span> <span style="color: #219;">#CECECE</span>;
+    <span style="color: #000;">float</span>:<span style="color: #164;">left</span>;       <span style="color: #a50;">/*解决dd元素边框不识别多行的总高，若没有，则本元素边框为一行元素的高而不是多行*/</span>
+    <span style="color: #000;">padding-left</span>:<span style="color: #164;">10px</span>;
+    <span style="color: #000;">margin-left</span>:<span style="color: #164;">-1px</span>;
+    <span style="color: #000;">position</span>:<span style="color: #164;">relative</span>;
+    <span style="color: #000;">z-index</span>:<span style="color: #164;">1px</span>;    <span style="color: #a50;">/*兼容IE6，为什么需要使用，原因不详*/</span>
+}
+<span style="color: #170;">&lt;div</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"middle_line_wrap1"</span>&gt;<span style="color: #170;">&lt;dl</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"row"</span>&gt;<span style="color: #170;">&lt;dt</span>&gt;<span style="color: #170;">姓</span><span style="color: #170;">名</span><span style="color: #170;">：</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">dt</span>&gt;<span style="color: #170;">&lt;dd</span>&gt;<span style="color: #170;">LYuShine</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">dd</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">dl</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">div</span>&gt;</pre>
+
+<p>很“保险”（使程序输出的时候左边和右边任意一边内容为空甚至标签不输出都正常显示），多了一个多余标签。</p>
+<p>&nbsp;</p>
+<p><strong><strong>方案二：设置父容器左边框，父容器margin-left,子元素父margin拉回。</strong></strong></p>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">middle_line_wrap2</span> .<span style="color: #170;">iner</span> {
+    <span style="color: #000;">border-left</span>:<span style="color: #164;">1px</span> <span style="color: #164;">solid</span> <span style="color: #219;">#CECECE</span>;
+    <span style="color: #000;">margin-left</span>:<span style="color: #164;">100px</span>; <span style="color: #a50;">/*其实这个使用在.member_info2也是可以的，这里考虑.member_info2为大体盒子，为了不造成不必要的布局影响麻烦*/</span>
+}
+.<span style="color: #170;">middle_line_wrap2</span> .<span style="color: #170;">row</span> {
+    <span style="color: #000;">padding-left</span>:<span style="color: #164;">100px</span>;    <span style="color: #a50;">/* 保证dd的位置，不管有没有dt，dd的位置都距离左边这么远 */</span>
+    <span style="color: #000;">zoom</span>:<span style="color: #164;">1</span>         <span style="color: #a50;">/*闭合浮动，针对IE*/</span>
+}
+.<span style="color: #170;">middle_line_wrap2</span> .<span style="color: #170;">row</span>:<span style="color: #170;">after</span> {    <span style="color: #a50;">/*闭合浮动针对支持该伪类的现代浏览器*/</span>
+    <span style="color: #000;">content</span>:<span style="color: #a11;">"\20"</span>;
+    <span style="color: #000;">clear</span>:<span style="color: #164;">both</span>;
+    <span style="color: #000;">visibility</span>:<span style="color: #164;">hidden</span>;
+    <span style="color: #000;">display</span>:<span style="color: #164;">block</span>;
+    <span style="color: #000;">height</span>:<span style="color: #164;">0</span>
+}
+.<span style="color: #170;">middle_line_wrap2</span> <span style="color: #170;">dt</span> {
+    <span style="color: #000;">width</span>:<span style="color: #164;">100px</span>;
+    <span style="color: #000;">float</span>:<span style="color: #164;">left</span>;
+    <span style="color: #000;">text-align</span>:<span style="color: #164;">right</span>;
+    <span style="color: #000;">margin-left</span>:<span style="color: #164;">-200px</span>; <span style="color: #a50;">/* 保证dd的位置，不管有没有dt，dd的位置都距离左边这么远 */</span>
+}
+.<span style="color: #170;">middle_line_wrap2</span> <span style="color: #170;">dd</span> {
+    <span style="color: #000;">float</span>:<span style="color: #164;">left</span>;
+    <span style="color: #000;">margin-left</span>:<span style="color: #164;">-100px</span>;
+    <span style="color: #000;">padding-left</span>: <span style="color: #164;">10px</span>;
+}
+<span style="color: #170;">&lt;div</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"middle_line_wrap2"</span>&gt;
+<span style="color: #170;">&lt;div</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"iner"</span>&gt;<span style="color: #170;">&lt;dl</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"row"</span>&gt;<span style="color: #170;">&lt;dt</span>&gt;<span style="color: #170;">姓</span><span style="color: #170;">名</span><span style="color: #170;">：</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">dt</span>&gt;<span style="color: #170;">&lt;dd</span>&gt;<span style="color: #170;">LYuShine</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">dd</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">dl</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">div</span>&gt;
+<span style="color: #170;">&lt;</span>/<span style="color: #170;">div</span>&gt;</pre>
+
+<p>很保险，可维护性扩展性低，如果父容器要设置外面的边框则需再外套一个标签。</p>
+<p>&nbsp;</p>
+<p><strong>方案三：定义一个 “线”的class，绝对定位。</strong></p>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">middle_line_wrap3</span> .<span style="color: #170;">row</span> {
+    <span style="color: #000;">padding-left</span>:<span style="color: #164;">100px</span>;    <span style="color: #a50;">/* 保证dd的位置，不管有没有dt，dd的位置都距离左边这么远 */</span>
+    <span style="color: #000;">zoom</span>:<span style="color: #164;">1</span>         <span style="color: #a50;">/*闭合浮动，针对IE*/</span>
+}
+.<span style="color: #170;">middle_line_wrap3</span> {
+    <span style="color: #000;">position</span>:<span style="color: #164;">relative</span>;
+    <span style="color: #000;">zoom</span>:<span style="color: #164;">1</span>; <span style="color: #a50;">/* 截断过于长的线*/</span>
+    <span style="color: #000;">overflow</span>:<span style="color: #164;">hidden</span>;<span style="color: #a50;">/* 截断过于长的线*/</span>
+}
+.<span style="color: #170;">middle_line_wrap3</span> .<span style="color: #170;">line</span> {
+    <span style="color: #000;">border-left</span>:<span style="color: #164;">1px</span> <span style="color: #164;">solid</span> <span style="color: #219;">#CECECE</span>;
+    <span style="color: #000;">width</span>:<span style="color: #164;">10px</span>;
+    <span style="color: #000;">height</span>:<span style="color: #164;">100%</span>;<span style="color: #a50;">/* 其实可以写100%，识别父容器的高度，但是IE6下100%没有正确识别，这里用一个较大数值*/</span>
+    <span style="color: #000;">_height</span>:<span style="color: #164;">10000px</span>;
+    <span style="color: #000;">position</span>:<span style="color: #164;">absolute</span>;
+    <span style="color: #000;">top</span>:<span style="color: #164;">0</span>;
+    <span style="color: #000;">left</span>:<span style="color: #164;">100px</span>
+}
+.<span style="color: #170;">middle_line_wrap3</span> .<span style="color: #170;">row</span>:<span style="color: #170;">after</span> {    <span style="color: #a50;">/*闭合浮动针对支持该伪类的现代浏览器*/</span>
+    <span style="color: #000;">content</span>:<span style="color: #a11;">"\20"</span>;
+    <span style="color: #000;">clear</span>:<span style="color: #164;">both</span>;
+    <span style="color: #000;">visibility</span>:<span style="color: #164;">hidden</span>;
+    <span style="color: #000;">display</span>:<span style="color: #164;">block</span>;
+    <span style="color: #000;">height</span>:<span style="color: #164;">0</span>
+}
+.<span style="color: #170;">middle_line_wrap3</span> <span style="color: #170;">dt</span> {
+    <span style="color: #000;">width</span>:<span style="color: #164;">100px</span>;
+    <span style="color: #000;">margin-left</span>:<span style="color: #164;">-100px</span>; <span style="color: #a50;">/* 保证dd的位置，不管有没有dt，dd的位置都距离左边这么远 */</span>
+    <span style="color: #000;">float</span>:<span style="color: #164;">left</span>;        <span style="color: #a50;">/*让元素可以定宽，而又保持布局，不可以用inline-block,inline-block会引起文字元素间的莫名间隙*/</span>
+    <span style="color: #000;">text-align</span>:<span style="color: #164;">right</span>;
+}
+.<span style="color: #170;">middle_line_wrap3</span> <span style="color: #170;">dd</span> {
+    <span style="color: #000;">float</span>:<span style="color: #164;">left</span>;       <span style="color: #a50;">/*解决dd元素边框不识别多行的总高，若没有，则本元素边框为一行元素的高而不是多行*/</span>
+    <span style="color: #000;">padding-left</span>:<span style="color: #164;">10px</span>;
+}
+<span style="color: #170;">&lt;div</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"middle_line_wrap3"</span>&gt;
+<span style="color: #170;">&lt;div</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"line"</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">div</span>&gt;
+<span style="color: #170;">&lt;dl</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"row"</span>&gt;<span style="color: #170;">&lt;dt</span>&gt;<span style="color: #170;">姓</span><span style="color: #170;">名</span><span style="color: #170;">：</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">dt</span>&gt;<span style="color: #170;">&lt;dd</span>&gt;<span style="color: #170;">LYuShine</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">dd</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">dl</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">div</span>&gt;</pre>
+
+<p>可全站通用,对付IE6需要设置一个及长的高度不太合理。</p>
+<p>&nbsp;</p>
+<p><strong>方案四：使用图片背景平铺于内容区</strong></p>
+<p>代码不贴了：</p>
+<p>多余了一张图片，而且一张图只能对应一个宽度，扩展性低。</p>
+<p>&nbsp;</p>
+<p><strong>方案五：利用图片转base64编码</strong></p>
+<p>代码不贴了：</p>
+<p>一般转码后的编码比另存的图片大1/3，base64编码不兼容IE/IE7，一张图适应一个宽度。</p>
+<p>&nbsp;</p>
+<p><strong>方案六：使用表格table，利用其高度自适应性</strong></p>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">middle_line_wrap5</span> {
+    <span style="color: #000;">border-collapse</span>:<span style="color: #164;">collapse</span>
+}
+.<span style="color: #170;">middle_line_wrap5</span> <span style="color: #170;">td</span> {
+    <span style="color: #000;">padding</span>:<span style="color: #164;">10px</span> <span style="color: #164;">0</span>
+}
+.<span style="color: #170;">middle_line_wrap6</span> .<span style="color: #170;">intro</span> {
+    <span style="color: #000;">width</span>:<span style="color: #164;">100px</span>;
+    <span style="color: #000;">text-align</span>:<span style="color: #164;">right</span>;
+    <span style="color: #000;">border-right</span>:<span style="color: #164;">1px</span> <span style="color: #164;">solid</span> <span style="color: #219;">#CECECE</span>;
+    <span style="color: #000;">vertical-align</span>:<span style="color: #164;">text-top</span>
+}
+.<span style="color: #170;">middle_line_wrap6</span> .<span style="color: #170;">info</span> {
+    <span style="color: #000;">padding-left</span>:<span style="color: #164;">10px</span>;
+    <span style="color: #000;">font-weight</span>:<span style="color: #164;">bold</span>
+}
+<span style="color: #170;">&lt;table</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"middle_line_wrap5"</span>&gt;
+<span style="color: #170;">&lt;tbody</span>&gt;
+<span style="color: #170;">&lt;tr</span>&gt;
+<span style="color: #170;">&lt;td</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"intro"</span>&gt;<span style="color: #170;">姓</span><span style="color: #170;">名</span><span style="color: #170;">：</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">td</span>&gt;
+<span style="color: #170;">&lt;td</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"info"</span>&gt;<span style="color: #170;">LYuShine</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">td</span>&gt;
+<span style="color: #170;">&lt;</span>/<span style="color: #170;">tr</span>&gt;
+<span style="color: #170;">&lt;</span>/<span style="color: #170;">tbody</span>&gt;
+<span style="color: #170;">&lt;</span>/<span style="color: #170;">table</span>&gt;</pre>
+
+<p><strong>方案七：左边标签绝对定位自适应容器高度</strong></p>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">middle_line_wrap7</span> .<span style="color: #170;">row</span> {
+    <span style="color: #000;">padding-left</span>:<span style="color: #164;">100px</span>;    <span style="color: #a50;">/* 保证dd的位置，不管有没有dt，dd的位置都距离左边这么远 */</span>
+    <span style="color: #000;">zoom</span>:<span style="color: #164;">1</span>;    <span style="color: #a50;">/*闭合浮动，针对IE*/</span>
+    <span style="color: #000;">position</span>:<span style="color: #164;">relative</span>;
+}
+.<span style="color: #170;">middle_line_wrap7</span> .<span style="color: #170;">row</span>:<span style="color: #170;">after</span> {    <span style="color: #a50;">/*闭合浮动针对支持该伪类的现代浏览器*/</span>
+    <span style="color: #000;">content</span>:<span style="color: #a11;">"\20"</span>;
+    <span style="color: #000;">clear</span>:<span style="color: #164;">both</span>;
+    <span style="color: #000;">visibility</span>:<span style="color: #164;">hidden</span>;
+    <span style="color: #000;">display</span>:<span style="color: #164;">block</span>;
+    <span style="color: #000;">height</span>:<span style="color: #164;">0</span>
+}
+.<span style="color: #170;">middle_line_wrap7</span> <span style="color: #170;">dt</span> {
+    <span style="color: #000;">width</span>:<span style="color: #164;">100px</span>;
+    <span style="color: #000;">float</span>:<span style="color: #164;">left</span>;
+    <span style="color: #000;">text-align</span>:<span style="color: #164;">right</span>;
+    <span style="color: #000;">position</span>:<span style="color: #164;">absolute</span>;
+    <span style="color: #000;">height</span>:<span style="color: #164;">100%</span>;
+    <span style="color: #000;">top</span>:<span style="color: #164;">0</span>;
+    <span style="color: #000;">left</span>:<span style="color: #164;">100px</span>;
+    <span style="color: #000;">margin-left</span>:<span style="color: #164;">-100px</span>; <span style="color: #a50;">/* 保证dd的位置，不管有没有dt，dd的位置都距离左边这么远 */</span>
+}
+.<span style="color: #170;">middle_line_wrap7</span> <span style="color: #170;">dd</span> {
+    <span style="color: #000;">float</span>:<span style="color: #164;">left</span>;
+    <span style="color: #000;">padding-left</span>: <span style="color: #164;">10px</span>;
+    <span style="color: #000;">border-left</span>:<span style="color: #164;">1px</span> <span style="color: #164;">solid</span> <span style="color: #219;">#CECECE</span>;
+}
+<span style="color: #170;">&lt;div</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"middle_line_wrap7"</span>&gt;<span style="color: #170;">&lt;dl</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"row"</span>&gt;<span style="color: #170;">&lt;dt</span>&gt;<span style="color: #170;">姓</span><span style="color: #170;">名</span><span style="color: #170;">：</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">dt</span>&gt;<span style="color: #170;">&lt;dd</span>&gt;<span style="color: #170;">LYuShine</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">dd</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">dl</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">div</span>&gt;</pre>
       
     </div>
     
@@ -675,11 +955,11 @@
 
 
   
-    <article id="post-css-e6-9c-80-e5-b0-8f-e9-ab-98-e5-ba-a6-ef-bc-8c-e5-ae-b9-e5-99-a8-e4-b8-8b-e6-9c-89-e5-86-85-e5-ae-b9-e5-88-99-e8-87-aa-e5-8a-a8-e6-92-91-e5-bc-80-ef-bc-8c-e6-97-a0-e5-86-85-e5-ae-b9-e5-88-99" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-CSS七种方法实现分割中线 - 副本" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/blog/2011-05-04-css-e6-9c-80-e5-b0-8f-e9-ab-98-e5-ba-a6-ef-bc-8c-e5-ae-b9-e5-99-a8-e4-b8-8b-e6-9c-89-e5-86-85-e5-ae-b9-e5-88-99-e8-87-aa-e5-8a-a8-e6-92-91-e5-bc-80-ef-bc-8c-e6-97-a0-e5-86-85-e5-ae-b9-e5-88-99.html" class="article-date">
-      <time datetime="2011-05-04T12:45:15.000Z" itemprop="datePublished">2011-05-04</time>
+      <a href="/blog/2012-05-23-CSS七种方法实现分割中线 - 副本.html" class="article-date">
+      <time datetime="2012-05-23T00:10:55.000Z" itemprop="datePublished">2012-05-23</time>
 </a>
     </div>
   
@@ -692,7 +972,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2011-05-04-css-e6-9c-80-e5-b0-8f-e9-ab-98-e5-ba-a6-ef-bc-8c-e5-ae-b9-e5-99-a8-e4-b8-8b-e6-9c-89-e5-86-85-e5-ae-b9-e5-88-99-e8-87-aa-e5-8a-a8-e6-92-91-e5-bc-80-ef-bc-8c-e6-97-a0-e5-86-85-e5-ae-b9-e5-88-99.html">CSS最小高度，容器下有内容则自动撑开，无内容则保留最小高度 兼容各主流浏览器</a>
+      <a class="article-title" href="/blog/2012-05-23-CSS七种方法实现分割中线 - 副本.html">CSS七种方法实现分割中线</a>
     </h1>
   
 
@@ -702,126 +982,180 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>最近的一个网站因为本身提供的文章内容不足，用到了CSS最小高度，顺便我理清一下思路，复习一下这个小知识点。</p>
-<p>实现效果——兼容IE6\IE7\FF 容器下有内容则自动撑开，无内容则保留最小高度</p>
-<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">height</span>:<span style="color: #170;">auto</span><span style="color: #708;">!important</span>;
-<span style="color: #170;">height</span>:<span style="color: #164;">930px</span>;
-<span style="color: #170;">min-height</span>:<span style="color: #164;">930px</span>;</pre>
-IE6是不支持min-height属性的。!important 是IE7和FF看 等能够识别的，IE6不识别，并且有绝对优先权。所以 高级浏览器 支持最小高度min-height所以是按min-height的最小高度显示的，而  !important 导致高级浏览器 处理 height:auto，而不处理height:930px了。而IE6则不同，IE6不识别！important而处理height:930px,也不认识min-height。但是 IE6的 height属性本来就是这样的，如果高度每超出height的设定则 高度就是 height高，如果超出 ie6会自动的添加高度。 那么从代码的分层效率上讲建议写个IE6 HACK 减少高级浏览器不必要的处理，在考虑效率而不拘泥于标准的情况下。如下：
-<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">height</span>:<span style="color: #170;">auto</span><span style="color: #708;">!important</span>;
-<span style="color: #170;">_height</span>:<span style="color: #164;">930px</span>;
-<span style="color: #170;">min-height</span>:<span style="color: #164;">930px</span>;</pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
+        <p>在项目开发过程中的会员中心页碰到了一个中线，然后发散思维，要求中间的线自适应高度，想了七种方案。</p>
+<p><a href="wp-content/uploads/2012/05/middle_line.jpg">如图效果：<img src="wp-content/uploads/2012/05/middle_line.jpg" alt="" title="middle_line"></a></p>
+<p>&nbsp;</p>
+<p><strong>方案一：左边标签设置左边框，右边标签设置左边框，利用负margin边框重叠</strong></p>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">middle_line_wrap1</span> .<span style="color: #170;">row</span> {
+    <span style="color: #000;">padding-left</span>:<span style="color: #164;">100px</span>;    <span style="color: #a50;">/* 保证dd的位置，不管有没有dt，dd的位置都距离左边这么远 */</span>
+    <span style="color: #000;">zoom</span>:<span style="color: #164;">1</span>         <span style="color: #a50;">/*闭合浮动，针对IE*/</span>
+}
+.<span style="color: #170;">middle_line_wrap1</span> .<span style="color: #170;">row</span>:<span style="color: #170;">after</span> {    <span style="color: #a50;">/*闭合浮动针对支持该伪类的现代浏览器*/</span>
+    <span style="color: #000;">content</span>:<span style="color: #a11;">"\20"</span>;
+    <span style="color: #000;">clear</span>:<span style="color: #164;">both</span>;
+    <span style="color: #000;">visibility</span>:<span style="color: #164;">hidden</span>;
+    <span style="color: #000;">display</span>:<span style="color: #164;">block</span>;
+    <span style="color: #000;">height</span>:<span style="color: #164;">0</span>
+}
+.<span style="color: #170;">middle_line_wrap1</span> <span style="color: #170;">dt</span> {
+    <span style="color: #000;">width</span>:<span style="color: #164;">99px</span>;
+    <span style="color: #000;">margin-left</span>:<span style="color: #164;">-100px</span>; <span style="color: #a50;">/* 保证dd的位置，不管有没有dt，dd的位置都距离左边这么远 */</span>
+    <span style="color: #000;">float</span>:<span style="color: #164;">left</span>;        <span style="color: #a50;">/*让元素可以定宽，而又保持布局，不可以用inline-block,inline-block会引起文字元素间的莫名间隙*/</span>
+    <span style="color: #000;">text-align</span>:<span style="color: #164;">right</span>;
+    <span style="color: #000;">position</span>:<span style="color: #164;">relative</span>;
+    <span style="color: #000;">z-index</span>:<span style="color: #164;">1</span>;        <span style="color: #a50;">/*兼容IE6，为什么需要使用，原因不详*/</span>
+    <span style="color: #000;">border-right</span>:<span style="color: #164;">1px</span> <span style="color: #164;">solid</span> <span style="color: #219;">#CECECE</span>
+}
+.<span style="color: #170;">middle_line_wrap1</span> <span style="color: #170;">dd</span> {
+    <span style="color: #000;">border-left</span>:<span style="color: #164;">1px</span> <span style="color: #164;">solid</span> <span style="color: #219;">#CECECE</span>;
+    <span style="color: #000;">float</span>:<span style="color: #164;">left</span>;       <span style="color: #a50;">/*解决dd元素边框不识别多行的总高，若没有，则本元素边框为一行元素的高而不是多行*/</span>
+    <span style="color: #000;">padding-left</span>:<span style="color: #164;">10px</span>;
+    <span style="color: #000;">margin-left</span>:<span style="color: #164;">-1px</span>;
+    <span style="color: #000;">position</span>:<span style="color: #164;">relative</span>;
+    <span style="color: #000;">z-index</span>:<span style="color: #164;">1px</span>;    <span style="color: #a50;">/*兼容IE6，为什么需要使用，原因不详*/</span>
+}
+<span style="color: #170;">&lt;div</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"middle_line_wrap1"</span>&gt;<span style="color: #170;">&lt;dl</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"row"</span>&gt;<span style="color: #170;">&lt;dt</span>&gt;<span style="color: #170;">姓</span><span style="color: #170;">名</span><span style="color: #170;">：</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">dt</span>&gt;<span style="color: #170;">&lt;dd</span>&gt;<span style="color: #170;">LYuShine</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">dd</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">dl</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">div</span>&gt;</pre>
 
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
+<p>很“保险”（使程序输出的时候左边和右边任意一边内容为空甚至标签不输出都正常显示），多了一个多余标签。</p>
+<p>&nbsp;</p>
+<p><strong><strong>方案二：设置父容器左边框，父容器margin-left,子元素父margin拉回。</strong></strong></p>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">middle_line_wrap2</span> .<span style="color: #170;">iner</span> {
+    <span style="color: #000;">border-left</span>:<span style="color: #164;">1px</span> <span style="color: #164;">solid</span> <span style="color: #219;">#CECECE</span>;
+    <span style="color: #000;">margin-left</span>:<span style="color: #164;">100px</span>; <span style="color: #a50;">/*其实这个使用在.member_info2也是可以的，这里考虑.member_info2为大体盒子，为了不造成不必要的布局影响麻烦*/</span>
+}
+.<span style="color: #170;">middle_line_wrap2</span> .<span style="color: #170;">row</span> {
+    <span style="color: #000;">padding-left</span>:<span style="color: #164;">100px</span>;    <span style="color: #a50;">/* 保证dd的位置，不管有没有dt，dd的位置都距离左边这么远 */</span>
+    <span style="color: #000;">zoom</span>:<span style="color: #164;">1</span>         <span style="color: #a50;">/*闭合浮动，针对IE*/</span>
+}
+.<span style="color: #170;">middle_line_wrap2</span> .<span style="color: #170;">row</span>:<span style="color: #170;">after</span> {    <span style="color: #a50;">/*闭合浮动针对支持该伪类的现代浏览器*/</span>
+    <span style="color: #000;">content</span>:<span style="color: #a11;">"\20"</span>;
+    <span style="color: #000;">clear</span>:<span style="color: #164;">both</span>;
+    <span style="color: #000;">visibility</span>:<span style="color: #164;">hidden</span>;
+    <span style="color: #000;">display</span>:<span style="color: #164;">block</span>;
+    <span style="color: #000;">height</span>:<span style="color: #164;">0</span>
+}
+.<span style="color: #170;">middle_line_wrap2</span> <span style="color: #170;">dt</span> {
+    <span style="color: #000;">width</span>:<span style="color: #164;">100px</span>;
+    <span style="color: #000;">float</span>:<span style="color: #164;">left</span>;
+    <span style="color: #000;">text-align</span>:<span style="color: #164;">right</span>;
+    <span style="color: #000;">margin-left</span>:<span style="color: #164;">-200px</span>; <span style="color: #a50;">/* 保证dd的位置，不管有没有dt，dd的位置都距离左边这么远 */</span>
+}
+.<span style="color: #170;">middle_line_wrap2</span> <span style="color: #170;">dd</span> {
+    <span style="color: #000;">float</span>:<span style="color: #164;">left</span>;
+    <span style="color: #000;">margin-left</span>:<span style="color: #164;">-100px</span>;
+    <span style="color: #000;">padding-left</span>: <span style="color: #164;">10px</span>;
+}
+<span style="color: #170;">&lt;div</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"middle_line_wrap2"</span>&gt;
+<span style="color: #170;">&lt;div</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"iner"</span>&gt;<span style="color: #170;">&lt;dl</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"row"</span>&gt;<span style="color: #170;">&lt;dt</span>&gt;<span style="color: #170;">姓</span><span style="color: #170;">名</span><span style="color: #170;">：</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">dt</span>&gt;<span style="color: #170;">&lt;dd</span>&gt;<span style="color: #170;">LYuShine</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">dd</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">dl</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">div</span>&gt;
+<span style="color: #170;">&lt;</span>/<span style="color: #170;">div</span>&gt;</pre>
 
+<p>很保险，可维护性扩展性低，如果父容器要设置外面的边框则需再外套一个标签。</p>
+<p>&nbsp;</p>
+<p><strong>方案三：定义一个 “线”的class，绝对定位。</strong></p>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">middle_line_wrap3</span> .<span style="color: #170;">row</span> {
+    <span style="color: #000;">padding-left</span>:<span style="color: #164;">100px</span>;    <span style="color: #a50;">/* 保证dd的位置，不管有没有dt，dd的位置都距离左边这么远 */</span>
+    <span style="color: #000;">zoom</span>:<span style="color: #164;">1</span>         <span style="color: #a50;">/*闭合浮动，针对IE*/</span>
+}
+.<span style="color: #170;">middle_line_wrap3</span> {
+    <span style="color: #000;">position</span>:<span style="color: #164;">relative</span>;
+    <span style="color: #000;">zoom</span>:<span style="color: #164;">1</span>; <span style="color: #a50;">/* 截断过于长的线*/</span>
+    <span style="color: #000;">overflow</span>:<span style="color: #164;">hidden</span>;<span style="color: #a50;">/* 截断过于长的线*/</span>
+}
+.<span style="color: #170;">middle_line_wrap3</span> .<span style="color: #170;">line</span> {
+    <span style="color: #000;">border-left</span>:<span style="color: #164;">1px</span> <span style="color: #164;">solid</span> <span style="color: #219;">#CECECE</span>;
+    <span style="color: #000;">width</span>:<span style="color: #164;">10px</span>;
+    <span style="color: #000;">height</span>:<span style="color: #164;">100%</span>;<span style="color: #a50;">/* 其实可以写100%，识别父容器的高度，但是IE6下100%没有正确识别，这里用一个较大数值*/</span>
+    <span style="color: #000;">_height</span>:<span style="color: #164;">10000px</span>;
+    <span style="color: #000;">position</span>:<span style="color: #164;">absolute</span>;
+    <span style="color: #000;">top</span>:<span style="color: #164;">0</span>;
+    <span style="color: #000;">left</span>:<span style="color: #164;">100px</span>
+}
+.<span style="color: #170;">middle_line_wrap3</span> .<span style="color: #170;">row</span>:<span style="color: #170;">after</span> {    <span style="color: #a50;">/*闭合浮动针对支持该伪类的现代浏览器*/</span>
+    <span style="color: #000;">content</span>:<span style="color: #a11;">"\20"</span>;
+    <span style="color: #000;">clear</span>:<span style="color: #164;">both</span>;
+    <span style="color: #000;">visibility</span>:<span style="color: #164;">hidden</span>;
+    <span style="color: #000;">display</span>:<span style="color: #164;">block</span>;
+    <span style="color: #000;">height</span>:<span style="color: #164;">0</span>
+}
+.<span style="color: #170;">middle_line_wrap3</span> <span style="color: #170;">dt</span> {
+    <span style="color: #000;">width</span>:<span style="color: #164;">100px</span>;
+    <span style="color: #000;">margin-left</span>:<span style="color: #164;">-100px</span>; <span style="color: #a50;">/* 保证dd的位置，不管有没有dt，dd的位置都距离左边这么远 */</span>
+    <span style="color: #000;">float</span>:<span style="color: #164;">left</span>;        <span style="color: #a50;">/*让元素可以定宽，而又保持布局，不可以用inline-block,inline-block会引起文字元素间的莫名间隙*/</span>
+    <span style="color: #000;">text-align</span>:<span style="color: #164;">right</span>;
+}
+.<span style="color: #170;">middle_line_wrap3</span> <span style="color: #170;">dd</span> {
+    <span style="color: #000;">float</span>:<span style="color: #164;">left</span>;       <span style="color: #a50;">/*解决dd元素边框不识别多行的总高，若没有，则本元素边框为一行元素的高而不是多行*/</span>
+    <span style="color: #000;">padding-left</span>:<span style="color: #164;">10px</span>;
+}
+<span style="color: #170;">&lt;div</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"middle_line_wrap3"</span>&gt;
+<span style="color: #170;">&lt;div</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"line"</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">div</span>&gt;
+<span style="color: #170;">&lt;dl</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"row"</span>&gt;<span style="color: #170;">&lt;dt</span>&gt;<span style="color: #170;">姓</span><span style="color: #170;">名</span><span style="color: #170;">：</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">dt</span>&gt;<span style="color: #170;">&lt;dd</span>&gt;<span style="color: #170;">LYuShine</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">dd</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">dl</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">div</span>&gt;</pre>
 
+<p>可全站通用,对付IE6需要设置一个及长的高度不太合理。</p>
+<p>&nbsp;</p>
+<p><strong>方案四：使用图片背景平铺于内容区</strong></p>
+<p>代码不贴了：</p>
+<p>多余了一张图片，而且一张图只能对应一个宽度，扩展性低。</p>
+<p>&nbsp;</p>
+<p><strong>方案五：利用图片转base64编码</strong></p>
+<p>代码不贴了：</p>
+<p>一般转码后的编码比另存的图片大1/3，base64编码不兼容IE/IE7，一张图适应一个宽度。</p>
+<p>&nbsp;</p>
+<p><strong>方案六：使用表格table，利用其高度自适应性</strong></p>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">middle_line_wrap5</span> {
+    <span style="color: #000;">border-collapse</span>:<span style="color: #164;">collapse</span>
+}
+.<span style="color: #170;">middle_line_wrap5</span> <span style="color: #170;">td</span> {
+    <span style="color: #000;">padding</span>:<span style="color: #164;">10px</span> <span style="color: #164;">0</span>
+}
+.<span style="color: #170;">middle_line_wrap6</span> .<span style="color: #170;">intro</span> {
+    <span style="color: #000;">width</span>:<span style="color: #164;">100px</span>;
+    <span style="color: #000;">text-align</span>:<span style="color: #164;">right</span>;
+    <span style="color: #000;">border-right</span>:<span style="color: #164;">1px</span> <span style="color: #164;">solid</span> <span style="color: #219;">#CECECE</span>;
+    <span style="color: #000;">vertical-align</span>:<span style="color: #164;">text-top</span>
+}
+.<span style="color: #170;">middle_line_wrap6</span> .<span style="color: #170;">info</span> {
+    <span style="color: #000;">padding-left</span>:<span style="color: #164;">10px</span>;
+    <span style="color: #000;">font-weight</span>:<span style="color: #164;">bold</span>
+}
+<span style="color: #170;">&lt;table</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"middle_line_wrap5"</span>&gt;
+<span style="color: #170;">&lt;tbody</span>&gt;
+<span style="color: #170;">&lt;tr</span>&gt;
+<span style="color: #170;">&lt;td</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"intro"</span>&gt;<span style="color: #170;">姓</span><span style="color: #170;">名</span><span style="color: #170;">：</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">td</span>&gt;
+<span style="color: #170;">&lt;td</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"info"</span>&gt;<span style="color: #170;">LYuShine</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">td</span>&gt;
+<span style="color: #170;">&lt;</span>/<span style="color: #170;">tr</span>&gt;
+<span style="color: #170;">&lt;</span>/<span style="color: #170;">tbody</span>&gt;
+<span style="color: #170;">&lt;</span>/<span style="color: #170;">table</span>&gt;</pre>
 
-
-
-
-
-
-  
-    <article id="post-event-stoppropagation-e9-98-bb-e6-ad-a2-e5-86-92-e6-b3-a1-e8-bf-87-e7-a8-8breturn-false-e5-ae-9e-e7-8e-b0-e5-81-9c-e6-ad-a2-e4-ba-8b-e4-bb-b6-e7-9a-84-e5-86-92-e6-b3-a1-e8-bf-87-e7-a8-8b" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2011-04-30-event-stoppropagation-e9-98-bb-e6-ad-a2-e5-86-92-e6-b3-a1-e8-bf-87-e7-a8-8breturn-false-e5-ae-9e-e7-8e-b0-e5-81-9c-e6-ad-a2-e4-ba-8b-e4-bb-b6-e7-9a-84-e5-86-92-e6-b3-a1-e8-bf-87-e7-a8-8b.html" class="article-date">
-      <time datetime="2011-04-30T12:19:01.000Z" itemprop="datePublished">2011-04-30</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2011-04-30-event-stoppropagation-e9-98-bb-e6-ad-a2-e5-86-92-e6-b3-a1-e8-bf-87-e7-a8-8breturn-false-e5-ae-9e-e7-8e-b0-e5-81-9c-e6-ad-a2-e4-ba-8b-e4-bb-b6-e7-9a-84-e5-86-92-e6-b3-a1-e8-bf-87-e7-a8-8b.html">event.stopPropagation();阻止冒泡过程return false实现停止事件的冒泡过程 </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>大多数浏览器并不是都支持捕获阶段，jQuery也不支持。因此在事件触发后，往往执行冒泡过程。所谓的冒泡其实质是事件执行中的顺序。</p>
-<p>event.stopPropagation();（Jquery）阻止冒泡过程return false实现停止事件的冒泡过程</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-e6-b9-96-e5-8d-97-e7-a7-91-e5-a4-a7-e6-a8-b1-e7-bc-98-e8-a7-86-e8-a7-89-e7-bd-91-e7-bb-9c-e5-b7-a5-e4-bd-9c-e5-ae-a4www-yingyuans-com-e6-8b-9b-e8-81-98-e7-be-8e-e5-b7-a5-e6-95-b0-e5-90-8d-ef-bc-8c" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2011-04-29-e6-b9-96-e5-8d-97-e7-a7-91-e5-a4-a7-e6-a8-b1-e7-bc-98-e8-a7-86-e8-a7-89-e7-bd-91-e7-bb-9c-e5-b7-a5-e4-bd-9c-e5-ae-a4www-yingyuans-com-e6-8b-9b-e8-81-98-e7-be-8e-e5-b7-a5-e6-95-b0-e5-90-8d-ef-bc-8c.html" class="article-date">
-      <time datetime="2011-04-29T15:52:19.000Z" itemprop="datePublished">2011-04-29</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2011-04-29-e6-b9-96-e5-8d-97-e7-a7-91-e5-a4-a7-e6-a8-b1-e7-bc-98-e8-a7-86-e8-a7-89-e7-bd-91-e7-bb-9c-e5-b7-a5-e4-bd-9c-e5-ae-a4www-yingyuans-com-e6-8b-9b-e8-81-98-e7-be-8e-e5-b7-a5-e6-95-b0-e5-90-8d-ef-bc-8c.html">湖南科大樱缘视觉网络工作室(www.yingyuans.com)招聘美工数名，业务专员数名</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>湖南科大樱缘视觉网络工作室(www.yingyuans.com)招聘美工数名，业务专员数名,工作室主要承接各网站、软件项目</p>
-<p>特好好消息，樱缘视觉网络工作室(<a href="http://www.yingyuans.com/" target="_blank" rel="external">www.yingyuans.com</a>)招人了。招聘美工数名，业务专员数名。</p>
-<p>樱缘视觉网络工作室由湖南科技大学在校学生组建，主要承接各类 网站、软件的开发制作，已经承接过许多相关商业项目，详情团队网站有相关案例展示。</p>
-<p>现在诚聘美工设计师和业务专员有意者请联系 <a href="mailto:78789325@qq.com" target="_blank" rel="external">lyushine@qq.com</a>或者<a href="mailto:30513207@qq.com" target="_blank" rel="external">30513207@qq.com</a><br>美工要求：        1.热爱设计<br>                  2.对平面设计有一定的经验<br>                  3.设计一份街舞主题或者其他相关任意网站的首页效果图 发送至<a href="mailto:30513207@qq.com" target="_blank" rel="external">lyushine@qq.com</a>进行选拔，并可以附上您的美术作品 ；<br>业务专员：       1.负责对企业或者个人进行业务推广（工作室有各企业的联系方式）<br>                 2.有一定的推广经验，工作热情有激情</p>
-<p>价格面议，待遇从优，让你在读大学的同时收获更多的一份经历。还在犹豫么，快加进来吧！</p>
-
+<p><strong>方案七：左边标签绝对定位自适应容器高度</strong></p>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">middle_line_wrap7</span> .<span style="color: #170;">row</span> {
+    <span style="color: #000;">padding-left</span>:<span style="color: #164;">100px</span>;    <span style="color: #a50;">/* 保证dd的位置，不管有没有dt，dd的位置都距离左边这么远 */</span>
+    <span style="color: #000;">zoom</span>:<span style="color: #164;">1</span>;    <span style="color: #a50;">/*闭合浮动，针对IE*/</span>
+    <span style="color: #000;">position</span>:<span style="color: #164;">relative</span>;
+}
+.<span style="color: #170;">middle_line_wrap7</span> .<span style="color: #170;">row</span>:<span style="color: #170;">after</span> {    <span style="color: #a50;">/*闭合浮动针对支持该伪类的现代浏览器*/</span>
+    <span style="color: #000;">content</span>:<span style="color: #a11;">"\20"</span>;
+    <span style="color: #000;">clear</span>:<span style="color: #164;">both</span>;
+    <span style="color: #000;">visibility</span>:<span style="color: #164;">hidden</span>;
+    <span style="color: #000;">display</span>:<span style="color: #164;">block</span>;
+    <span style="color: #000;">height</span>:<span style="color: #164;">0</span>
+}
+.<span style="color: #170;">middle_line_wrap7</span> <span style="color: #170;">dt</span> {
+    <span style="color: #000;">width</span>:<span style="color: #164;">100px</span>;
+    <span style="color: #000;">float</span>:<span style="color: #164;">left</span>;
+    <span style="color: #000;">text-align</span>:<span style="color: #164;">right</span>;
+    <span style="color: #000;">position</span>:<span style="color: #164;">absolute</span>;
+    <span style="color: #000;">height</span>:<span style="color: #164;">100%</span>;
+    <span style="color: #000;">top</span>:<span style="color: #164;">0</span>;
+    <span style="color: #000;">left</span>:<span style="color: #164;">100px</span>;
+    <span style="color: #000;">margin-left</span>:<span style="color: #164;">-100px</span>; <span style="color: #a50;">/* 保证dd的位置，不管有没有dt，dd的位置都距离左边这么远 */</span>
+}
+.<span style="color: #170;">middle_line_wrap7</span> <span style="color: #170;">dd</span> {
+    <span style="color: #000;">float</span>:<span style="color: #164;">left</span>;
+    <span style="color: #000;">padding-left</span>: <span style="color: #164;">10px</span>;
+    <span style="color: #000;">border-left</span>:<span style="color: #164;">1px</span> <span style="color: #164;">solid</span> <span style="color: #219;">#CECECE</span>;
+}
+<span style="color: #170;">&lt;div</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"middle_line_wrap7"</span>&gt;<span style="color: #170;">&lt;dl</span> <span style="color: #170;">class</span>=<span style="color: #a11;">"row"</span>&gt;<span style="color: #170;">&lt;dt</span>&gt;<span style="color: #170;">姓</span><span style="color: #170;">名</span><span style="color: #170;">：</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">dt</span>&gt;<span style="color: #170;">&lt;dd</span>&gt;<span style="color: #170;">LYuShine</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">dd</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">dl</span>&gt;<span style="color: #170;">&lt;</span>/<span style="color: #170;">div</span>&gt;</pre>
       
     </div>
     
@@ -848,7 +1182,7 @@ IE6是不支持min-height属性的。!important 是IE7和FF看 等能够识别�
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
     </nav>
   
 </div>
@@ -899,7 +1233,7 @@ IE6是不支持min-height属性的。!important 是IE7和FF看 等能够识别�
                 $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
             }
             else {
-                var backgroundnum = 5;
+                var backgroundnum = 4;
                 var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
                 $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
             }
@@ -923,6 +1257,8 @@ IE6是不支持min-height属性的。!important 是IE7和FF看 等能够识别�
     })
 </script>
 
+
+    <script src="//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>

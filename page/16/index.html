@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>前端者</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="前端者">
+<meta property="og:url" content="http://www.qianduaner.com/page/16/index.html">
+<meta property="og:site_name" content="前端者">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端者">
+<meta name="twitter:description">
+  
+    <link rel="alternative" href="/atom.xml" title="前端者" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" type="text/css">
+  
+  
+      <link href="//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+    
+    
+  
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: true,
+          isPost: false,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false,
+      }
+  </script>
+
+  
+      <script>
+          yiliaConfig.rootUrl = "/";
+      </script>
+  
+
+  
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">前端者</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                            <li><a href="/links/">友情链接</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:lyushine@qq.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="/#" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/lyushine">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">前端者</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">前端者</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                    <li><a href="/links/">友情链接</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:lyushine@qq.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="/#" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap">
+  
+    <article id="post-&#39;event.stopPropagation();阻止冒泡过程return false实现停止事件的冒泡过程 &#39;" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-04-30-'event.stopPropagation();阻止冒泡过程return false实现停止事件的冒泡过程 '.html" class="article-date">
+      <time datetime="2011-04-30T12:19:01.000Z" itemprop="datePublished">2011-04-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-04-30-'event.stopPropagation();阻止冒泡过程return false实现停止事件的冒泡过程 '.html">event.stopPropagation();阻止冒泡过程return false实现停止事件的冒泡过程 </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>大多数浏览器并不是都支持捕获阶段，jQuery也不支持。因此在事件触发后，往往执行冒泡过程。所谓的冒泡其实质是事件执行中的顺序。</p>
+<p>event.stopPropagation();（Jquery）阻止冒泡过程return false实现停止事件的冒泡过程</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-&#39;event.stopPropagation;阻止冒泡过程return false实现停止事件的冒泡过程 &#39; - 副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-04-30-'event.stopPropagation;阻止冒泡过程return false实现停止事件的冒泡过程 ' - 副本.html" class="article-date">
+      <time datetime="2011-04-30T12:19:01.000Z" itemprop="datePublished">2011-04-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-04-30-'event.stopPropagation;阻止冒泡过程return false实现停止事件的冒泡过程 ' - 副本.html">event.stopPropagation();阻止冒泡过程return false实现停止事件的冒泡过程 </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>大多数浏览器并不是都支持捕获阶段，jQuery也不支持。因此在事件触发后，往往执行冒泡过程。所谓的冒泡其实质是事件执行中的顺序。</p>
+<p>event.stopPropagation();（Jquery）阻止冒泡过程return false实现停止事件的冒泡过程</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-e6-b9-96-e5-8d-97-e7-a7-91-e5-a4-a7-e6-a8-b1-e7-bc-98-e8-a7-86-e8-a7-89-e7-bd-91-e7-bb-9c-e5-b7-a5-e4-bd-9c-e5-ae-a4www-yingyuans-com-e6-8b-9b-e8-81-98-e7-be-8e-e5-b7-a5-e6-95-b0-e5-90-8d-ef-bc-8c" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-04-29-e6-b9-96-e5-8d-97-e7-a7-91-e5-a4-a7-e6-a8-b1-e7-bc-98-e8-a7-86-e8-a7-89-e7-bd-91-e7-bb-9c-e5-b7-a5-e4-bd-9c-e5-ae-a4www-yingyuans-com-e6-8b-9b-e8-81-98-e7-be-8e-e5-b7-a5-e6-95-b0-e5-90-8d-ef-bc-8c.html" class="article-date">
+      <time datetime="2011-04-29T15:52:19.000Z" itemprop="datePublished">2011-04-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-04-29-e6-b9-96-e5-8d-97-e7-a7-91-e5-a4-a7-e6-a8-b1-e7-bc-98-e8-a7-86-e8-a7-89-e7-bd-91-e7-bb-9c-e5-b7-a5-e4-bd-9c-e5-ae-a4www-yingyuans-com-e6-8b-9b-e8-81-98-e7-be-8e-e5-b7-a5-e6-95-b0-e5-90-8d-ef-bc-8c.html">湖南科大樱缘视觉网络工作室(www.yingyuans.com)招聘美工数名，业务专员数名</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>湖南科大樱缘视觉网络工作室(www.yingyuans.com)招聘美工数名，业务专员数名,工作室主要承接各网站、软件项目</p>
+<p>特好好消息，樱缘视觉网络工作室(<a href="http://www.yingyuans.com/" target="_blank" rel="external">www.yingyuans.com</a>)招人了。招聘美工数名，业务专员数名。</p>
+<p>樱缘视觉网络工作室由湖南科技大学在校学生组建，主要承接各类 网站、软件的开发制作，已经承接过许多相关商业项目，详情团队网站有相关案例展示。</p>
+<p>现在诚聘美工设计师和业务专员有意者请联系 <a href="mailto:78789325@qq.com" target="_blank" rel="external">lyushine@qq.com</a>或者<a href="mailto:30513207@qq.com" target="_blank" rel="external">30513207@qq.com</a><br>美工要求：        1.热爱设计<br>                  2.对平面设计有一定的经验<br>                  3.设计一份街舞主题或者其他相关任意网站的首页效果图 发送至<a href="mailto:30513207@qq.com" target="_blank" rel="external">lyushine@qq.com</a>进行选拔，并可以附上您的美术作品 ；<br>业务专员：       1.负责对企业或者个人进行业务推广（工作室有各企业的联系方式）<br>                 2.有一定的推广经验，工作热情有激情</p>
+<p>价格面议，待遇从优，让你在读大学的同时收获更多的一份经历。还在犹豫么，快加进来吧！</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-e6-b9-96-e5-8d-97-e7-a7-91-e5-a4-a7-e6-a8-b1-e7-bc-98-e8-a7-86-e8-a7-89-e7-bd-91-e7-bb-9c-e5-b7-a5-e4-bd-9c-e5-ae-a4www-yingyuans-com-e6-8b-9b-e8-81-98-e7-be-8e-e5-b7-a5-e6-95-b0-e5-90-8d-ef-bc - 副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-04-29-e6-b9-96-e5-8d-97-e7-a7-91-e5-a4-a7-e6-a8-b1-e7-bc-98-e8-a7-86-e8-a7-89-e7-bd-91-e7-bb-9c-e5-b7-a5-e4-bd-9c-e5-ae-a4www-yingyuans-com-e6-8b-9b-e8-81-98-e7-be-8e-e5-b7-a5-e6-95-b0-e5-90-8d-ef-bc - 副本.html" class="article-date">
+      <time datetime="2011-04-29T15:52:19.000Z" itemprop="datePublished">2011-04-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-04-29-e6-b9-96-e5-8d-97-e7-a7-91-e5-a4-a7-e6-a8-b1-e7-bc-98-e8-a7-86-e8-a7-89-e7-bd-91-e7-bb-9c-e5-b7-a5-e4-bd-9c-e5-ae-a4www-yingyuans-com-e6-8b-9b-e8-81-98-e7-be-8e-e5-b7-a5-e6-95-b0-e5-90-8d-ef-bc - 副本.html">湖南科大樱缘视觉网络工作室(www.yingyuans.com)招聘美工数名，业务专员数名</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>湖南科大樱缘视觉网络工作室(www.yingyuans.com)招聘美工数名，业务专员数名,工作室主要承接各网站、软件项目</p>
+<p>特好好消息，樱缘视觉网络工作室(<a href="http://www.yingyuans.com/" target="_blank" rel="external">www.yingyuans.com</a>)招人了。招聘美工数名，业务专员数名。</p>
+<p>樱缘视觉网络工作室由湖南科技大学在校学生组建，主要承接各类 网站、软件的开发制作，已经承接过许多相关商业项目，详情团队网站有相关案例展示。</p>
+<p>现在诚聘美工设计师和业务专员有意者请联系 <a href="mailto:78789325@qq.com" target="_blank" rel="external">lyushine@qq.com</a>或者<a href="mailto:30513207@qq.com" target="_blank" rel="external">30513207@qq.com</a><br>美工要求：        1.热爱设计<br>                  2.对平面设计有一定的经验<br>                  3.设计一份街舞主题或者其他相关任意网站的首页效果图 发送至<a href="mailto:30513207@qq.com" target="_blank" rel="external">lyushine@qq.com</a>进行选拔，并可以附上您的美术作品 ；<br>业务专员：       1.负责对企业或者个人进行业务推广（工作室有各企业的联系方式）<br>                 2.有一定的推广经验，工作热情有激情</p>
+<p>价格面议，待遇从优，让你在读大学的同时收获更多的一份经历。还在犹豫么，快加进来吧！</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-转】兼容IE和FF火狐浏览器的CSS省略号，博客中看到的，挺实用！" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-04-28-转】兼容IE和FF火狐浏览器的CSS省略号，博客中看到的，挺实用！.html" class="article-date">
+      <time datetime="2011-04-27T23:14:07.000Z" itemprop="datePublished">2011-04-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-04-28-转】兼容IE和FF火狐浏览器的CSS省略号，博客中看到的，挺实用！.html">【转】兼容IE和FF火狐浏览器的CSS省略号，博客中看到的，挺实用！</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <blockquote>
+<p>.ellipsis a{display: block;width: 300px;overflow: hidden;white-space: nowrap;-o-text-overflow: ellipsis;text-overflow: ellipsis;}</p>
+<p>/<em> firefox only </em>/</p>
+<p>.ellipsis:not(p) {clear: both;}</p>
+<p>.ellipsis:not(p) a {max-width: 300px;float: left;}</p>
+<p>.ellipsis:not(p):after {content: “…”;float: left;width: 25px;padding-left: 1px;}<br>文章来源于 前端开发 | HTML , CSS &amp; JavaScript–mon的博客:<a href="http://monw3c.blogbus.com/logs/56438869.html" target="_blank" rel="external">http://monw3c.blogbus.com/logs/56438869.html</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-转】兼容IE和FF火狐浏览器的CSS省略号，博客中看到的，挺实用！ - 副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-04-28-转】兼容IE和FF火狐浏览器的CSS省略号，博客中看到的，挺实用！ - 副本.html" class="article-date">
+      <time datetime="2011-04-27T23:14:07.000Z" itemprop="datePublished">2011-04-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-04-28-转】兼容IE和FF火狐浏览器的CSS省略号，博客中看到的，挺实用！ - 副本.html">【转】兼容IE和FF火狐浏览器的CSS省略号，博客中看到的，挺实用！</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <blockquote>
+<p>.ellipsis a{display: block;width: 300px;overflow: hidden;white-space: nowrap;-o-text-overflow: ellipsis;text-overflow: ellipsis;}</p>
+<p>/<em> firefox only </em>/</p>
+<p>.ellipsis:not(p) {clear: both;}</p>
+<p>.ellipsis:not(p) a {max-width: 300px;float: left;}</p>
+<p>.ellipsis:not(p):after {content: “…”;float: left;width: 25px;padding-left: 1px;}<br>文章来源于 前端开发 | HTML , CSS &amp; JavaScript–mon的博客:<a href="http://monw3c.blogbus.com/logs/56438869.html" target="_blank" rel="external">http://monw3c.blogbus.com/logs/56438869.html</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-【转】页面上元素对齐的问题8" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-04-28-【转】页面上元素对齐的问题8.html" class="article-date">
+      <time datetime="2011-04-27T23:00:25.000Z" itemprop="datePublished">2011-04-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-04-28-【转】页面上元素对齐的问题8.html">【转】页面上元素对齐的问题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>在我设计 湖南科技大学计算机科学与工程学院 网站的时候，用的左右布局，刚开始在排版的时候我是每块得行我都让它对齐，后来我发现这样对齐了个人觉得还不好，不对齐有点变化视觉感觉好一点，今天正好看到一篇这样的文章，转载一下。</p>
+<p>页面上各个元素的对齐，能使页面显得更加规整。以下图为例，能对齐的元素都对齐了，看起来很规整。</p>
+<p><img src="http://www.raydeng.com/wp-content/uploads/2010/02/1.png" alt="1" title="1"></p>
+<p>但这也导致了一个问题：阅读线路不清晰——究竟是“Z”型线，还是“N”型线？</p>
+<p><div>像这种过度追求对齐而影响了信息架构的情况，在我们工作中不算少见，我个人不太赞同这种做法。</div></p>
+<p><div>我比较倾向于适当打破一点对齐关系，但可以使阅读线路更清晰的做法，如下图。</div></p>
+<div>
+
+<p><img src="http://www.raydeng.com/wp-content/uploads/2010/02/2.png" alt="2" title="2"></p>
+<p><div>看看Yahoo的首页：</div></p>
+<p><div><img src="http://www.raydeng.com/wp-content/uploads/2010/02/yahoo1.png" alt="yahoo1" title="yahoo1"></div><br></p></div><p></p>
+<p><div>当然，也可以通过设计的处理，比如调整颜色，或者增加中间的间距，来解决这个问题，比如下图。</div><br><img src="http://www.raydeng.com/wp-content/uploads/2010/02/3.png" alt="3" title="3"></p>
+<p><img src="http://www.raydeng.com/wp-content/uploads/2010/02/4.png" alt="4" title="4"></p>
+<p>但这些处理方式都不如打破对齐来得直接、简洁。</p>
+<p>毕竟，视觉设计是为信息架构服务的，而不能反过来。</p>
+<p><a href="http://www.argoy.net/?p=31" target="_blank" rel="external">http://www.argoy.net/?p=31</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-【转】页面上元素对齐的问题8 - 副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-04-28-【转】页面上元素对齐的问题8 - 副本.html" class="article-date">
+      <time datetime="2011-04-27T23:00:25.000Z" itemprop="datePublished">2011-04-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-04-28-【转】页面上元素对齐的问题8 - 副本.html">【转】页面上元素对齐的问题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>在我设计 湖南科技大学计算机科学与工程学院 网站的时候，用的左右布局，刚开始在排版的时候我是每块得行我都让它对齐，后来我发现这样对齐了个人觉得还不好，不对齐有点变化视觉感觉好一点，今天正好看到一篇这样的文章，转载一下。</p>
+<p>页面上各个元素的对齐，能使页面显得更加规整。以下图为例，能对齐的元素都对齐了，看起来很规整。</p>
+<p><img src="http://www.raydeng.com/wp-content/uploads/2010/02/1.png" alt="1" title="1"></p>
+<p>但这也导致了一个问题：阅读线路不清晰——究竟是“Z”型线，还是“N”型线？</p>
+<p><div>像这种过度追求对齐而影响了信息架构的情况，在我们工作中不算少见，我个人不太赞同这种做法。</div></p>
+<p><div>我比较倾向于适当打破一点对齐关系，但可以使阅读线路更清晰的做法，如下图。</div></p>
+<div>
+
+<p><img src="http://www.raydeng.com/wp-content/uploads/2010/02/2.png" alt="2" title="2"></p>
+<p><div>看看Yahoo的首页：</div></p>
+<p><div><img src="http://www.raydeng.com/wp-content/uploads/2010/02/yahoo1.png" alt="yahoo1" title="yahoo1"></div><br></p></div><p></p>
+<p><div>当然，也可以通过设计的处理，比如调整颜色，或者增加中间的间距，来解决这个问题，比如下图。</div><br><img src="http://www.raydeng.com/wp-content/uploads/2010/02/3.png" alt="3" title="3"></p>
+<p><img src="http://www.raydeng.com/wp-content/uploads/2010/02/4.png" alt="4" title="4"></p>
+<p>但这些处理方式都不如打破对齐来得直接、简洁。</p>
+<p>毕竟，视觉设计是为信息架构服务的，而不能反过来。</p>
+<p><a href="http://www.argoy.net/?p=31" target="_blank" rel="external">http://www.argoy.net/?p=31</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-【转】浏览器加载和渲染html的顺序-css渲染效率的探究 - 副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-04-27-【转】浏览器加载和渲染html的顺序-css渲染效率的探究 - 副本.html" class="article-date">
+      <time datetime="2011-04-27T00:53:34.000Z" itemprop="datePublished">2011-04-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-04-27-【转】浏览器加载和渲染html的顺序-css渲染效率的探究 - 副本.html">【转】浏览器加载和渲染html的顺序-css渲染效率的探究</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>前阵子，在组内给大家做了一次关于“浏览器加载和渲染HTML的顺序”的分享，这里再总结/分享一下吧。<br>1.浏览器加载和渲染html的顺序<br>   1、IE下载的顺序是从上到下，渲染的顺序也是从上到下，下载和渲染是同时进行的。<br>   2、在渲染到页面的某一部分时，其上面的所有部分都已经下载完成（并不是说所有相关联的元素都已经下载完）<br>   3、如果遇到语义解释性的标签嵌入文件（JS脚本，CSS样式），那么此时IE的下载过程会启用单独连接进行下载。<br>   4、并且在下载后进行解析，解析过程中，停止页面所有往下元素的下载。阻塞加载<br>   5、样式表在下载完成后，将和以前下载的所有样式表一起进行解析，解析完成后，将对此前所有元素（含以前已经渲染的）重新进行渲染。<br>   6、JS、CSS中如有重定义，后定义函数将覆盖前定义函数<br>2. JS的加载<br>  2.1 不能并行下载和解析（阻塞下载）<br>  2.2 当引用了JS的时候，浏览器发送1个js request就会一直等待该request的返回。因为浏览器需要1个稳定的DOM树结构，而JS中很有可能有代码直接改变了DOM树结构，比如使用 document.write 或 appendChild,甚至是直接使用的location.href进行跳转，浏览器为了防止出现JS修改DOM树，需要重新构建DOM树的情况，所以 就会阻塞其他的下载和呈现.<br>3.如何加快HTML页面加载速度<br>1，页面减肥<br>页面的肥瘦是影响加载速度最重要的因素<br>删除不必要的空格、注释<br>将inline的script和css移到外部文件<br>可以使用HTML Tidy来给HTML减肥，还可以使用一些压缩工具来给JavaScript减肥<br>2，减少文件数量<br>减少页面上引用的文件数量可以减少HTTP连接数<br>许多JavaScript、CSS文件可以合并最好合并，人家财帮子都把自己的JavaScript. functions和Prototype.js合并到一个base.js文件里去了<br>3，减少域名查询<br>DNS查询和解析域名也是消耗时间的，所以要减少对外部JavaScript、CSS、图片等资源的引用，不同域名的使用越少越好<br>4，缓存重用数据<br>使用缓存吧<br>5，优化页面元素加载顺序<br>首先加载页面最初显示的内容和与之相关的JavaScript和CSS<br>然后加载DHTML相关的东西<br>像什么不是最初显示相关的图片、flash、视频等很肥的资源就最后加载<br>6，减少inline JavaScript的数量<br>浏览器parser会假设inline JavaScript会改变页面结构，所以使用inline JavaScript开销较大<br>不要使用document.write()这种输出内容的方法，使用现代W3C DOM方法来为现代浏览器处理页面内容<br>7，使用现代CSS和合法的标签<br>使用现代CSS来减少标签和图像，例如使用现代CSS+文字完全可以替代一些只有文字的图片<br>使用合法的标签避免浏览器解析HTML时做“error correction”等操作，还可以被HTML Tidy来给HTML减肥<br>8，Chunk your content<br>不要使用嵌套tables</p>
+<table><br>  <table><br>    <table><br>      ..<br>    <table><br>  <table><br><table><br><br><table><br>  <table><br>    <table><br>      ..<br>    <table><br>  <table><br><table><br><br>而使用非嵌套tables或者divs<br><table>…</table><br><table>…</table><br><table>…</table>
+
+<table>…</table><br><table>…</table><br><table>…</table>
+
+<p>将基于大块嵌套的tables的layout分解成小tables，这样显示时不用加载整个页面(或大table)的内容<br>9，指定图像和tables的大小<br>如果浏览器可以立即决定图像或tables的大小，那么它就可以马上显示页面而不要重新做一些布局安排的工作<br>这不仅加快了页面的显示，也预防了页面完成加载后布局的一些不当的改变<br>image使用height和width<br>table使用table-layout: fixed并使用col和colgroup标签指定columns的width<br>10，根据用户浏览器明智的选择策略<br>IE、Firefox、Safari等等等等<br>11，页面结构的例子<br>· HTML</p>
+<pre><code>· HEAD
+
+    · LINK ...
+    CSS files required for page appearance. Minimize the number of files for performance while keeping unrelated CSS in separate files for maintenance.
+
+    · SCRIPT. ...
+    JavaScript. files for functions required during the loading of the page, but not any DHTML that can only run after page loads.
+    Minimize the number of files for performance while keeping unrelated JavaScript. in separate files for maintenance.
+
+· BODY
+· User visible page content in small chunks (tables / divs) that can be displayed without waiting for the full page to download.
+
+    · SCRIPT. ...
+    Any scripts which will be used to perform. DHTML. DHTML script. typically can only run after the page has completely loaded and all necessary objects have been initialized. There is no need to load these scripts before the page content. That only slows down the initial appearance of the page load.
+    Minimize the number of files for performance while keeping unrelated JavaScript. in separate files for maintenance.
+    If any images are used for rollover effects, you should preload them here after the page content has downloaded.
+</code></pre><p>4.HTML页面加载和解析流程<br>1.用户输入网址（假设是个html页面，并且是第一次访问），浏览器向服务器发出请求，服务器返回html文件；<br>2.浏览器开始载入html代码，发现＜head＞标签内有一个＜link＞标签引用外部CSS文件；<br>3.浏览器又发出CSS文件的请求，服务器返回这个CSS文件；<br>4.浏览器继续载入html中＜body＞部分的代码，并且CSS文件已经拿到手了，可以开始渲染页面了；<br>5.浏览器在代码中发现一个＜img＞标签引用了一张图片，向服务器发出请求。此时浏览器不会等到图片下载完，而是继续渲染后面的代码；<br>6.服务器返回图片文件，由于图片占用了一定面积，影响了后面段落的排布，因此浏览器需要回过头来重新渲染这部分代码；<br>7.浏览器发现了一个包含一行Javascript代码的＜script＞标签，赶快运行它；<br>8.Javascript脚本执行了这条语句，它命令浏览器隐藏掉代码中的某个＜div＞ （style.display=”none”）。杯具啊，突然就少了这么一个元素，浏览器不得不重新渲染这部分代码；<br>9.终于等到了＜/html＞的到来，浏览器泪流满面……<br>10.等等，还没完，用户点了一下界面中的“换肤”按钮，Javascript让浏览器换了一下＜link＞标签的CSS路径；<br>11.浏览器召集了在座的各位＜div＞＜span＞＜ul＞＜li＞们，“大伙儿收拾收拾行李，咱得重新来过……”，浏览器向服务器请求了新的CSS文件，重新渲染页面。</p>
+<p>5.Yahoo对网页设计性能的建议，个人感觉是说得非常好的。<br>  英文版：<a href="http://developer.yahoo.com/performance/rules.html" target="_blank" rel="external">http://developer.yahoo.com/performance/rules.html</a><br>  中文翻译：<a href="http://www.cnblogs.com/smjack/archive/2009/02/24/1396895.html" target="_blank" rel="external">http://www.cnblogs.com/smjack/archive/2009/02/24/1396895.html</a></p>
+<p>参考资料：<br><a href="http://hideto.javaeye.com/blog/133384" target="_blank" rel="external">http://hideto.javaeye.com/blog/133384</a><br><a href="http://blog.chinaacc.com/liuzhan" target="_blank" rel="external">http://blog.chinaacc.com/liuzhan</a> … -3015241029081.html</p>
+</table></table></table></table></table></table></table></table></table></table></table></table>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-【转】浏览器加载和渲染html的顺序-css渲染效率的探究" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-04-27-【转】浏览器加载和渲染html的顺序-css渲染效率的探究.html" class="article-date">
+      <time datetime="2011-04-27T00:53:34.000Z" itemprop="datePublished">2011-04-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-04-27-【转】浏览器加载和渲染html的顺序-css渲染效率的探究.html">【转】浏览器加载和渲染html的顺序-css渲染效率的探究</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>前阵子，在组内给大家做了一次关于“浏览器加载和渲染HTML的顺序”的分享，这里再总结/分享一下吧。<br>1.浏览器加载和渲染html的顺序<br>   1、IE下载的顺序是从上到下，渲染的顺序也是从上到下，下载和渲染是同时进行的。<br>   2、在渲染到页面的某一部分时，其上面的所有部分都已经下载完成（并不是说所有相关联的元素都已经下载完）<br>   3、如果遇到语义解释性的标签嵌入文件（JS脚本，CSS样式），那么此时IE的下载过程会启用单独连接进行下载。<br>   4、并且在下载后进行解析，解析过程中，停止页面所有往下元素的下载。阻塞加载<br>   5、样式表在下载完成后，将和以前下载的所有样式表一起进行解析，解析完成后，将对此前所有元素（含以前已经渲染的）重新进行渲染。<br>   6、JS、CSS中如有重定义，后定义函数将覆盖前定义函数<br>2. JS的加载<br>  2.1 不能并行下载和解析（阻塞下载）<br>  2.2 当引用了JS的时候，浏览器发送1个js request就会一直等待该request的返回。因为浏览器需要1个稳定的DOM树结构，而JS中很有可能有代码直接改变了DOM树结构，比如使用 document.write 或 appendChild,甚至是直接使用的location.href进行跳转，浏览器为了防止出现JS修改DOM树，需要重新构建DOM树的情况，所以 就会阻塞其他的下载和呈现.<br>3.如何加快HTML页面加载速度<br>1，页面减肥<br>页面的肥瘦是影响加载速度最重要的因素<br>删除不必要的空格、注释<br>将inline的script和css移到外部文件<br>可以使用HTML Tidy来给HTML减肥，还可以使用一些压缩工具来给JavaScript减肥<br>2，减少文件数量<br>减少页面上引用的文件数量可以减少HTTP连接数<br>许多JavaScript、CSS文件可以合并最好合并，人家财帮子都把自己的JavaScript. functions和Prototype.js合并到一个base.js文件里去了<br>3，减少域名查询<br>DNS查询和解析域名也是消耗时间的，所以要减少对外部JavaScript、CSS、图片等资源的引用，不同域名的使用越少越好<br>4，缓存重用数据<br>使用缓存吧<br>5，优化页面元素加载顺序<br>首先加载页面最初显示的内容和与之相关的JavaScript和CSS<br>然后加载DHTML相关的东西<br>像什么不是最初显示相关的图片、flash、视频等很肥的资源就最后加载<br>6，减少inline JavaScript的数量<br>浏览器parser会假设inline JavaScript会改变页面结构，所以使用inline JavaScript开销较大<br>不要使用document.write()这种输出内容的方法，使用现代W3C DOM方法来为现代浏览器处理页面内容<br>7，使用现代CSS和合法的标签<br>使用现代CSS来减少标签和图像，例如使用现代CSS+文字完全可以替代一些只有文字的图片<br>使用合法的标签避免浏览器解析HTML时做“error correction”等操作，还可以被HTML Tidy来给HTML减肥<br>8，Chunk your content<br>不要使用嵌套tables</p>
+<table><br>  <table><br>    <table><br>      ..<br>    <table><br>  <table><br><table><br><br><table><br>  <table><br>    <table><br>      ..<br>    <table><br>  <table><br><table><br><br>而使用非嵌套tables或者divs<br><table>…</table><br><table>…</table><br><table>…</table>
+
+<table>…</table><br><table>…</table><br><table>…</table>
+
+<p>将基于大块嵌套的tables的layout分解成小tables，这样显示时不用加载整个页面(或大table)的内容<br>9，指定图像和tables的大小<br>如果浏览器可以立即决定图像或tables的大小，那么它就可以马上显示页面而不要重新做一些布局安排的工作<br>这不仅加快了页面的显示，也预防了页面完成加载后布局的一些不当的改变<br>image使用height和width<br>table使用table-layout: fixed并使用col和colgroup标签指定columns的width<br>10，根据用户浏览器明智的选择策略<br>IE、Firefox、Safari等等等等<br>11，页面结构的例子<br>· HTML</p>
+<pre><code>· HEAD
+
+    · LINK ...
+    CSS files required for page appearance. Minimize the number of files for performance while keeping unrelated CSS in separate files for maintenance.
+
+    · SCRIPT. ...
+    JavaScript. files for functions required during the loading of the page, but not any DHTML that can only run after page loads.
+    Minimize the number of files for performance while keeping unrelated JavaScript. in separate files for maintenance.
+
+· BODY
+· User visible page content in small chunks (tables / divs) that can be displayed without waiting for the full page to download.
+
+    · SCRIPT. ...
+    Any scripts which will be used to perform. DHTML. DHTML script. typically can only run after the page has completely loaded and all necessary objects have been initialized. There is no need to load these scripts before the page content. That only slows down the initial appearance of the page load.
+    Minimize the number of files for performance while keeping unrelated JavaScript. in separate files for maintenance.
+    If any images are used for rollover effects, you should preload them here after the page content has downloaded.
+</code></pre><p>4.HTML页面加载和解析流程<br>1.用户输入网址（假设是个html页面，并且是第一次访问），浏览器向服务器发出请求，服务器返回html文件；<br>2.浏览器开始载入html代码，发现＜head＞标签内有一个＜link＞标签引用外部CSS文件；<br>3.浏览器又发出CSS文件的请求，服务器返回这个CSS文件；<br>4.浏览器继续载入html中＜body＞部分的代码，并且CSS文件已经拿到手了，可以开始渲染页面了；<br>5.浏览器在代码中发现一个＜img＞标签引用了一张图片，向服务器发出请求。此时浏览器不会等到图片下载完，而是继续渲染后面的代码；<br>6.服务器返回图片文件，由于图片占用了一定面积，影响了后面段落的排布，因此浏览器需要回过头来重新渲染这部分代码；<br>7.浏览器发现了一个包含一行Javascript代码的＜script＞标签，赶快运行它；<br>8.Javascript脚本执行了这条语句，它命令浏览器隐藏掉代码中的某个＜div＞ （style.display=”none”）。杯具啊，突然就少了这么一个元素，浏览器不得不重新渲染这部分代码；<br>9.终于等到了＜/html＞的到来，浏览器泪流满面……<br>10.等等，还没完，用户点了一下界面中的“换肤”按钮，Javascript让浏览器换了一下＜link＞标签的CSS路径；<br>11.浏览器召集了在座的各位＜div＞＜span＞＜ul＞＜li＞们，“大伙儿收拾收拾行李，咱得重新来过……”，浏览器向服务器请求了新的CSS文件，重新渲染页面。</p>
+<p>5.Yahoo对网页设计性能的建议，个人感觉是说得非常好的。<br>  英文版：<a href="http://developer.yahoo.com/performance/rules.html" target="_blank" rel="external">http://developer.yahoo.com/performance/rules.html</a><br>  中文翻译：<a href="http://www.cnblogs.com/smjack/archive/2009/02/24/1396895.html" target="_blank" rel="external">http://www.cnblogs.com/smjack/archive/2009/02/24/1396895.html</a></p>
+<p>参考资料：<br><a href="http://hideto.javaeye.com/blog/133384" target="_blank" rel="external">http://hideto.javaeye.com/blog/133384</a><br><a href="http://blog.chinaacc.com/liuzhan" target="_blank" rel="external">http://blog.chinaacc.com/liuzhan</a> … -3015241029081.html</p>
+</table></table></table></table></table></table></table></table></table></table></table></table>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/15/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/17/">Next &raquo;</a>
+    </nav>
+  
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 前端者
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >本站到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 4;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+
+    <script src="//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>前端者</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="前端者">
+<meta property="og:url" content="http://www.qianduaner.com/page/14/index.html">
+<meta property="og:site_name" content="前端者">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端者">
+<meta name="twitter:description">
+  
+    <link rel="alternative" href="/atom.xml" title="前端者" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" type="text/css">
+  
+  
+      <link href="//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+    
+    
+  
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: true,
+          isPost: false,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false,
+      }
+  </script>
+
+  
+      <script>
+          yiliaConfig.rootUrl = "/";
+      </script>
+  
+
+  
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">前端者</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                            <li><a href="/links/">友情链接</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:lyushine@qq.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="/#" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/lyushine">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">前端者</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">前端者</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                    <li><a href="/links/">友情链接</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:lyushine@qq.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="/#" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap">
+  
+    <article id="post-2011-06-02jQuery选项卡示例" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-06-02-2011-06-02jQuery选项卡示例.html" class="article-date">
+      <time datetime="2011-06-02T13:46:10.000Z" itemprop="datePublished">2011-06-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-06-02-2011-06-02jQuery选项卡示例.html">jQuery选项卡示例</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <blockquote>
+<p>注意：each(function(index)) 可以在循环遍历中传入当前元素的相对索引值，$(“#content li:eq(“+index+”)”); 因为 其中的index应该算字符串把所以两边要加JS的字符串连接符+</p>
+<p>&lt;!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Transitional//EN” “<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;" target="_blank" rel="external">http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</a></p>
+<html xmlns="http://www.w3.org/1999/xhtml"><br><br><head><br><br><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><br><br><title>网页选项卡</title><br><br><script src="j/jquery-1.4.2.min.js"></script><br><br><style type="text/css"><br><br><em>{margin:0; padding:0}<br><br>ul,li{list-style:none}<br><br>.menu,.content{width:300px; margin:0 auto; border:1px solid #000}<br><br>.menu{overflow:hidden; zoom:1}<br><br>.menu li{float:left; padding-right:5px; cursor:pointer}<br><br>.tabFocus{background:#00F}<br><br>.content li{display:none}<br><br>.content .conFocus{display:block}<br><br></style><br><br><script type="text/javascript"><br><br>$(function(){<br><br>$(“#menu li”).each(function(index)<br><br>{<br><br>$(this).click(function(){<br><br>$(“.tabFocus”).removeClass(“tabFocus”);<br><br>$(this).addClass(“tabFocus”);<br><br>$(“#content li:eq(“+index+”)”).show().siblings().hide();<br><br>})<br><br><br>})<br><br>})<br><br></script><br><br></head><br><br><br><body>
+
+
+   选项一<br><em>   选项二
+</em>   选项三<br><br><br><em>   我是选项卡一的内容
+</em>   我是选项卡二的内容<br>*   我是选项卡三的内容<br><br></body><br><br></html></blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-2011-06-02jQuery选项卡示例-副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-06-02-2011-06-02jQuery选项卡示例-副本.html" class="article-date">
+      <time datetime="2011-06-02T13:46:10.000Z" itemprop="datePublished">2011-06-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-06-02-2011-06-02jQuery选项卡示例-副本.html">jQuery选项卡示例</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <blockquote>
+<p>注意：each(function(index)) 可以在循环遍历中传入当前元素的相对索引值，$(“#content li:eq(“+index+”)”); 因为 其中的index应该算字符串把所以两边要加JS的字符串连接符+</p>
+<p>&lt;!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Transitional//EN” “<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;" target="_blank" rel="external">http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;</a></p>
+<html xmlns="http://www.w3.org/1999/xhtml"><br><br><head><br><br><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><br><br><title>网页选项卡</title><br><br><script src="j/jquery-1.4.2.min.js"></script><br><br><style type="text/css"><br><br><em>{margin:0; padding:0}<br><br>ul,li{list-style:none}<br><br>.menu,.content{width:300px; margin:0 auto; border:1px solid #000}<br><br>.menu{overflow:hidden; zoom:1}<br><br>.menu li{float:left; padding-right:5px; cursor:pointer}<br><br>.tabFocus{background:#00F}<br><br>.content li{display:none}<br><br>.content .conFocus{display:block}<br><br></style><br><br><script type="text/javascript"><br><br>$(function(){<br><br>$(“#menu li”).each(function(index)<br><br>{<br><br>$(this).click(function(){<br><br>$(“.tabFocus”).removeClass(“tabFocus”);<br><br>$(this).addClass(“tabFocus”);<br><br>$(“#content li:eq(“+index+”)”).show().siblings().hide();<br><br>})<br><br><br>})<br><br>})<br><br></script><br><br></head><br><br><br><body>
+
+
+   选项一<br><em>   选项二
+</em>   选项三<br><br><br><em>   我是选项卡一的内容
+</em>   我是选项卡二的内容<br>*   我是选项卡三的内容<br><br></body><br><br></html></blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-&#39; 如何组织CSS &#39;" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-05-30-' 如何组织CSS '.html" class="article-date">
+      <time datetime="2011-05-30T05:08:06.000Z" itemprop="datePublished">2011-05-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-05-30-' 如何组织CSS '.html"> 如何组织CSS </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>应用 css 的能力分两部分：一部分是 css 的 API，重点是如何用 css 控制页面内元素的样式；另一部分是 css 框架，重点是如何对 css 进行组织。</p>
+<p>如何组织 css 可以有多种角度，例如按功能划分，或者按区块划分。这里讲一下 base.css + common.css + page.css 的组织方法。将网站内的所有样式，按照职能分成三大类：base、common、page，这三者是层叠结构。</p>
+<p><strong>1、base 层</strong></p>
+<p>位于三者的最底层，提供 css reset 功能和粒度最小的通用类——原子类。这一层会被所有页面引用，是页面样式所需依赖的最底层，不同风格的网站可以使用同一个 base 层，所以，应具有高度可移植性，力求精简和通用。该层相对稳定，基本不需要维护，可以简单地放在一个文件里，如 base.css。</p>
+<p>css reset 即一开始就将浏览器的默认样式全部去掉，就是通过重新定义标签的样式，“覆盖”掉浏览器提供的默认样式。可以将常用的标签显式地罗列出来，避免使用“*”，如来自于 YUI 的部分 css reset 的代码：</p>
+<p>/<em>CSS reset</em>/<br>body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0;padding:0;}<br>table{border-collapse:collapse;border-spacing:0;}<br>fieldset,img{border:0;}<br>address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}<br>ol,ul{list-style:none;}<br>caption,th{text-align:left;}<br>h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}<br>q:before,q:after{content:’’;}<br>abbr,acronym{border:0;}</p>
+<p>通用原子类是一系列常用的基本类，包括：文字、定位、长度和边距，由于其原子性，除少数特殊类，大部分都只包含一句 css，如：.f12{font-size:12px;}，由于其通用性，在保证命名有语义前提下，命名应尽量简短，如 paddingtop20 可以写成 pt20。通用原子类里有几个类较特殊，特别说明一下：</p>
+<p>1 .fl 类和.fr 类：除了设置 float：left 和 float：right 之外，还应设置 display：inline，可以解决 IE6 的双外边距 Bug。<br>.fl{float:left;display:inline;}<br>.fr{float:right;display:inline;}<br>2 .bc 类：为使块级元素居中，还要设定宽度，可以把它和 .w100 等类同时使用，如：<div></div>。<br>.bc{margin-left:auto;margin-right:auto;}<br>.w100{width:100;}<br>3 .clearfix 类：用于在父容器直接清除子元素浮动。<br>4 .zoom 类：设置样式是 zoom:1，它是 IE 的专有属性，用以触发 hasLayout。</p>
+<p><strong>2、common 层</strong></p>
+<p>位于中间，提供组件级的 css 类。可以将页面内的元素拆分成一小块功能和样式相对独立的小“模块”，将大量重复地“模块”视为一个组件，放在 common 层里（“模块化”可以从样式和行为两个层面来考虑，与 common 层相关的是样式的模块化）。common 层相当于 MVC 模式中的 M（Model，模型），需尽可能将内部实现封装。</p>
+<p>common 层是网站级的，不同的网站有不同的 common 层，同一个网站只有一个 common 层，可以放在一个文件里，也可按功能划分放在多个文件里。在团队合作中，common 层最好由一个人负责，统一管理。</p>
+<p><strong>3、page 层</strong></p>
+<p>网站中非高度重用的模块，可以放在 page 层里。page 层位于最高层，提供页面级的样式。如果网站规模不过于庞大，可以将所有 page 层放在一个文件里，根据页面配上注释，分块书写，便于维护。page 层 css 文件应越简越好，能用 base 层和 common 层的 css 解决的，尽量不要用到 page 层。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-&#39; 如何组织CSS &#39; - 副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-05-30-' 如何组织CSS ' - 副本.html" class="article-date">
+      <time datetime="2011-05-30T05:08:06.000Z" itemprop="datePublished">2011-05-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-05-30-' 如何组织CSS ' - 副本.html"> 如何组织CSS </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>应用 css 的能力分两部分：一部分是 css 的 API，重点是如何用 css 控制页面内元素的样式；另一部分是 css 框架，重点是如何对 css 进行组织。</p>
+<p>如何组织 css 可以有多种角度，例如按功能划分，或者按区块划分。这里讲一下 base.css + common.css + page.css 的组织方法。将网站内的所有样式，按照职能分成三大类：base、common、page，这三者是层叠结构。</p>
+<p><strong>1、base 层</strong></p>
+<p>位于三者的最底层，提供 css reset 功能和粒度最小的通用类——原子类。这一层会被所有页面引用，是页面样式所需依赖的最底层，不同风格的网站可以使用同一个 base 层，所以，应具有高度可移植性，力求精简和通用。该层相对稳定，基本不需要维护，可以简单地放在一个文件里，如 base.css。</p>
+<p>css reset 即一开始就将浏览器的默认样式全部去掉，就是通过重新定义标签的样式，“覆盖”掉浏览器提供的默认样式。可以将常用的标签显式地罗列出来，避免使用“*”，如来自于 YUI 的部分 css reset 的代码：</p>
+<p>/<em>CSS reset</em>/<br>body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0;padding:0;}<br>table{border-collapse:collapse;border-spacing:0;}<br>fieldset,img{border:0;}<br>address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}<br>ol,ul{list-style:none;}<br>caption,th{text-align:left;}<br>h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}<br>q:before,q:after{content:’’;}<br>abbr,acronym{border:0;}</p>
+<p>通用原子类是一系列常用的基本类，包括：文字、定位、长度和边距，由于其原子性，除少数特殊类，大部分都只包含一句 css，如：.f12{font-size:12px;}，由于其通用性，在保证命名有语义前提下，命名应尽量简短，如 paddingtop20 可以写成 pt20。通用原子类里有几个类较特殊，特别说明一下：</p>
+<p>1 .fl 类和.fr 类：除了设置 float：left 和 float：right 之外，还应设置 display：inline，可以解决 IE6 的双外边距 Bug。<br>.fl{float:left;display:inline;}<br>.fr{float:right;display:inline;}<br>2 .bc 类：为使块级元素居中，还要设定宽度，可以把它和 .w100 等类同时使用，如：<div></div>。<br>.bc{margin-left:auto;margin-right:auto;}<br>.w100{width:100;}<br>3 .clearfix 类：用于在父容器直接清除子元素浮动。<br>4 .zoom 类：设置样式是 zoom:1，它是 IE 的专有属性，用以触发 hasLayout。</p>
+<p><strong>2、common 层</strong></p>
+<p>位于中间，提供组件级的 css 类。可以将页面内的元素拆分成一小块功能和样式相对独立的小“模块”，将大量重复地“模块”视为一个组件，放在 common 层里（“模块化”可以从样式和行为两个层面来考虑，与 common 层相关的是样式的模块化）。common 层相当于 MVC 模式中的 M（Model，模型），需尽可能将内部实现封装。</p>
+<p>common 层是网站级的，不同的网站有不同的 common 层，同一个网站只有一个 common 层，可以放在一个文件里，也可按功能划分放在多个文件里。在团队合作中，common 层最好由一个人负责，统一管理。</p>
+<p><strong>3、page 层</strong></p>
+<p>网站中非高度重用的模块，可以放在 page 层里。page 层位于最高层，提供页面级的样式。如果网站规模不过于庞大，可以将所有 page 层放在一个文件里，根据页面配上注释，分块书写，便于维护。page 层 css 文件应越简越好，能用 base 层和 common 层的 css 解决的，尽量不要用到 page 层。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-CSS 划分模块--单一职责" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-05-30-CSS 划分模块--单一职责.html" class="article-date">
+      <time datetime="2011-05-30T04:11:47.000Z" itemprop="datePublished">2011-05-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-05-30-CSS 划分模块--单一职责.html">CSS 划分模块--单一职责</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong>划分模块</strong>–单一职责</p>
+<p>样式和功能相对独立且稳定的一部分就可以视为模块。<br>1 模块和模块之间尽量不要包含相同的部分，如果有相同部分，应将它们提取出来，拆分成一个独立的模块。<br>2 模块应在保证数量尽可能少的原则下，做到尽可能简单，以提高重用性。</p>
+<hr>
+<p><strong><br>css 的命名</strong></p>
+<p><strong> </strong> 可以根据内容选用合适的英文单词命名 css，如头部用 head，底部用 foot，主体用 main，导航用 nav，菜单用 menu 等。如命名需用到两个或两个以上单词，可用骆驼命名法和划线命名法，骆驼命名法是从第二个单词开始，将每个单词的首字母大写，区别不同单词，如 timeList。划线命名法是将每个单词用中划线“-”或下划线“_”分隔，表明从属关系，如 sub_nav_menu。推荐两种方法组合使用。为降低团队合作中的冲突隐患，不能轻易使用子选择符。base 层和 common 层通常只由一人负责，不会出现冲突问题，但 page 层可能由多人完成，需考虑如何避免冲突（可以用各人姓名首字母缩写作为代码的前缀）。<br><strong>多用组合，少用继承</strong></p>
+<p>继承是将一个复杂且包含变化的类，拆分成几个复杂但稳定的子类，很容易引起爆炸式增长，产生一大堆有着细微不同的子类。而组合是将一个复杂的类 分成容易产生变化和相对稳定的部分，将容易变化的部分拆分出去，每种可能的变化设计成一个个单独的类，相对稳定的部分设计成一个主体类，可以大大减少类的 数量。由于 HTML 标签的 class 属性和 id 属性不同，id 只能挂一个，而 class 可以挂多个，用空格分隔，即从技术上支持了“组合”的用法。</p>
+<p><strong>处理上下 margin </strong>–类的组合的典型应用</p>
+<p>如果不确定模块的上下 margin 是否特别稳定，最好不要将它写到模块的类里，应使用类的组合，单独为上下 margin 挂用于边距的原子类（如 mt20、mt100）。模块最好不要混用 margin-top 和 margin-bottom（相邻的 margin-top 和 margin-bottom 会产生重合），统一使用 margin-top 或 margin-bottom。<br><strong>低权重原则</strong>–避免滥用子选择器</p>
+<p>css 的选择符是有权重的，当不同选择符的样式设置有冲突时，会采用权重高的选择符设置的样式。权重规则：HTML 标签的权重是 1，class 的权重是 10，id 的是 100，如 p 的权重是 1，#test.red 的权重是 100 + 10 = 110。如果 css 选择符权重相同，那么样式遵循就近原则，哪个选择符最后定义（不是挂 css 名的先后顺序），就采用哪个选择符的样式。</p>
+<p>使用子选择器，会增加 css 选择符的权重，css 选择符的权重越高，样式越不易被覆盖。所以，除非确定 HTML 结构非常稳定，一定不会再修改了，否则尽量不要使用子选择器。而且，为了保证样式容易被覆盖，提高可维护性，css 选择符需保证权重尽可能低。<br><strong>css sprite</strong></p>
+<p>将网站的多张背景图片合并到一张大图片上，然后利用 background-position 属性来展示需要的部分，即 css sprite，它不仅能解决滑过状态时背景图片出现空白，还会大大减少网页的 HTTP 请求数，减小服务器压力。但由于该技术不易掌握，对于流量不大的网站来说，css sprite 其实并不划算。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-CSS 划分模块--单一职责 - 副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-05-30-CSS 划分模块--单一职责 - 副本.html" class="article-date">
+      <time datetime="2011-05-30T04:11:47.000Z" itemprop="datePublished">2011-05-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-05-30-CSS 划分模块--单一职责 - 副本.html">CSS 划分模块--单一职责</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong>划分模块</strong>–单一职责</p>
+<p>样式和功能相对独立且稳定的一部分就可以视为模块。<br>1 模块和模块之间尽量不要包含相同的部分，如果有相同部分，应将它们提取出来，拆分成一个独立的模块。<br>2 模块应在保证数量尽可能少的原则下，做到尽可能简单，以提高重用性。</p>
+<hr>
+<p><strong><br>css 的命名</strong></p>
+<p><strong> </strong> 可以根据内容选用合适的英文单词命名 css，如头部用 head，底部用 foot，主体用 main，导航用 nav，菜单用 menu 等。如命名需用到两个或两个以上单词，可用骆驼命名法和划线命名法，骆驼命名法是从第二个单词开始，将每个单词的首字母大写，区别不同单词，如 timeList。划线命名法是将每个单词用中划线“-”或下划线“_”分隔，表明从属关系，如 sub_nav_menu。推荐两种方法组合使用。为降低团队合作中的冲突隐患，不能轻易使用子选择符。base 层和 common 层通常只由一人负责，不会出现冲突问题，但 page 层可能由多人完成，需考虑如何避免冲突（可以用各人姓名首字母缩写作为代码的前缀）。<br><strong>多用组合，少用继承</strong></p>
+<p>继承是将一个复杂且包含变化的类，拆分成几个复杂但稳定的子类，很容易引起爆炸式增长，产生一大堆有着细微不同的子类。而组合是将一个复杂的类 分成容易产生变化和相对稳定的部分，将容易变化的部分拆分出去，每种可能的变化设计成一个个单独的类，相对稳定的部分设计成一个主体类，可以大大减少类的 数量。由于 HTML 标签的 class 属性和 id 属性不同，id 只能挂一个，而 class 可以挂多个，用空格分隔，即从技术上支持了“组合”的用法。</p>
+<p><strong>处理上下 margin </strong>–类的组合的典型应用</p>
+<p>如果不确定模块的上下 margin 是否特别稳定，最好不要将它写到模块的类里，应使用类的组合，单独为上下 margin 挂用于边距的原子类（如 mt20、mt100）。模块最好不要混用 margin-top 和 margin-bottom（相邻的 margin-top 和 margin-bottom 会产生重合），统一使用 margin-top 或 margin-bottom。<br><strong>低权重原则</strong>–避免滥用子选择器</p>
+<p>css 的选择符是有权重的，当不同选择符的样式设置有冲突时，会采用权重高的选择符设置的样式。权重规则：HTML 标签的权重是 1，class 的权重是 10，id 的是 100，如 p 的权重是 1，#test.red 的权重是 100 + 10 = 110。如果 css 选择符权重相同，那么样式遵循就近原则，哪个选择符最后定义（不是挂 css 名的先后顺序），就采用哪个选择符的样式。</p>
+<p>使用子选择器，会增加 css 选择符的权重，css 选择符的权重越高，样式越不易被覆盖。所以，除非确定 HTML 结构非常稳定，一定不会再修改了，否则尽量不要使用子选择器。而且，为了保证样式容易被覆盖，提高可维护性，css 选择符需保证权重尽可能低。<br><strong>css sprite</strong></p>
+<p>将网站的多张背景图片合并到一张大图片上，然后利用 background-position 属性来展示需要的部分，即 css sprite，它不仅能解决滑过状态时背景图片出现空白，还会大大减少网页的 HTTP 请求数，减小服务器压力。但由于该技术不易掌握，对于流量不大的网站来说，css sprite 其实并不划算。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-确定宽(高)度与不确定宽(高)度的块级元素的水平（垂直）居中方法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-05-27-确定宽(高)度与不确定宽(高)度的块级元素的水平（垂直）居中方法.html" class="article-date">
+      <time datetime="2011-05-27T02:29:01.000Z" itemprop="datePublished">2011-05-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-05-27-确定宽(高)度与不确定宽(高)度的块级元素的水平（垂直）居中方法.html">确定宽(高)度与不确定宽(高)度的块级元素的水平（垂直）居中方法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong>一.水平居中</strong><br>1.给父元素设置text-align:center可以实现文本、图片等行内元素的水平居中；<br>2.确定宽度的块级元素通过设置：margin:0 auto;来设置居中；<br>3.不确定宽度的块级元素的水平居中<br>方法一：<br>用table包含住需要居中的块级元素，设置table的属性为：margin:0 auto;</p>
+<p><span style="color: #00ffff;"> <span style="color: #0000ff;">利用的是table元素，table不是块级，他的宽度由内部元素的宽度“撑起”，仅设置margin-left:auto; margin-right:auto就可以实现水平居中！将ul包含在table标签里面，对table 设置 margin 间接使ul实现了水平。</span></span></p>
+<p><span style="color: #ff0000;"> 这种方法很巧妙，但缺点是增加了无语义的标签，加深了标签的嵌套层数。</span><br>方法二：<br>设置display:inline解决<br><span style="color: #0000ff;"> 这个思路是，改变块级元素的display为inline 类型，然后使用text-align:center来实现居中。</span></p>
+<p><span style="color: #ff0000;">不用增加无语义标签，简化标签嵌套的深度，缺点是块级元素变为了行内元素会缺少一些支持属性，如设定长宽，这种方法带来一定的限制。</span><br>方法三：<br>设置父元素和子元素：float:left;position:relative;<br>然后父元素:left:50%;<br>子元素:left:-50%;<br><span style="color: #ff0000;">保留了块级元素的属性，不会添加无语义标签，不增加嵌套深度，缺点是设置了position:relative,带来了一定副作用。</span></p>
+<p><strong>二.垂直居中</strong><br>1.父元素高度不确定的，文本、图片、块级元素<br>给父容器设置上下边距;</p>
+<p>2.父元素高度确定，单行文本<br>给父元素设置line-height值等于高度</p>
+<p>3.父元素高度确定，文本、图片、块级元素<br>方法一：</p>
+<p>用table包含，设置vertical-align值为middle<br><span style="color: #ff0000;">不会给样式带来任何副作用，添加了无语义的标签，并增加了嵌套深度。</span></p>
+<p>方法二：</p>
+<p>对支持display:table-cell的IE8和FF用display:table-cell和vertical-align:middle来实现居中，对不支持display:table-cell的IE6和IE7，使用特定格式的hack,  hack内容为方法3的定位</p>
+<p><span style="color: #ff0000;">一方面使用了hack，不利于维护，另一方面需要设置position:relative和position:absolute,带来了副作用。</span></p>
+<p>方法三：<br>设置父元素和子元素：float:left;position:relative;<br>然后父元素:top:50%;<br>子元素:top:-50%;</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-确定宽(高)度与不确定宽(高)度的块级元素的水平（垂直）居中方法 - 副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-05-27-确定宽(高)度与不确定宽(高)度的块级元素的水平（垂直）居中方法 - 副本.html" class="article-date">
+      <time datetime="2011-05-27T02:29:01.000Z" itemprop="datePublished">2011-05-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-05-27-确定宽(高)度与不确定宽(高)度的块级元素的水平（垂直）居中方法 - 副本.html">确定宽(高)度与不确定宽(高)度的块级元素的水平（垂直）居中方法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong>一.水平居中</strong><br>1.给父元素设置text-align:center可以实现文本、图片等行内元素的水平居中；<br>2.确定宽度的块级元素通过设置：margin:0 auto;来设置居中；<br>3.不确定宽度的块级元素的水平居中<br>方法一：<br>用table包含住需要居中的块级元素，设置table的属性为：margin:0 auto;</p>
+<p><span style="color: #00ffff;"> <span style="color: #0000ff;">利用的是table元素，table不是块级，他的宽度由内部元素的宽度“撑起”，仅设置margin-left:auto; margin-right:auto就可以实现水平居中！将ul包含在table标签里面，对table 设置 margin 间接使ul实现了水平。</span></span></p>
+<p><span style="color: #ff0000;"> 这种方法很巧妙，但缺点是增加了无语义的标签，加深了标签的嵌套层数。</span><br>方法二：<br>设置display:inline解决<br><span style="color: #0000ff;"> 这个思路是，改变块级元素的display为inline 类型，然后使用text-align:center来实现居中。</span></p>
+<p><span style="color: #ff0000;">不用增加无语义标签，简化标签嵌套的深度，缺点是块级元素变为了行内元素会缺少一些支持属性，如设定长宽，这种方法带来一定的限制。</span><br>方法三：<br>设置父元素和子元素：float:left;position:relative;<br>然后父元素:left:50%;<br>子元素:left:-50%;<br><span style="color: #ff0000;">保留了块级元素的属性，不会添加无语义标签，不增加嵌套深度，缺点是设置了position:relative,带来了一定副作用。</span></p>
+<p><strong>二.垂直居中</strong><br>1.父元素高度不确定的，文本、图片、块级元素<br>给父容器设置上下边距;</p>
+<p>2.父元素高度确定，单行文本<br>给父元素设置line-height值等于高度</p>
+<p>3.父元素高度确定，文本、图片、块级元素<br>方法一：</p>
+<p>用table包含，设置vertical-align值为middle<br><span style="color: #ff0000;">不会给样式带来任何副作用，添加了无语义的标签，并增加了嵌套深度。</span></p>
+<p>方法二：</p>
+<p>对支持display:table-cell的IE8和FF用display:table-cell和vertical-align:middle来实现居中，对不支持display:table-cell的IE6和IE7，使用特定格式的hack,  hack内容为方法3的定位</p>
+<p><span style="color: #ff0000;">一方面使用了hack，不利于维护，另一方面需要设置position:relative和position:absolute,带来了副作用。</span></p>
+<p>方法三：<br>设置父元素和子元素：float:left;position:relative;<br>然后父元素:top:50%;<br>子元素:top:-50%;</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-display：inline-block 解析" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-05-27-display：inline-block 解析.html" class="article-date">
+      <time datetime="2011-05-27T00:44:06.000Z" itemprop="datePublished">2011-05-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-05-27-display：inline-block 解析.html">display：inline-block 解析</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>IE6和IE7不是不支持display:inline-block属性而是通过HACK-触发行内元素的hasLayout实现的。如果触发行内元素的hasLayout,就会让行内元素拥有一些块级元素的特性。</p>
+<p><span style="color: #ff0000;"> 拥有的块级元素的特点是，可以设置长宽，可以设置margin和padding值，但它却不是独占一行的</span>。<span style="color: #000000;">这个属性集块级元素和行内元素的特点与一身，非常有用。</span></p>
+<p><span style="color: #000000;"> 这个属性如果对块级元素应用 FF和IE8可以正常解析，而IE6和I还不支持，会换行，所以了不要应用到块级元素上，我们舍弃这种用法。</span></p>
+<p><span style="color: #000000;"> 如:<body>abcdefg<span>12345</span></body>      我们应用的时候注意到左边的文字abcdefg和span是底对齐的，而IE8和FF是顶对齐的。<span style="color: #ff0000;"> 可以通过设置  span 的 vertical-align:来解决</span>，如例子中的 *vertical-align:-10px。<br></span></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-display：inline-block 解析 - 副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-05-27-display：inline-block 解析 - 副本.html" class="article-date">
+      <time datetime="2011-05-27T00:44:06.000Z" itemprop="datePublished">2011-05-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-05-27-display：inline-block 解析 - 副本.html">display：inline-block 解析</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>IE6和IE7不是不支持display:inline-block属性而是通过HACK-触发行内元素的hasLayout实现的。如果触发行内元素的hasLayout,就会让行内元素拥有一些块级元素的特性。</p>
+<p><span style="color: #ff0000;"> 拥有的块级元素的特点是，可以设置长宽，可以设置margin和padding值，但它却不是独占一行的</span>。<span style="color: #000000;">这个属性集块级元素和行内元素的特点与一身，非常有用。</span></p>
+<p><span style="color: #000000;"> 这个属性如果对块级元素应用 FF和IE8可以正常解析，而IE6和I还不支持，会换行，所以了不要应用到块级元素上，我们舍弃这种用法。</span></p>
+<p><span style="color: #000000;"> 如:<body>abcdefg<span>12345</span></body>      我们应用的时候注意到左边的文字abcdefg和span是底对齐的，而IE8和FF是顶对齐的。<span style="color: #ff0000;"> 可以通过设置  span 的 vertical-align:来解决</span>，如例子中的 *vertical-align:-10px。<br></span></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/13/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/15/">Next &raquo;</a>
+    </nav>
+  
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 前端者
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >本站到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 4;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+
+    <script src="//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

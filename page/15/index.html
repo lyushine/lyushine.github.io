@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>前端者</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="前端者">
+<meta property="og:url" content="http://www.qianduaner.com/page/15/index.html">
+<meta property="og:site_name" content="前端者">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端者">
+<meta name="twitter:description">
+  
+    <link rel="alternative" href="/atom.xml" title="前端者" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css" type="text/css">
+  
+  
+      <link href="//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+    
+    
+  
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: true,
+          isPost: false,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false,
+      }
+  </script>
+
+  
+      <script>
+          yiliaConfig.rootUrl = "/";
+      </script>
+  
+
+  
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">前端者</a></h1>
+        </hgroup>
+
+        
+                
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                            <li><a href="/links/">友情链接</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:lyushine@qq.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="/#" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/lyushine">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">前端者</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">前端者</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                    <li><a href="/links/">友情链接</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <li id="Email"><a class="Email" target="_blank" href="mailto:lyushine@qq.com" title="Email"></a></li>
+                            
+                                <li id="GitHub"><a class="GitHub" target="_blank" href="/#" title="GitHub"></a></li>
+                            
+                                <li id="RSS"><a class="RSS" target="_blank" href="/atom.xml" title="RSS"></a></li>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap">
+  
+    <article id="post-一个很好的hasLayout解释" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-05-27-一个很好的hasLayout解释.html" class="article-date">
+      <time datetime="2011-05-27T00:18:23.000Z" itemprop="datePublished">2011-05-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-05-27-一个很好的hasLayout解释.html">一个很好的hasLayout解释</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>很多时候，CSS在IE下的解析十分奇怪，明明其他浏览器好好的，而在IE下却出了问题，并且问题十分诡异—-例如一个比较典型的BUG就是<span style="color: #ff0000;">设置border的时候，有时候border会分开，刷新或者滚动条的时候，又会自动连接起来</span>（这个我碰到过）。<span style="color: #ff0000;"> 那么我认为碰到这样的诡异现象的时候第一印象考虑出发hasLayout</span>。</p>
+<p>hasLayout到底是什么了？ hasLayout是IE浏览器专有的一个属性，用于CSS的解析引擎。有时候在IE下复杂的CSS设置解析起来会出现BUG，<span style="color: #ff0000;">其原因可能与hasLayout没有被自动触发有关，我们通过一些技巧，手动触发hasLayout属性就可以解决Bug了</span>。这是针对IE的偏方。</p>
+<p>hasLayout的触发方法有很多种，例如 width height 值，设置postion 为relative等。 width heigh  postion 都会带来一定的副作用。一个很好的<span style="color: #ff0000;">流行的解决方法是 “zoom:1” </span>。在极少数情况下也是会失效的例如DHTML的时候。  这时借助 “position:relative”来触发尽管会带来副作用。 <span style="color: #ff0000;"> 总之,“zoom”是最常用、最安全、成本最小的触发hasLayout的方式，一般情况下使用该方式。</span></p>
+<p><span style="color: #ff0000;"><span style="color: #888888;">参考自《编写高质量代码 Web前端开发修炼之路》</span><br></span></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-一个很好的hasLayout解释 - 副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-05-27-一个很好的hasLayout解释 - 副本.html" class="article-date">
+      <time datetime="2011-05-27T00:18:23.000Z" itemprop="datePublished">2011-05-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-05-27-一个很好的hasLayout解释 - 副本.html">一个很好的hasLayout解释</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>很多时候，CSS在IE下的解析十分奇怪，明明其他浏览器好好的，而在IE下却出了问题，并且问题十分诡异—-例如一个比较典型的BUG就是<span style="color: #ff0000;">设置border的时候，有时候border会分开，刷新或者滚动条的时候，又会自动连接起来</span>（这个我碰到过）。<span style="color: #ff0000;"> 那么我认为碰到这样的诡异现象的时候第一印象考虑出发hasLayout</span>。</p>
+<p>hasLayout到底是什么了？ hasLayout是IE浏览器专有的一个属性，用于CSS的解析引擎。有时候在IE下复杂的CSS设置解析起来会出现BUG，<span style="color: #ff0000;">其原因可能与hasLayout没有被自动触发有关，我们通过一些技巧，手动触发hasLayout属性就可以解决Bug了</span>。这是针对IE的偏方。</p>
+<p>hasLayout的触发方法有很多种，例如 width height 值，设置postion 为relative等。 width heigh  postion 都会带来一定的副作用。一个很好的<span style="color: #ff0000;">流行的解决方法是 “zoom:1” </span>。在极少数情况下也是会失效的例如DHTML的时候。  这时借助 “position:relative”来触发尽管会带来副作用。 <span style="color: #ff0000;"> 总之,“zoom”是最常用、最安全、成本最小的触发hasLayout的方式，一般情况下使用该方式。</span></p>
+<p><span style="color: #ff0000;"><span style="color: #888888;">参考自《编写高质量代码 Web前端开发修炼之路》</span><br></span></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-笔记】HTML常见模块语义化方案【书】编写高质量代码 WEB开发修炼之道" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-05-25-笔记】HTML常见模块语义化方案【书】编写高质量代码 WEB开发修炼之道.html" class="article-date">
+      <time datetime="2011-05-25T15:22:51.000Z" itemprop="datePublished">2011-05-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-05-25-笔记】HTML常见模块语义化方案【书】编写高质量代码 WEB开发修炼之道.html">【笔记】HTML常见模块语义化方案【书】编写高质量代码 WEB开发修炼之道</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h4 id="1、标题和内容"><a href="#1、标题和内容" class="headerlink" title="1、标题和内容"></a>1、标题和内容</h4><blockquote>
+<div class="title"><br><br><br>## 标签的寓意<br><br><a href="#">更多</a><br><br><br></div>
+
+
+<p>段落一的内容……<strong>根据浏览器的默认样式</strong>……</p>
+<p>段落二的内容<br>其中 更多是不应该属于二级标题h2的，那么为了为了通过在css完成设计则增加div</p>
+</blockquote>
+<h4 id="2、表单"><a href="#2、表单" class="headerlink" title="2、表单"></a>2、表单</h4><blockquote>
+<from action="" method="">
+
+
+<fieldset>
+
+
+<legend>登陆表单</legend>
+
+
+<p><label for="name">账号:</label><input type="text" id="name"></p>
+<p><label for="pw">密码:</label><input type="password" id="pw"></p>
+<input type="submit" value="登陆" class="subBtn">
+
+
+<p></p></fieldset><br>表单域要用fieldset标签抱起来，并用legend标签说明表单的用途。每个input标签对应的说明文本都需要使用label标签，并且通过input 设置id属性，在label中设置”for=someld” 来让说明文本和相应的input关联起来。<br></from><br>3、表格<p></p>
+<table border="1">
+
+
+<caption>集中页面表现的比较</caption>
+
+
+<thead><br><br><br><tr><br><br><br><th>实现方式</th><th>代码量</th><br><br><br><th>搜索引擎友好</th><th>特殊终端兼容</th><br><br><br></tr><br><br><br></thead>
+
+
+<tbody><br><br><br><tr><th>table 布局</th><td>多</td><td>差</td><td>一般</td></tr><br><br><br><tr><th>乱用标签的CSS布局</th><td>少</td><td>一般</td><td>差</td></tr><br><br><br><tr><th>标签寓意良好的CSS布局</th><td>少</td><td>好</td><td>好</td></tr><br><br><br></tbody>
+
+
+<p></p></table><br>表格标题要用caption，表头要用thead包围，主题部分用tbody包围，尾部要用tfoot包围，表头和一般单元格要区分开，表头用th，一般单元格用td。<p></p>
+</blockquote>
+<p><span style="color: #ff0000;">我在平时的练习中 表单和表格的练习较少，表格和表单的符合语义的HTML更是没印象，正好可以查漏补缺一下。另外 hx 标题标签  尽可能不要出现断层。</span></p>
+<p><span style="color: #ff0000;"><span style="color: #000000;">为了保证网页去央视后的可读性，并且符合WEB标准</span></span></p>
+<p><span style="color: #ff0000;"><span style="color: #000000;"> <span style="color: #993366;">尽可能少地使用无语义标签DIV和SPAN</span></span></span></p>
+<p><span style="color: #993366;"> 在语义不明显，既可以用P也可以用DIV的地方，尽量用P，因为P默认情况下有上下间距，去央视后可读性更好，对兼容特殊终端有利。</span></p>
+<p><span style="color: #ff0000;"><span style="color: #000000;"><span style="color: #993366;"> 不要使用纯样式标签，如   b     font     u   等，语义上需要强调的文本可以包在strong 或者em标签里，都有强调的语意，其中strong 默认加粗,em默认斜体。</span><br></span></span></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-笔记】HTML常见模块语义化方案【书】编写高质量代码 WEB开发修炼之道 - 副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-05-25-笔记】HTML常见模块语义化方案【书】编写高质量代码 WEB开发修炼之道 - 副本.html" class="article-date">
+      <time datetime="2011-05-25T15:22:51.000Z" itemprop="datePublished">2011-05-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-05-25-笔记】HTML常见模块语义化方案【书】编写高质量代码 WEB开发修炼之道 - 副本.html">【笔记】HTML常见模块语义化方案【书】编写高质量代码 WEB开发修炼之道</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h4 id="1、标题和内容"><a href="#1、标题和内容" class="headerlink" title="1、标题和内容"></a>1、标题和内容</h4><blockquote>
+<div class="title"><br><br><br>## 标签的寓意<br><br><a href="#">更多</a><br><br><br></div>
+
+
+<p>段落一的内容……<strong>根据浏览器的默认样式</strong>……</p>
+<p>段落二的内容<br>其中 更多是不应该属于二级标题h2的，那么为了为了通过在css完成设计则增加div</p>
+</blockquote>
+<h4 id="2、表单"><a href="#2、表单" class="headerlink" title="2、表单"></a>2、表单</h4><blockquote>
+<from action="" method="">
+
+
+<fieldset>
+
+
+<legend>登陆表单</legend>
+
+
+<p><label for="name">账号:</label><input type="text" id="name"></p>
+<p><label for="pw">密码:</label><input type="password" id="pw"></p>
+<input type="submit" value="登陆" class="subBtn">
+
+
+<p></p></fieldset><br>表单域要用fieldset标签抱起来，并用legend标签说明表单的用途。每个input标签对应的说明文本都需要使用label标签，并且通过input 设置id属性，在label中设置”for=someld” 来让说明文本和相应的input关联起来。<br></from><br>3、表格<p></p>
+<table border="1">
+
+
+<caption>集中页面表现的比较</caption>
+
+
+<thead><br><br><br><tr><br><br><br><th>实现方式</th><th>代码量</th><br><br><br><th>搜索引擎友好</th><th>特殊终端兼容</th><br><br><br></tr><br><br><br></thead>
+
+
+<tbody><br><br><br><tr><th>table 布局</th><td>多</td><td>差</td><td>一般</td></tr><br><br><br><tr><th>乱用标签的CSS布局</th><td>少</td><td>一般</td><td>差</td></tr><br><br><br><tr><th>标签寓意良好的CSS布局</th><td>少</td><td>好</td><td>好</td></tr><br><br><br></tbody>
+
+
+<p></p></table><br>表格标题要用caption，表头要用thead包围，主题部分用tbody包围，尾部要用tfoot包围，表头和一般单元格要区分开，表头用th，一般单元格用td。<p></p>
+</blockquote>
+<p><span style="color: #ff0000;">我在平时的练习中 表单和表格的练习较少，表格和表单的符合语义的HTML更是没印象，正好可以查漏补缺一下。另外 hx 标题标签  尽可能不要出现断层。</span></p>
+<p><span style="color: #ff0000;"><span style="color: #000000;">为了保证网页去央视后的可读性，并且符合WEB标准</span></span></p>
+<p><span style="color: #ff0000;"><span style="color: #000000;"> <span style="color: #993366;">尽可能少地使用无语义标签DIV和SPAN</span></span></span></p>
+<p><span style="color: #993366;"> 在语义不明显，既可以用P也可以用DIV的地方，尽量用P，因为P默认情况下有上下间距，去央视后可读性更好，对兼容特殊终端有利。</span></p>
+<p><span style="color: #ff0000;"><span style="color: #000000;"><span style="color: #993366;"> 不要使用纯样式标签，如   b     font     u   等，语义上需要强调的文本可以包在strong 或者em标签里，都有强调的语意，其中strong 默认加粗,em默认斜体。</span><br></span></span></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-热烈祝贺湖南科技大学校卫队网站成功上线【樱缘网络视觉工作室】 - 副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-05-19-热烈祝贺湖南科技大学校卫队网站成功上线【樱缘网络视觉工作室】 - 副本.html" class="article-date">
+      <time datetime="2011-05-19T08:59:57.000Z" itemprop="datePublished">2011-05-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-05-19-热烈祝贺湖南科技大学校卫队网站成功上线【樱缘网络视觉工作室】 - 副本.html">热烈祝贺湖南科技大学校卫队网站成功上线【樱缘网络视觉工作室】</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>首先，我个人认为作为一个学生组织能够有一个属于自己的网站，这样有利于部门的宣传，有利于部门工作的展现和与广大师生互动做好本职工作。而作为一个学生组织在保卫处领导的要求下自己处理网站制作事宜也不容易。在我们帮助校卫队制作网站的过程中，也充满了一些经历。比如 约见处领导的时间冲突，要等领导很久。在这过程中校卫队队长有个时候也因为一点小事就被领导批评，在领导下面，网站的栏目，文章等都需要认真审核，不允许有一点差错。并且我们在提交给处领导的时候，处领导也会提出许多改进，修改也很麻烦，无论是界面要求还是程序都做了很多修改，这一点确实很繁琐。校卫队长在协调工作中尽心尽责。当然很高兴今天湖南科技大学校卫队的网站终于上线了。</p>
+<p><a href="wp-content/uploads/2011/05/xiaoweidui.jpg"><img src="wp-content/uploads/2011/05/xiaoweidui-189x300.jpg" alt="" title="xiaoweidui"></a></p>
+<p>查看演示：<a href="http://dep.hnust.cn/xwd/index.aspx" target="_blank" rel="external">http://dep.hnust.cn/xwd/index.aspx</a></p>
+<p>校卫队网站 以突出保卫安全的风格体现主题。前端 页面 主要继续采用html+css布局，并以jquery为主体的javascript下加入了多个动态元素，提高用户体验。后端程序采用 asp.net 书写。</p>
+<p>这个网站，也是<a href="http://www.yingyuans.com" target="_blank" rel="external">【樱缘网络工作室】</a> 自正式组建以来，第一次以校园团队组员多人进行制作，其中更得到了宝贵的分工合作经验。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-热烈祝贺湖南科技大学校卫队网站成功上线【樱缘网络视觉工作室】" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-05-19-热烈祝贺湖南科技大学校卫队网站成功上线【樱缘网络视觉工作室】.html" class="article-date">
+      <time datetime="2011-05-19T08:59:57.000Z" itemprop="datePublished">2011-05-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-05-19-热烈祝贺湖南科技大学校卫队网站成功上线【樱缘网络视觉工作室】.html">热烈祝贺湖南科技大学校卫队网站成功上线【樱缘网络视觉工作室】</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>首先，我个人认为作为一个学生组织能够有一个属于自己的网站，这样有利于部门的宣传，有利于部门工作的展现和与广大师生互动做好本职工作。而作为一个学生组织在保卫处领导的要求下自己处理网站制作事宜也不容易。在我们帮助校卫队制作网站的过程中，也充满了一些经历。比如 约见处领导的时间冲突，要等领导很久。在这过程中校卫队队长有个时候也因为一点小事就被领导批评，在领导下面，网站的栏目，文章等都需要认真审核，不允许有一点差错。并且我们在提交给处领导的时候，处领导也会提出许多改进，修改也很麻烦，无论是界面要求还是程序都做了很多修改，这一点确实很繁琐。校卫队长在协调工作中尽心尽责。当然很高兴今天湖南科技大学校卫队的网站终于上线了。</p>
+<p><a href="wp-content/uploads/2011/05/xiaoweidui.jpg"><img src="wp-content/uploads/2011/05/xiaoweidui-189x300.jpg" alt="" title="xiaoweidui"></a></p>
+<p>查看演示：<a href="http://dep.hnust.cn/xwd/index.aspx" target="_blank" rel="external">http://dep.hnust.cn/xwd/index.aspx</a></p>
+<p>校卫队网站 以突出保卫安全的风格体现主题。前端 页面 主要继续采用html+css布局，并以jquery为主体的javascript下加入了多个动态元素，提高用户体验。后端程序采用 asp.net 书写。</p>
+<p>这个网站，也是<a href="http://www.yingyuans.com" target="_blank" rel="external">【樱缘网络工作室】</a> 自正式组建以来，第一次以校园团队组员多人进行制作，其中更得到了宝贵的分工合作经验。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-php数组输出的方法【特别适用于调试】 - 副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-05-18-php数组输出的方法【特别适用于调试】 - 副本.html" class="article-date">
+      <time datetime="2011-05-17T16:35:30.000Z" itemprop="datePublished">2011-05-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-05-18-php数组输出的方法【特别适用于调试】 - 副本.html">php数组输出的方法【特别适用于调试】</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>PHP编程过程中常常需要对查询出来的数据进行检测和调试，特别是对从表中查询出来的数据在一个数组中，那么现在以下数据的三种输出方法：</p>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #555;">&lt;?php</span>
+<span style="color: #000-2;">$bbbb</span><span style="color: #000;">=</span><span style="color: #708;">array</span>(<span style="color: #a11;">"11"</span><span style="color: #000;">=&amp;</span><span style="color: #@cm-word;">gt</span>;<span style="color: #a11;">"aaa"</span>,<span style="color: #a11;">"22"</span><span style="color: #000;">=&amp;</span><span style="color: #@cm-word;">gt</span>;<span style="color: #a11;">"bbb"</span>);
+<span style="color: #a50;">//只能输出值value不能输出key</span>
+<span style="color: #708;">foreach</span>(<span style="color: #000-2;">$bbbb</span> <span style="color: #708;">as</span> <span style="color: #000-2;">$color</span>)
+<span style="color: #708;">echo</span> <span style="color: #000-2;">$color</span>;
+<span style="color: #a50;">//value与key都可输出</span>
+<span style="color: #708;">foreach</span>(<span style="color: #000-2;">$bbbb</span> <span style="color: #708;">as</span> <span style="color: #000-2;">$key</span><span style="color: #000;">=&amp;</span><span style="color: #@cm-word;">gt</span>;<span style="color: #000-2;">$value</span>)
+<span style="color: #708;">echo</span> <span style="color: #000-2;">$key</span>.<span style="color: #a11;">"=&amp;gt;"</span>.<span style="color: #000-2;">$value</span>;
+<span style="color: #a50;">//value与key都可输出</span>
+<span style="color: #708;">while</span>(<span style="color: #000-2;">$color</span><span style="color: #000;">=</span><span style="color: #@cm-word;">each</span>(<span style="color: #000-2;">$bbbb</span>)){
+<span style="color: #708;">echo</span> <span style="color: #000-2;">$color</span>[<span style="color: #a11;">'key'</span>];
+}
+<span style="color: #555;">?&gt;</span></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-php数组输出的方法【特别适用于调试】" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-05-18-php数组输出的方法【特别适用于调试】.html" class="article-date">
+      <time datetime="2011-05-17T16:35:30.000Z" itemprop="datePublished">2011-05-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-05-18-php数组输出的方法【特别适用于调试】.html">php数组输出的方法【特别适用于调试】</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>PHP编程过程中常常需要对查询出来的数据进行检测和调试，特别是对从表中查询出来的数据在一个数组中，那么现在以下数据的三种输出方法：</p>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #555;">&lt;?php</span>
+<span style="color: #000-2;">$bbbb</span><span style="color: #000;">=</span><span style="color: #708;">array</span>(<span style="color: #a11;">"11"</span><span style="color: #000;">=&amp;</span><span style="color: #@cm-word;">gt</span>;<span style="color: #a11;">"aaa"</span>,<span style="color: #a11;">"22"</span><span style="color: #000;">=&amp;</span><span style="color: #@cm-word;">gt</span>;<span style="color: #a11;">"bbb"</span>);
+<span style="color: #a50;">//只能输出值value不能输出key</span>
+<span style="color: #708;">foreach</span>(<span style="color: #000-2;">$bbbb</span> <span style="color: #708;">as</span> <span style="color: #000-2;">$color</span>)
+<span style="color: #708;">echo</span> <span style="color: #000-2;">$color</span>;
+<span style="color: #a50;">//value与key都可输出</span>
+<span style="color: #708;">foreach</span>(<span style="color: #000-2;">$bbbb</span> <span style="color: #708;">as</span> <span style="color: #000-2;">$key</span><span style="color: #000;">=&amp;</span><span style="color: #@cm-word;">gt</span>;<span style="color: #000-2;">$value</span>)
+<span style="color: #708;">echo</span> <span style="color: #000-2;">$key</span>.<span style="color: #a11;">"=&amp;gt;"</span>.<span style="color: #000-2;">$value</span>;
+<span style="color: #a50;">//value与key都可输出</span>
+<span style="color: #708;">while</span>(<span style="color: #000-2;">$color</span><span style="color: #000;">=</span><span style="color: #@cm-word;">each</span>(<span style="color: #000-2;">$bbbb</span>)){
+<span style="color: #708;">echo</span> <span style="color: #000-2;">$color</span>[<span style="color: #a11;">'key'</span>];
+}
+<span style="color: #555;">?&gt;</span></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-CSS最小高度，容器下有内容则自动撑开，无内容则保留最小高度 兼容各主流浏览器 - 副本" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-05-04-CSS最小高度，容器下有内容则自动撑开，无内容则保留最小高度 兼容各主流浏览器 - 副本.html" class="article-date">
+      <time datetime="2011-05-04T12:45:15.000Z" itemprop="datePublished">2011-05-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-05-04-CSS最小高度，容器下有内容则自动撑开，无内容则保留最小高度 兼容各主流浏览器 - 副本.html">CSS最小高度，容器下有内容则自动撑开，无内容则保留最小高度 兼容各主流浏览器</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>最近的一个网站因为本身提供的文章内容不足，用到了CSS最小高度，顺便我理清一下思路，复习一下这个小知识点。</p>
+<p>实现效果——兼容IE6\IE7\FF 容器下有内容则自动撑开，无内容则保留最小高度</p>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">height</span>:<span style="color: #170;">auto</span><span style="color: #708;">!important</span>;
+<span style="color: #170;">height</span>:<span style="color: #164;">930px</span>;
+<span style="color: #170;">min-height</span>:<span style="color: #164;">930px</span>;</pre>
+IE6是不支持min-height属性的。!important 是IE7和FF看 等能够识别的，IE6不识别，并且有绝对优先权。所以 高级浏览器 支持最小高度min-height所以是按min-height的最小高度显示的，而  !important 导致高级浏览器 处理 height:auto，而不处理height:930px了。而IE6则不同，IE6不识别！important而处理height:930px,也不认识min-height。但是 IE6的 height属性本来就是这样的，如果高度每超出height的设定则 高度就是 height高，如果超出 ie6会自动的添加高度。 那么从代码的分层效率上讲建议写个IE6 HACK 减少高级浏览器不必要的处理，在考虑效率而不拘泥于标准的情况下。如下：
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">height</span>:<span style="color: #170;">auto</span><span style="color: #708;">!important</span>;
+<span style="color: #170;">_height</span>:<span style="color: #164;">930px</span>;
+<span style="color: #170;">min-height</span>:<span style="color: #164;">930px</span>;</pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-CSS最小高度，容器下有内容则自动撑开，无内容则保留最小高度 兼容各主流浏览器" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2011-05-04-CSS最小高度，容器下有内容则自动撑开，无内容则保留最小高度 兼容各主流浏览器.html" class="article-date">
+      <time datetime="2011-05-04T12:45:15.000Z" itemprop="datePublished">2011-05-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2011-05-04-CSS最小高度，容器下有内容则自动撑开，无内容则保留最小高度 兼容各主流浏览器.html">CSS最小高度，容器下有内容则自动撑开，无内容则保留最小高度 兼容各主流浏览器</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>最近的一个网站因为本身提供的文章内容不足，用到了CSS最小高度，顺便我理清一下思路，复习一下这个小知识点。</p>
+<p>实现效果——兼容IE6\IE7\FF 容器下有内容则自动撑开，无内容则保留最小高度</p>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">height</span>:<span style="color: #170;">auto</span><span style="color: #708;">!important</span>;
+<span style="color: #170;">height</span>:<span style="color: #164;">930px</span>;
+<span style="color: #170;">min-height</span>:<span style="color: #164;">930px</span>;</pre>
+IE6是不支持min-height属性的。!important 是IE7和FF看 等能够识别的，IE6不识别，并且有绝对优先权。所以 高级浏览器 支持最小高度min-height所以是按min-height的最小高度显示的，而  !important 导致高级浏览器 处理 height:auto，而不处理height:930px了。而IE6则不同，IE6不识别！important而处理height:930px,也不认识min-height。但是 IE6的 height属性本来就是这样的，如果高度每超出height的设定则 高度就是 height高，如果超出 ie6会自动的添加高度。 那么从代码的分层效率上讲建议写个IE6 HACK 减少高级浏览器不必要的处理，在考虑效率而不拘泥于标准的情况下。如下：
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">height</span>:<span style="color: #170;">auto</span><span style="color: #708;">!important</span>;
+<span style="color: #170;">_height</span>:<span style="color: #164;">930px</span>;
+<span style="color: #170;">min-height</span>:<span style="color: #164;">930px</span>;</pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/14/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/16/">Next &raquo;</a>
+    </nav>
+  
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2016 前端者
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的静态博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减双栏 Hexo 博客主题">Yelee</a> by MOxFIVE
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >本站到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 4;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+
+    <script src="//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
