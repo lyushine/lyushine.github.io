@@ -220,6 +220,946 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-e6-89-93-e5-8d-b0css-e6-a0-b7-e5-bc-8f-e7-9a-84-e6-8a-80-e5-b7-a7-e5-92-8c-e8-a6-81-e7-82-b9" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2013-04-03-e6-89-93-e5-8d-b0css-e6-a0-b7-e5-bc-8f-e7-9a-84-e6-8a-80-e5-b7-a7-e5-92-8c-e8-a6-81-e7-82-b9.html" class="article-date">
+      <time datetime="2013-04-03T01:02:51.000Z" itemprop="datePublished">2013-04-03</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2013-04-03-e6-89-93-e5-8d-b0css-e6-a0-b7-e5-bc-8f-e7-9a-84-e6-8a-80-e5-b7-a7-e5-92-8c-e8-a6-81-e7-82-b9.html">打印样式CSS的技巧和要点</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>不经过任何处理而直接打印网站上的页面会得到一个不理想的效果。我们WEB开发人员可以简单的采用几个要点来使之达到较为合适的效果：</p>
+<ul>
+<li>使用响应式布局设置打印的效果</li>
+<li>打印背景图片和颜色，在合适的时候</li>
+<li>添加显示的网址或页面链接，以供参考</li>
+<li>使用css filter 提高打印的图形效果</li>
+</ul>
+<h3 id="针对打印的样式，而不是屏幕显示样式"><a href="#针对打印的样式，而不是屏幕显示样式" class="headerlink" title="针对打印的样式，而不是屏幕显示样式"></a>针对打印的样式，而不是屏幕显示样式</h3><p>首先，我们需要使用媒体查询（media query）针对 打印样式设置。</p>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #555;">@media</span> <span style="color: #000;">print</span> {
+
+}</pre>
+重新针对打印写CSS样式是没有必要的，我们只需要针对差异设置打印的样式覆盖掉之前的默认样式。大多数的浏览器会自动根据打印更改颜色，以节省打印原料，但是我们还是尽可能的手工设置一下。为了达到最佳效果，使颜色清晰明了。我们至少需要包含一下基本的打印样式。
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"> <span style="color: #555;">@media</span> <span style="color: #000;">print</span> { <span style="color: #170;">body</span> { <span style="color: #000;">color</span>: <span style="color: #219;">#000</span>; <span style="color: #000;">background</span>: <span style="color: #219;">#fff</span>; } }</pre>
+对于打印，大多数情况下我们不需要打印整个页面，只需要打印一个简洁的能够突出需要信息的页面，那么我们将不相关的部分隐藏掉（如：导航条、背景图片）。
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #a50;">/* Default styles */</span>
+
+<span style="color: #170;">h1</span> {
+   <span style="color: #000;">color</span>: <span style="color: #219;">#fff</span>;
+   <span style="color: #000;">background</span>: <span style="color: #164;">url</span><span style="color: #164;">(banner</span>.<span style="color: #164;">jpg</span><span style="color: #164;">)</span>;
+}
+
+<span style="color: #555;">@media</span> <span style="color: #000;">print</span> {
+   <span style="color: #170;">h1</span> {
+      <span style="color: #000;">color</span>: <span style="color: #219;">#000</span>;
+      <span style="color: #000;">background</span>: <span style="color: #164;">none</span>;
+   }
+
+   <span style="color: #170;">nav</span>, <span style="color: #170;">aside</span> {
+      <span style="color: #000;">display</span>: <span style="color: #164;">none</span>;
+   }
+}</pre>
+在编写打印样式表的时候，你要注意要使用厘米或者英寸作为单位而不是屏幕像素单位，实际的单位对打印非常有用。为了保证打印样式有用，写CSS样式使打印的内容距离纸张边缘，看起来更好，需要使用 @page 这个语法：
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #555;">@media</span> <span style="color: #000;">print</span> {
+   <span style="color: #170;">h1</span> {
+      <span style="color: #000;">color</span>: <span style="color: #219;">#000</span>;
+      <span style="color: #000;">background</span>: <span style="color: #164;">none</span>;
+   }
+
+   <span style="color: #170;">nav</span>, <span style="color: #170;">aside</span> {
+      <span style="color: #000;">display</span>: <span style="color: #164;">none</span>;
+   }
+
+   <span style="color: #170;">body</span>, <span style="color: #170;">article</span> {
+      <span style="color: #000;">width</span>: <span style="color: #164;">100%</span>;
+      <span style="color: #000;">margin</span>: <span style="color: #164;">0</span>;
+      <span style="color: #000;">padding</span>: <span style="color: #164;">0</span>;
+   }
+
+   <span style="color: #555;">@page</span> {
+      <span style="color: #000;">margin</span>: <span style="color: #164;">2cm</span>;
+   }
+}</pre>
+为了保证不被跨页打印，如一个标题和内容在页面底部被分开：
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"> <span style="color: #170;">h2</span>, <span style="color: #170;">h3</span> { <span style="color: #000;">page-break-after</span>: <span style="color: #164;">avoid</span>; }</pre>
+另一中情况是要防止图片过宽而超出纸张边缘：
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">img</span> {
+   <span style="color: #000;">max-width</span>: <span style="color: #164;">100%</span> <span style="color: #708;">!important</span>;
+}</pre>
+第三个要点是确保 articles 文章标签的内容，在新的一页开始：
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">article</span> {
+   <span style="color: #000;">page-break-before</span>: <span style="color: #164;">always</span>;
+}</pre>
+最后，还要注意列表和图片不被分开在不同的页：
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">ul</span>, <span style="color: #170;">img</span> {
+   <span style="color: #000;">page-break-inside</span>: <span style="color: #164;">avoid</span>;
+}</pre>
+尽管这些还不完美，不过这是一个良好的开始
+
+### 背景图片和颜色
+
+对于一些网站，颜色和背景图还是非常必要需要遵循的。如果用户是在 webkit 内核浏览器上打印的话，我们可以强制打印机打印屏幕上所看到的颜色（即强制在打印页面上出现任何的背景图和颜色），一般来说彩色打印机可以做到这点，我们需要一个单独的媒体查询：
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #555;">@media</span> <span style="color: #000;">print</span> <span style="color: #000;">and</span> <span style="color: #000;">(color</span><span style="color: #000;">)</span> {
+   * {
+      <span style="color: #000;">-webkit-print-color-adjust</span>: <span style="color: #164;">exact</span>;
+      <span style="color: #000;">print-color-adjust</span>: <span style="color: #164;">exact</span>;
+   }
+}</pre>
+遗憾的是，这不能马上应用于firefox opera 和IE.
+
+### 扩展打印样式里的超链接
+
+如果直接打印，超链接将只是一点文字，而不会出现链接的网址，这样来说，是没有意义的。我们可以将url链接展示在打印的页面上，我们可以使用:after伪类来实现而不影响周围的元素布局：
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #555;">@media</span> <span style="color: #000;">print</span> {
+   <span style="color: #170;">article</span> <span style="color: #170;">a</span> {
+      <span style="color: #000;">font-weight</span>: <span style="color: #164;">bolder</span>;
+      <span style="color: #000;">text-decoration</span>: <span style="color: #164;">none</span>;
+   }
+
+   <span style="color: #170;">article</span> <span style="color: #170;">a</span>[<span style="color: #170;">href</span><span style="color: #170;">^</span>=<span style="color: #170;">http</span>]:<span style="color: #170;">after</span> {
+      <span style="color: #000;">content</span>:<span style="color: #a11;">" &lt;"</span> <span style="color: #164;">attr</span><span style="color: #164;">(href</span><span style="color: #164;">)</span> <span style="color: #a11;">"&gt; "</span>;
+   }
+}</pre>
+看下面这是HTML:
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">&lt;p</span>&gt;<span style="color: #170;">You</span><span style="color: #170;">’ve</span> <span style="color: #170;">explored</span> <span style="color: #170;">this</span> <span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">"/blog"</span>&gt;<span style="color: #170;">website</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;; <span style="color: #170;">now</span> <span style="color: #170;">it</span><span style="color: #170;">’s</span> <span style="color: #170;">time</span> <span style="color: #170;">to</span> <span style="color: #170;">&lt;a</span> <span style="color: #170;">href</span>=<span style="color: #a11;">"http://www.webplatform.org/"</span>&gt;<span style="color: #170;">read</span> <span style="color: #170;">other</span> <span style="color: #170;">Web</span> <span style="color: #170;">development</span> <span style="color: #170;">documentation</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">a</span>&gt;.<span style="color: #170;">&lt;</span>/<span style="color: #170;">p</span>&gt;</pre>
+&nbsp;
+
+下面是显示的效果：
+![](wp-content/uploads/2013/04/Screen-Shot-2013-01-13-at-8.58.10-PM.png "Screen-Shot")
+其中一个问题是，打印页面上的锚文本和图像链接也将扩大。我们可以很好的用CSS规则修复
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">article</span> <span style="color: #170;">a</span>[<span style="color: #170;">href</span><span style="color: #170;">^</span>=<span style="color: #a11;">"#"</span>]:<span style="color: #170;">after</span> {
+   <span style="color: #000;">content</span>: <span style="color: #a11;">""</span>;
+}</pre>
+链接周围图像是比较麻烦的，理想的情况是图像周围的链接将有一个class.
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">$a</span>:<span style="color: #170;">after</span> &gt; <span style="color: #170;">img</span> {
+   <span style="color: #000;">content</span>: <span style="color: #a11;">""</span>;
+}</pre>
+CSS4选择器实现将很简单：
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">a</span>:<span style="color: #170;">not</span><span style="color: #170;">(</span>:<span style="color: #170;">local-link</span><span style="color: #170;">)</span>:<span style="color: #170;">after</span> {
+   <span style="color: #000;">content</span>:<span style="color: #a11;">" &lt;"</span> <span style="color: #164;">attr</span><span style="color: #164;">(href</span><span style="color: #164;">)</span> <span style="color: #a11;">"&gt; "</span>;
+}</pre>
+所有这些方法都假定用户将继续通过手工输入网址。 一个更好的解决方案是通过提供匹配的QR码的数字版本的页面更容易访问。
+
+### 打印链接二维码使之更容易访问
+
+如下图： ![](wp-content/uploads/2013/04/lizabeth.png "lizabeth")我们需要使用谷歌 图形API来实现：
+
+*   我们希望谷歌提供的图表信息（ `qr` ，在我们的例子中）;
+*   呈现大小的的QR印记，以像素为单位;
+*   URL进行编码;
+*   使用的字符编码形式。
+通常我们会在页面顶部的一个标题元素关联的URL：
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">&lt;header</span>&gt;
+<span style="color: #170;">&lt;h1</span>&gt;<span style="color: #170;">Lizabeth</span><span style="color: #170;">’s</span> <span style="color: #170;">Salon</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">h1</span>&gt;
+<span style="color: #170;">&lt;h2</span>&gt;<span style="color: #170;">Providing</span> <span style="color: #170;">Intellectual</span> <span style="color: #170;">Stimulation</span> <span style="color: #170;">Online</span> <span style="color: #170;">Since</span> <span style="color: #164;">2001</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">h1</span>&gt;
+<span style="color: #170;">&lt;</span>/<span style="color: #170;">header</span>&gt;</pre>
+为了创造预期的打印结果，我们将提供足够的间距给H1用来放置二维码。因为这个二维码需要增加到每个页面。我们需要增加一条CSS规则：
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #555;">@media</span> <span style="color: #000;">print</span> {
+   <span style="color: #170;">header</span> <span style="color: #170;">h1</span>:<span style="color: #170;">after</span> {
+      <span style="color: #000;">content</span>: <span style="color: #164;">url</span><span style="color: #164;">(https</span>://<span style="color: #164;">chart</span>.<span style="color: #164;">googleapis</span>.<span style="color: #164;">com</span>/<span style="color: #164;">chart</span><span style="color: #164;">?cht</span>=<span style="color: #164;">qr</span><span style="color: #164;">&amp;chs</span>=<span style="color: #164;">150x150</span><span style="color: #164;">&amp;chl</span>=<span style="color: #164;">http</span>://<span style="color: #164;">yourdomain</span>.<span style="color: #164;">com</span><span style="color: #164;">&amp;choe</span>=<span style="color: #164;">UTF-8</span><span style="color: #164;">)</span>;
+      <span style="color: #000;">position</span>: <span style="color: #164;">absolute</span>;
+      <span style="color: #000;">right</span>: <span style="color: #164;">0</span>;
+      <span style="color: #000;">top</span>: <span style="color: #164;">0</span>;
+   }
+}</pre>
+这个方法的缺点是使开发者每个元素都请求一个API。如果你的主机是PHP，则可以自动生成当前页面的URL:
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #555;">@media</span> <span style="color: #000;">print</span> {
+   <span style="color: #170;">h1</span>:<span style="color: #170;">after</span> {
+      <span style="color: #000;">content</span>: <span style="color: #164;">url</span><span style="color: #164;">(https</span>://<span style="color: #164;">chart</span>.<span style="color: #164;">googleapis</span>.<span style="color: #164;">com</span>/<span style="color: #164;">chart</span><span style="color: #164;">?cht</span>=<span style="color: #164;">qr</span><span style="color: #164;">&amp;chs</span>=<span style="color: #164;">150x150</span>
+<span style="color: #164;">&amp;chl</span>=<span style="color: #164;">http</span>://<span style="color: #164;">&lt;</span><span style="color: #164;">?</span>=<span style="color: #164;">$_SERVER</span>[<span style="color: #a11;">"SERVER_NAME"</span>].<span style="color: #164;">$_SERVER</span>[<span style="color: #a11;">"REQUEST_URI"</span>];<span style="color: #000;">?</span>&gt;
+<span style="color: #164;">&amp;choe</span>=<span style="color: #164;">UTF-8</span><span style="color: #164;">)</span>;
+      <span style="color: #000;">position</span>: <span style="color: #164;">absolute</span>;
+      <span style="color: #000;">right</span>: <span style="color: #164;">0</span>;
+      <span style="color: #000;">top</span>: <span style="color: #164;">0</span>;
+   }
+}</pre>
+给wordpress的样式：
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #555;">@media</span> <span style="color: #000;">print</span> {
+   <span style="color: #170;">h1</span>:<span style="color: #170;">after</span> {
+      <span style="color: #000;">content</span>: <span style="color: #164;">url</span><span style="color: #164;">(https</span>://<span style="color: #164;">chart</span>.<span style="color: #164;">googleapis</span>.<span style="color: #164;">com</span>/<span style="color: #164;">chart</span><span style="color: #164;">?cht</span>=<span style="color: #164;">qr</span><span style="color: #164;">&amp;chs</span>=<span style="color: #164;">150x150</span>
+<span style="color: #164;">&amp;chl</span>=<span style="color: #164;">http</span>://<span style="color: #164;">&lt;</span><span style="color: #164;">?phpthe_permalink</span><span style="color: #164;">(</span><span style="color: #164;">)</span>;<span style="color: #000;">?</span>&gt;<span style="color: #164;">&amp;choe</span>=<span style="color: #164;">UTF-8</span><span style="color: #164;">)</span>;
+      <span style="color: #000;">position</span>: <span style="color: #164;">absolute</span>;
+      <span style="color: #000;">right</span>: <span style="color: #164;">0</span>;
+      <span style="color: #000;">top</span>: <span style="color: #164;">0</span>;
+   }
+}</pre>
+
+<h3 id="使用CSS3-Filter-提高打印的质量"><a href="#使用CSS3-Filter-提高打印的质量" class="headerlink" title="使用CSS3 Filter 提高打印的质量"></a>使用CSS3 Filter 提高打印的质量</h3><p>浏览器通常会打印出横幅图像，特别是如果有问题的旗帜在黑暗的背景是白色的： <img src="wp-content/uploads/2013/04/print-style-result.png" alt="" title="print-style-result"></p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #555;">@media</span> <span style="color: #000;">print</span> {<br>   <span style="color: #170;">header</span> {<br>      <span style="color: #000;">background</span>: <span style="color: #164;">none</span>;<br>      <span style="color: #000;">color</span>: <span style="color: #219;">#000</span>;<br>   }</pre></p>
+<p>   <span style="color: #170;">header</span> <span style="color: #170;">img</span> {<br>      <span style="color: #000;">filter</span>: <span style="color: #164;">url</span><span style="color: #164;">(inverse</span>.<span style="color: #164;">svg</span><span style="color: #219;">#negative</span><span style="color: #164;">)</span>;<br>      <span style="color: #000;">-webkit-filter</span>: <span style="color: #164;">invert</span><span style="color: #164;">(100</span><span style="color: #164;">%</span><span style="color: #164;">)</span>;<br>      <span style="color: #000;">filter</span>: <span style="color: #164;">invert</span><span style="color: #164;">(100</span><span style="color: #164;">%</span><span style="color: #164;">)</span>;<br>   }<br>}<br>CSS3的过滤器做什么，你所期望的 - 在头图像反色，变成黑白色，反之亦然 - 但它们只能在Chrome和Safari。 为了弥补Firefox，我们需要一种不同的方法 - 相当于过滤器作为一个单独的SVG文件写：</p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">&lt;svg</span> <span style="color: #00c;">xmlns</span>=<span style="color: #a11;">“<a href="http://www.w3.org/2000/svg" target="_blank" rel="external">http://www.w3.org/2000/svg</a>“</span><span style="color: #170;">&gt;</span><br><span style="color: #170;">&lt;filter</span> <span style="color: #00c;">id</span>=<span style="color: #a11;">“negative”</span><span style="color: #170;">&gt;</span><br><span style="color: #170;">&lt;feColorMatrix</span> <span style="color: #00c;">values</span>=<span style="color: #a11;">“-1 0 0 0 1</span><br><span style="color: #a11;">0 -1 0 0 1</span><br><span style="color: #a11;">0 0 -1 0 1</span><br><span style="color: #a11;">0 0 0 1 0”</span> <span style="color: #170;">/&gt;</span><br><span style="color: #170;">&lt;/filter</span><span style="color: #170;">&gt;</span><br><span style="color: #170;">&lt;/svg</span><span style="color: #170;">&gt;</span></pre><br>从理论上讲，你可以使用一个CSS sprite 之间进行切换不同版本的打印的标志，但是这将意味着增加一倍的文件大小可能没有什么好处。 相反，我建议使用CSS过滤器（和SVG当量，为Firefox）的反转图像之前，打印的页面： 印刷两种形式的标志（即α-蒙面PNG或纯黑色背景）的结果是：</p>
+<div> <a href="wp-content/uploads/2013/04/logo-inverted-printed-300x91.png"><img src="wp-content/uploads/2013/04/logo-inverted-printed-300x91.png" alt="" title="logo-inverted-printed-300x91"></a></div>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>由于打印不方便跟踪，而且缺乏重视。在WEB开发中也往往被忽略，大多数时候我们只阅读线上的网页，而不是打印出来。 另一方面即使人们只是偶尔需要打印的东西从网站，这将是理想的，如果页面设计适合的打印机，就像现代的网站适应各种屏幕尺寸和设备。 打印的自适应设计，可用性和可访问性和Web开发的重要组成部分，同样应考虑的另一个方面。 处理打印自适应设计的另一个方面，我们实现更多的网站用户的需求-并在同一时间，节省墨水，纸张和其他资源，所有这些都是重要的方面<strong>可持续发展</strong>的<strong>设计</strong> 。</p>
+<p><div></div><br>&nbsp;</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-e5-a6-82-e4-bd-95-e8-87-aa-e9-80-82-e5-ba-94-e5-ae-bd-e5-ba-a6-e7-9a-84-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2013-03-11-e5-a6-82-e4-bd-95-e8-87-aa-e9-80-82-e5-ba-94-e5-ae-bd-e5-ba-a6-e7-9a-84-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad.html" class="article-date">
+      <time datetime="2013-03-11T01:38:52.000Z" itemprop="datePublished">2013-03-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2013-03-11-e5-a6-82-e4-bd-95-e8-87-aa-e9-80-82-e5-ba-94-e5-ae-bd-e5-ba-a6-e7-9a-84-e6-b0-b4-e5-b9-b3-e5-b1-85-e4-b8-ad.html">如何自适应宽度的水平居中</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>当父元素和子元素都没有定义宽度的情况下实现水平居中：</p>
+<h2 id="display-inline-block"><a href="#display-inline-block" class="headerlink" title="display:inline-block"></a><code>display:inline-block</code></h2><p>可以使用text-align:center和display:inline-block相结合，这个技巧需要一个父元素。</p>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">&lt;div</span> <span style="color: #00c;">class</span>=<span style="color: #a11;">"navbar"</span><span style="color: #170;">&gt;</span>
+    <span style="color: #170;">&lt;ul</span><span style="color: #170;">&gt;</span>
+        <span style="color: #170;">&lt;li</span><span style="color: #170;">&gt;</span><span style="color: #170;">&lt;a</span> <span style="color: #00c;">href</span>=<span style="color: #a11;">"/"</span><span style="color: #170;">&gt;</span>Home<span style="color: #170;">&lt;/a</span><span style="color: #170;">&gt;</span><span style="color: #170;">&lt;/li</span><span style="color: #170;">&gt;</span>
+        …
+    <span style="color: #170;">&lt;/ul</span><span style="color: #170;">&gt;</span>
+<span style="color: #170;">&lt;/div</span><span style="color: #170;">&gt;</span></pre>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">navbar</span> {
+    <span style="color: #000;">text-align</span>:<span style="color: #164;">center</span>;
+}
+.<span style="color: #170;">navbar</span> <span style="color: #170;">ul</span> {
+    <span style="color: #000;">display</span>:<span style="color: #164;">inline-block</span>;
+}
+.<span style="color: #170;">navbar</span> <span style="color: #170;">li</span> {
+    <span style="color: #000;">float</span>:<span style="color: #164;">left</span>;
+}
+.<span style="color: #170;">navbar</span> <span style="color: #170;">li</span> + <span style="color: #170;">li</span> {
+    <span style="color: #000;">margin-left</span>:<span style="color: #164;">20px</span>;
+}</pre>
+IE系列IE8+支持，要IE7 IE6 支持需要加入以下代码使display:inline像display:inline-block一样
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">navbar</span> <span style="color: #170;">ul</span> {
+    *<span style="color: #000;">display</span>:<span style="color: #164;">inline</span>;
+    *<span style="color: #000;">zoom</span>:<span style="color: #164;">1</span>;
+}</pre>
+
+<h2 id="position-relative"><a href="#position-relative" class="headerlink" title="position:relative"></a><code>position:relative</code></h2><p>使用position:relative与float相结合的技巧及其浮动和定位参照物的关系，这个技巧需要两个父元素，一个用来定位而另外一个用来避免出现滚动条。</p>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">&lt;div</span> <span style="color: #00c;">class</span>=<span style="color: #a11;">"navbar"</span><span style="color: #170;">&gt;</span>
+    <span style="color: #170;">&lt;div</span><span style="color: #170;">&gt;</span>
+        <span style="color: #170;">&lt;ul</span><span style="color: #170;">&gt;</span>
+            <span style="color: #170;">&lt;li</span><span style="color: #170;">&gt;</span><span style="color: #170;">&lt;a</span> <span style="color: #00c;">href</span>=<span style="color: #a11;">"/"</span><span style="color: #170;">&gt;</span>Home<span style="color: #170;">&lt;/a</span><span style="color: #170;">&gt;</span><span style="color: #170;">&lt;/li</span><span style="color: #170;">&gt;</span>
+            …
+        <span style="color: #170;">&lt;/ul</span><span style="color: #170;">&gt;</span>
+    <span style="color: #170;">&lt;/div</span><span style="color: #170;">&gt;</span>
+<span style="color: #170;">&lt;/div</span><span style="color: #170;">&gt;</span></pre>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.navbar {
+    overflow:hidden;
+}
+.navbar &gt; div {
+    position:relative;
+    left:50%;
+    float:left;
+}
+.navbar ul {
+    position:relative;
+    left:-50%;
+    float:left;
+}
+.navbar li {
+    float:left;
+}
+.navbar li + li {
+    margin-left:20px;
+}</pre>
+IE7下需要加入下列代码支持：
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">navbar</span> {
+    <span style="color: #000;">position</span>:<span style="color: #164;">relative</span>;
+}</pre>
+&nbsp;
+
+## `display:table`
+
+如果向使用极少的标签实现，这个方法是个不错的选择。
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">&lt;ul</span> <span style="color: #00c;">class</span>=<span style="color: #a11;">"navbar"</span><span style="color: #170;">&gt;</span>
+    <span style="color: #170;">&lt;li</span><span style="color: #170;">&gt;</span><span style="color: #170;">&lt;a</span> <span style="color: #00c;">href</span>=<span style="color: #a11;">"/"</span><span style="color: #170;">&gt;</span>Home<span style="color: #170;">&lt;/a</span><span style="color: #170;">&gt;</span><span style="color: #170;">&lt;/li</span><span style="color: #170;">&gt;</span>
+    …
+<span style="color: #170;">&lt;/ul</span><span style="color: #170;">&gt;</span></pre>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">navbar</span> {
+    <span style="color: #000;">display</span>:<span style="color: #164;">table</span>;
+    <span style="color: #000;">margin</span>:<span style="color: #164;">0</span> <span style="color: #164;">auto</span>;
+}
+.<span style="color: #170;">navbar</span> <span style="color: #170;">li</span> {
+    <span style="color: #000;">display</span>:<span style="color: #164;">table-cell</span>;
+}
+.<span style="color: #170;">navbar</span> <span style="color: #170;">li</span> + <span style="color: #170;">li</span> {
+    <span style="color: #000;">padding-left</span>:<span style="color: #164;">20px</span>;
+}</pre>
+不支持IE7及一下浏览器，其他的主流浏览器都支持。
+
+## `display:inline-flex`
+
+这个方法需要使用 flex-layout 的知识。
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">&lt;div</span> <span style="color: #00c;">class</span>=<span style="color: #a11;">"navbar"</span><span style="color: #170;">&gt;</span>
+    <span style="color: #170;">&lt;ul</span><span style="color: #170;">&gt;</span>
+        <span style="color: #170;">&lt;li</span><span style="color: #170;">&gt;</span><span style="color: #170;">&lt;a</span> <span style="color: #00c;">href</span>=<span style="color: #a11;">"/"</span><span style="color: #170;">&gt;</span>Home<span style="color: #170;">&lt;/a</span><span style="color: #170;">&gt;</span><span style="color: #170;">&lt;/li</span><span style="color: #170;">&gt;</span>
+        …
+    <span style="color: #170;">&lt;/ul</span><span style="color: #170;">&gt;</span>
+<span style="color: #170;">&lt;/div</span><span style="color: #170;">&gt;</span></pre>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.navbar {
+    text-align:center;
+}
+.navbar &gt; ul {
+    display:-webkit-inline-box;
+    display:-moz-inline-box;
+    display:-ms-inline-flexbox;
+    display:-webkit-inline-flex;
+    display:inline-flex;
+}
+.navbar li + li {
+    margin-left:20px;
+}</pre>
+
+<h3 id="使用CSS-fit-content-值"><a href="#使用CSS-fit-content-值" class="headerlink" title="使用CSS fit-content 值"></a>使用CSS fit-content 值</h3><p>下面看看如何用fit-content创建一个包含子元素浮动的未知宽度的导航。</p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">&lt;div</span> <span style="color: #00c;">class</span>=<span style="color: #a11;">“navbar center”</span><span style="color: #170;">&gt;</span><br>    <span style="color: #170;">&lt;ul</span><span style="color: #170;">&gt;</span><br>        <span style="color: #170;">&lt;li</span><span style="color: #170;">&gt;</span><span style="color: #170;">&lt;a</span> <span style="color: #00c;">href</span>=<span style="color: #a11;">“/“</span><span style="color: #170;">&gt;</span>Home<span style="color: #170;">&lt;/a</span><span style="color: #170;">&gt;</span><span style="color: #170;">&lt;/li</span><span style="color: #170;">&gt;</span><br>        <span style="color: #170;">&lt;li</span><span style="color: #170;">&gt;</span><span style="color: #170;">&lt;a</span> <span style="color: #00c;">href</span>=<span style="color: #a11;">“/“</span><span style="color: #170;">&gt;</span>About us<span style="color: #170;">&lt;/a</span><span style="color: #170;">&gt;</span><span style="color: #170;">&lt;/li</span><span style="color: #170;">&gt;</span><br>        <span style="color: #170;">&lt;li</span><span style="color: #170;">&gt;</span><span style="color: #170;">&lt;a</span> <span style="color: #00c;">href</span>=<span style="color: #a11;">“/“</span><span style="color: #170;">&gt;</span>Our products<span style="color: #170;">&lt;/a</span><span style="color: #170;">&gt;</span><span style="color: #170;">&lt;/li</span><span style="color: #170;">&gt;</span><br>        <span style="color: #170;">&lt;li</span><span style="color: #170;">&gt;</span><span style="color: #170;">&lt;a</span> <span style="color: #00c;">href</span>=<span style="color: #a11;">“/“</span><span style="color: #170;">&gt;</span>Customer support<span style="color: #170;">&lt;/a</span><span style="color: #170;">&gt;</span><span style="color: #170;">&lt;/li</span><span style="color: #170;">&gt;</span><br>        <span style="color: #170;">&lt;li</span><span style="color: #170;">&gt;</span><span style="color: #170;">&lt;a</span> <span style="color: #00c;">href</span>=<span style="color: #a11;">“/“</span><span style="color: #170;">&gt;</span>Contact<span style="color: #170;">&lt;/a</span><span style="color: #170;">&gt;</span><span style="color: #170;">&lt;/li</span><span style="color: #170;">&gt;</span><br>    <span style="color: #170;">&lt;/ul</span><span style="color: #170;">&gt;</span><br><span style="color: #170;">&lt;/div</span><span style="color: #170;">&gt;</span></pre></p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">center</span> <span style="color: #170;">ul</span>{<br>    <span style="color: #000;">width</span>: <span style="color: #164;">-moz-fit-content</span>;<br>    <span style="color: #000;">width</span>: <span style="color: #164;">-webkit-fit-content</span>;<br>    <span style="color: #000;">width</span>: <span style="color: #164;">fit-content</span>;<br>    <span style="color: #000;">margin</span>: <span style="color: #164;">auto</span>;<br>}</pre><br>浏览器支持度较低 只Chrome和Firefox这样的-webkit- -moz-内核浏览器。当然以后慢慢会发展起来的。<br>这个方式是推动浏览器发展的一个新的东西，目前供应于所以可以写前缀的浏览器，并没有工作在IE9和IE9以下。</p>
+<p>根据你的需求来选择合适的方法吧，display:inline-block兼容性较好，flex-box将会用于未来。</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-ie-haslayout-e7-9a-84-e9-97-ae-e9-a2-98-e6-80-bb-e7-bb-93" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2013-03-07-ie-haslayout-e7-9a-84-e9-97-ae-e9-a2-98-e6-80-bb-e7-bb-93.html" class="article-date">
+      <time datetime="2013-03-07T10:12:07.000Z" itemprop="datePublished">2013-03-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2013-03-07-ie-haslayout-e7-9a-84-e9-97-ae-e9-a2-98-e6-80-bb-e7-bb-93.html">IE hasLayout的问题总结</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong>介绍 </strong></p>
+<p>这篇文章是一个总结haslayout的文章。</p>
+<p><strong>更新：haslayout在ie8的标准模式下已经被废弃了，但是在ie7的兼容版本以及以下的版本是仍然存在的。</strong></p>
+<p><strong>什么是haslayout？ </strong></p>
+<p>MSIE  有一个很早很早，过时的渲染引擎 <a href="http://en.wikipedia.org/wiki/Mosaic_web_browser" title="Mosaic Web Browser Wiki" target="_blank" rel="external">Mosai</a>c . 在表格布局的时代。几乎是所有的元素（除了内联内容）都是一个盒子。内容几乎不可能超过表格的</p>
+<p>单元格。表格的单元格不可能超出表格。</p>
+<p>很多年过去了。微软开始采用<a href="http://en.wikipedia.org/wiki/Trident_(layout_engine" target="_blank" rel="external">Trident</a> “Trident Engine Wiki”) engine 来使用CSS，但是，CSS改变了最初的这个古老引擎的假设（最重要的一点就是任何元素都会包含它的内容）。</p>
+<p>但是CSS允许内容超出元素(就是内容浮动的时候，或者内容太高、宽去适应包含盒子)</p>
+<p><strong>haslayout是怎么来的？</strong></p>
+<p>为了解决这个问题，微软的天才coder决定去修理他们的这个古老的引擎，因此haslayout这个属性就诞生了。每个元素都有haslayout这个属性去设置true</p>
+<p>或者false，如果它设置成了true，它就不得不去渲染它自己，因此元素不得不扩展去包含它的流出的内容。例如浮动或者很长很长的没有截断的单词，如果</p>
+<p>haslayout没有被设置成true，那么元素得依靠某个祖先元素来渲染它。这就是很多的ie bugs诞生的地方。</p>
+<p>haslayout不是一个CSS属性，你不能这样的来设置它 haslayout:true;一个元素被设置成haslayout：true将被渲染成一个 having haslayout，反之。</p>
+<p><strong>那些元素本身就有haslayout属性</strong></p>
+<div>
+
+<ul>
+<li><a href="http://www.w3.org/TR/html401/struct/global.html#edef-HTML" title="HTML 4.01 Specification: `html` element" target="_blank" rel="external"><code>&amp;lt;html&amp;gt;</code></a>, <a href="http://www.w3.org/TR/html401/struct/global.html#edef-BODY" title="HTML 4.01 Specification: `body` element" target="_blank" rel="external"><code>&amp;lt;body&amp;gt;</code></a></li>
+<li><a href="http://www.w3.org/TR/html401/struct/tables.html#edef-TABLE" title="HTML 4.01 Specification: `table` element" target="_blank" rel="external"><code>&amp;lt;table&amp;gt;</code></a>, <a href="http://www.w3.org/TR/html401/struct/tables.html#edef-TR" title="HTML 4.01 Specification: `tr` element" target="_blank" rel="external"><code>&amp;lt;tr&amp;gt;</code></a>, <a href="http://www.w3.org/TR/html401/struct/tables.html#edef-TH" title="HTML 4.01 Specification: `th` element" target="_blank" rel="external"><code>&amp;lt;th&amp;gt;</code></a>, <a href="http://www.w3.org/TR/html401/struct/tables.html#edef-TD" title="HTML 4.01 Specification: `td` element" target="_blank" rel="external"><code>&amp;lt;td&amp;gt;</code></a></li>
+<li><a href="http://www.w3.org/TR/html401/present/frames.html#edef-IFRAME" title="HTML 4.01: Specification: `iframe` element" target="_blank" rel="external"><code>&amp;lt;iframe&amp;gt;</code></a>, <a href="http://alistapart.com/articles/byebyeembed" title="Evading non-standard `embed` element" target="_blank" rel="external"><code>&amp;lt;embed&amp;gt;</code></a> (non-standard element), <a href="http://www.w3.org/TR/html401/struct/objects.html#edef-OBJECT" title="HTML 4.01 Specification: `object` element" target="_blank" rel="external"><code>&amp;lt;object&amp;gt;</code></a>, <a href="http://www.w3.org/TR/html401/struct/objects.html#edef-APPLET" title="HTML 4.01 Specification: `applet` element" target="_blank" rel="external"><code>&amp;lt;applet&amp;gt;</code></a></li>
+<li><a href="http://www.w3.org/TR/html401/struct/objects.html#edef-IMG" title="HTML 4.01 Specification: `img` element" target="_blank" rel="external"><code>&amp;lt;img&amp;gt;</code></a></li>
+<li><a href="http://www.w3.org/TR/html401/present/graphics.html#edef-HR" title="HTML 4.01 Specification: `hr` element" target="_blank" rel="external"><code>&amp;lt;hr&amp;gt;</code></a></li>
+<li><a href="http://www.w3.org/TR/html401/interact/forms.html#edef-INPUT" title="HTML 4.01 Specification: `input` element" target="_blank" rel="external"><code>&amp;lt;input&amp;gt;</code></a>, <a href="http://www.w3.org/TR/html401/interact/forms.html#edef-BUTTON" title="HTML 4.01 Specification: `button` element" target="_blank" rel="external"><code>&amp;lt;button&amp;gt;</code></a>, <a href="http://www.w3.org/TR/html401/interact/forms.html#edef-SELECT" title="HTML 4.01 Specification: `select` element" target="_blank" rel="external"><code>&amp;lt;select&amp;gt;</code></a>, <a href="http://www.w3.org/TR/html401/interact/forms.html#edef-TEXTAREA" title="HTML 4.01 Specification: `textarea` element" target="_blank" rel="external"><code>&amp;lt;textarea&amp;gt;</code></a>, <a href="http://www.w3.org/TR/html401/interact/forms.html#edef-FIELDSET" title="HTML 4.01 Specification: `fieldset` element" target="_blank" rel="external"><code>&amp;lt;fieldset&amp;gt;</code></a>, <a href="http://www.w3.org/TR/html401/interact/forms.html#edef-LEGEND" title="HTML 4.01 Specification: `legend` element" target="_blank" rel="external"><code>&amp;lt;legend&amp;gt;</code></a></li>
+<li><code>&amp;lt;marquee&amp;gt;</code> (don’t ever use this one, non-standard and annoying)<br></li></ul></div><br>这个列表时不完善的。很多元素在微软的官方网站上没有提到，但是有一个方法很容易的测试到一个元素是否有layout，例如下代码：
+
+<p>&lt;div id=”menu”&gt; … &lt;/div&gt;</p>
+<p>为了判断这个div的haslayout属性值，我们可以在浏览器地址栏中输入如下代码：</p>
+<p>javascript:alert(<strong>menu</strong>.currentStyle.hasLayout)</p>
+<p>运行了这个代码之后就会反映出这个div的haslayout的属性值</p>
+<p><strong>如何设置haslayout </strong></p>
+<p>设置haslayout，换句话来说，就是给定一个布局，相对来说比haslayout等于false要简单。</p>
+<p>以下属性和值将给定一个元素布局</p>
+<div>
+
+<ul>
+<li><code>[position](http://w3.org/TR/CSS21/visuren.html#propdef-position &quot;CSS Specification:</code>position<code>property&quot;): absolute</code></li>
+<li><code>[float](http://w3.org/TR/CSS21/visuren.html#propdef-float &quot;CSS Specification:</code>float<code>property&quot;): left</code> or <code>right</code></li>
+<li><code>[display](http://w3.org/TR/CSS21/visuren.html#propdef-display &quot;CSS Specification:</code>display<code>property&quot;): inline-block</code></li>
+<li><a href="http://w3.org/TR/CSS21/visudet.html#propdef-width" title="CSS Specification: `width` property" target="_blank" rel="external"><code>width</code></a>: <em>any</em> value <em>other</em> than <code>auto</code></li>
+<li><a href="http://w3.org/TR/CSS21/visudet.html#propdef-height" title="CSS Specification: `height` property" target="_blank" rel="external"><code>height</code></a>: <em>any</em> value <em>other</em> than <code>auto</code></li>
+<li><code>zoom</code>: <em>any</em> value <em>other</em> than <code>normal</code> (see <a href="http://haslayout.net/haslayout#zoomExplained" title="Skip to description of `zoom` property" target="_blank" rel="external">description</a> below)</li>
+<li><code>writing-mode: tb-rl</code> (see <a href="http://haslayout.net/haslayout#zoomExplained" title="Skip to description of `writing-mode` property" target="_blank" rel="external">description</a> below)</li>
+</ul>
+<p>在ie7中, 也有一些属性 give “layout”:</p>
+<ul>
+<li><code>[overflow](http://w3.org/TR/CSS21/visufx.html#propdef-overflow &quot;CSS Specification:</code>overflow<code>property&quot;): hidden</code> or <code>scroll</code> or <code>auto</code></li>
+<li><code>[overflow-x](http://www.w3.org/TR/css3-box/#overflow-x &quot;CSS3 Technical Report:</code>overflow-x<code>property&quot;): hidden</code> or <code>scroll</code> or <code>auto</code></li>
+<li><code>[overflow-y](http://www.w3.org/TR/css3-box/#overflow-y &quot;CSS3 Technical Report:</code>oveflow-y<code>property&quot;): hidden</code> or <code>scroll</code> or <code>auto</code></li>
+<li><a href="http://w3.org/TR/CSS21/visudet.html#propdef-min-width" title="CSS Specification: `min-width` property" target="_blank" rel="external"><code>min-width</code></a>: <em>any</em> value <em>other</em> than <code>auto</code></li>
+<li><a href="http://w3.org/TR/CSS21/visudet.html#propdef-max-width" title="CSS Specification: `max-width` property" target="_blank" rel="external"><code>max-width</code></a>: <em>any</em> value <em>other</em> than <code>auto</code></li>
+<li><a href="http://w3.org/TR/CSS21/visudet.html#propdef-min-height" title="CSS Specification: `min-height` property" target="_blank" rel="external"><code>min-height</code></a>: <em>any</em> value <em>other</em> than <code>auto</code></li>
+<li><a href="http://w3.org/TR/CSS21/visudet.html#propdef-max-height" title="CSS Specification: `max-height` property" target="_blank" rel="external"><code>max-height</code></a>: <em>any</em> value <em>other</em> than <code>auto</code><br></li></ul></div><br>在ie8的标准模式中，微软已经废弃了haslayout属性了，但是在ie7的兼容模式中，仍然存在着这个属性。
+
+<p>你可能对zoom 和write-mode这2个属性不太熟悉，他们都是微软的扩展属性。他们仅仅在ie中有效并且将来可能无效，因此我建议你把他们放入condcoms</p>
+<p>write-mode属性在css3技术文档中已经出现了。zoom可能被提议，但是目前还没有。</p>
+<p>zoom：1作者认为是最好的触发haslayout属性的组合，因为它对房前元素没有一点影响。</p>
+<p>write-mode 就是字体排版布局的方式。</p>
+<p>设置display：inline-block没有移除布局，这个技巧可以给元素设置成haslayout：true；</p>
+<p>它相当于</p>
+<p>div { display: inline-block; } div { display: block; }</p>
+<p><span style="color: #29170d; font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;">设置</span>contenteditable也给一个元素设置成了haslayout：true。例如：&lt;p contenteditable=”true”&gt;so lame&lt;/p&gt;</p>
+<p>你可能从来不用它来设置haslayout：true，写在这里只是为了一个信息的目的。不仅contenteditable是微软的一个属性，而且他还可以允许用户</p>
+<p>编译元素的内容。这点有可能使用户困惑。</p>
+<p>hasLayout 是一个可读的属性，不能通过js来修改它。</p>
+<p><strong>我恨它 </strong></p>
+<p>这听起来挺好的直到你碰到了一个bug并且把haslayout设置成true来解决。由于haslayout是可读的，所以不可能把它设置成一个false。幸运的</p>
+<p>是，ie的很多bug都是由于元素没有设置成haslayout：true。</p>
+<p><strong>bug </strong></p>
+<p>在我的经验中，ie下的80% 的bug都是由于元素没有haslayout</p>
+<p><abbr title="Internet Explorer">IE</abbr> hasLayout bugs经常出现各种很奇怪的问题，如果ie有些很难解释的问题，第一件事情要做的就是给该元素一个layout。</p>
+<p>———END———-</p>
+<p>&nbsp;</p>
+<p><strong>本文原文地址：</strong><a href="http://www.cnblogs.com/yupeng/archive/2011/04/11/2012996.html" target="_blank" rel="external">http://www.cnblogs.com/yupeng/archive/2011/04/11/2012996.html</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-php-e5-87-bd-e6-95-b0-e7-9a-84-e5-ae-9e-e7-8e-b0-e5-8e-9f-e7-90-86-e5-8f-8a-e6-80-a7-e8-83-bd-e5-88-86-e6-9e-90" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2013-02-22-php-e5-87-bd-e6-95-b0-e7-9a-84-e5-ae-9e-e7-8e-b0-e5-8e-9f-e7-90-86-e5-8f-8a-e6-80-a7-e8-83-bd-e5-88-86-e6-9e-90.html" class="article-date">
+      <time datetime="2013-02-22T03:40:27.000Z" itemprop="datePublished">2013-02-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2013-02-22-php-e5-87-bd-e6-95-b0-e7-9a-84-e5-ae-9e-e7-8e-b0-e5-8e-9f-e7-90-86-e5-8f-8a-e6-80-a7-e8-83-bd-e5-88-86-e6-9e-90.html">PHP函数的实现原理及性能分析</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在任何语言中，函数都是最基本的组成单元。对于php的函数，它具有哪些特点？函数调用是怎么实现的？php函数的性能如何，有什么使用建议？本文将从原理出发进行分析结合实际的性能测试尝试对这些问题进行回答，在了解实现的同时更好的编写php程序。同时也会对一些常见的php函数进行介绍。</p>
+<h2 id="php函数的分类"><a href="#php函数的分类" class="headerlink" title="php函数的分类"></a><a name="php函数的分类"></a>php函数的分类</h2><p>在php中，横向划分的话，函数分为两大类： user function(内置函数) 和internal function（内置函数）。前者就是用户在程序中自定义的一些函数和方法，后者则是php本身提供的各类库函数（比如sprintf、array_push等）。用户也可以通过扩展的方法来编写库函数，这个将在后面介绍。对于user function，又可以细分为function（<a href="http://phpe.net/tag/%e5%87%bd%e6%95%b0/" title="标签 函数 下的日志" target="_blank" rel="external">函数</a>）和method（类方法），本文中将就这三种函数分别进行分析和测试。</p>
+<h2 id="php函数的实现"><a href="#php函数的实现" class="headerlink" title="php函数的实现"></a><a name="php函数的实现"></a>php函数的实现</h2><p>一个php函数最终是如何执行，这个流程是怎么样的呢？</p>
+<p>要回答这个问题，我们先来看看php代码的执行所经过的流程。</p>
+<p><a href="wp-content/uploads/2013/02/1.jpg"><img src="wp-content/uploads/2013/02/1.jpg" alt="php函数的实现" title="php函数的实现"></a></p>
+<p>从图1可以看到，php实现了一个典型的动态语言执行过程：拿到一段代码后，经过词法解析、语法解析等阶段后，源程序会被翻译成一个个指令(opcodes)，然后ZEND虚拟机顺次执行这些指令完成操作。Php本身是用c实现的，因此最终调用的也都是c的函数，实际上，我们可以把php看做是一个c开发的软件。</p>
+<p>通过上面描述不难看出，php中函数的执行也是被翻译成了opcodes来调用，每次函数调用实际上是执行了一条或多条指令。</p>
+<p>对于每一个函数，zend都通过以下的数据结构来描述</p>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #555;">&lt;?php</span>
+<span style="color: #@cm-word;">typedef</span> <span style="color: #@cm-word;">union</span> <span style="color: #@cm-word;">_zend_function</span> {
+    <span style="color: #@cm-word;">zend_uchar</span> <span style="color: #@cm-word;">type</span>;    <span style="color: #a50;">/* MUST be the first element of this struct! */</span>
+    <span style="color: #@cm-word;">struct</span> {
+        <span style="color: #@cm-word;">zend_uchar</span> <span style="color: #@cm-word;">type</span>;  <span style="color: #a50;">/* never used */</span>
+        <span style="color: #@cm-word;">char</span> <span style="color: #000;">*</span><span style="color: #@cm-word;">function_name</span>;
+        <span style="color: #@cm-word;">zend_class_entry</span> <span style="color: #000;">*</span><span style="color: #@cm-word;">scope</span>;
+        <span style="color: #@cm-word;">zend_uint</span> <span style="color: #@cm-word;">fn_flags</span>;
+        <span style="color: #@cm-word;">union</span> <span style="color: #@cm-word;">_zend_function</span> <span style="color: #000;">*</span><span style="color: #@cm-word;">prototype</span>;
+        <span style="color: #@cm-word;">zend_uint</span> <span style="color: #@cm-word;">num_args</span>;
+        <span style="color: #@cm-word;">zend_uint</span> <span style="color: #@cm-word;">required_num_args</span>;
+        <span style="color: #@cm-word;">zend_arg_info</span> <span style="color: #000;">*</span><span style="color: #@cm-word;">arg_info</span>;
+        <span style="color: #@cm-word;">zend_bool</span> <span style="color: #@cm-word;">pass_rest_by_reference</span>;
+        <span style="color: #@cm-word;">unsigned</span> <span style="color: #@cm-word;">char</span> <span style="color: #@cm-word;">return_reference</span>;
+    } <span style="color: #@cm-word;">common</span>;
+
+    <span style="color: #@cm-word;">zend_op_array</span> <span style="color: #@cm-word;">op_array</span>;
+    <span style="color: #@cm-word;">zend_internal_function</span> <span style="color: #@cm-word;">internal_function</span>;
+} <span style="color: #@cm-word;">zend_function</span>;
+
+<span style="color: #@cm-word;">typedef</span> <span style="color: #@cm-word;">struct</span> <span style="color: #@cm-word;">_zend_function_state</span> {
+    <span style="color: #@cm-word;">HashTable</span> <span style="color: #000;">*</span><span style="color: #@cm-word;">function_symbol_table</span>;
+    <span style="color: #@cm-word;">zend_function</span> <span style="color: #000;">*</span><span style="color: #708;">function</span>;
+    <span style="color: #@cm-word;">void</span> <span style="color: #000;">*</span><span style="color: #@cm-word;">reserved</span>[<span style="color: #@cm-word;">ZEND_MAX_RESERVED_RESOURCES</span>];
+} <span style="color: #@cm-word;">zend_function_state</span>;
+ <span style="color: #555;">?&gt;</span></pre>
+<pre>其中type标明了函数的类型：用户函数、内置函数、重载函数。Common中包含函数的基本信息，包括函数名，</pre>
+<pre>参数信息，函数标志（普通函数、静态方法、抽象方法）等内容。另外，对于用户函数，还有一个函数符号表，</pre>
+<pre>记录了内部变量等，这个将在后面详述。 Zend维护了一个全局function_table，这是一个大的hahs表。</pre>
+<pre>函数调用的时候会首先根据函数名从表中找到对应的zend_function。当进行函数调用时候，虚拟机会</pre>
+<pre>根据type的不同决定调用方法， 不同类型的函数，其执行原理是不相同的 。</pre>
+
+<h3 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a><a name="内置函数"></a>内置函数</h3><p>内置函数，其本质上就是真正的c函数，每一个内置函数，php在最终编译后都会展开成为一个名叫zif_xxxx的function，比如我们常见的sprintf，对应到底层就是zif_sprintf。Zend在执行的时候，如果发现是内置函数，则只是简单的做一个转发操作。</p>
+<p>Zend提供了一系列的api供调用，包括参数获取、数组操作、内存分配等。内置函数的参数获取，通过zend_parse_parameters方法来实现，对于数组、字符串等参数，zend实现的是浅拷贝，因此这个效率是很高的。可以这样说，对于php内置函数，其效率和相应c函数几乎相同，唯一多了一次转发调用。</p>
+<p>内置函数在php中都是通过so的方式进行动态加载，用户也可以根据需要自己编写相应的so，也就是我们常说的扩展。ZEND提供了一系列的api供扩展使用</p>
+<h3 id="用户函数"><a href="#用户函数" class="headerlink" title="用户函数"></a><a name="用户函数"></a>用户函数</h3><p>和内置函数相比，用户通过php实现的自定义函数具有完全不同的执行过程和实现原理。如前文所述，我们知道php代码是被翻译成为了一条条opcode来执行的，用户函数也不例外，实际中每个函数对应到一组opcode，这组指令被保存在zend_function中。于是，用户函数的调用最终就是对应到一组opcodes的执行。</p>
+<ul>
+<li>局部变量的保存及递归的实现我们知道，函数递归是通过堆栈来完成的。在php中，也是利用类似的方法来实现。Zend为每个php函数分配了一个活动符号表(active_sym_table)，记录当前函数中所有局部变量的状态。所有的符号表通过堆栈的形式来维护，每当有函数调用的时候，分配一个新的符号表并入栈。当调用结束后当前符号表出栈。由此实现了状态的保存和递归。<br>对于栈的维护，zend在这里做了优化。预先分配一个长度为N的静态数组来模拟堆栈，这种通过静态数组来模拟动态数据结构的手法在我们自己的程序中也经常有使用，这种方式避免了每次调用带来的内存分配、销毁。ZEND只是在函数调用结束时将当前栈顶的符号表数据clean掉即可。</li>
+</ul>
+<p>因为静态数组长度为N，一旦函数调用层次超过N，程序不会出现栈溢出，这种情况下zend就会进行符号表的分配、销毁，因此会导致性能下降很多。在zend里面，N目前取值是32。因此，我们编写php程序的时候，函数调用层次最好不要超过32。当然，如果是web应用，本身可以函数调用层次的深度。</p>
+<ul>
+<li>参数的传递和内置函数调用zend_parse_params来获取参数不同，用户函数中参数的获取是通过指令来完成的。函数有几个参数就对应几条指令。具体到实现上就是普通的变量赋值。通过上面的分析可以看出，和内置函数相比，由于是自己维护堆栈表，而且每条指令的执行也是一个c函数，用户函数的性能相对会差很多，后面会有具体的对比分析。因此，如果一个功能有对应php内置函数实现的尽量不要自己重新写函数去实现。</li>
+</ul>
+<h3 id="类方法"><a href="#类方法" class="headerlink" title="类方法"></a><a name="类方法"></a>类方法</h3><p>类方法其执行原理和用户函数是相同的，也是翻译成opcodes顺次调用。类的实现，zend用一个数据结构zend_class_entry来实现，里面保存了类相关的一些基本信息。这个entry是在php编译的时候就已经处理完成。</p>
+<p>在zend_function的common中，有一个成员叫做scope，其指向的就是当前方法对应类的zend_class_entry。关于php中面向对象的实现，这里就不在做更详细的介绍，今后将专门写一篇文章来详述php中面向对象的实现原理。就函数这一块来说，method实现原理和function完全相同，理论上其性能也差不多，后面我们将做详细的性能对比。</p>
+<h2 id="性能对比"><a href="#性能对比" class="headerlink" title="性能对比"></a>性能对比</h2><h3 id="函数名长度对性能的影响"><a href="#函数名长度对性能的影响" class="headerlink" title="函数名长度对性能的影响"></a><a name="函数名长度对性能的影响"></a>函数名长度对性能的影响</h3><ul>
+<li><p>测试方法对名字长度为1、2、4、8、16的函数进行比较，测试比较它们每秒可执行次数，确定函数名长度对性能的影响</p>
+</li>
+<li><p>测试结果如下图<a href="wp-content/uploads/2013/02/2.jpg"><img src="wp-content/uploads/2013/02/2.jpg" alt="函数名长度对性能的影响" title="函数名长度对性能的影响"></a></p>
+</li>
+<li><p>结果分析从图上可以看出，函数名的长度对性能还是会有一定的影响。一个长度为1的函数和长度为16的 <strong>空函数调用</strong> ，其性能差了1倍。分析一下源码不难找到原因，如前面叙述所说，函数调用的时候zend会先在一个全局的funtion_table中通过函数名查询相关信息，function_table是一个哈希表。必然的，名字越长查询所需要的时间就越多。 <strong>因此，在实际编写程序的时候，对多次调用的函数，名字建议不要太长</strong><br>虽然函数名长度对性能有一定影响，但具体有多大呢？这个问题应该还是需要结合实际情况来考虑，如果一个函数本身比较复杂的话，那么对整体的性能影响并不大。</p>
+</li>
+</ul>
+<p>一个建议是对于那些会调用很多次，本身功能又比较简单的函数，可以适当取一些言简意赅的名字。</p>
+<h3 id="函数个数对性能的影响"><a href="#函数个数对性能的影响" class="headerlink" title="函数个数对性能的影响"></a><a name="函数个数对性能的影响"></a>函数个数对性能的影响</h3><ul>
+<li><p>测试方法在以下三种环境下进行函数调用测试，分析结果：1.程序仅包含1个函数 2.程序包含100个函数 3.程序包含1000个函数。测试这三种情况下每秒所能调用的函数次数</p>
+</li>
+<li><p>测试结果如下图<a href="wp-content/uploads/2013/02/3.jpg"><img src="wp-content/uploads/2013/02/3.jpg" alt="函数名长度对性能的影响" title="函数名长度对性能的影响"></a></p>
+</li>
+<li><p>结果分析从测试结果可以看出，这三种情况下性能几乎相同，函数个数增加时性能下降微乎其微，可以忽略。从实现原理分析，几种实现下唯一的区别在于函数获取的部分。如前文所述，所有的函数都放在一个hash表中，在不同个数下查找效率都应该还是接近于O(1)，所以性能差距不大。</p>
+</li>
+</ul>
+<h3 id="不同类型函数调用消耗"><a href="#不同类型函数调用消耗" class="headerlink" title="不同类型函数调用消耗"></a><a name="不同类型函数调用消耗"></a>不同类型函数调用消耗</h3><ul>
+<li><p>测试方法选取用户函数、类方法、静态方法、内置函数各一种，函数本身不做任何事情，直接返回，主要测试空函数调用的消耗。测试结果为每秒可执行次数测试中为去除其他影响，所有函数名字长度相同</p>
+</li>
+<li><p>测试结果如下图<a href="wp-content/uploads/2013/02/4.jpg"><img src="wp-content/uploads/2013/02/4.jpg" alt="不同类型函数调用消耗" title="不同类型函数调用消耗"></a></p>
+</li>
+<li><p>结果分析通过测试结果可以看到，对于用户自己编写的php函数，不管是哪种类型，其效率是差不多的，均在280w/s左右。如我们预期，即使是空调，内置函数其效率也要高很多，达到780w/s，是前者是3倍。可见，内置函数调用的开销还是远低于用户函数。从前面原理分析可知主要差距在于用户函数调用时初始化符号表、接收参数等操作。</p>
+</li>
+</ul>
+<h3 id="内置函数和用户函数性能对比"><a href="#内置函数和用户函数性能对比" class="headerlink" title="内置函数和用户函数性能对比"></a><a name="内置函数和用户函数性能对比"></a>内置函数和用户函数性能对比</h3><ul>
+<li><p>测试方法内置函数和用户函数的性能对比，这里我们选取几个常用的函数，然后用php实现相同功能的函数进行一下性能对比。测试中，我们选取字符串、数学、数组中各一个典型进行对比，这几个函数分别是字符串截取(substr)、10进制转2进制(decbin)、求最小值(min)和返回数组中的所以key(array_keys)。</p>
+</li>
+<li><p>测试结果如下图<a href="wp-content/uploads/2013/02/5.jpg"><img src="wp-content/uploads/2013/02/5.jpg" alt="内置函数和用户函数性能对比" title="内置函数和用户函数性能对比"></a></p>
+</li>
+<li><p>结果分析从测试结果可以看出，如我们预期，内置函数在总体性能上远高于普通用户函数。尤其对于涉及到字符串类操作的函数，差距达到了1个数量级。因此，函数使用的一个原则就是如果某功能有相应的内置函数，尽量使用它而不是自己编写php函数。对于一些涉及到大量字符串操作的功能，为提高性能，可以考虑用扩展来实现。比如常见的富文本过滤等。</p>
+</li>
+</ul>
+<h3 id="和C函数性能对比"><a href="#和C函数性能对比" class="headerlink" title="和C函数性能对比"></a><a name="和C函数性能对比"></a>和C函数性能对比</h3><ul>
+<li>测试方法我们选取字符串操作和算术运算各3种函数进行比对，php用扩展实现。三种函数是简单的一次算法运算、字符串比较和多次的算法运算。除了本身的两类函数外，还会测试将函数空调开销去掉后的性能，一方面比对一下两种函数（c和php内置）本身的性能差异，另外就是侧面印证空调函数的消耗</li>
+</ul>
+<p>测试点为执行10w次操作的时间消耗</p>
+<ul>
+<li><p>测试结果如下图<a href="wp-content/uploads/2013/02/6.jpg"><img src="wp-content/uploads/2013/02/6.jpg" alt="和C函数性能对比" title="和C函数性能对比"></a></p>
+</li>
+<li><p>结果分析内置函数和C函数的开销在去掉php函数空调用的影响后差距较小，随着函数功能越来越复杂，双方性能趋近于相同。这个从之前的函数实现分析中也容易得到论证，毕竟内置函数就是C实现的。函数功能越复杂，c和php的性能差距越小</p>
+</li>
+</ul>
+<p>相对c来说，php函数调用的开销大很多，对于简单函数来说性能还是有一定影响。因此php中函数不宜嵌套封装太深。</p>
+<h2 id="伪函数及其性能"><a href="#伪函数及其性能" class="headerlink" title="伪函数及其性能"></a><a name="伪函数及其性能"></a>伪函数及其性能</h2><p>在php中，有这样一些函数，它们在使用上是标准的函数用法，但底层实现却和真正函数调用完全不同，这些函数不属于前文提到的三种function中的任何一类，其实质是一条单独的opcode，这里估且叫做伪函数或者指令函数。</p>
+<p>如上所说，伪函数使用起来和标准的函数并无二致，看起来具有相同的特征。但是他们最终执行的时候是被zend反映成了一条对应的指令（opcode）来调用，因此其实现更接近于if、for、算术运算等操作。</p>
+<ul>
+<li>php中的伪函数issetempty</li>
+</ul>
+<p>unset</p>
+<p>eval<br>通过上面的介绍可以看出，伪函数由于被直接翻译成指令来执行，和普通函数相比少了一次函数调用所带来的开销，因此性能会更好一些。我们通过如下测试来做一个对比。 Array_key_exists和isset两者都可以判断数组中某个key是否存在，看一下他们的性能</p>
+<p><a href="wp-content/uploads/2013/02/7.jpg"><img src="wp-content/uploads/2013/02/7.jpg" alt="伪函数及其性能" title="伪函数及其性能"></a></p>
+<p>从图上可以看出，和array_key_exists相比，isset性能要高出很多，基本是前者的4倍左右，而即使是和空函数调用相比，其性能也要高出1倍左右。由此也侧面印证再次说明了php函数调用的开销还是比较大的。</p>
+<h2 id="常用php函数实现及介绍"><a href="#常用php函数实现及介绍" class="headerlink" title="常用php函数实现及介绍"></a><a name="常用php函数实现及介绍"></a>常用php函数实现及介绍</h2><h3 id="count"><a href="#count" class="headerlink" title="count"></a><a name="count"></a>count</h3><p>count是我们经常用到的一个函数，其功能是返回一个数组的长度。</p>
+<p>count这个函数，其复杂度是多少呢？</p>
+<p>一种常见的说法是count函数会遍历整个数组然后求出元素个数，因此复杂度是O(n)。那实际情况是不是这样呢？</p>
+<p>我们回到count的实现来看一下，通过源码可以发现，对于数组的count操作，函数最终的路径是zif_count-&gt; <a href="http://phpe.net/tag/php/" title="标签 php 下的日志" target="_blank" rel="external">php</a>_count_recursive-&gt; zend_hash_num_elements，而zend_hash_num_elements的行为是 return ht-&gt;nNumOfElements，可见，这是一个O(1)而不是O(n)的操作。实际上，数组在php底层就是一个hash_table，对于hash表，zend中专门有一个元素nNumOfElements记录了当前元素的个数，因此对于一般的count实际上直接就返回了这个值。由此，我们得出结论： <strong>count是O(1)的复杂度，和具体数组的大小无关。</strong></p>
+<p>非数组类型的变量，count的行为时怎样？</p>
+<p>对于未设置变量返回0，而像int、double、string等则会返回1</p>
+<h3 id="strlen"><a href="#strlen" class="headerlink" title="strlen"></a><a name="strlen"></a>strlen</h3><p>Strlen用于返回一个字符串的长度。那么，他的实现原理是如何的呢？</p>
+<p>我们都知道在c中strlen是一个o(n)的函数，会顺序遍历字符串直到遇到\0，然后出长度。Php中是否也这样呢？答案是否定的，php里字符串是用一个复合结构来描述，包括指向具体数据的指针和字符串长度（和c++中string类似），因此strlen就直接返回字符串长度了，是常数级别的操作。</p>
+<p>另外，对于非字符串类型的变量调用strlen，它会首先将变量强制转换为字符串再求长度，这点需要注意。</p>
+<h3 id="isset和array-key-exists"><a href="#isset和array-key-exists" class="headerlink" title="isset和array_key_exists"></a><a name="isset和array_key_exists"></a>isset和array_key_exists</h3><p>这两个函数最常见的用法都是判断一个key是否在数组中存在。但是前者还可以用于判断一个变量是否被设置过。</p>
+<p>如前文所述，isset并非真正的函数，因此它的效率会比后者高很多。推荐用它代替array_key_exists。</p>
+<h3 id="array-push和array"><a href="#array-push和array" class="headerlink" title="array_push和array[]"></a><a name="array_push和array[]"></a>array_push和array[]</h3><p>两者都是往数组尾部追加一个元素。不同的是前者可以一次push多个。他们最大的区别在于一个是函数一个是语言结构，因此后者效率要更高。因此如果只是普通的追加元素，建议使用array []。</p>
+<h3 id="rand和mt-rand"><a href="#rand和mt-rand" class="headerlink" title="rand和mt_rand"></a><a name="rand和mt_rand"></a>rand和mt_rand</h3><p>两者都是提供产生随机数的功能，前者使用libc标准的rand。后者用了 Mersenne Twister 中已知的特性作为随机数发生器，它可以产生随机数值的平均速度比 libc 提供的 rand() 快四倍。因此如果对性能要求较高，可以考虑用mt_rand代替前者。</p>
+<p>我们都知道，rand产生的是伪随机数，在C中需要用srand显示指定种子。但是在php中，rand会自己帮你默认调用一次srand，一般情况下不需要自己再显示的调用。</p>
+<p>需要注意的是，如果特殊情况下需要调用srand时，一定要配套调用。就是说srand对于rand，mt_srand对应srand，切不可混合使用，否则是无效的。</p>
+<h3 id="sort和usort"><a href="#sort和usort" class="headerlink" title="sort和usort"></a><a name="sort和usort"></a>sort和usort</h3><p>两者都是用于排序，不同的是前者可以指定排序策略，类似我们C里面的qsort和C++的sort。</p>
+<p>在排序上两者都是采用标准的快排来实现，对于有排序需求的，如非特殊情况调用php提供的这些方法就可以了，不用自己重新实现一遍，效率会低很多。原因见前文对于用户函数和内置函数的分析比对。</p>
+<h3 id="urlencode和rawurlencode"><a href="#urlencode和rawurlencode" class="headerlink" title="urlencode和rawurlencode"></a><a name="urlencode和rawurlencode"></a>urlencode和rawurlencode</h3><p>这两个都是用于url编码， 字符串中除了 -_. 之外的所有非字母数字字符都将被替换成百分号（%）后跟两位十六进制数。两者唯一的区别在于对于空格，urlencode会编码为+，而rawurlencode会编码为%20。</p>
+<p>一般情况下除了搜索引擎，我们的策略都是空格编码为%20。因此采用后者的居多。</p>
+<p>注意的是encode和decode系列一定要配套使用。</p>
+<h3 id="strcmp系列函数"><a href="#strcmp系列函数" class="headerlink" title="strcmp系列函数"></a><a name="strcmp系列函数"></a>strcmp系列函数</h3><p>这一系列的函数包括strcmp、strncmp、strcasecmp、strncasecmp，实现功能和C函数相同。但也有不同，由于php的字符串是允许\0出现，因此在判断的时候底层使用的是memcmp系列而非strcmp，理论上来说更快。</p>
+<p>另外由于php直接能获取到字符串长度，因此会首先这方面的检查，很多情况下效率就会高很多了。</p>
+<h3 id="is-int和is-numeric"><a href="#is-int和is-numeric" class="headerlink" title="is_int和is_numeric"></a><a name="is_int和is_numeric"></a>is_int和is_numeric</h3><p>这两个函数功能相似又不完全相同，使用的时候一定需要注意他们的区别。</p>
+<p>Is_int：判断一个变量类型是否是整数型，php变量中专门有一个字段表征类型，因此直接判断这个类型即可，是一个绝对O(1)的操作</p>
+<p>Is_numeric：判断一个变量是否是整数或数字字符串，也就是说除了整数型变量会返回true之外，对于字符串变量，如果形如”1234”，”1e4”等也会被判为true。这个时候会遍历字符串进行判断。</p>
+<h2 id="总结及建议"><a href="#总结及建议" class="headerlink" title="总结及建议"></a><a name="总结及建议"></a>总结及建议</h2><p><strong>通过对函数实现的原理分析和性能测试，我们总结出以下一些结论</strong></p>
+<p>1． Php的函数调用开销相对较大。</p>
+<p>2． 函数相关信息保存在一个大的hash_table中，每次调用时通过函数名在hash表中查找，因此函数名长度对性能也有一定影响。</p>
+<p>3． 函数返回引用没有实际意义</p>
+<p>4． 内置php函数性能比用户函数高很多，尤其对于字符串类操作。</p>
+<p>5． 类方法、普通函数、静态方法效率几乎相同，没有太大差异</p>
+<p>6． 除去空函数调用的影响，内置函数和同样功能的C函数性能基本差不多。</p>
+<p>7． 所有的参数传递都是采用引用计数的浅拷贝，代价很小。</p>
+<p>8． 函数个数对性能影响几乎可以忽略</p>
+<p><strong>因此，对于php函数的使用，有如下一些建议</strong></p>
+<p>1． 一个功能可以用内置函数完成，尽量使用它而不是自己编写php函数。</p>
+<p>2． 如果某个功能对性能要求很高，可以考虑用扩展来实现。</p>
+<p>3． Php函数调用开销较大，因此不要过分封装。有些功能，如果需要调用的次数很多本身又只用1、2行代码就行实现的，建议就不要封装调用了。</p>
+<p>4． 不要过分迷恋各种设计模式，如上一条描述，过分的封装会带来性能的下降。需要考虑两者的权衡。Php有自己的特点，切不可东施效颦，过分效仿java的模式。</p>
+<p>5． 函数不宜嵌套过深，递归使用要谨慎。</p>
+<p>6． 伪函数性能很高，同等功能实现下优先考虑。比如用isset代替array_key_exists</p>
+<p>7． 函数返回引用没有太大意义，也起不到实际作用，建议不予考虑。</p>
+<p>8． 类成员方法效率不比普通函数低，因此不用担心性能损耗。建议多考虑静态方法，可读性及安全性都更好。</p>
+<p>9． 如不是特殊需要，参数传递都建议使用传值而不是传引用。当然，如果参数是很大的数组且需要修改时可以考虑引用传递。</p>
+<h4 id="转载出处：http-www-cnblogs-com-ghj1976-archive-2010-08-27-1809766-html"><a href="#转载出处：http-www-cnblogs-com-ghj1976-archive-2010-08-27-1809766-html" class="headerlink" title="转载出处：http://www.cnblogs.com/ghj1976/archive/2010/08/27/1809766.html"></a>转载出处：<a href="http://www.cnblogs.com/ghj1976/archive/2010/08/27/1809766.html" target="_blank" rel="external">http://www.cnblogs.com/ghj1976/archive/2010/08/27/1809766.html</a></h4>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-e7-ba-afcss-e5-9b-be-e6-a0-87-e9-9b-86-e5-90-84-e6-b5-8f-e8-a7-88-e5-99-a8-e4-b8-8b-e6-95-88-e6-9e-9c-e8-89-af-e5-a5-bd-e7-9a-84" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2013-02-06-e7-ba-afcss-e5-9b-be-e6-a0-87-e9-9b-86-e5-90-84-e6-b5-8f-e8-a7-88-e5-99-a8-e4-b8-8b-e6-95-88-e6-9e-9c-e8-89-af-e5-a5-bd-e7-9a-84.html" class="article-date">
+      <time datetime="2013-02-06T03:42:05.000Z" itemprop="datePublished">2013-02-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2013-02-06-e7-ba-afcss-e5-9b-be-e6-a0-87-e9-9b-86-e5-90-84-e6-b5-8f-e8-a7-88-e5-99-a8-e4-b8-8b-e6-95-88-e6-9e-9c-e8-89-af-e5-a5-bd-e7-9a-84.html">纯CSS图标集(各浏览器下效果良好的)</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>这里分享一个纯css图标集。使用纯css图标可以尽可能减少http请求，不需要任何图片。这里包含多个16*16尺寸的图标。当然更多尺寸的图标可以通过修改css代码来实现。</p>
+<p>如果你需要使用图标，而又不想用图片，而恰好这套图标的风格接近，那么偷懒一下吧！源码去下面的Demo里面拿吧！</p>
+<p><strong>现代浏览器下效果：</strong></p>
+<p><img src="wp-content/uploads/2013/02/icon-peculiar.png" alt="" title="icon-peculiar"></p>
+<p><strong>IE7、IE6等浏览器下效果：</strong></p>
+<p><img src="wp-content/uploads/2013/02/icon-peculiar-ie6.png" alt="" title="icon-peculiar-ie6"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-e8-85-be-e8-ae-aftgideas-e6-8b-9b-e8-81-98-e9-ab-98-e7-ba-a7-e8-a7-86-e8-a7-89-e8-ae-be-e8-ae-a1-e5-b8-88-e3-80-81-e9-ab-98-e7-ba-a7-e9-87-8d-e6-9e-84-e5-b7-a5-e7-a8-8b-e5-b8-88" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2013-01-08-e8-85-be-e8-ae-aftgideas-e6-8b-9b-e8-81-98-e9-ab-98-e7-ba-a7-e8-a7-86-e8-a7-89-e8-ae-be-e8-ae-a1-e5-b8-88-e3-80-81-e9-ab-98-e7-ba-a7-e9-87-8d-e6-9e-84-e5-b7-a5-e7-a8-8b-e5-b8-88.html" class="article-date">
+      <time datetime="2013-01-08T03:56:27.000Z" itemprop="datePublished">2013-01-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2013-01-08-e8-85-be-e8-ae-aftgideas-e6-8b-9b-e8-81-98-e9-ab-98-e7-ba-a7-e8-a7-86-e8-a7-89-e8-ae-be-e8-ae-a1-e5-b8-88-e3-80-81-e9-ab-98-e7-ba-a7-e9-87-8d-e6-9e-84-e5-b7-a5-e7-a8-8b-e5-b8-88.html">腾讯TGideas招聘高级视觉设计师、高级重构工程师</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id=""><a href="#" class="headerlink" title=""></a><img src="wp-content/uploads/2013/01/TGideas-job-2013.jpg" alt=""></h2><div>你一手的好技法，却寻不着空间施展？</div><br><div>你满脑的妙点子，却找不到项目释放？</div><br><div>你浑身的游戏细菌，却碰不上神级队友结伴疯狂？</div><br><div>这里！TGideas！激情放纵的工作环境，热血恣肆的玩乐天堂，我们用多门类的专业人才已为你搭建好最专注的创作平台！</div><br><div>2013年，数款年度游戏巨作，诸多发展机会，只差设计强人！</div>
+
+<h3 id="招聘岗位：高级视觉设计师（5名）"><a href="#招聘岗位：高级视觉设计师（5名）" class="headerlink" title="招聘岗位：高级视觉设计师（5名）"></a>招聘岗位：高级视觉设计师（5名）</h3><h4 id="岗位描述："><a href="#岗位描述：" class="headerlink" title="岗位描述："></a>岗位描述：</h4><p>隶属于腾讯公司互动娱乐业务系统市场部，负责游戏产品网站视觉表现以及其他相关推广类美术设计工作。</p>
+<h4 id="职位要求："><a href="#职位要求：" class="headerlink" title="职位要求："></a>职位要求：</h4><ul>
+<li>有较丰富游戏经验，熟悉国内外游戏行业动态，对游戏美术、动漫等领域有系统的了解，在游戏视觉表现力方面有较深认识；</li>
+<li>同市场、产品相关人员讨论产品核心卖点，并给予有效的视觉设计策略支持，能够主导重点项目的视觉设计方向， 并完成主要视觉设计工作；</li>
+<li>三年以上视觉设计从业经验；</li>
+<li>有较好的专业知识广度，能够结合自身设计经验，根据业务需求推动方法论建设以及相关研究工作；</li>
+<li>熟练操作相关设计软件（PS,AI），熟悉FLASH，Dreamweaver等软件者最佳；</li>
+<li>良好的项目管理和沟通表达能力，对行业内的成本构成与业务规范有深入了解；</li>
+<li>善于沟通，关注用户体验细节，有较强理解力与出色的沟通能力同时具备优秀的视觉表现能力。<br><div>简历投放地址：</div><br>tgideas@qq.com<br><div><br><div>工作地点：深圳、上海</div><div>
+
+</div></div></li>
+</ul>
+<h3 id="招聘岗位：高级网页重构工程师（5名）"><a href="#招聘岗位：高级网页重构工程师（5名）" class="headerlink" title="招聘岗位：高级网页重构工程师（5名）"></a>招聘岗位：高级网页重构工程师（5名）</h3><h4 id="岗位描述：-1"><a href="#岗位描述：-1" class="headerlink" title="岗位描述："></a>岗位描述：</h4><p>隶属于腾讯公司互动娱乐业务系统市场部，负责游戏产品官网搭建、日常专题制作维护以及配合开发人员对功能型页面程序进行联调整合。</p>
+<h4 id="职位要求：-1"><a href="#职位要求：-1" class="headerlink" title="职位要求："></a>职位要求：</h4><p><br></p>
+<ul>
+<li>从事3年以上网页重构工作，有相关行业经验者优先；</li>
+<li>优秀的项目管理和沟通表达能力；</li>
+<li>热爱游戏行业，能接受挑战并承受工作压力；</li>
+<li>熟练使用DW，PS等网页制作及图片处理工具，并能手写代码；</li>
+<li>精通XHTML语言和网页优化技巧，能快速构建出兼容主流浏览器的页面；</li>
+<li>熟悉JS、JQ等前端开发语言，能完成基础的前端开发工作；</li>
+<li>了解CGI、PHP等后台开发语言，能配合开发人员进行页面联调整合；</li>
+<li>对于html5、css3、多终端等新技术有一定了解者优先；</li>
+<li><p>具备网站交互、页面设计、后台开发经验者优先。</p>
+</li>
+<li><p>简历投放地址：tgideas@qq.com</p>
+</li>
+<li>工作地点：深圳、上海</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-e4-bd-a0-e5-8f-af-e8-83-bd-e4-b8-8d-e7-9f-a5-e9-81-93-e7-9a-84html-e4-b8-8ecss" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2013-01-08-e4-bd-a0-e5-8f-af-e8-83-bd-e4-b8-8d-e7-9f-a5-e9-81-93-e7-9a-84html-e4-b8-8ecss.html" class="article-date">
+      <time datetime="2013-01-08T00:17:42.000Z" itemprop="datePublished">2013-01-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2013-01-08-e4-bd-a0-e5-8f-af-e8-83-bd-e4-b8-8d-e7-9f-a5-e9-81-93-e7-9a-84html-e4-b8-8ecss.html">你可能不知道的html与CSS</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h3 id="CSS-em-单位"><a href="#CSS-em-单位" class="headerlink" title="CSS em 单位"></a>CSS em 单位</h3><p><span><span>原来，来自CSS em单位大写字母M的宽度，这是它的名称的来源。</span></span></p>
+<h3 id="HTML5-标签"><a href="#HTML5-标签" class="headerlink" title="HTML5 标签"></a>HTML5 标签</h3><p>HTML5结构标签来自常见的ID和CLASS的命名。</p>
+<h3 id="最小有效的HTML页面"><a href="#最小有效的HTML页面" class="headerlink" title="最小有效的HTML页面"></a>最小有效的HTML页面</h3><p>随着HTML5的到来，你只需要定义的文档类型，以创建一个新的有效的网页标题。因此，从理论上说，没有HTML，head或body的标签是可以的。这是因为浏览器假定它们，只是检查浏览器的调试器，下面的代码：</p>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #555;">&lt;!doctype HTML&gt;</span>
+<span style="color: #170;">&lt;title</span><span style="color: #170;">&gt;</span>Bazinga<span style="color: #170;">&lt;/title</span><span style="color: #170;">&gt;</span></pre>
+
+<h3 id="CSS的特别性"><a href="#CSS的特别性" class="headerlink" title="CSS的特别性"></a>CSS的特别性</h3><p>256个链接的CSS选择器，可以干掉一个ID选择器的特异性。</p>
+<p>此外，一个有趣的事实是，没有CSS class或ID的最大长度。</p>
+<h3 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h3><p>Peru 和Tomato 事实上都是有效的CSS颜色值，此外，十六进制＃badA55颜色也不是那么不好，它实际上是排序的灰色:)</p>
+<p>此外，当使用HTML这样的bgcolor属性（不建议使用）：&lt;body bgcolor=”chucknorris”&gt;&lt;/ BODY&gt;，一场血腥的红色渲染。</p>
+<h3 id="CSS可以很有趣"><a href="#CSS可以很有趣" class="headerlink" title="CSS可以很有趣"></a>CSS可以很有趣</h3><p>请检查以下的CSS线，微笑在将你的脸上：</p>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #219;">#universe</span>:<span style="color: #170;">before</span> { <span style="color: #000;">content</span>: <span style="color: #a11;">""</span>; }
+.<span style="color: #170;">ninja</span> { <span style="color: #000;">visibility</span>: <span style="color: #164;">hidden</span>; }
+.<span style="color: #170;">kids-these-days</span> { <span style="color: #000;">-webkit-perspective</span>: <span style="color: #164;">none</span>; }
+.<span style="color: #170;">work</span>:<span style="color: #170;">after</span>{ <span style="color: #000;">content</span>:<span style="color: #a11;">"Beer!"</span>; }</pre>
+
+<h3 id="CSS-px-设备px"><a href="#CSS-px-设备px" class="headerlink" title="CSS px=设备px"></a>CSS px=设备px</h3><p>px 像素单位css并真正的屏幕上的px像素</p>
+<h3 id="没有（更多）CSS4"><a href="#没有（更多）CSS4" class="headerlink" title="没有（更多）CSS4"></a>没有（更多）CSS4</h3><p>看来，有没有这样的事情像CSS4后。但是，CSS3也是CSS2.1后的，它的所有有关模块</p>
+<h3 id="如何判断是否有趣的网站使用HTML5"><a href="#如何判断是否有趣的网站使用HTML5" class="headerlink" title="如何判断是否有趣的网站使用HTML5"></a>如何判断是否有趣的网站使用HTML5</h3><ul>
+<li>Try it on Internet Explorer.</li>
+<li>Did it work?</li>
+<li>No?</li>
+<li>It’s HTML5.</li>
+</ul>
+<h3 id="HTTP请求"><a href="#HTTP请求" class="headerlink" title="HTTP请求"></a>HTTP请求</h3><p>“最快的HTTP请求是不可缺少的。”</p>
+<p>这不是HTML与CSS相关的，但我喜欢这条线。每次我工作的一个项目，尝试优化的HTTP请求数，这在我脑海里弹出。</p>
+<h3 id="before-amp-after-伪元素"><a href="#before-amp-after-伪元素" class="headerlink" title="::before &amp; ::after 伪元素"></a>::before &amp; ::after 伪元素</h3><p>直到前阵子，firefox还是唯一一个支持::after ::before transitions和animations的。这个好的功能在chrome现在也支持了。</p>
+<h3 id="什么时候放弃IE6和IE7…"><a href="#什么时候放弃IE6和IE7…" class="headerlink" title="什么时候放弃IE6和IE7…"></a>什么时候放弃IE6和IE7…</h3><p>IE6不扮演重要的角色了，所以考虑到这一点，这是完全OK的使用方法：</p>
+<ul>
+<li>多个CSS类选择器（例如，FOO.BAR）</li>
+<li>属性选择器（例如E [富]）</li>
+<li>固定定位</li>
+<li>立即子选择器（例如，富酒吧）</li>
+</ul>
+<h3 id="耗费的CSS属性"><a href="#耗费的CSS属性" class="headerlink" title="耗费的CSS属性"></a>耗费的CSS属性</h3><p>一般情况下，CSS属性是不耗费的，但是，当谈到对浏览器的画，你应该注意以下一些可能会影响你的页面呈现方式：</p>
+<ul>
+<li>position:fixed</li>
+<li>background-position: fixed</li>
+<li>border-radius</li>
+<li>background-size</li>
+<li>box-shadow</li>
+<li>gradients</li>
+</ul>
+<h3 id="就这些了"><a href="#就这些了" class="headerlink" title="就这些了"></a>就这些了</h3><p>如果你知道更多有趣的东西，来共享？请随时做到这一点在下面的评论部分。感谢阅读这篇文章，我很期待读你的思想有关的。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-e4-bd-bf-e7-94-a8html5-e6-96-b0api-e5-88-b6-e4-bd-9c-e5-9b-be-e7-89-87-e8-bd-acbase64-e7-bc-96-e7-a0-81-e5-b7-a5-e5-85-b7" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -553,535 +1493,6 @@ javascript:
       
           
         <div><br><br>### 一．首先是PHP网页的编码<br><br>1.     php文件本身的编码与网页的编码应匹配<br><br>a.     如果欲使用gb2312编码，那么php要输出头：header(“Content-Type: text/html; charset=gb2312”)，静态页面添加&lt;meta http-equiv=”Content-Type” content=”text/html; charset=gb2312”&gt;，所有文件的编码格式为ANSI，可用记事本打开，另存为选择编码为ANSI，覆盖源文件。<br><br>b.     如果欲使用utf-8编码，那么php要输出头 ：header(“Content-Type: text/html; charset=utf-8”)，静态页面添加&lt;meta http-equiv=”Content-Type” content=”text/html; charset=utf-8”&gt;，所有文件的编码格式为utf-8。保存为utf-8可能会有点麻烦，一般utf-8文件开头会有BOM，如果使用 session就会出问题，可用editplus来保存，在editplus中，工具-&gt;参数选择-&gt;文件-&gt;UTF-8签名，选择总是删除，再保存就可以去掉BOM信息了。<br><br>2.     php本身不是Unicode的，所有substr之类的函数得改成mb_substr（需要装mbstring扩展）；或者用iconv转码。<br><br>### 二．PHP与Mysql的数据交互<br><br>PHP与数据库的编码应一致<br><br>1.     修改mysql配置文件my.ini或my.cnf，mysql最好用utf8编码<br><br>[mysql]<br>default-character-set=utf8<br>[mysqld]<br>default-character-set=utf8<br>default-storage-engine=MyISAM<br>在[mysqld]下加入:<br>default-collation=utf8_bin<br>init_connect=’SET NAMES utf8’<br><br>2.     在需要做数据库操作的php程序前加mysql_query(“set names ‘编码’”);，编码和php编码一致，如果php编码是gb2312那mysql编码就是gb2312，如果是utf-8那mysql编码就是 utf8，这样插入或检索数据时就不会出现乱码了<br><br>### 三． PHP与操作系统相关<br><br>Windows和Linux的编码是不一样的，在Windows环境下，调用PHP的函数时参数如果是utf-8编码会出现错误，比如 move_uploaded_file()、filesize()、readfile()等，这些函数在处理上传、下载时经常会用到，调用时可能会出现下面的错误:<br><br>Warning: move_uploaded_file()[function.move-uploaded-file]:failed to open stream: Invalid argument in …<br><br>Warning: move_uploaded_file()[function.move-uploaded-file]:Unable to move ‘’ to ‘’ in …<br><br>Warning: filesize() [function.filesize]: stat failed for … in …<br><br>Warning: readfile() [function.readfile]: failed to open stream: Invalid argument in ..<br><br>在Linux环境下用gb2312编码虽然不会出现这些错误，但保存后的文件名出现乱码导致无法读取文件，这时可先将参数转换成操作系统识别的编码，编码转换可用mb_convert_encoding(字符串,新编码,原编码)或iconv(原编码,新编码,字符串)，这样处理后保存的文件名就不会出现乱码，也可以正常读取文件，实现中文名称文件的上传、下载。<br><br>其实还有更好的解决方法，彻底与系统脱离，也就不用考虑系统是何编码。可以生成一个只有字母和数字的序列作为文件名，而将原来带有中文的名字保存在数据库中，这样调用move_uploaded_file()就不会出现问题，下载的时候只需将文件名改为原来带有中文的名字。实现下载的代码如下<br><br>header(“Pragma: public”);<br><br>header(“Expires: 0”);<br><br>header(“Cache-Component: must-revalidate, post-check=0, pre-check=0”);<br><br>header(“Content-type: $file_type”);<br><br>header(“Content-Length: $file_size”);<br><br>header(“Content-Disposition: attachment; filename=\”$file_name\””);<br><br>header(“Content-Transfer-Encoding: binary”);<br><br>readfile($file_path);<br><br>$file_type是文件的类型，$file_name是原来的名字，$file_path是保存在服务上文件的地址。<br><br>### 四．再来总结一下为什么会乱码<br><br>一般来说，乱码的出现有2种原因，首先是由于编码(charset) 设置错误，导致浏览器以错误的编码来解析，从而出现了满屏乱七八糟的“天书”，其次是文件被以错误的编码打开，然后保存，比如一个文本文件原先是GB2312 编码的，却以UTF-8 编码打开再保存。要解决上述乱码问题，首先需要知道开发中哪些环节涉及到了编码：<br><br>1、文件编码：指的是页面文件(.html,.php等)本身是以何种编码来保存的。记事本和Dreamweaver 在打开页面时候会自动识别文件编码因而不太会出问题。而ZendStudio却不会自动识别编码，它只会根据首选项的配置固定以某种编码打开文件，如果工作时候一不注意，用错误编码打开文件，做了修改之后一保存，乱码就出现了（我深有体会）。<br><br>2、页面申明编码：在HTML代码HEAD里面，可以用&lt;meta http-equiv=”Content-Type” content=”text/html; charset=”XXX” /&gt; 来告诉浏览器网页采用了什么编码，目前中文网站开发中XXX主要用的是GB2312和UTF-8 两种编码。<br><br>3、数据库连接编码：指的是进行数据库操作时候以哪种编码与数据库传输数据，这里需要注意的是不要与数据库本身的编码混淆，比如MySQL内部默认是latin1编码，也就是说Mysql是以latin1编码来存储数据，以其他编码传输给Mysql的数据会被转换成latin1编码。<br>知道了WEB开发中哪些地方涉及到了编码，也就知道了乱码产生的原因：上述3项编码设置不一致，由于各种编码绝大部分是兼容ASCII的，所以英文符号不会出现，中文就倒霉了。<br><br>### 五．决战一些常见的错误情况与解决：<br><br>1、数据库采用UTF8 编码，而页面申明编码是GB2312 ，这是最常见的产生乱码的原因。这时候在PHP脚本里面直接SELECT数据出来的就是乱码，需要在查询前先使用： mysql_query(“SET NAMES GBK”); 来设定MYSQL连接编码，保证页面申明编码与这里设定的连接编码一致（GBK是GB2312的扩展 ）。如果页面是UTF-8 编码的话，可以用： mysql_query(“SET NAMES UTF8”);<br>注意是UTF8而不是一般用的UTF-8。假如页面申明的编码与数据库内部编码一致可以不设定连接编码。<br><br>注：事实上MYSQL的数据输入输出比上面讲的更复杂一些，MYSQL配置文件my.ini中定义了2个默认编码，分别是[client]里的default -character-set和[mysqld] 里的default-character-set 来分别设定默认时候客户端连接和数据库内部所采用的编码。我们上面指定的编码其实是MYSQL客户端连接服务器时候的命令行参数character_set_client，来告诉MYSQL服务器接受到的客户端数据是什么编码的，而不是采用默认编码。<br><br>2、页面申明编码与文件本身编码不一致，这种情况很少发生，因为如果编码不一致美工做页面时候在浏览器看到的就是乱码了。更多时候是发布以后修改一些小BUG，以错误编码打开页面然后保存导致的。或者是用某些FTP软件直接在线修改文件，比如CuteFTP，由于软件编码配置错误而导致转换错了编码。<br><br>3、一些租用虚拟主机的朋友，明明上述3项编码都设置正确了还是有乱码。比方说网页是GB2312 编码的，IE等浏览器打开却总是识别成UTF-8 ，网页HEAD里面已经申明是GB2312 了，手动修改浏览器编码为GB2312 后页面显示正常。产生原因是服务器Apache设定了服务器全局的默认编码，在httpd.conf里面加了AddDefaultCharset UTF-8 。这时候服务器会首先发送HTTP头给浏览器，其优先级比页面里申明编码高，自然浏览器就识别错了。解决办法有2个，请管理员在配置文件自己的虚机里加上一条AddDefaultCharset GB2312 来覆盖全局配置，或者在自己目录的.htaccess里配置。<br><br>总结:总之一句话,要解决PHP中文乱码最好最快的解决办法就是,页面申明的编码与数据库内部编码一致,如果页面申请的页码与数据库内部编码不一致时,就设定连接编码 ,mysql_query(“SET NAMES XXX “); XXX为连接编码.一定可以解决乱码的问题.<br><br>&nbsp;<br><br>【2】Win下apache 用get方法传递中文参数会出错：<br><br>test.php ?a=你好&amp;b=你也好<br><br>传递参数是会导致一个内部错误<br><br>解决办法:”test.php ?a=”.urlencode(你好).”&amp;b=”.urlencode(你也好)<br><br>&nbsp;<br><br></div>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-wp-cms-e4-b8-bb-e9-a2-98-e5-9f-ba-e7-a1-80wordpress-e4-b8-8d-e5-90-8c-e5-88-86-e7-b1-bb-e6-96-87-e7-ab-a0-e8-b0-83-e7-94-a8-e4-b8-8d-e5-90-8c-e6-a8-a1-e6-9d-bf" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2012-11-20-wp-cms-e4-b8-bb-e9-a2-98-e5-9f-ba-e7-a1-80wordpress-e4-b8-8d-e5-90-8c-e5-88-86-e7-b1-bb-e6-96-87-e7-ab-a0-e8-b0-83-e7-94-a8-e4-b8-8d-e5-90-8c-e6-a8-a1-e6-9d-bf.html" class="article-date">
-      <time datetime="2012-11-20T00:39:13.000Z" itemprop="datePublished">2012-11-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2012-11-20-wp-cms-e4-b8-bb-e9-a2-98-e5-9f-ba-e7-a1-80wordpress-e4-b8-8d-e5-90-8c-e5-88-86-e7-b1-bb-e6-96-87-e7-ab-a0-e8-b0-83-e7-94-a8-e4-b8-8d-e5-90-8c-e6-a8-a1-e6-9d-bf.html">[WP CMS 主题基础]wordpress不同分类文章调用不同模板</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>在一般的cms中都会可以设置不同的分类列表和不同的分类文章采用不同的模板，这样更为灵活自由，也是由于作为CMS需要配合各种需求的界面设计要求，一般的企业站、门户站等不同的分类采用不同的模板较多，或者几个类型的模板，这是非常必要的。</p>
-<p>而在WP里，默认是只有一个模板为single.php的，这显然对于cms是不够用的。</p>
-<p>那么我们怎么解决这个问题呢？</p>
-<p>我们知道，当wordpress读取一篇文章，会调用single.php，那么我们在single.php中加入加入条件判断语句，最常用的是in_category()函数，可以判断文章在哪个分类下，调用哪个single模板，但in_category()有局限性，不能判断子分类和子分类以下的分类，而in_category()只能单一写死分类ID。</p>
-<p>解决方法是让文章自行判断，配合post_is_in_descendant_category()函数，首先在模板文件function.php中加入以下代码：</p>
-<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #708;">function</span> <span style="color: #000;">post_is_in_descendant_category</span>( <span style="color: #00f;">$cats</span>, <span style="color: #00f;">$_post</span> = <span style="color: #219;">null</span> )<br>{<br><span style="color: #000;">foreach</span> ( (<span style="color: #000;">array</span>) <span style="color: #000-2;">$cats</span> <span style="color: #000;">as</span> <span style="color: #000;">$cat</span> ) {<br><span style="color: #a50;">// get_term_children() accepts integer ID only</span><br><span style="color: #000;">$descendants</span> = <span style="color: #000;">get_term_children</span>( (<span style="color: #000;">int</span>) <span style="color: #000;">$cat</span>, <span style="color: #a11;">‘category’</span>);<br><span style="color: #708;">if</span> ( <span style="color: #000;">$descendants</span> &amp;&amp; <span style="color: #000;">in_category</span>( <span style="color: #000;">$descendants</span>, <span style="color: #000-2;">$_post</span> ) )<br><span style="color: #708;">return</span> <span style="color: #219;">true</span>;<br>}<br><span style="color: #708;">return</span> <span style="color: #219;">false</span>;<br>}</pre><br>然后，将single.php内容替换成：</p>
-<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #555;">&lt;?php</span><br>    <span style="color: #708;">if</span> ( <span style="color: #@cm-word;">in_category</span>(<span style="color: #a11;">‘1’</span>) <span style="color: #000;">||</span> <span style="color: #@cm-word;">post_is_in_descendant_category</span>( <span style="color: #164;">1</span>) ){<br>        <span style="color: #708;">include</span>(<span style="color: #@cm-word;">TEMPLATEPATH</span> .<span style="color: #a11;">‘/single-1.php’</span>);<br>    }<br>    <span style="color: #708;">elseif</span>( <span style="color: #@cm-word;">in_category</span>(<span style="color: #a11;">‘2’</span>) <span style="color: #000;">||</span> <span style="color: #@cm-word;">post_is_in_descendant_category</span>( <span style="color: #164;">2</span> ) ){<br>        <span style="color: #708;">include</span>(<span style="color: #@cm-word;">TEMPLATEPATH</span> . <span style="color: #a11;">‘/single-2.php’</span>);<br>    }<span style="color: #708;">else</span>{<br>        <span style="color: #708;">include</span>(<span style="color: #@cm-word;">TEMPLATEPATH</span> . <span style="color: #a11;">‘/single-3.php’</span>);<br>    }<br><span style="color: #555;">?&gt;</span></pre><br>以上代码表示，如果分类ID1和分类ID1以下所有分类中的文章，将使用single-1.php的模板，如果分类2和分类2及其所有子分类文章，使用single-2.php模板，其他分类使用single-3.php模板。</p>
-<p>不过还是觉得wordpress的对于CMS的主题有局限性，毕竟是BLOG嘛，需要指定ID，没有DEDECMS这样的方便，不过也是有办法可以扩展解决的。编写主题后台配置ID，变量传值也还不错。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-wp-cms-e4-b8-bb-e9-a2-98-e5-9f-ba-e7-a1-80wordpress-e4-b8-8d-e5-90-8c-e5-88-86-e7-b1-bb-e6-96-87-e7-ab-a0-e8-b0-83-e7-94-a8-e4-b8-8d-e5-90-8c-e6-a8-a1-e6-9d-bf-2" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2012-11-19-wp-cms-e4-b8-bb-e9-a2-98-e5-9f-ba-e7-a1-80wordpress-e4-b8-8d-e5-90-8c-e5-88-86-e7-b1-bb-e6-96-87-e7-ab-a0-e8-b0-83-e7-94-a8-e4-b8-8d-e5-90-8c-e6-a8-a1-e6-9d-bf-2.html" class="article-date">
-      <time datetime="2012-11-19T00:34:53.000Z" itemprop="datePublished">2012-11-19</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2012-11-19-wp-cms-e4-b8-bb-e9-a2-98-e5-9f-ba-e7-a1-80wordpress-e4-b8-8d-e5-90-8c-e5-88-86-e7-b1-bb-e6-96-87-e7-ab-a0-e8-b0-83-e7-94-a8-e4-b8-8d-e5-90-8c-e6-a8-a1-e6-9d-bf-2.html">[WP CMS 主题基础]wordpress不同分类目录调用不同模板</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>Wordpress 2.9 以后的版本可以可以为不同的分类指定不同的模板样式的。有WP自带的方法和自己编写函数实现的方法，如果是CMS主题的话使用自己编写函数的方法更为灵活和可配置。</p>
-<h3 id="方案一：wp自带方式"><a href="#方案一：wp自带方式" class="headerlink" title="方案一：wp自带方式"></a>方案一：wp自带方式</h3><p>先查看分类ID,例如是:12.然后复制一个category.php(也就是一个通用的分类模板,不想的话 可以自己新写一个)到主题根目录,改名为category-12.php. 这样分类ID为12的分类调用的分类模板就是category-12.php的模板!</p>
-<p>如果使用特殊模板样式的分类的别名,如product.则复制一个category.php到主题根目录,改名为category-product.php.</p>
-<p>方案二：</p>
-<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #555;">&lt;?php</span><br>    <span style="color: #708;">if</span> ( <span style="color: #@cm-word;">in_category</span>(<span style="color: #a11;">‘1’</span>) <span style="color: #000;">||</span> <span style="color: #@cm-word;">post_is_in_descendant_category</span>( <span style="color: #164;">1</span>) ){<br>        <span style="color: #708;">include</span>(<span style="color: #@cm-word;">TEMPLATEPATH</span> .<span style="color: #a11;">‘/category-1.php’</span>);<br>    }<br>    <span style="color: #708;">elseif</span>( <span style="color: #@cm-word;">in_category</span>(<span style="color: #a11;">‘2’</span>) <span style="color: #000;">||</span> <span style="color: #@cm-word;">post_is_in_descendant_category</span>( <span style="color: #164;">2</span> ) ){<br>        <span style="color: #708;">include</span>(<span style="color: #@cm-word;">TEMPLATEPATH</span> . <span style="color: #a11;">‘/category-2.php’</span>);<br>    }<span style="color: #708;">else</span>{<br>        <span style="color: #708;">include</span>(<span style="color: #@cm-word;">TEMPLATEPATH</span> . <span style="color: #a11;">‘/category-3.php’</span>);<br>    }<br><span style="color: #555;">?&gt;</span></pre><br>一般情况用方案一就OK了，不过要制作CMS主题，可以用方案二配置传值栏目ID，灵活配置。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-20-e4-b8-aa-e4-bc-98-e7-a7-80-e7-9a-84-e6-8a-95-e8-b5-84-e7-bb-84-e5-90-88-e5-92-8c-e8-ae-be-e8-ae-a1-e6-9c-ba-e6-9e-84-e7-bd-91-e7-ab-99" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2012-11-14-20-e4-b8-aa-e4-bc-98-e7-a7-80-e7-9a-84-e6-8a-95-e8-b5-84-e7-bb-84-e5-90-88-e5-92-8c-e8-ae-be-e8-ae-a1-e6-9c-ba-e6-9e-84-e7-bd-91-e7-ab-99.html" class="article-date">
-      <time datetime="2012-11-14T00:34:59.000Z" itemprop="datePublished">2012-11-14</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2012-11-14-20-e4-b8-aa-e4-bc-98-e7-a7-80-e7-9a-84-e6-8a-95-e8-b5-84-e7-bb-84-e5-90-88-e5-92-8c-e8-ae-be-e8-ae-a1-e6-9c-ba-e6-9e-84-e7-bd-91-e7-ab-99.html">20个优秀的投资组合和设计机构网站</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>你正在寻找灵感为自己的投资组合网站，浏览设计机构的网站是一个很好的开始。在这篇文章中，我们已经收集到的优秀网站，你可以学到很多东西，当你正在查看这些网站的方式，密切关注各机构/设计师来展示自己的工作，以及如何通过自己的个人风格来的设计。</p>
-<p>你正在寻找灵感为自己的投资组合网站，浏览设计机构的网站是一个很好的开始。在这篇文章中，我们已经收集到的优秀网站，你可以学到很多东西，当你正在查看这些网站的方式，密切关注各机构/设计师来展示自己的工作，以及如何通过自己的个人风格来的设计。</p>
-<h3 id="Lorenzo-Verzini"><a href="#Lorenzo-Verzini" class="headerlink" title="Lorenzo Verzini"></a><a href="http://lorenzoverzini.com/" target="_blank" rel="external">Lorenzo Verzini</a></h3><p><a href="http://lorenzoverzini.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design01.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
-<h3 id="Tom-Reinert"><a href="#Tom-Reinert" class="headerlink" title="Tom Reinert"></a><a href="http://www.tomreinert.de/" target="_blank" rel="external">Tom Reinert</a></h3><p><a href="http://www.tomreinert.de/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design02.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
-<h3 id="Grain-amp-Mortar"><a href="#Grain-amp-Mortar" class="headerlink" title="Grain &amp; Mortar"></a><a href="http://grainandmortar.com/" target="_blank" rel="external">Grain &amp; Mortar</a></h3><p><a href="http://grainandmortar.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design03.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
-<h3 id="ALXANDR"><a href="#ALXANDR" class="headerlink" title="ALXANDR"></a><a href="http://www.alxandr.us/" target="_blank" rel="external">ALXANDR</a></h3><p><a href="http://www.alxandr.us/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design05.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
-<h3 id="Studio-Nudge"><a href="#Studio-Nudge" class="headerlink" title="Studio Nudge"></a><a href="http://studionudge.com/" target="_blank" rel="external">Studio Nudge</a></h3><p><a href="http://studionudge.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design06.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
-<h3 id="Wolfgang-Design-Studio"><a href="#Wolfgang-Design-Studio" class="headerlink" title="Wolfgang Design Studio"></a><a href="http://wolfgang.se/" target="_blank" rel="external">Wolfgang Design Studio</a></h3><p><a href="http://wolfgang.se/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design07.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
-<h3 id="Hello-Monday"><a href="#Hello-Monday" class="headerlink" title="Hello Monday"></a><a href="http://www.hellomonday.com/" target="_blank" rel="external">Hello Monday</a></h3><p><a href="http://www.hellomonday.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design08.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
-<h3 id="Studio-Airport"><a href="#Studio-Airport" class="headerlink" title="Studio Airport"></a><a href="http://www.studioairport.nl/en" target="_blank" rel="external">Studio Airport</a></h3><p><a href="http://www.studioairport.nl/en" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design09.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
-<h3 id="Huncwot"><a href="#Huncwot" class="headerlink" title="Huncwot"></a><a href="http://www.huncwot.com/en" target="_blank" rel="external">Huncwot</a></h3><p><a href="http://www.huncwot.com/en" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design10.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
-<h3 id="Barrel"><a href="#Barrel" class="headerlink" title="Barrel"></a><a href="http://www.barrelny.com/" target="_blank" rel="external">Barrel</a></h3><p><a href="http://www.barrelny.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design11.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
-<h3 id="UPPERQUAD"><a href="#UPPERQUAD" class="headerlink" title="UPPERQUAD"></a><a href="http://upperquad.com/" target="_blank" rel="external">UPPERQUAD</a></h3><p><a href="http://upperquad.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design12.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
-<h3 id="Shape"><a href="#Shape" class="headerlink" title="Shape"></a><a href="http://madebyshape.co.uk/" target="_blank" rel="external">Shape</a></h3><p><a href="http://madebyshape.co.uk/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design13.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
-<h3 id="Oakwood"><a href="#Oakwood" class="headerlink" title="Oakwood"></a><a href="http://oakwood.se/" target="_blank" rel="external">Oakwood</a></h3><p><a href="http://oakwood.se/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design14.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
-<h3 id="Danilo-Marinaccio"><a href="#Danilo-Marinaccio" class="headerlink" title="Danilo Marinaccio"></a><a href="http://www.marinaccio.it/" target="_blank" rel="external">Danilo Marinaccio</a></h3><p><a href="http://www.marinaccio.it/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design15.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
-<h3 id="Visual-Kitchen"><a href="#Visual-Kitchen" class="headerlink" title="Visual Kitchen"></a><a href="http://www.visual-kitchen.com/" target="_blank" rel="external">Visual Kitchen</a></h3><p><a href="http://www.visual-kitchen.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design16.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
-<h3 id="Creuna"><a href="#Creuna" class="headerlink" title="Creuna"></a><a href="http://www.creuna.se/" target="_blank" rel="external">Creuna</a></h3><p><a href="http://www.creuna.se/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design17.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
-<h3 id="RVMBLE"><a href="#RVMBLE" class="headerlink" title="RVMBLE"></a><a href="http://rvmble.co/" target="_blank" rel="external">RVMBLE</a></h3><p><a href="http://rvmble.co/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design18.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
-<h3 id="rtraction"><a href="#rtraction" class="headerlink" title="rtraction"></a><a href="http://www.rtraction.com/" target="_blank" rel="external">rtraction</a></h3><p><a href="http://www.rtraction.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design19.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
-<h3 id="Burocratik"><a href="#Burocratik" class="headerlink" title="Bürocratik"></a><a href="http://www.burocratik.com/" target="_blank" rel="external">Bürocratik</a></h3><p><a href="http://www.burocratik.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design20.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
-<h3 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a><a href="http://canvas.is/" target="_blank" rel="external">Canvas</a></h3><p><a href="http://canvas.is/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design21.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-javascript-e8-8e-b7-e5-8f-96-e5-85-84-e5-bc-9f-e8-8a-82-e7-82-b9-e7-9a-84-e4-b8-a4-e7-a7-8d-e6-96-b9-e6-b3-95" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2012-11-08-javascript-e8-8e-b7-e5-8f-96-e5-85-84-e5-bc-9f-e8-8a-82-e7-82-b9-e7-9a-84-e4-b8-a4-e7-a7-8d-e6-96-b9-e6-b3-95.html" class="article-date">
-      <time datetime="2012-11-08T00:30:42.000Z" itemprop="datePublished">2012-11-08</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2012-11-08-javascript-e8-8e-b7-e5-8f-96-e5-85-84-e5-bc-9f-e8-8a-82-e7-82-b9-e7-9a-84-e4-b8-a4-e7-a7-8d-e6-96-b9-e6-b3-95.html">javascript获取兄弟节点的两种方法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>javascript中没有直接的获得兄弟元素的方法，在自己写代码的时候需要获得兄弟元素，那么自己通过想利用javascript的父节点方法和子节点方法实现了获得兄弟节点的方案一，而后来找了下jquery的源码看到了jquery的实现方式，存档下。</p>
-<h3 id="方案一：先通过父元素的子元素找到含自己在内的“兄弟元素”，然后判断剔除自己。"><a href="#方案一：先通过父元素的子元素找到含自己在内的“兄弟元素”，然后判断剔除自己。" class="headerlink" title="方案一：先通过父元素的子元素找到含自己在内的“兄弟元素”，然后判断剔除自己。"></a>方案一：先通过父元素的子元素找到含自己在内的“兄弟元素”，然后判断剔除自己。</h3><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #708;">function</span> <span style="color: #000;">siblings</span>(<span style="color: #00f;">elem</span>) {
-    <span style="color: #708;">var</span> <span style="color: #00f;">a</span> = [];
-    <span style="color: #708;">var</span> <span style="color: #00f;">b</span> = <span style="color: #000-2;">elem</span>.<span style="color: #000;">parentNode</span>.<span style="color: #000;">children</span>;
-    <span style="color: #708;">for</span>(<span style="color: #708;">var</span> <span style="color: #00f;">i</span> =<span style="color: #164;">0</span>,<span style="color: #00f;">i</span>&lt;<span style="color: #000-2;">b</span>.<span style="color: #000;">length</span>;<span style="color: #000-2;">i</span>++) {
-        <span style="color: #708;">if</span>(<span style="color: #000-2;">b</span>[<span style="color: #000-2;">i</span>] !== <span style="color: #000-2;">elem</span>) <span style="color: #000-2;">a</span>.<span style="color: #000;">push</span>(<span style="color: #000-2;">b</span>[<span style="color: #000-2;">i</span>]);
-    }
-    <span style="color: #708;">return</span> <span style="color: #000-2;">a</span>;
-}</pre>
-
-<h3 id="方案二：jquery-1-2-2-里的实现方法，先通过父元素的第一个子元素，然后不断往下找下一个紧邻元素，判断剔除自己。"><a href="#方案二：jquery-1-2-2-里的实现方法，先通过父元素的第一个子元素，然后不断往下找下一个紧邻元素，判断剔除自己。" class="headerlink" title="方案二：jquery 1.2.2 里的实现方法，先通过父元素的第一个子元素，然后不断往下找下一个紧邻元素，判断剔除自己。"></a>方案二：jquery 1.2.2 里的实现方法，先通过父元素的第一个子元素，然后不断往下找下一个紧邻元素，判断剔除自己。</h3><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #000;">siblings</span>: <span style="color: #708;">function</span>(<span style="color: #00f;">elem</span>){<span style="color: #708;">return</span> <span style="color: #000;">jQuery</span>.<span style="color: #000;">sibling</span>(<span style="color: #000-2;">elem</span>.<span style="color: #000;">parentNode</span>.<span style="color: #000;">firstChild</span>,<span style="color: #000-2;">elem</span>);}
-
-<span style="color: #000;">jQuery</span>.<span style="color: #000;">sibling</span> = <span style="color: #708;">function</span>(<span style="color: #00f;">n</span>, <span style="color: #00f;">elem</span>){
-    <span style="color: #708;">var</span> <span style="color: #00f;">r</span> = [];
-
-    <span style="color: #708;">for</span> ( ; <span style="color: #000-2;">n</span>; <span style="color: #000-2;">n</span> = <span style="color: #000-2;">n</span>.<span style="color: #000;">nextSibling</span> ) {
-        <span style="color: #708;">if</span> ( <span style="color: #000-2;">n</span>.<span style="color: #000;">nodeType</span> == <span style="color: #164;">1</span> &amp;&amp; <span style="color: #000-2;">n</span> != <span style="color: #000-2;">elem</span> )
-            <span style="color: #000-2;">r</span>.<span style="color: #000;">push</span>( <span style="color: #000-2;">n</span> );
-    }
-
-    <span style="color: #708;">return</span> <span style="color: #000-2;">r</span>;
-};</pre>
-转换成可用的独立函数：
-<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #708;">function</span> <span style="color: #000;">sibling</span>(<span style="color: #00f;">elem</span>) {
-    <span style="color: #708;">var</span> <span style="color: #00f;">r</span> = [];
-    <span style="color: #708;">var</span> <span style="color: #00f;">n</span> = <span style="color: #000-2;">elem</span>.<span style="color: #000;">parentNode</span>.<span style="color: #000;">firstChild</span>;
-    <span style="color: #708;">for</span> ( ; <span style="color: #000-2;">n</span>; <span style="color: #000-2;">n</span> = <span style="color: #000-2;">n</span>.<span style="color: #000;">nextSibling</span> ) {
-        <span style="color: #708;">if</span> ( <span style="color: #000-2;">n</span>.<span style="color: #000;">nodeType</span> === <span style="color: #164;">1</span> &amp;&amp; <span style="color: #000-2;">n</span> !== <span style="color: #000-2;">elem</span> ) {
-            <span style="color: #000-2;">r</span>.<span style="color: #000;">push</span>( <span style="color: #000-2;">n</span> );
-        }
-    }
-    <span style="color: #708;">return</span> <span style="color: #000-2;">r</span>;
-}</pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-e5-a6-82-e4-bd-95-e5-88-a9-e7-94-a8css-e5-88-9b-e5-bb-ba-e6-95-b4-e4-b8-aa-e9-a1-b5-e9-9d-a2-e7-9a-84-e5-8a-a8-e7-94-bb" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2012-10-26-e5-a6-82-e4-bd-95-e5-88-a9-e7-94-a8css-e5-88-9b-e5-bb-ba-e6-95-b4-e4-b8-aa-e9-a1-b5-e9-9d-a2-e7-9a-84-e5-8a-a8-e7-94-bb.html" class="article-date">
-      <time datetime="2012-10-26T01:50:50.000Z" itemprop="datePublished">2012-10-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2012-10-26-e5-a6-82-e4-bd-95-e5-88-a9-e7-94-a8css-e5-88-9b-e5-bb-ba-e6-95-b4-e4-b8-aa-e9-a1-b5-e9-9d-a2-e7-9a-84-e5-8a-a8-e7-94-bb.html">如何利用CSS创建整个页面的动画</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>现代浏览器像 IE10 已经支持了 CSS3D、CSS2D和CSS动画。利用这些技术与js相结合可以有更好的性能和灵活度替代传统的动画。</p>
-<h2 id="旋转整个页面"><a href="#旋转整个页面" class="headerlink" title="旋转整个页面"></a><strong>旋转整个页面</strong></h2><p>旋转一个元素,设置Z轴45度：</p>
-<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #219;">#element</span> {<br>    <span style="color: #000;">transform</span>: <span style="color: #164;">rotateZ</span><span style="color: #164;">(45deg</span><span style="color: #164;">)</span>;<br>}</pre><br>旋转整个页面,设置Z轴45度：</p>
-<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">body</span> {<br>    <span style="color: #000;">transform</span>: <span style="color: #164;">rotateZ</span><span style="color: #164;">(45deg</span><span style="color: #164;">)</span>;<br>}</pre><br>看起来会有下图的效果：</p>
-<p><img src="wp-content/uploads/2012/10/figure16.png" alt="Figure 1" title="figure1"></p>
-<p>我们还可以设置透视效果：</p>
-<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">html</span> {<br>    <span style="color: #000;">perspective</span>: <span style="color: #164;">500px</span>;<br>}</pre><br>并且设置一下 rotateY(45deg) transform在body上，如下图效果：</p>
-<p><em> <img src="wp-content/uploads/2012/10/figure2.png" alt="Figure 2" title="figure2">__
-</em></p>
-<p>我们再设置一下 X轴旋转45度，并设置一下“原点”</p>
-<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">body</span> {<br>    <span style="color: #000;">transform-origin</span>: <span style="color: #164;">50%</span> <span style="color: #164;">100%</span>;<br>    <span style="color: #000;">transform</span>: <span style="color: #164;">rotateX</span><span style="color: #164;">(45deg</span><span style="color: #164;">)</span>;<br>}</pre><br><em><img src="wp-content/uploads/2012/10/figure31.png" alt="Figure 3" title="figure3"></em><br>我们也可以设置一下透视perspective 及其 透视 perspective 原点</p>
-<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">html</span> {<br>    <span style="color: #000;">perspective</span>: <span style="color: #164;">500px</span>;<br>    <span style="color: #000;">perspective-origin</span>: <span style="color: #164;">90%</span> <span style="color: #164;">50%</span>;<br>}</pre><br>现在我们的页面看起来像这个样子：</p>
-<p><em> <img src="wp-content/uploads/2012/10/figure41.png" alt="Figure 4" title="figure4">
-</em></p>
-<p>你会发现滚动条的位置不合理：</p>
-<p><img src="wp-content/uploads/2012/10/figure51.png" alt="Figure 5" title="figure5"></p>
-<p>那么改进：</p>
-<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">html</span>, <span style="color: #170;">body</span> {<br>    <span style="color: #000;">width</span>: <span style="color: #164;">100%</span>;<br>    <span style="color: #000;">height</span>: <span style="color: #164;">100%</span>;<br>    <span style="color: #000;">min-width</span>: <span style="color: #164;">100%</span>;<br>    <span style="color: #000;">max-width</span>: <span style="color: #164;">100%</span>;<br>    <span style="color: #000;">padding</span>: <span style="color: #164;">0</span>;<br>    <span style="color: #000;">margin</span>: <span style="color: #164;">0</span>;<br>    <span style="color: #000;">overflow</span>: <span style="color: #164;">hidden</span>;<br>}  </pre></p>
-<p><span style="color: #219;">#Wrapper</span> {<br>    <span style="color: #000;">position</span>: <span style="color: #164;">absolute</span>;<br>    <span style="color: #000;">width</span>: <span style="color: #164;">100%</span>;<br>    <span style="color: #000;">height</span>: <span style="color: #164;">100%</span>;<br>    <span style="color: #000;">overflow</span>: <span style="color: #164;">scroll</span>;<br>}<br><img src="wp-content/uploads/2012/10/figure61.png" alt="Figure 6" title="figure6"></p>
-<p>&nbsp;</p>
-<h2 id="设置被旋转元素的动画"><a href="#设置被旋转元素的动画" class="headerlink" title="设置被旋转元素的动画"></a><strong>设置被旋转元素的动画</strong></h2><p>考虑给一个基本的规则，进入动画：</p>
-<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #555;">@keyframes</span> <span style="color: #170;">rotateInLeft</span> {<br><span style="color: #000;">from</span> {<br>     <span style="color: #000;">transform-origin</span>: <span style="color: #164;">0%</span> <span style="color: #164;">0%</span>;<br>     <span style="color: #000;">transform</span>: <span style="color: #164;">rotateY</span><span style="color: #164;">(180deg</span><span style="color: #164;">)</span>;<br>     }<br><span style="color: #000;">to</span> {<br>   <span style="color: #000;">transform-origin</span>: <span style="color: #164;">0%</span> <span style="color: #164;">0%</span>;<br>   <span style="color: #000;">transform</span>: <span style="color: #164;">rotateY</span><span style="color: #164;">(0deg</span><span style="color: #164;">)</span>;<br>   }<br>   }</pre><br><img src="wp-content/uploads/2012/10/figure71.png" alt="Figure 7" title="figure7"><br>再来一个离开页面的动画规则：</p>
-<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #555;">@keyframes</span> <span style="color: #170;">whirlOut</span> {<br><span style="color: #000;">to</span> {<br>    <span style="color: #000;">transform</span>: <span style="color: #164;">scale</span><span style="color: #164;">(0</span><span style="color: #164;">)</span> <span style="color: #164;">rotateZ</span><span style="color: #164;">(1260deg</span><span style="color: #164;">)</span>;<br>   }<br>}</pre><br><img src="wp-content/uploads/2012/10/figure81.png" alt="Figure 8" title="figure8"></p>
-<h2 id="不错的在线例子-注意页面切换的时候-："><a href="#不错的在线例子-注意页面切换的时候-：" class="headerlink" title="不错的在线例子(注意页面切换的时候)："></a>不错的在线例子(注意页面切换的时候)：</h2><p><a href="http://ie.microsoft.com/testdrive/Graphics/FullPageAnimations/" target="_blank" rel="external">a demonstration and tutorial on bringing pages alive with CSS Transforms &amp; Animations</a></p>
-<p>英文原文：<a href="http://www.sitepoint.com/how-to-create-full-page-animations-using-css/" target="_blank" rel="external">http://www.sitepoint.com/how-to-create-full-page-animations-using-css/</a></p>
-<p>&nbsp;</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-css-e5-88-9b-e5-bb-ba-e4-b8-89-e8-a7-92-e5-bd-a2-e7-9a-84-e5-87-a0-e7-a7-8d-e6-96-b9-e6-b3-95" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2012-10-17-css-e5-88-9b-e5-bb-ba-e4-b8-89-e8-a7-92-e5-bd-a2-e7-9a-84-e5-87-a0-e7-a7-8d-e6-96-b9-e6-b3-95.html" class="article-date">
-      <time datetime="2012-10-17T06:25:43.000Z" itemprop="datePublished">2012-10-17</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2012-10-17-css-e5-88-9b-e5-bb-ba-e4-b8-89-e8-a7-92-e5-bd-a2-e7-9a-84-e5-87-a0-e7-a7-8d-e6-96-b9-e6-b3-95.html">CSS创建三角形（小三角）的几种方法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>你可以在很多地方看到三角形（小三角）：tooltips提示框、下拉菜单、甚至在loading载入动画里。不管你喜欢还是不喜欢，这些小元素对各UI元素之间的联系关系式很重要的。</p>
-<p>有一些不同的方法来设计并制作一个三角形，在本文中，我将介绍：</p>
-<p><img src="wp-content/uploads/2012/10/webdesign-triangles.png" alt=""><br><a href="wp-content/themes/cocss/code.php?id=1397">点击查看演示DEMO</a></p>
-<h2 id="编码-图片"><a href="#编码-图片" class="headerlink" title="编码 图片"></a>编码 图片</h2><p><img src="wp-content/uploads/2012/10/encoded-base64.png" alt="" title="Triangle image to base64"></p>
-<p>假如你已经有了三角形的图片，并且减少HTTP请求，那么将这个图片转换成一个BASE64字符串是最好的解决方案。</p>
-<h3 id="有用的工具（用于图片转换成BASE64编码）"><a href="#有用的工具（用于图片转换成BASE64编码）" class="headerlink" title="有用的工具（用于图片转换成BASE64编码）:"></a>有用的工具（用于图片转换成BASE64编码）:</h3><ul>
-<li><a href="http://webcodertools.com/imagetobase64converter" target="_blank" rel="external">http://webcodertools.com/imagetobase64converter</a></li>
-<li><a href="http://image2base64.wemakesites.net/" target="_blank" rel="external">http://image2base64.wemakesites.net/</a></li>
-</ul>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
-<li>你可以按照自己的思想设计阴影，渐变等，然后对其进行转换编码</li>
-</ul>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
-<li>你需要使用一个图片编辑软件去设计</li>
-<li>对于较大的图片，最终转换成字符串占用大小会很大</li>
-<li>旧版本的浏览器，如：IE6/IE7是不兼容的</li>
-</ul>
-<h2 id="CSS-边框"><a href="#CSS-边框" class="headerlink" title="CSS 边框"></a>CSS 边框</h2><p><img src="wp-content/uploads/2012/10/border-triangle.png" alt="" title="Border triangle"></p>
-<p>这也是一个常用的使用方式，如<strong>tooltips</strong>信息提示框和<strong>下拉菜单。</strong>以上的示例，这是一个我最喜欢的方法创建小而且有用的三角形。</p>
-<h3 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h3><ul>
-<li>很容易的通过修改一些CSS代码属性值而更改颜色和大小</li>
-<li>这是一个跨浏览器的解决方案。</li>
-</ul>
-<h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><ul>
-<li>这个方式使用的是border,所以你不能添加阴影、渐变、和其他一些CSS3效果</li>
-<li>请记住，IE6是不支持透明边界的-如果你关心这个问题</li>
-<li>如果你使用火狐浏览器，要知道，CSS的“透明”有时可能不会是透明的，特别是在对角线边框，越多更多 <a href="http://coderwall.com/p/tpmsta" target="_blank" rel="external">here</a>.</li>
-</ul>
-<h2 id="HTML-字符"><a href="#HTML-字符" class="headerlink" title="HTML 字符"></a>HTML 字符</h2><p><img src="wp-content/uploads/2012/10/entity-triangle.png" alt="" title="Entity-triangle"><br>它是基于使用可用的Unicode字符列表的字符。</p>
-<h3 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h3><ul>
-<li>它是一个跨浏览器的技术</li>
-<li>您可以使用CSS3的text-shadow属性添加阴影。</li>
-</ul>
-<h3 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h3><ul>
-<li>不能使用太多的CSS3效果，除了使用文字阴影。</li>
-<li>在所有的浏览器，这是相当不可能实现像素完美。</li>
-</ul>
-<h2 id="CSS-旋转正方形"><a href="#CSS-旋转正方形" class="headerlink" title="CSS 旋转正方形"></a>CSS 旋转正方形</h2><p><img src="wp-content/uploads/2012/10/cropped-triangle.png" alt="" title="Cropped triangle"></p>
-<p>理论上,这种方式，你需要使用两个内容块，但是，并没有限制是使用两个元素，所以可以使用一个元素加一个伪元素。</p>
-<ul>
-<li>创建一个内容里。例如100×100像素 - 这将包含旋转块。</li>
-<li>旋转包含的这个块45度，从而获得一个菱形</li>
-<li>将菱形的块向顶部便宜，然后设置溢出，设置父层容器截断</li>
-<li>There you go!</li>
-</ul>
-<h3 id="优点-3"><a href="#优点-3" class="headerlink" title="优点"></a>优点</h3><ul>
-<li>CSS3阴影，渐变等可以更多的使用</li>
-</ul>
-<h3 id="缺点-3"><a href="#缺点-3" class="headerlink" title="缺点"></a>缺点</h3><ul>
-<li>这个解决方案不是跨浏览器的,首先是因为CSS3旋转。</li>
-</ul>
-<h2 id="HTML5-Canvas"><a href="#HTML5-Canvas" class="headerlink" title="HTML5 Canvas"></a>HTML5 Canvas</h2><p><span class="Apple-style-span" style="font-family: Consolas, Monaco, monospace; font-size: 12px; line-height: 18px; white-space: pre;">在你的HTML文件中有以下的canvas元素：</span></p>
-<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">&lt;canvas</span> <span style="color: #170;">id</span>=<span style="color: #a11;">"triangle"</span> <span style="color: #170;">height</span>=<span style="color: #a11;">"100"</span> <span style="color: #170;">width</span>=<span style="color: #a11;">"100"</span>&gt;<span style="color: #170;">Triangle</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">canvas</span>&gt;</pre>
-这里的如何使用JavaScript绘制一个三角形：
-<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">var</span> <span style="color: #170;">canvas</span> = <span style="color: #170;">document</span>.<span style="color: #170;">getElementById</span><span style="color: #170;">(</span><span style="color: #a11;">'triangle'</span><span style="color: #170;">)</span>;
-<span style="color: #170;">var</span> <span style="color: #170;">context</span> = <span style="color: #170;">canvas</span>.<span style="color: #170;">getContext</span><span style="color: #170;">(</span><span style="color: #a11;">'2d'</span><span style="color: #170;">)</span>;
-
-<span style="color: #170;">context</span>.<span style="color: #170;">beginPath</span><span style="color: #170;">(</span><span style="color: #170;">)</span>;
-<span style="color: #170;">context</span>.<span style="color: #170;">moveTo</span><span style="color: #170;">(0</span>, <span style="color: #164;">0</span><span style="color: #170;">)</span>;
-<span style="color: #170;">context</span>.<span style="color: #170;">lineTo</span><span style="color: #170;">(100</span>, <span style="color: #164;">0</span><span style="color: #170;">)</span>;
-<span style="color: #170;">context</span>.<span style="color: #170;">lineTo</span><span style="color: #170;">(50</span>, <span style="color: #164;">100</span><span style="color: #170;">)</span>;
-
-<span style="color: #170;">context</span>.<span style="color: #170;">closePath</span><span style="color: #170;">(</span><span style="color: #170;">)</span>;
-
-<span style="color: #170;">context</span>.<span style="color: #170;">fillStyle</span> = <span style="color: #a11;">"rgb(78, 193, 243)"</span>;
-<span style="color: #170;">context</span>.<span style="color: #170;">fill</span><span style="color: #170;">(</span><span style="color: #170;">)</span>;</pre>
-
-<h2 id="SVG-Scalable-Vector-Graphics"><a href="#SVG-Scalable-Vector-Graphics" class="headerlink" title="SVG (Scalable Vector Graphics)"></a>SVG (Scalable Vector Graphics)</h2><p><span class="Apple-style-span" style="font-family: Consolas, Monaco, monospace; font-size: 12px; line-height: 18px; white-space: pre;">这是如何在您的标签，你可以定义一个内联SVG三角形：</span></p>
-<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">&lt;svg</span> <span style="color: #170;">xmlns</span>=<span style="color: #a11;">“<a href="http://www.w3.org/2000/svg" target="_blank" rel="external">http://www.w3.org/2000/svg</a>“</span> <span style="color: #170;">version</span>=<span style="color: #a11;">“1.1”</span> <span style="color: #170;">class</span>=<span style="color: #a11;">“svg-triangle”</span>&gt;<br>  <span style="color: #170;">&lt;polygon</span> <span style="color: #170;">points</span>=<span style="color: #a11;">“0,0 100,0 50,100”</span>/&gt;<br><span style="color: #170;">&lt;</span>/<span style="color: #170;">svg</span>&gt;</pre><br><span class="Apple-style-span" style="font-family: Consolas, Monaco, monospace; font-size: 12px; line-height: 18px; white-space: pre;">然后，只需添加一些样式：</span></p>
-<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">svg-triangle</span>{<br>    <span style="color: #000;">margin</span>: <span style="color: #164;">0</span> <span style="color: #164;">auto</span>;<br>    <span style="color: #000;">width</span>: <span style="color: #164;">100px</span>;<br>    <span style="color: #000;">height</span>: <span style="color: #164;">100px</span>;<br>}        </pre></p>
-<p>.<span style="color: #170;">svg-triangle</span> <span style="color: #170;">polygon</span> {<br>    <span style="color: #000;">fill</span>:<span style="color: #219;">#98d02e</span>;<br>    <span style="color: #000;">stroke</span>:<span style="color: #219;">#65b81d</span>;<br>    <span style="color: #000;">stroke-width</span>:<span style="color: #164;">2</span>;<br>}<br><a href="wp-content/themes/cocss/code.php?id=1397">点击查看演示DEMO</a></p>
-<h2 id="最后的话"><a href="#最后的话" class="headerlink" title="最后的话"></a>最后的话</h2><p>我必须承认，我并没有介绍太多在最后两个方式在这篇文章中所描述的：Canvas和SVG。这是因为他们是非常强大的，我必须介绍因为未来他很强大。不管怎样，事实是，他们的能力远远大于这些微不足道的三角形。这些方法，建立三角形，让我知道你的想法，你更经常使用的是什么方法？</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-e7-bd-91-e9-a1-b5-e8-ae-be-e8-ae-a1-e4-b8-ad-e7-9a-8421-e4-b8-aa-e6-bc-82-e4-ba-ae-e7-9a-84-e7-ba-b9-e7-90-86-e5-92-8c-e5-9b-be-e6-a1-88" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2012-10-17-e7-bd-91-e9-a1-b5-e8-ae-be-e8-ae-a1-e4-b8-ad-e7-9a-8421-e4-b8-aa-e6-bc-82-e4-ba-ae-e7-9a-84-e7-ba-b9-e7-90-86-e5-92-8c-e5-9b-be-e6-a1-88.html" class="article-date">
-      <time datetime="2012-10-17T00:09:31.000Z" itemprop="datePublished">2012-10-17</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2012-10-17-e7-bd-91-e9-a1-b5-e8-ae-be-e8-ae-a1-e4-b8-ad-e7-9a-8421-e4-b8-aa-e6-bc-82-e4-ba-ae-e7-9a-84-e7-ba-b9-e7-90-86-e5-92-8c-e5-9b-be-e6-a1-88.html">网页设计中的21个漂亮的纹理和图案</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <div class="metaCat"><br><br>纹理和图案的使用是一个有效的和相对简单的方法来添加一个网页设计的趣味。出于这个原因，它依旧是一个流行的趋势，很高兴总是看到其他设计师很好的应用这个趋势。从细纹的纹理，到整个纹理背景，我们已经搜集了一些漂亮的纹理和团的使用的例子给大家。享受吧！<br><br><span class="Apple-style-span" style="font-size: 15px; font-weight: bold;"><a href="http://www.i2c.com.au/" target="_blank" rel="external">i2C</a></span><br><br></div><br><a href="http://www.i2c.com.au/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt01.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://www.cardinalcotton.com/" target="_blank" rel="external">Cardinal Cotton</a><br><br><a href="http://www.cardinalcotton.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt02.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://southtree.com/" target="_blank" rel="external">southtree.com</a><br><br><a href="http://southtree.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt03.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://www.weworkonsunday.com/" target="_blank" rel="external">we work on sunday</a><br><br><a href="http://www.weworkonsunday.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt04.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://www.45royale.com/" target="_blank" rel="external">45royale</a><br><br><a href="http://www.45royale.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt05.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://harrysicecream.com/" target="_blank" rel="external">Harry’s Ice Cream</a><br><br><a href="http://harrysicecream.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt06.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://www.neveandhawk.com/" target="_blank" rel="external">Neve and Hawk</a><br><br><a href="http://www.neveandhawk.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt07.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://everlovinpress.com/" target="_blank" rel="external">Everlovin’ Press</a><br><br><a href="http://everlovinpress.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt08.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://www.tarohoriuchi.com/" target="_blank" rel="external">Taro Horiuchi</a><br><br><a href="http://www.tarohoriuchi.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt09.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://nationallgbtmuseum.org/#/home/" target="_blank" rel="external">National LGBT Museum</a><br><br><a href="http://nationallgbtmuseum.org/#/home/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt10.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://buckross.com/" target="_blank" rel="external">Buck Ross Productions</a><br><br><a href="http://buckross.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt11.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://colorkite.com/" target="_blank" rel="external">Colorkite</a><br><br><a href="http://colorkite.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt12.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://www.blueapron.com/" target="_blank" rel="external">Blue Apron</a><br><br><a href="http://www.blueapron.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt13.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://www.guerillaweb.ca/" target="_blank" rel="external">Guerilla Web</a><br><br><a href="http://www.guerillaweb.ca/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt14.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://www.bitgym.com/" target="_blank" rel="external">Bit Gym</a><br><br><a href="http://www.bitgym.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt15.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://osvaldas.info/" target="_blank" rel="external">Osvaldas Valutis</a><br><br><a href="http://osvaldas.info/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt16.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://www.shamballajewels.com/" target="_blank" rel="external">Shamballa Jewels</a><br><br><a href="http://www.shamballajewels.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt17.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://www.ghosthorses.co.uk/" target="_blank" rel="external">Ghost Horses</a><br><br><a href="http://www.ghosthorses.co.uk/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt18.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://wearefo.com/" target="_blank" rel="external">FO</a><br><br><a href="http://wearefo.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt19.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://johanreinhold.com/" target="_blank" rel="external">Johan Reinhold – Heart in a Jar</a><br><br><a href="http://johanreinhold.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt20.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://kikk.be/2012/" target="_blank" rel="external">Kikk Festival</a><br><br><a href="http://kikk.be/2012/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt21.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><div class="authorBox clearfix"></div><br><div class="authorBox clearfix">译文链接：<a href="http://webdesignledger.com/inspiration/21-beautiful-examples-of-textures-and-patterns-in-web-design" target="_blank" rel="external">21-beautiful-examples-of-textures-and-patterns-in-web-design</a></div>
       
     </div>
     

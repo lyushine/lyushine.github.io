@@ -220,6 +220,535 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-wp-cms-e4-b8-bb-e9-a2-98-e5-9f-ba-e7-a1-80wordpress-e4-b8-8d-e5-90-8c-e5-88-86-e7-b1-bb-e6-96-87-e7-ab-a0-e8-b0-83-e7-94-a8-e4-b8-8d-e5-90-8c-e6-a8-a1-e6-9d-bf" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2012-11-20-wp-cms-e4-b8-bb-e9-a2-98-e5-9f-ba-e7-a1-80wordpress-e4-b8-8d-e5-90-8c-e5-88-86-e7-b1-bb-e6-96-87-e7-ab-a0-e8-b0-83-e7-94-a8-e4-b8-8d-e5-90-8c-e6-a8-a1-e6-9d-bf.html" class="article-date">
+      <time datetime="2012-11-20T00:39:13.000Z" itemprop="datePublished">2012-11-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2012-11-20-wp-cms-e4-b8-bb-e9-a2-98-e5-9f-ba-e7-a1-80wordpress-e4-b8-8d-e5-90-8c-e5-88-86-e7-b1-bb-e6-96-87-e7-ab-a0-e8-b0-83-e7-94-a8-e4-b8-8d-e5-90-8c-e6-a8-a1-e6-9d-bf.html">[WP CMS 主题基础]wordpress不同分类文章调用不同模板</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>在一般的cms中都会可以设置不同的分类列表和不同的分类文章采用不同的模板，这样更为灵活自由，也是由于作为CMS需要配合各种需求的界面设计要求，一般的企业站、门户站等不同的分类采用不同的模板较多，或者几个类型的模板，这是非常必要的。</p>
+<p>而在WP里，默认是只有一个模板为single.php的，这显然对于cms是不够用的。</p>
+<p>那么我们怎么解决这个问题呢？</p>
+<p>我们知道，当wordpress读取一篇文章，会调用single.php，那么我们在single.php中加入加入条件判断语句，最常用的是in_category()函数，可以判断文章在哪个分类下，调用哪个single模板，但in_category()有局限性，不能判断子分类和子分类以下的分类，而in_category()只能单一写死分类ID。</p>
+<p>解决方法是让文章自行判断，配合post_is_in_descendant_category()函数，首先在模板文件function.php中加入以下代码：</p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #708;">function</span> <span style="color: #000;">post_is_in_descendant_category</span>( <span style="color: #00f;">$cats</span>, <span style="color: #00f;">$_post</span> = <span style="color: #219;">null</span> )<br>{<br><span style="color: #000;">foreach</span> ( (<span style="color: #000;">array</span>) <span style="color: #000-2;">$cats</span> <span style="color: #000;">as</span> <span style="color: #000;">$cat</span> ) {<br><span style="color: #a50;">// get_term_children() accepts integer ID only</span><br><span style="color: #000;">$descendants</span> = <span style="color: #000;">get_term_children</span>( (<span style="color: #000;">int</span>) <span style="color: #000;">$cat</span>, <span style="color: #a11;">‘category’</span>);<br><span style="color: #708;">if</span> ( <span style="color: #000;">$descendants</span> &amp;&amp; <span style="color: #000;">in_category</span>( <span style="color: #000;">$descendants</span>, <span style="color: #000-2;">$_post</span> ) )<br><span style="color: #708;">return</span> <span style="color: #219;">true</span>;<br>}<br><span style="color: #708;">return</span> <span style="color: #219;">false</span>;<br>}</pre><br>然后，将single.php内容替换成：</p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #555;">&lt;?php</span><br>    <span style="color: #708;">if</span> ( <span style="color: #@cm-word;">in_category</span>(<span style="color: #a11;">‘1’</span>) <span style="color: #000;">||</span> <span style="color: #@cm-word;">post_is_in_descendant_category</span>( <span style="color: #164;">1</span>) ){<br>        <span style="color: #708;">include</span>(<span style="color: #@cm-word;">TEMPLATEPATH</span> .<span style="color: #a11;">‘/single-1.php’</span>);<br>    }<br>    <span style="color: #708;">elseif</span>( <span style="color: #@cm-word;">in_category</span>(<span style="color: #a11;">‘2’</span>) <span style="color: #000;">||</span> <span style="color: #@cm-word;">post_is_in_descendant_category</span>( <span style="color: #164;">2</span> ) ){<br>        <span style="color: #708;">include</span>(<span style="color: #@cm-word;">TEMPLATEPATH</span> . <span style="color: #a11;">‘/single-2.php’</span>);<br>    }<span style="color: #708;">else</span>{<br>        <span style="color: #708;">include</span>(<span style="color: #@cm-word;">TEMPLATEPATH</span> . <span style="color: #a11;">‘/single-3.php’</span>);<br>    }<br><span style="color: #555;">?&gt;</span></pre><br>以上代码表示，如果分类ID1和分类ID1以下所有分类中的文章，将使用single-1.php的模板，如果分类2和分类2及其所有子分类文章，使用single-2.php模板，其他分类使用single-3.php模板。</p>
+<p>不过还是觉得wordpress的对于CMS的主题有局限性，毕竟是BLOG嘛，需要指定ID，没有DEDECMS这样的方便，不过也是有办法可以扩展解决的。编写主题后台配置ID，变量传值也还不错。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-wp-cms-e4-b8-bb-e9-a2-98-e5-9f-ba-e7-a1-80wordpress-e4-b8-8d-e5-90-8c-e5-88-86-e7-b1-bb-e6-96-87-e7-ab-a0-e8-b0-83-e7-94-a8-e4-b8-8d-e5-90-8c-e6-a8-a1-e6-9d-bf-2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2012-11-19-wp-cms-e4-b8-bb-e9-a2-98-e5-9f-ba-e7-a1-80wordpress-e4-b8-8d-e5-90-8c-e5-88-86-e7-b1-bb-e6-96-87-e7-ab-a0-e8-b0-83-e7-94-a8-e4-b8-8d-e5-90-8c-e6-a8-a1-e6-9d-bf-2.html" class="article-date">
+      <time datetime="2012-11-19T00:34:53.000Z" itemprop="datePublished">2012-11-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2012-11-19-wp-cms-e4-b8-bb-e9-a2-98-e5-9f-ba-e7-a1-80wordpress-e4-b8-8d-e5-90-8c-e5-88-86-e7-b1-bb-e6-96-87-e7-ab-a0-e8-b0-83-e7-94-a8-e4-b8-8d-e5-90-8c-e6-a8-a1-e6-9d-bf-2.html">[WP CMS 主题基础]wordpress不同分类目录调用不同模板</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Wordpress 2.9 以后的版本可以可以为不同的分类指定不同的模板样式的。有WP自带的方法和自己编写函数实现的方法，如果是CMS主题的话使用自己编写函数的方法更为灵活和可配置。</p>
+<h3 id="方案一：wp自带方式"><a href="#方案一：wp自带方式" class="headerlink" title="方案一：wp自带方式"></a>方案一：wp自带方式</h3><p>先查看分类ID,例如是:12.然后复制一个category.php(也就是一个通用的分类模板,不想的话 可以自己新写一个)到主题根目录,改名为category-12.php. 这样分类ID为12的分类调用的分类模板就是category-12.php的模板!</p>
+<p>如果使用特殊模板样式的分类的别名,如product.则复制一个category.php到主题根目录,改名为category-product.php.</p>
+<p>方案二：</p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #555;">&lt;?php</span><br>    <span style="color: #708;">if</span> ( <span style="color: #@cm-word;">in_category</span>(<span style="color: #a11;">‘1’</span>) <span style="color: #000;">||</span> <span style="color: #@cm-word;">post_is_in_descendant_category</span>( <span style="color: #164;">1</span>) ){<br>        <span style="color: #708;">include</span>(<span style="color: #@cm-word;">TEMPLATEPATH</span> .<span style="color: #a11;">‘/category-1.php’</span>);<br>    }<br>    <span style="color: #708;">elseif</span>( <span style="color: #@cm-word;">in_category</span>(<span style="color: #a11;">‘2’</span>) <span style="color: #000;">||</span> <span style="color: #@cm-word;">post_is_in_descendant_category</span>( <span style="color: #164;">2</span> ) ){<br>        <span style="color: #708;">include</span>(<span style="color: #@cm-word;">TEMPLATEPATH</span> . <span style="color: #a11;">‘/category-2.php’</span>);<br>    }<span style="color: #708;">else</span>{<br>        <span style="color: #708;">include</span>(<span style="color: #@cm-word;">TEMPLATEPATH</span> . <span style="color: #a11;">‘/category-3.php’</span>);<br>    }<br><span style="color: #555;">?&gt;</span></pre><br>一般情况用方案一就OK了，不过要制作CMS主题，可以用方案二配置传值栏目ID，灵活配置。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-20-e4-b8-aa-e4-bc-98-e7-a7-80-e7-9a-84-e6-8a-95-e8-b5-84-e7-bb-84-e5-90-88-e5-92-8c-e8-ae-be-e8-ae-a1-e6-9c-ba-e6-9e-84-e7-bd-91-e7-ab-99" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2012-11-14-20-e4-b8-aa-e4-bc-98-e7-a7-80-e7-9a-84-e6-8a-95-e8-b5-84-e7-bb-84-e5-90-88-e5-92-8c-e8-ae-be-e8-ae-a1-e6-9c-ba-e6-9e-84-e7-bd-91-e7-ab-99.html" class="article-date">
+      <time datetime="2012-11-14T00:34:59.000Z" itemprop="datePublished">2012-11-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2012-11-14-20-e4-b8-aa-e4-bc-98-e7-a7-80-e7-9a-84-e6-8a-95-e8-b5-84-e7-bb-84-e5-90-88-e5-92-8c-e8-ae-be-e8-ae-a1-e6-9c-ba-e6-9e-84-e7-bd-91-e7-ab-99.html">20个优秀的投资组合和设计机构网站</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>你正在寻找灵感为自己的投资组合网站，浏览设计机构的网站是一个很好的开始。在这篇文章中，我们已经收集到的优秀网站，你可以学到很多东西，当你正在查看这些网站的方式，密切关注各机构/设计师来展示自己的工作，以及如何通过自己的个人风格来的设计。</p>
+<p>你正在寻找灵感为自己的投资组合网站，浏览设计机构的网站是一个很好的开始。在这篇文章中，我们已经收集到的优秀网站，你可以学到很多东西，当你正在查看这些网站的方式，密切关注各机构/设计师来展示自己的工作，以及如何通过自己的个人风格来的设计。</p>
+<h3 id="Lorenzo-Verzini"><a href="#Lorenzo-Verzini" class="headerlink" title="Lorenzo Verzini"></a><a href="http://lorenzoverzini.com/" target="_blank" rel="external">Lorenzo Verzini</a></h3><p><a href="http://lorenzoverzini.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design01.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
+<h3 id="Tom-Reinert"><a href="#Tom-Reinert" class="headerlink" title="Tom Reinert"></a><a href="http://www.tomreinert.de/" target="_blank" rel="external">Tom Reinert</a></h3><p><a href="http://www.tomreinert.de/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design02.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
+<h3 id="Grain-amp-Mortar"><a href="#Grain-amp-Mortar" class="headerlink" title="Grain &amp; Mortar"></a><a href="http://grainandmortar.com/" target="_blank" rel="external">Grain &amp; Mortar</a></h3><p><a href="http://grainandmortar.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design03.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
+<h3 id="ALXANDR"><a href="#ALXANDR" class="headerlink" title="ALXANDR"></a><a href="http://www.alxandr.us/" target="_blank" rel="external">ALXANDR</a></h3><p><a href="http://www.alxandr.us/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design05.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
+<h3 id="Studio-Nudge"><a href="#Studio-Nudge" class="headerlink" title="Studio Nudge"></a><a href="http://studionudge.com/" target="_blank" rel="external">Studio Nudge</a></h3><p><a href="http://studionudge.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design06.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
+<h3 id="Wolfgang-Design-Studio"><a href="#Wolfgang-Design-Studio" class="headerlink" title="Wolfgang Design Studio"></a><a href="http://wolfgang.se/" target="_blank" rel="external">Wolfgang Design Studio</a></h3><p><a href="http://wolfgang.se/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design07.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
+<h3 id="Hello-Monday"><a href="#Hello-Monday" class="headerlink" title="Hello Monday"></a><a href="http://www.hellomonday.com/" target="_blank" rel="external">Hello Monday</a></h3><p><a href="http://www.hellomonday.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design08.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
+<h3 id="Studio-Airport"><a href="#Studio-Airport" class="headerlink" title="Studio Airport"></a><a href="http://www.studioairport.nl/en" target="_blank" rel="external">Studio Airport</a></h3><p><a href="http://www.studioairport.nl/en" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design09.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
+<h3 id="Huncwot"><a href="#Huncwot" class="headerlink" title="Huncwot"></a><a href="http://www.huncwot.com/en" target="_blank" rel="external">Huncwot</a></h3><p><a href="http://www.huncwot.com/en" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design10.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
+<h3 id="Barrel"><a href="#Barrel" class="headerlink" title="Barrel"></a><a href="http://www.barrelny.com/" target="_blank" rel="external">Barrel</a></h3><p><a href="http://www.barrelny.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design11.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
+<h3 id="UPPERQUAD"><a href="#UPPERQUAD" class="headerlink" title="UPPERQUAD"></a><a href="http://upperquad.com/" target="_blank" rel="external">UPPERQUAD</a></h3><p><a href="http://upperquad.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design12.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
+<h3 id="Shape"><a href="#Shape" class="headerlink" title="Shape"></a><a href="http://madebyshape.co.uk/" target="_blank" rel="external">Shape</a></h3><p><a href="http://madebyshape.co.uk/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design13.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
+<h3 id="Oakwood"><a href="#Oakwood" class="headerlink" title="Oakwood"></a><a href="http://oakwood.se/" target="_blank" rel="external">Oakwood</a></h3><p><a href="http://oakwood.se/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design14.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
+<h3 id="Danilo-Marinaccio"><a href="#Danilo-Marinaccio" class="headerlink" title="Danilo Marinaccio"></a><a href="http://www.marinaccio.it/" target="_blank" rel="external">Danilo Marinaccio</a></h3><p><a href="http://www.marinaccio.it/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design15.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
+<h3 id="Visual-Kitchen"><a href="#Visual-Kitchen" class="headerlink" title="Visual Kitchen"></a><a href="http://www.visual-kitchen.com/" target="_blank" rel="external">Visual Kitchen</a></h3><p><a href="http://www.visual-kitchen.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design16.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
+<h3 id="Creuna"><a href="#Creuna" class="headerlink" title="Creuna"></a><a href="http://www.creuna.se/" target="_blank" rel="external">Creuna</a></h3><p><a href="http://www.creuna.se/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design17.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
+<h3 id="RVMBLE"><a href="#RVMBLE" class="headerlink" title="RVMBLE"></a><a href="http://rvmble.co/" target="_blank" rel="external">RVMBLE</a></h3><p><a href="http://rvmble.co/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design18.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
+<h3 id="rtraction"><a href="#rtraction" class="headerlink" title="rtraction"></a><a href="http://www.rtraction.com/" target="_blank" rel="external">rtraction</a></h3><p><a href="http://www.rtraction.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design19.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
+<h3 id="Burocratik"><a href="#Burocratik" class="headerlink" title="Bürocratik"></a><a href="http://www.burocratik.com/" target="_blank" rel="external">Bürocratik</a></h3><p><a href="http://www.burocratik.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design20.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
+<h3 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a><a href="http://canvas.is/" target="_blank" rel="external">Canvas</a></h3><p><a href="http://canvas.is/" target="_blank" rel="external"><img src="wp-content/uploads/2012/11/design21.jpg" alt="21 Inspiring Design Studios/Portfolios" title="21 Inspiring Design Studios/Portfolios"></a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-javascript-e8-8e-b7-e5-8f-96-e5-85-84-e5-bc-9f-e8-8a-82-e7-82-b9-e7-9a-84-e4-b8-a4-e7-a7-8d-e6-96-b9-e6-b3-95" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2012-11-08-javascript-e8-8e-b7-e5-8f-96-e5-85-84-e5-bc-9f-e8-8a-82-e7-82-b9-e7-9a-84-e4-b8-a4-e7-a7-8d-e6-96-b9-e6-b3-95.html" class="article-date">
+      <time datetime="2012-11-08T00:30:42.000Z" itemprop="datePublished">2012-11-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2012-11-08-javascript-e8-8e-b7-e5-8f-96-e5-85-84-e5-bc-9f-e8-8a-82-e7-82-b9-e7-9a-84-e4-b8-a4-e7-a7-8d-e6-96-b9-e6-b3-95.html">javascript获取兄弟节点的两种方法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>javascript中没有直接的获得兄弟元素的方法，在自己写代码的时候需要获得兄弟元素，那么自己通过想利用javascript的父节点方法和子节点方法实现了获得兄弟节点的方案一，而后来找了下jquery的源码看到了jquery的实现方式，存档下。</p>
+<h3 id="方案一：先通过父元素的子元素找到含自己在内的“兄弟元素”，然后判断剔除自己。"><a href="#方案一：先通过父元素的子元素找到含自己在内的“兄弟元素”，然后判断剔除自己。" class="headerlink" title="方案一：先通过父元素的子元素找到含自己在内的“兄弟元素”，然后判断剔除自己。"></a>方案一：先通过父元素的子元素找到含自己在内的“兄弟元素”，然后判断剔除自己。</h3><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #708;">function</span> <span style="color: #000;">siblings</span>(<span style="color: #00f;">elem</span>) {
+    <span style="color: #708;">var</span> <span style="color: #00f;">a</span> = [];
+    <span style="color: #708;">var</span> <span style="color: #00f;">b</span> = <span style="color: #000-2;">elem</span>.<span style="color: #000;">parentNode</span>.<span style="color: #000;">children</span>;
+    <span style="color: #708;">for</span>(<span style="color: #708;">var</span> <span style="color: #00f;">i</span> =<span style="color: #164;">0</span>,<span style="color: #00f;">i</span>&lt;<span style="color: #000-2;">b</span>.<span style="color: #000;">length</span>;<span style="color: #000-2;">i</span>++) {
+        <span style="color: #708;">if</span>(<span style="color: #000-2;">b</span>[<span style="color: #000-2;">i</span>] !== <span style="color: #000-2;">elem</span>) <span style="color: #000-2;">a</span>.<span style="color: #000;">push</span>(<span style="color: #000-2;">b</span>[<span style="color: #000-2;">i</span>]);
+    }
+    <span style="color: #708;">return</span> <span style="color: #000-2;">a</span>;
+}</pre>
+
+<h3 id="方案二：jquery-1-2-2-里的实现方法，先通过父元素的第一个子元素，然后不断往下找下一个紧邻元素，判断剔除自己。"><a href="#方案二：jquery-1-2-2-里的实现方法，先通过父元素的第一个子元素，然后不断往下找下一个紧邻元素，判断剔除自己。" class="headerlink" title="方案二：jquery 1.2.2 里的实现方法，先通过父元素的第一个子元素，然后不断往下找下一个紧邻元素，判断剔除自己。"></a>方案二：jquery 1.2.2 里的实现方法，先通过父元素的第一个子元素，然后不断往下找下一个紧邻元素，判断剔除自己。</h3><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #000;">siblings</span>: <span style="color: #708;">function</span>(<span style="color: #00f;">elem</span>){<span style="color: #708;">return</span> <span style="color: #000;">jQuery</span>.<span style="color: #000;">sibling</span>(<span style="color: #000-2;">elem</span>.<span style="color: #000;">parentNode</span>.<span style="color: #000;">firstChild</span>,<span style="color: #000-2;">elem</span>);}
+
+<span style="color: #000;">jQuery</span>.<span style="color: #000;">sibling</span> = <span style="color: #708;">function</span>(<span style="color: #00f;">n</span>, <span style="color: #00f;">elem</span>){
+    <span style="color: #708;">var</span> <span style="color: #00f;">r</span> = [];
+
+    <span style="color: #708;">for</span> ( ; <span style="color: #000-2;">n</span>; <span style="color: #000-2;">n</span> = <span style="color: #000-2;">n</span>.<span style="color: #000;">nextSibling</span> ) {
+        <span style="color: #708;">if</span> ( <span style="color: #000-2;">n</span>.<span style="color: #000;">nodeType</span> == <span style="color: #164;">1</span> &amp;&amp; <span style="color: #000-2;">n</span> != <span style="color: #000-2;">elem</span> )
+            <span style="color: #000-2;">r</span>.<span style="color: #000;">push</span>( <span style="color: #000-2;">n</span> );
+    }
+
+    <span style="color: #708;">return</span> <span style="color: #000-2;">r</span>;
+};</pre>
+转换成可用的独立函数：
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #708;">function</span> <span style="color: #000;">sibling</span>(<span style="color: #00f;">elem</span>) {
+    <span style="color: #708;">var</span> <span style="color: #00f;">r</span> = [];
+    <span style="color: #708;">var</span> <span style="color: #00f;">n</span> = <span style="color: #000-2;">elem</span>.<span style="color: #000;">parentNode</span>.<span style="color: #000;">firstChild</span>;
+    <span style="color: #708;">for</span> ( ; <span style="color: #000-2;">n</span>; <span style="color: #000-2;">n</span> = <span style="color: #000-2;">n</span>.<span style="color: #000;">nextSibling</span> ) {
+        <span style="color: #708;">if</span> ( <span style="color: #000-2;">n</span>.<span style="color: #000;">nodeType</span> === <span style="color: #164;">1</span> &amp;&amp; <span style="color: #000-2;">n</span> !== <span style="color: #000-2;">elem</span> ) {
+            <span style="color: #000-2;">r</span>.<span style="color: #000;">push</span>( <span style="color: #000-2;">n</span> );
+        }
+    }
+    <span style="color: #708;">return</span> <span style="color: #000-2;">r</span>;
+}</pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-e5-a6-82-e4-bd-95-e5-88-a9-e7-94-a8css-e5-88-9b-e5-bb-ba-e6-95-b4-e4-b8-aa-e9-a1-b5-e9-9d-a2-e7-9a-84-e5-8a-a8-e7-94-bb" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2012-10-26-e5-a6-82-e4-bd-95-e5-88-a9-e7-94-a8css-e5-88-9b-e5-bb-ba-e6-95-b4-e4-b8-aa-e9-a1-b5-e9-9d-a2-e7-9a-84-e5-8a-a8-e7-94-bb.html" class="article-date">
+      <time datetime="2012-10-26T01:50:50.000Z" itemprop="datePublished">2012-10-26</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2012-10-26-e5-a6-82-e4-bd-95-e5-88-a9-e7-94-a8css-e5-88-9b-e5-bb-ba-e6-95-b4-e4-b8-aa-e9-a1-b5-e9-9d-a2-e7-9a-84-e5-8a-a8-e7-94-bb.html">如何利用CSS创建整个页面的动画</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>现代浏览器像 IE10 已经支持了 CSS3D、CSS2D和CSS动画。利用这些技术与js相结合可以有更好的性能和灵活度替代传统的动画。</p>
+<h2 id="旋转整个页面"><a href="#旋转整个页面" class="headerlink" title="旋转整个页面"></a><strong>旋转整个页面</strong></h2><p>旋转一个元素,设置Z轴45度：</p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #219;">#element</span> {<br>    <span style="color: #000;">transform</span>: <span style="color: #164;">rotateZ</span><span style="color: #164;">(45deg</span><span style="color: #164;">)</span>;<br>}</pre><br>旋转整个页面,设置Z轴45度：</p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">body</span> {<br>    <span style="color: #000;">transform</span>: <span style="color: #164;">rotateZ</span><span style="color: #164;">(45deg</span><span style="color: #164;">)</span>;<br>}</pre><br>看起来会有下图的效果：</p>
+<p><img src="wp-content/uploads/2012/10/figure16.png" alt="Figure 1" title="figure1"></p>
+<p>我们还可以设置透视效果：</p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">html</span> {<br>    <span style="color: #000;">perspective</span>: <span style="color: #164;">500px</span>;<br>}</pre><br>并且设置一下 rotateY(45deg) transform在body上，如下图效果：</p>
+<p><em> <img src="wp-content/uploads/2012/10/figure2.png" alt="Figure 2" title="figure2">__
+</em></p>
+<p>我们再设置一下 X轴旋转45度，并设置一下“原点”</p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">body</span> {<br>    <span style="color: #000;">transform-origin</span>: <span style="color: #164;">50%</span> <span style="color: #164;">100%</span>;<br>    <span style="color: #000;">transform</span>: <span style="color: #164;">rotateX</span><span style="color: #164;">(45deg</span><span style="color: #164;">)</span>;<br>}</pre><br><em><img src="wp-content/uploads/2012/10/figure31.png" alt="Figure 3" title="figure3"></em><br>我们也可以设置一下透视perspective 及其 透视 perspective 原点</p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">html</span> {<br>    <span style="color: #000;">perspective</span>: <span style="color: #164;">500px</span>;<br>    <span style="color: #000;">perspective-origin</span>: <span style="color: #164;">90%</span> <span style="color: #164;">50%</span>;<br>}</pre><br>现在我们的页面看起来像这个样子：</p>
+<p><em> <img src="wp-content/uploads/2012/10/figure41.png" alt="Figure 4" title="figure4">
+</em></p>
+<p>你会发现滚动条的位置不合理：</p>
+<p><img src="wp-content/uploads/2012/10/figure51.png" alt="Figure 5" title="figure5"></p>
+<p>那么改进：</p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">html</span>, <span style="color: #170;">body</span> {<br>    <span style="color: #000;">width</span>: <span style="color: #164;">100%</span>;<br>    <span style="color: #000;">height</span>: <span style="color: #164;">100%</span>;<br>    <span style="color: #000;">min-width</span>: <span style="color: #164;">100%</span>;<br>    <span style="color: #000;">max-width</span>: <span style="color: #164;">100%</span>;<br>    <span style="color: #000;">padding</span>: <span style="color: #164;">0</span>;<br>    <span style="color: #000;">margin</span>: <span style="color: #164;">0</span>;<br>    <span style="color: #000;">overflow</span>: <span style="color: #164;">hidden</span>;<br>}  </pre></p>
+<p><span style="color: #219;">#Wrapper</span> {<br>    <span style="color: #000;">position</span>: <span style="color: #164;">absolute</span>;<br>    <span style="color: #000;">width</span>: <span style="color: #164;">100%</span>;<br>    <span style="color: #000;">height</span>: <span style="color: #164;">100%</span>;<br>    <span style="color: #000;">overflow</span>: <span style="color: #164;">scroll</span>;<br>}<br><img src="wp-content/uploads/2012/10/figure61.png" alt="Figure 6" title="figure6"></p>
+<p>&nbsp;</p>
+<h2 id="设置被旋转元素的动画"><a href="#设置被旋转元素的动画" class="headerlink" title="设置被旋转元素的动画"></a><strong>设置被旋转元素的动画</strong></h2><p>考虑给一个基本的规则，进入动画：</p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #555;">@keyframes</span> <span style="color: #170;">rotateInLeft</span> {<br><span style="color: #000;">from</span> {<br>     <span style="color: #000;">transform-origin</span>: <span style="color: #164;">0%</span> <span style="color: #164;">0%</span>;<br>     <span style="color: #000;">transform</span>: <span style="color: #164;">rotateY</span><span style="color: #164;">(180deg</span><span style="color: #164;">)</span>;<br>     }<br><span style="color: #000;">to</span> {<br>   <span style="color: #000;">transform-origin</span>: <span style="color: #164;">0%</span> <span style="color: #164;">0%</span>;<br>   <span style="color: #000;">transform</span>: <span style="color: #164;">rotateY</span><span style="color: #164;">(0deg</span><span style="color: #164;">)</span>;<br>   }<br>   }</pre><br><img src="wp-content/uploads/2012/10/figure71.png" alt="Figure 7" title="figure7"><br>再来一个离开页面的动画规则：</p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #555;">@keyframes</span> <span style="color: #170;">whirlOut</span> {<br><span style="color: #000;">to</span> {<br>    <span style="color: #000;">transform</span>: <span style="color: #164;">scale</span><span style="color: #164;">(0</span><span style="color: #164;">)</span> <span style="color: #164;">rotateZ</span><span style="color: #164;">(1260deg</span><span style="color: #164;">)</span>;<br>   }<br>}</pre><br><img src="wp-content/uploads/2012/10/figure81.png" alt="Figure 8" title="figure8"></p>
+<h2 id="不错的在线例子-注意页面切换的时候-："><a href="#不错的在线例子-注意页面切换的时候-：" class="headerlink" title="不错的在线例子(注意页面切换的时候)："></a>不错的在线例子(注意页面切换的时候)：</h2><p><a href="http://ie.microsoft.com/testdrive/Graphics/FullPageAnimations/" target="_blank" rel="external">a demonstration and tutorial on bringing pages alive with CSS Transforms &amp; Animations</a></p>
+<p>英文原文：<a href="http://www.sitepoint.com/how-to-create-full-page-animations-using-css/" target="_blank" rel="external">http://www.sitepoint.com/how-to-create-full-page-animations-using-css/</a></p>
+<p>&nbsp;</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-css-e5-88-9b-e5-bb-ba-e4-b8-89-e8-a7-92-e5-bd-a2-e7-9a-84-e5-87-a0-e7-a7-8d-e6-96-b9-e6-b3-95" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2012-10-17-css-e5-88-9b-e5-bb-ba-e4-b8-89-e8-a7-92-e5-bd-a2-e7-9a-84-e5-87-a0-e7-a7-8d-e6-96-b9-e6-b3-95.html" class="article-date">
+      <time datetime="2012-10-17T06:25:43.000Z" itemprop="datePublished">2012-10-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2012-10-17-css-e5-88-9b-e5-bb-ba-e4-b8-89-e8-a7-92-e5-bd-a2-e7-9a-84-e5-87-a0-e7-a7-8d-e6-96-b9-e6-b3-95.html">CSS创建三角形（小三角）的几种方法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>你可以在很多地方看到三角形（小三角）：tooltips提示框、下拉菜单、甚至在loading载入动画里。不管你喜欢还是不喜欢，这些小元素对各UI元素之间的联系关系式很重要的。</p>
+<p>有一些不同的方法来设计并制作一个三角形，在本文中，我将介绍：</p>
+<p><img src="wp-content/uploads/2012/10/webdesign-triangles.png" alt=""><br><a href="wp-content/themes/cocss/code.php?id=1397">点击查看演示DEMO</a></p>
+<h2 id="编码-图片"><a href="#编码-图片" class="headerlink" title="编码 图片"></a>编码 图片</h2><p><img src="wp-content/uploads/2012/10/encoded-base64.png" alt="" title="Triangle image to base64"></p>
+<p>假如你已经有了三角形的图片，并且减少HTTP请求，那么将这个图片转换成一个BASE64字符串是最好的解决方案。</p>
+<h3 id="有用的工具（用于图片转换成BASE64编码）"><a href="#有用的工具（用于图片转换成BASE64编码）" class="headerlink" title="有用的工具（用于图片转换成BASE64编码）:"></a>有用的工具（用于图片转换成BASE64编码）:</h3><ul>
+<li><a href="http://webcodertools.com/imagetobase64converter" target="_blank" rel="external">http://webcodertools.com/imagetobase64converter</a></li>
+<li><a href="http://image2base64.wemakesites.net/" target="_blank" rel="external">http://image2base64.wemakesites.net/</a></li>
+</ul>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>你可以按照自己的思想设计阴影，渐变等，然后对其进行转换编码</li>
+</ul>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>你需要使用一个图片编辑软件去设计</li>
+<li>对于较大的图片，最终转换成字符串占用大小会很大</li>
+<li>旧版本的浏览器，如：IE6/IE7是不兼容的</li>
+</ul>
+<h2 id="CSS-边框"><a href="#CSS-边框" class="headerlink" title="CSS 边框"></a>CSS 边框</h2><p><img src="wp-content/uploads/2012/10/border-triangle.png" alt="" title="Border triangle"></p>
+<p>这也是一个常用的使用方式，如<strong>tooltips</strong>信息提示框和<strong>下拉菜单。</strong>以上的示例，这是一个我最喜欢的方法创建小而且有用的三角形。</p>
+<h3 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>很容易的通过修改一些CSS代码属性值而更改颜色和大小</li>
+<li>这是一个跨浏览器的解决方案。</li>
+</ul>
+<h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>这个方式使用的是border,所以你不能添加阴影、渐变、和其他一些CSS3效果</li>
+<li>请记住，IE6是不支持透明边界的-如果你关心这个问题</li>
+<li>如果你使用火狐浏览器，要知道，CSS的“透明”有时可能不会是透明的，特别是在对角线边框，越多更多 <a href="http://coderwall.com/p/tpmsta" target="_blank" rel="external">here</a>.</li>
+</ul>
+<h2 id="HTML-字符"><a href="#HTML-字符" class="headerlink" title="HTML 字符"></a>HTML 字符</h2><p><img src="wp-content/uploads/2012/10/entity-triangle.png" alt="" title="Entity-triangle"><br>它是基于使用可用的Unicode字符列表的字符。</p>
+<h3 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>它是一个跨浏览器的技术</li>
+<li>您可以使用CSS3的text-shadow属性添加阴影。</li>
+</ul>
+<h3 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>不能使用太多的CSS3效果，除了使用文字阴影。</li>
+<li>在所有的浏览器，这是相当不可能实现像素完美。</li>
+</ul>
+<h2 id="CSS-旋转正方形"><a href="#CSS-旋转正方形" class="headerlink" title="CSS 旋转正方形"></a>CSS 旋转正方形</h2><p><img src="wp-content/uploads/2012/10/cropped-triangle.png" alt="" title="Cropped triangle"></p>
+<p>理论上,这种方式，你需要使用两个内容块，但是，并没有限制是使用两个元素，所以可以使用一个元素加一个伪元素。</p>
+<ul>
+<li>创建一个内容里。例如100×100像素 - 这将包含旋转块。</li>
+<li>旋转包含的这个块45度，从而获得一个菱形</li>
+<li>将菱形的块向顶部便宜，然后设置溢出，设置父层容器截断</li>
+<li>There you go!</li>
+</ul>
+<h3 id="优点-3"><a href="#优点-3" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>CSS3阴影，渐变等可以更多的使用</li>
+</ul>
+<h3 id="缺点-3"><a href="#缺点-3" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>这个解决方案不是跨浏览器的,首先是因为CSS3旋转。</li>
+</ul>
+<h2 id="HTML5-Canvas"><a href="#HTML5-Canvas" class="headerlink" title="HTML5 Canvas"></a>HTML5 Canvas</h2><p><span class="Apple-style-span" style="font-family: Consolas, Monaco, monospace; font-size: 12px; line-height: 18px; white-space: pre;">在你的HTML文件中有以下的canvas元素：</span></p>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">&lt;canvas</span> <span style="color: #170;">id</span>=<span style="color: #a11;">"triangle"</span> <span style="color: #170;">height</span>=<span style="color: #a11;">"100"</span> <span style="color: #170;">width</span>=<span style="color: #a11;">"100"</span>&gt;<span style="color: #170;">Triangle</span><span style="color: #170;">&lt;</span>/<span style="color: #170;">canvas</span>&gt;</pre>
+这里的如何使用JavaScript绘制一个三角形：
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">var</span> <span style="color: #170;">canvas</span> = <span style="color: #170;">document</span>.<span style="color: #170;">getElementById</span><span style="color: #170;">(</span><span style="color: #a11;">'triangle'</span><span style="color: #170;">)</span>;
+<span style="color: #170;">var</span> <span style="color: #170;">context</span> = <span style="color: #170;">canvas</span>.<span style="color: #170;">getContext</span><span style="color: #170;">(</span><span style="color: #a11;">'2d'</span><span style="color: #170;">)</span>;
+
+<span style="color: #170;">context</span>.<span style="color: #170;">beginPath</span><span style="color: #170;">(</span><span style="color: #170;">)</span>;
+<span style="color: #170;">context</span>.<span style="color: #170;">moveTo</span><span style="color: #170;">(0</span>, <span style="color: #164;">0</span><span style="color: #170;">)</span>;
+<span style="color: #170;">context</span>.<span style="color: #170;">lineTo</span><span style="color: #170;">(100</span>, <span style="color: #164;">0</span><span style="color: #170;">)</span>;
+<span style="color: #170;">context</span>.<span style="color: #170;">lineTo</span><span style="color: #170;">(50</span>, <span style="color: #164;">100</span><span style="color: #170;">)</span>;
+
+<span style="color: #170;">context</span>.<span style="color: #170;">closePath</span><span style="color: #170;">(</span><span style="color: #170;">)</span>;
+
+<span style="color: #170;">context</span>.<span style="color: #170;">fillStyle</span> = <span style="color: #a11;">"rgb(78, 193, 243)"</span>;
+<span style="color: #170;">context</span>.<span style="color: #170;">fill</span><span style="color: #170;">(</span><span style="color: #170;">)</span>;</pre>
+
+<h2 id="SVG-Scalable-Vector-Graphics"><a href="#SVG-Scalable-Vector-Graphics" class="headerlink" title="SVG (Scalable Vector Graphics)"></a>SVG (Scalable Vector Graphics)</h2><p><span class="Apple-style-span" style="font-family: Consolas, Monaco, monospace; font-size: 12px; line-height: 18px; white-space: pre;">这是如何在您的标签，你可以定义一个内联SVG三角形：</span></p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">&lt;svg</span> <span style="color: #170;">xmlns</span>=<span style="color: #a11;">“<a href="http://www.w3.org/2000/svg" target="_blank" rel="external">http://www.w3.org/2000/svg</a>“</span> <span style="color: #170;">version</span>=<span style="color: #a11;">“1.1”</span> <span style="color: #170;">class</span>=<span style="color: #a11;">“svg-triangle”</span>&gt;<br>  <span style="color: #170;">&lt;polygon</span> <span style="color: #170;">points</span>=<span style="color: #a11;">“0,0 100,0 50,100”</span>/&gt;<br><span style="color: #170;">&lt;</span>/<span style="color: #170;">svg</span>&gt;</pre><br><span class="Apple-style-span" style="font-family: Consolas, Monaco, monospace; font-size: 12px; line-height: 18px; white-space: pre;">然后，只需添加一些样式：</span></p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">svg-triangle</span>{<br>    <span style="color: #000;">margin</span>: <span style="color: #164;">0</span> <span style="color: #164;">auto</span>;<br>    <span style="color: #000;">width</span>: <span style="color: #164;">100px</span>;<br>    <span style="color: #000;">height</span>: <span style="color: #164;">100px</span>;<br>}        </pre></p>
+<p>.<span style="color: #170;">svg-triangle</span> <span style="color: #170;">polygon</span> {<br>    <span style="color: #000;">fill</span>:<span style="color: #219;">#98d02e</span>;<br>    <span style="color: #000;">stroke</span>:<span style="color: #219;">#65b81d</span>;<br>    <span style="color: #000;">stroke-width</span>:<span style="color: #164;">2</span>;<br>}<br><a href="wp-content/themes/cocss/code.php?id=1397">点击查看演示DEMO</a></p>
+<h2 id="最后的话"><a href="#最后的话" class="headerlink" title="最后的话"></a>最后的话</h2><p>我必须承认，我并没有介绍太多在最后两个方式在这篇文章中所描述的：Canvas和SVG。这是因为他们是非常强大的，我必须介绍因为未来他很强大。不管怎样，事实是，他们的能力远远大于这些微不足道的三角形。这些方法，建立三角形，让我知道你的想法，你更经常使用的是什么方法？</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-e7-bd-91-e9-a1-b5-e8-ae-be-e8-ae-a1-e4-b8-ad-e7-9a-8421-e4-b8-aa-e6-bc-82-e4-ba-ae-e7-9a-84-e7-ba-b9-e7-90-86-e5-92-8c-e5-9b-be-e6-a1-88" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2012-10-17-e7-bd-91-e9-a1-b5-e8-ae-be-e8-ae-a1-e4-b8-ad-e7-9a-8421-e4-b8-aa-e6-bc-82-e4-ba-ae-e7-9a-84-e7-ba-b9-e7-90-86-e5-92-8c-e5-9b-be-e6-a1-88.html" class="article-date">
+      <time datetime="2012-10-17T00:09:31.000Z" itemprop="datePublished">2012-10-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2012-10-17-e7-bd-91-e9-a1-b5-e8-ae-be-e8-ae-a1-e4-b8-ad-e7-9a-8421-e4-b8-aa-e6-bc-82-e4-ba-ae-e7-9a-84-e7-ba-b9-e7-90-86-e5-92-8c-e5-9b-be-e6-a1-88.html">网页设计中的21个漂亮的纹理和图案</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <div class="metaCat"><br><br>纹理和图案的使用是一个有效的和相对简单的方法来添加一个网页设计的趣味。出于这个原因，它依旧是一个流行的趋势，很高兴总是看到其他设计师很好的应用这个趋势。从细纹的纹理，到整个纹理背景，我们已经搜集了一些漂亮的纹理和团的使用的例子给大家。享受吧！<br><br><span class="Apple-style-span" style="font-size: 15px; font-weight: bold;"><a href="http://www.i2c.com.au/" target="_blank" rel="external">i2C</a></span><br><br></div><br><a href="http://www.i2c.com.au/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt01.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://www.cardinalcotton.com/" target="_blank" rel="external">Cardinal Cotton</a><br><br><a href="http://www.cardinalcotton.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt02.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://southtree.com/" target="_blank" rel="external">southtree.com</a><br><br><a href="http://southtree.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt03.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://www.weworkonsunday.com/" target="_blank" rel="external">we work on sunday</a><br><br><a href="http://www.weworkonsunday.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt04.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://www.45royale.com/" target="_blank" rel="external">45royale</a><br><br><a href="http://www.45royale.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt05.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://harrysicecream.com/" target="_blank" rel="external">Harry’s Ice Cream</a><br><br><a href="http://harrysicecream.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt06.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://www.neveandhawk.com/" target="_blank" rel="external">Neve and Hawk</a><br><br><a href="http://www.neveandhawk.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt07.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://everlovinpress.com/" target="_blank" rel="external">Everlovin’ Press</a><br><br><a href="http://everlovinpress.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt08.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://www.tarohoriuchi.com/" target="_blank" rel="external">Taro Horiuchi</a><br><br><a href="http://www.tarohoriuchi.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt09.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://nationallgbtmuseum.org/#/home/" target="_blank" rel="external">National LGBT Museum</a><br><br><a href="http://nationallgbtmuseum.org/#/home/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt10.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://buckross.com/" target="_blank" rel="external">Buck Ross Productions</a><br><br><a href="http://buckross.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt11.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://colorkite.com/" target="_blank" rel="external">Colorkite</a><br><br><a href="http://colorkite.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt12.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://www.blueapron.com/" target="_blank" rel="external">Blue Apron</a><br><br><a href="http://www.blueapron.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt13.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://www.guerillaweb.ca/" target="_blank" rel="external">Guerilla Web</a><br><br><a href="http://www.guerillaweb.ca/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt14.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://www.bitgym.com/" target="_blank" rel="external">Bit Gym</a><br><br><a href="http://www.bitgym.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt15.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://osvaldas.info/" target="_blank" rel="external">Osvaldas Valutis</a><br><br><a href="http://osvaldas.info/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt16.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://www.shamballajewels.com/" target="_blank" rel="external">Shamballa Jewels</a><br><br><a href="http://www.shamballajewels.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt17.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://www.ghosthorses.co.uk/" target="_blank" rel="external">Ghost Horses</a><br><br><a href="http://www.ghosthorses.co.uk/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt18.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://wearefo.com/" target="_blank" rel="external">FO</a><br><br><a href="http://wearefo.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt19.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://johanreinhold.com/" target="_blank" rel="external">Johan Reinhold – Heart in a Jar</a><br><br><a href="http://johanreinhold.com/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt20.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><br>### <a href="http://kikk.be/2012/" target="_blank" rel="external">Kikk Festival</a><br><br><a href="http://kikk.be/2012/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/textpatt21.jpg" alt="Textures and Patterns in Web Design" title="Textures and Patterns in Web Design"></a><br><div class="authorBox clearfix"></div><br><div class="authorBox clearfix">译文链接：<a href="http://webdesignledger.com/inspiration/21-beautiful-examples-of-textures-and-patterns-in-web-design" target="_blank" rel="external">21-beautiful-examples-of-textures-and-patterns-in-web-design</a></div>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-e3-80-90-e9-80-86-e8-bd-ac-e6-80-9d-e7-bb-b4-e3-80-91-e7-ba-afcss-e5-a6-82-e4-bd-95-e7-ae-a1-e7-90-86-e5-a4-9a-e8-a1-8c-e7-9c-81-e7-95-a5-e5-8f-b7" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -443,700 +972,6 @@
 <p><img src="wp-content/uploads/2012/10/css3-buttons-07.jpg" alt="instantShift - Step 5: Different Shapes" title="instantShift - Step 5: Different Shapes"></p>
 <p>#### </p>
 
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-66-e4-b8-aa-e6-bc-82-e4-ba-ae-e7-9a-84-e5-85-8d-e8-b4-b9-e6-97-a5-e5-8e-86psd-e8-ae-be-e8-ae-a1-e7-a8-bf-e4-b8-8b-e8-bd-bd" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2012-10-10-66-e4-b8-aa-e6-bc-82-e4-ba-ae-e7-9a-84-e5-85-8d-e8-b4-b9-e6-97-a5-e5-8e-86psd-e8-ae-be-e8-ae-a1-e7-a8-bf-e4-b8-8b-e8-bd-bd.html" class="article-date">
-      <time datetime="2012-10-10T01:05:13.000Z" itemprop="datePublished">2012-10-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2012-10-10-66-e4-b8-aa-e6-bc-82-e4-ba-ae-e7-9a-84-e5-85-8d-e8-b4-b9-e6-97-a5-e5-8e-86psd-e8-ae-be-e8-ae-a1-e7-a8-bf-e4-b8-8b-e8-bd-bd.html">66个漂亮的免费日历PSD设计稿下载</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>当设计图片编辑或者图片优化的时候, 使用Photoshop通常是考虑的主要选择. 但是,这个软件本身需要很努力的学习并且非常难以掌握。当然，并不是所有的设计爱好者都是网页设计师。</p>
-<p><a href="wp-content/uploads/2012/10/free-calendar-psd.jpg"><img src="wp-content/uploads/2012/10/free-calendar-psd.jpg" alt="" title="free-calendar-psd"></a></p>
-<p>你可以在网上找到许多免费的设计的东西。寻找免费的PSD网站模板并不是很难的事情，但是很难找到融合了创意和设计趋势的设计元素。</p>
-<p>在下面，你将会发现一些最好的<span style="color: #ff0000;"><strong>免费下载的日历设计稿</strong></span>。方便你的设计项目。这不是传统的罗列一些可用的免费PSD模板，但是这是一个精致的最佳的精心挑选的PSD模板集合。</p>
-<p>Calendar Related PSDs</p>
-<p><span style="text-decoration: underline;"><a href="http://freebiesbooth.com/little-calendar-widget" target="_blank" rel="external"><strong>Little calendar widget</strong></a></span></p>
-<p><a href="http://freebiesbooth.com/little-calendar-widget" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-01.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://webtiago.com/2012/02/calendar-freebie-metro-style-theme/" target="_blank" rel="external"><strong>Metro Style Calendar</strong></a></span></p>
-<p><a href="http://webtiago.com/2012/02/calendar-freebie-metro-style-theme/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-02.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://www.premiumpixels.com/freebies/pretty-little-calendar-psd/" target="_blank" rel="external"><strong>Pretty Little Calendar</strong></a></span></p>
-<p><a href="http://www.premiumpixels.com/freebies/pretty-little-calendar-psd/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-03.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://pixelsdaily.com/resources/photoshop/psds/psd-a-minimalist-calendar-widget/" target="_blank" rel="external"><strong>Minimalist Calendar Widget</strong></a></span></p>
-<p><a href="http://pixelsdaily.com/resources/photoshop/psds/psd-a-minimalist-calendar-widget/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-04.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://dribbble.com/shots/562522-Calendar-free-psd-file" target="_blank" rel="external"><strong>Calendar</strong></a></span></p>
-<p><a href="http://dribbble.com/shots/562522-Calendar-free-psd-file" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-05.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://freebiesbooth.com/minimal-calendar" target="_blank" rel="external"><strong>Minimal Calendar</strong></a></span></p>
-<p><a href="http://freebiesbooth.com/minimal-calendar" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-06.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://www.breezyprague.com/freebies/calendar/" target="_blank" rel="external"><strong>Calendar Freebie</strong></a></span></p>
-<p><a href="http://www.breezyprague.com/freebies/calendar/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-07.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://www.instantshift.com/2012/05/10/how-to-design-a-clean-and-modern-calendar-widget-in-photoshop/" target="_blank" rel="external"><strong>Modern Calendar Widget</strong></a></span></p>
-<p><a href="http://www.instantshift.com/2012/05/10/how-to-design-a-clean-and-modern-calendar-widget-in-photoshop/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-08.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://dribbble.com/shots/686362-Calendar-wtih-event-preview-psd-freebie" target="_blank" rel="external"><strong>Calendar wtih event preview</strong></a></span></p>
-<p><a href="http://dribbble.com/shots/686362-Calendar-wtih-event-preview-psd-freebie" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-09.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://hamzaelgarrab.deviantart.com/art/Calendar-Template-198958578" target="_blank" rel="external"><strong>Calendar Template</strong></a></span></p>
-<p><a href="http://hamzaelgarrab.deviantart.com/art/Calendar-Template-198958578" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-10.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://365psd.com/day/2-184/" target="_blank" rel="external"><strong>Calendar Widget</strong></a></span></p>
-<p><a href="http://365psd.com/day/2-184/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-11.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://dribbble.com/shots/513118-Calendar" target="_blank" rel="external"><strong>Calendar</strong></a></span></p>
-<p><a href="http://dribbble.com/shots/513118-Calendar" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-12.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://dribbble.com/shots/643225-Calendar-psd" target="_blank" rel="external"><strong>Calendar</strong></a></span></p>
-<p><a href="http://dribbble.com/shots/643225-Calendar-psd" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-13.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://365psd.com/day/2-335/" target="_blank" rel="external"><strong>Hand Stitched Calendar</strong></a></span></p>
-<p><a href="http://365psd.com/day/2-335/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-14.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://dribbble.com/shots/340120-Calendar-Free-psd" target="_blank" rel="external"><strong>Calendar</strong></a></span></p>
-<p><a href="http://dribbble.com/shots/340120-Calendar-Free-psd" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-15.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://www.icondeposit.com/design:124" target="_blank" rel="external"><strong>Calendar UI</strong></a></span></p>
-<p><a href="http://www.icondeposit.com/design:124" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-16.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://365psd.com/day/2-348/" target="_blank" rel="external"><strong>Calendar Widget</strong></a></span></p>
-<p><a href="http://365psd.com/day/2-348/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-17.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://dribbble.com/shots/313521-Calendar-Tooltip-PSD" target="_blank" rel="external"><strong>Calendar Tooltip</strong></a></span></p>
-<p><a href="http://dribbble.com/shots/313521-Calendar-Tooltip-PSD" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-18.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://faisal128.deviantart.com/art/Free-Psd-Calendar-302235434" target="_blank" rel="external"><strong>Free Psd Calendar</strong></a></span></p>
-<p><a href="http://faisal128.deviantart.com/art/Free-Psd-Calendar-302235434" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-19.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://dribbble.com/shots/717309-Calendar-PSD-Download" target="_blank" rel="external"><strong>Calendar</strong></a></span></p>
-<p><a href="http://dribbble.com/shots/717309-Calendar-PSD-Download" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-20.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://pixelmonarchy.com/resources/clean-dark-calendar-widget-free-psd-file/" target="_blank" rel="external"><strong>Clean Dark Calendar Widget</strong></a></span></p>
-<p><a href="http://pixelmonarchy.com/resources/clean-dark-calendar-widget-free-psd-file/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-21.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://365psd.com/day/2-252/" target="_blank" rel="external"><strong>Calendar</strong></a></span></p>
-<p><a href="http://365psd.com/day/2-252/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-22.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://dribbble.com/shots/692771-Simple-Calendar-UI" target="_blank" rel="external"><strong>Simple Calendar UI</strong></a></span></p>
-<p><a href="http://dribbble.com/shots/692771-Simple-Calendar-UI" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-23.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://365psd.com/day/2-324/" target="_blank" rel="external"><strong>Mini Calendar</strong></a></span></p>
-<p><a href="http://365psd.com/day/2-324/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-24.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://dribbble.com/shots/541454-Calendar-PSD" target="_blank" rel="external"><strong>Calendar</strong></a></span></p>
-<p><a href="http://dribbble.com/shots/541454-Calendar-PSD" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-25.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://365psd.com/day/351/" target="_blank" rel="external"><strong>Calendar Datepicker</strong></a></span></p>
-<p><a href="http://365psd.com/day/351/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-26.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://dribbble.com/shots/530830-Tickets-Calendar-psd-Freebbbie" target="_blank" rel="external"><strong>Tickets Calendar</strong></a></span></p>
-<p><a href="http://dribbble.com/shots/530830-Tickets-Calendar-psd-Freebbbie" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-27.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://365psd.com/day/2-318/" target="_blank" rel="external"><strong>Free calendar</strong></a></span></p>
-<p><a href="http://365psd.com/day/2-318/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-28.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://dribbble.com/shots/339235-Free-Calendar-PSD" target="_blank" rel="external"><strong>Free Calendar</strong></a></span></p>
-<p><a href="http://dribbble.com/shots/339235-Free-Calendar-PSD" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-29.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://365psd.com/day/2-122/" target="_blank" rel="external"><strong>Dark Formal Calendar</strong></a></span></p>
-<p><a href="http://365psd.com/day/2-122/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-30.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://dribbble.com/shots/460778-Calendar-UI-freebie" target="_blank" rel="external"><strong>Calendar UI</strong></a></span></p>
-<p><a href="http://dribbble.com/shots/460778-Calendar-UI-freebie" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-31.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://365psd.com/day/2-152/" target="_blank" rel="external"><strong>Sexy Calendar</strong></a></span></p>
-<p><a href="http://365psd.com/day/2-152/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-32.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://dribbble.com/shots/221682-Calendar" target="_blank" rel="external"><strong>Calendar</strong></a></span></p>
-<p><a href="http://dribbble.com/shots/221682-Calendar" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-33.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://emey87.deviantart.com/art/Sleek-calendar-PSD-202243606" target="_blank" rel="external"><strong>Sleek calendar</strong></a></span></p>
-<p><a href="http://emey87.deviantart.com/art/Sleek-calendar-PSD-202243606" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-34.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://designmoo.com/2150/black-calendar/" target="_blank" rel="external"><strong>Dark Calendar</strong></a></span></p>
-<p><a href="http://designmoo.com/2150/black-calendar/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-35.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://365psd.com/day/81/" target="_blank" rel="external"><strong>Calendar</strong></a></span></p>
-<p><a href="http://365psd.com/day/81/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-36.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://firefreebies.com/photoshop-resources/metal-calendar/" target="_blank" rel="external"><strong>Metal Calendar</strong></a></span></p>
-<p><a href="http://firefreebies.com/photoshop-resources/metal-calendar/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-37.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://dribbble.com/shots/217995-Calendar-PSD" target="_blank" rel="external"><strong>Calendar PSD</strong></a></span></p>
-<p><a href="http://dribbble.com/shots/217995-Calendar-PSD" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-38.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://designmoo.com/5354/calendar-freebie/" target="_blank" rel="external"><strong>Calendar Freebie</strong></a></span></p>
-<p><a href="http://designmoo.com/5354/calendar-freebie/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-39.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://dribbble.com/shots/498730-My-Planning" target="_blank" rel="external"><strong>My Planning</strong></a></span></p>
-<p><a href="http://dribbble.com/shots/498730-My-Planning" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-40.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://365psd.com/day/227/" target="_blank" rel="external"><strong>Sexy Calendar</strong></a></span></p>
-<p><a href="http://365psd.com/day/227/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-41.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://firefreebies.com/photoshop-resources/calendar-psd-source/" target="_blank" rel="external"><strong>Calendar</strong></a></span></p>
-<p><a href="http://firefreebies.com/photoshop-resources/calendar-psd-source/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-42.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://feedgrids.com/originals/post/detailed-calendars-psd-freebie" target="_blank" rel="external"><strong>Detailed Calendars</strong></a></span></p>
-<p><a href="http://feedgrids.com/originals/post/detailed-calendars-psd-freebie" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-43.jpg%3Cbr%20/%3E1111%20http://mrspokemon.deviantart.com/art/Calendar-PSD-308884163%E2%80%B3/%3E%3Cstrong%3ECalendar%20PSD%3C/strong%3E%3C/a%3E%3C/p%3E%3Cp%3E%3Ca%20rel=" alt=""><img src="wp-content/uploads/2012/10/free-calendar-psd-44.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://designmoo.com/6423/a-very-design-calendar/" target="_blank" rel="external"><strong>Design calendar</strong></a></span></p>
-<p><a href="http://designmoo.com/6423/a-very-design-calendar/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-45.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://www.uipixels.com/yellow-fantastic-calendarpsd/" target="_blank" rel="external"><strong>Yellow fantastic calendar</strong></a></span></p>
-<p><a href="http://www.uipixels.com/yellow-fantastic-calendarpsd/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-46.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://firefreebies.com/photoshop-resources/event-calendar-psd-sources/" target="_blank" rel="external"><strong>Event calendar</strong></a></span></p>
-<p><a href="http://firefreebies.com/photoshop-resources/event-calendar-psd-sources/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-47.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://themecavern.com/editable-calendar-ui-psd" target="_blank" rel="external"><strong>Editable Calendar UI</strong></a></span></p>
-<p><a href="http://themecavern.com/editable-calendar-ui-psd" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-48.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://themefuse.com/blog/weekly-freebie-reservation-form/" target="_blank" rel="external"><strong>Reservation form</strong></a></span></p>
-<p><a href="http://themefuse.com/blog/weekly-freebie-reservation-form/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-49.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://taytel.deviantart.com/art/Calendars-PSD-139602306" target="_blank" rel="external"><strong>Calendars PSD</strong></a></span></p>
-<p><a href="http://taytel.deviantart.com/art/Calendars-PSD-139602306" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-50.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://www.creationswap.com/media/6438" target="_blank" rel="external"><strong>Scalable calendar</strong></a></span></p>
-<p><a href="http://www.creationswap.com/media/6438" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-51.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<h3 id="Other-Calendar-Related-PSDs"><a href="#Other-Calendar-Related-PSDs" class="headerlink" title="Other Calendar Related PSDs"></a>Other Calendar Related PSDs</h3><p><span style="text-decoration: underline;"><a href="http://www.brunodesign1206.blogspot.in/2011/09/calendario-psd.html" target="_blank" rel="external"><strong>Calendar Note</strong></a></span></p>
-<p><a href="http://www.brunodesign1206.blogspot.in/2011/09/calendario-psd.html" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-52.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://dribbble.com/shots/442084-Siri-Reminder-Freebie-PSD" target="_blank" rel="external"><strong>Siri Reminder</strong></a></span></p>
-<p><a href="http://dribbble.com/shots/442084-Siri-Reminder-Freebie-PSD" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-53.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://eli42291.deviantart.com/art/Calendar-Widget-Freebie-326654036" target="_blank" rel="external"><strong>Calendar Widget</strong></a></span></p>
-<p><a href="http://eli42291.deviantart.com/art/Calendar-Widget-Freebie-326654036" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-54.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://olegnax.com/1051-free-icon-calendar-countdown/" target="_blank" rel="external"><strong>Date Time Counter</strong></a></span></p>
-<p><a href="http://olegnax.com/1051-free-icon-calendar-countdown/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-55.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://themecavern.com/free-events-calendar-psd-template" target="_blank" rel="external"><strong>Events calendar</strong></a></span></p>
-<p><a href="http://themecavern.com/free-events-calendar-psd-template" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-56.jpg%3Cbr%20/%3E1111%20http://www.ioandecean.info/2011/07/calendar-icon-free-psd/%E2%80%9D/%3E%3Cstrong%3ECalendar%20icon%3C/strong%3E%3C/a%3E%3C/p%3E%3Cp%3E%3Ca%20rel=" alt=""><img src="wp-content/uploads/2012/10/free-calendar-psd-57.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://365psd.com/day/2-330/" target="_blank" rel="external"><strong>Small, Hand Stitched Calendar</strong></a></span></p>
-<p><a href="http://365psd.com/day/2-330/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-58.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://365psd.com/day/2-8/" target="_blank" rel="external"><strong>Calendar Icon</strong></a></span></p>
-<p><a href="http://365psd.com/day/2-8/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-59.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://freebiesbooth.com/calendar-icon" target="_blank" rel="external"><strong>Calendar icon</strong></a></span></p>
-<p><a href="http://freebiesbooth.com/calendar-icon" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-50.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://dribbble.com/shots/127388-Free-Calendar-Icons" target="_blank" rel="external"><strong>Calendar Icons</strong></a></span></p>
-<p><a href="http://dribbble.com/shots/127388-Free-Calendar-Icons" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-61.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://pixelsdaily.com/resources/photoshop/psds/a-simple-calendar-icon/" target="_blank" rel="external"><strong>Simple Calendar Icon</strong></a></span></p>
-<p><a href="http://pixelsdaily.com/resources/photoshop/psds/a-simple-calendar-icon/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-62.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://dribbble.com/shots/387656-Calendar" target="_blank" rel="external"><strong>Calendar</strong></a></span></p>
-<p><a href="http://dribbble.com/shots/387656-Calendar" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-63.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://pixelsdaily.com/resources/photoshop/psds/month-picker/" target="_blank" rel="external"><strong>Month Picker</strong></a></span></p>
-<p><a href="http://pixelsdaily.com/resources/photoshop/psds/month-picker/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-64.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://365psd.com/day/298/" target="_blank" rel="external"><strong>Event Calendar Widget</strong></a></span></p>
-<p><a href="http://365psd.com/day/298/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-65.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p><span style="text-decoration: underline;"><a href="http://firefreebies.com/photoshop-resources/news-rubricator/" target="_blank" rel="external"><strong>News Rubricator</strong></a></span></p>
-<p><a href="http://firefreebies.com/photoshop-resources/news-rubricator/" target="_blank" rel="external"><img src="wp-content/uploads/2012/10/free-calendar-psd-66.jpg" alt="instantShift - Beautiful Free Calendar PSD Designs" title="instantShift - Beautiful Free Calendar PSD Designs"></a></p>
-<p>&nbsp;</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-wordpress-co1-e4-b8-bb-e9-a2-98-e5-85-8d-e8-b4-b9-e5-85-b1-e4-ba-ab-e5-8f-91-e5-b8-83-e5-8f-8a-e8-af-b4-e6-98-8e-cocss" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2012-09-24-wordpress-co1-e4-b8-bb-e9-a2-98-e5-85-8d-e8-b4-b9-e5-85-b1-e4-ba-ab-e5-8f-91-e5-b8-83-e5-8f-8a-e8-af-b4-e6-98-8e-cocss.html" class="article-date">
-      <time datetime="2012-09-24T01:01:23.000Z" itemprop="datePublished">2012-09-24</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2012-09-24-wordpress-co1-e4-b8-bb-e9-a2-98-e5-85-8d-e8-b4-b9-e5-85-b1-e4-ba-ab-e5-8f-91-e5-b8-83-e5-8f-8a-e8-af-b4-e6-98-8e-cocss.html">Wordpress CO1主题免费共享发布及说明[提供问题反馈修复] - CoCss</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>CoCss 自用第一款原创主题免费发布啦！CO1主题的设计思想是简洁实用。虽说简洁但是简约而绝不简单，之前有部分同学询问过是否可以提供共享，因为一直没有整理一个半成品也不好发出，所以现在整理完成后就马上发布了。本着自我学习完善自己产品的思想，如果你在使用主题的时候什么问题，请在本文留言，我会跟进并解决。</p>
-<h3 id="一、来看看CO1主题的样子"><a href="#一、来看看CO1主题的样子" class="headerlink" title="一、来看看CO1主题的样子"></a>一、来看看CO1主题的样子</h3><p><img src="wp-content/uploads/2012/09/screenshot.png" alt="" title="CoCss 主题CO1"></p>
-<p>不详细说了，反正本站在的风格就是该主题的样子，大家可以浏览下其他页面。</p>
-<h3 id="二、CO1主题相关说明"><a href="#二、CO1主题相关说明" class="headerlink" title="二、CO1主题相关说明"></a>二、CO1主题相关说明</h3><p>1、主题是由Wordpress的主题模板；<br>2、CO1主题为CoCss.com所作，很多后端代码参考自其他主题及搜索引擎；<br>3、CO1主题是免费的，希望大家多支持开源共享；<br>4、CO1主题功能什么的直接看本站就行了，主题带后台详细配置功能；<br>5、尊重劳动成果，请不要删除底部 Theme Co1 标志版权；<br>6、使用本主题要用到WP-PostViews插件，用来统计点击量；<br><span style="color: #ff0000;"> 7、请关注本帖，因为主题会更新修复问题；</span><br>8、CoCss.com第二款主题进行中，欢迎期待！</p>
-<h3 id="三、如何使用"><a href="#三、如何使用" class="headerlink" title="三、如何使用"></a>三、如何使用</h3><p>1、从CoCss官网下载“CO1<code>.ZIP</code>”主题包，输入“<code>www.cocss.com</code>”密码解压；<br>2、解压“<code>CO1.ZIP</code>”，替换“<code>img</code>”文件夹下的“<code>logo.png</code>”、“<code>default.jpg</code>”和“<code>admin.png</code>”，请注意文件格式和尺寸大小；<br>3、将解压后的CO1文件夹使用用FTP上传至WP目录“<code>wp-content/themes</code>”，进入“后台-外观-主题”，找到并启用CO1；<br>4、设置主导航和顶部侧边导航，进入“后台-外观-菜单”设置你的导航和菜单；<br>5、进入“后台-外观-主题设置”设置站点基本信息，注意，如果开启评论头像缓存，你必须确保站点根目录有“avatar”文件夹，没有则新建一个；<br>6、进入“后台-外观-小工具”，选择自己喜欢的模块拖到右侧的“网站侧栏”即可；</p>
-<p><span style="color: #ff0000;"><strong>下载地址：</strong></span><a href="wp-content/uploads/2012/11/co1.zip">CO1主题下载-CoCss</a><a href="wp-content/uploads/2012/10/co1.zip"> </a> 1.3  20121031修正版 （解密：www.cocss.com）</p>
-<p><strong>2012年09月25日 更新说明：</strong></p>
-<p>1、对主题做IE6/IE7兼容处理，IE6/IE7下无错位</p>
-<p>2、修正管理员图像路径不正确问题</p>
-<p><span style="color: #000000;"><strong>2012年09月27日 更新说明：</strong></span></p>
-<p>1、修正后台SEO配置项页面不同步</p>
-<p><span style="color: #ff0000;"><strong>2012年10月31日 更新说明：</strong></span></p>
-<p>1、增加导航二级菜单</p>
-<p>2、删除缩略图自动裁剪</p>
-<div class="zhanzhuzhifu" style="padding: 10px; border: 1px dashed #DBDBDB; &lt;br /&gt; background: #F8F8F8; margin-bottom: 10px;">如果你使用我的主题，觉得有帮助： <a href="https://me.alipay.com/lyushine" target="_blank" rel="external"><img src="wp-content/uploads/2012/09/alipay.png" alt=""></a></div>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-e7-bd-91-e7-ab-99-e9-a1-b9-e7-9b-ae-e5-a6-82-e4-bd-95-e5-81-9a-e5-a5-bd-e7-ae-80-e5-8d-95-e7-9a-84-e9-9c-80-e6-b1-82-e5-88-86-e6-9e-90" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2012-09-16-e7-bd-91-e7-ab-99-e9-a1-b9-e7-9b-ae-e5-a6-82-e4-bd-95-e5-81-9a-e5-a5-bd-e7-ae-80-e5-8d-95-e7-9a-84-e9-9c-80-e6-b1-82-e5-88-86-e6-9e-90.html" class="article-date">
-      <time datetime="2012-09-16T07:54:05.000Z" itemprop="datePublished">2012-09-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2012-09-16-e7-bd-91-e7-ab-99-e9-a1-b9-e7-9b-ae-e5-a6-82-e4-bd-95-e5-81-9a-e5-a5-bd-e7-ae-80-e5-8d-95-e7-9a-84-e9-9c-80-e6-b1-82-e5-88-86-e6-9e-90.html">网站项目如何做好简单的需求分析</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>需求分析的失误.很可能导致整个项目的失败。客户期望值和开发人员自己的理解相差过大也可能会导致项目的一些不愉快事情发生,如果在项目开始前做好充分的需求，而且需求要做的到位,需求的思维严禁程度至关重要。那么至少说明以下两点：</p>
-<p><strong>1、品质程度在多少价位（关系到代码优化程序与设计精细度）</strong></p>
-<p><strong>2、有没有达到期望值的示范站点？</strong></p>
-<p>做需求分析要把这些关键点做到，第二点中如果布局有自己的要求，那么最好请他们给出布局的线框图即可，或者可以委托我们推荐的布局方案。</p>
-<p>功能需求分析就是把网站所有的栏目列出来，然后顺便可以按每个栏目按照自己的理解把整个系统流程口头或者文字描述一遍，让客户对自己的理解提出疑问和补充或者认可。</p>
-<p><strong>3、了解客户的真实需求</strong></p>
-<p>将价位说明和功能需求分析完以后，客户说资金比较少，如果资金和项目开发量相差过大也不便于合作。但是，有些时候其实客户并不是真正要一个完整的系统，那么这样需要了解客户的真实需求然后降低开发成本迎合少量的项目资金完成项目。比如，有个人说需要做一个大型的旅游网站，其后了解到只是用这个网站参加某竞赛，也只需要简单的演示，那么这个网站其实只做静态页就够了，这样只做静态页客户得到自己的需求而又满足他的资金预算，开发方又能赚钱，何乐而不为呢？了解客户的真实需求很重要！</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-2012-webrebuild-e5-b9-b4-e4-bc-9a-e4-b8-8a-e6-b5-b7-e7-ab-99-e5-bc-80-e5-a7-8b-e6-8a-a5-e5-90-8d-e9-82-80-e8-af-b7-e5-b7-b2-e7-bb-8f-e5-bc-80-e5-a7-8b-e5-8f-91-e6-94-be" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2012-09-11-2012-webrebuild-e5-b9-b4-e4-bc-9a-e4-b8-8a-e6-b5-b7-e7-ab-99-e5-bc-80-e5-a7-8b-e6-8a-a5-e5-90-8d-e9-82-80-e8-af-b7-e5-b7-b2-e7-bb-8f-e5-bc-80-e5-a7-8b-e5-8f-91-e6-94-be.html" class="article-date">
-      <time datetime="2012-09-11T03:46:21.000Z" itemprop="datePublished">2012-09-11</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2012-09-11-2012-webrebuild-e5-b9-b4-e4-bc-9a-e4-b8-8a-e6-b5-b7-e7-ab-99-e5-bc-80-e5-a7-8b-e6-8a-a5-e5-90-8d-e9-82-80-e8-af-b7-e5-b7-b2-e7-bb-8f-e5-bc-80-e5-a7-8b-e5-8f-91-e6-94-be.html">webrebuild 2012 年会上海站开始报名【邀请已经开始发放】</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>今天的前端盛会webrebuild上海站开始报名了，广大前端爱好者赶快来吧！</p>
-<p>今年的WebRebuild会议上海站由篱笆信息科技筹办</p>
-<p><strong>举办时间：</strong>2012年09月15日(星期六)</p>
-<p><strong>会议补充</strong>：如果没有收到邀请函不能到现场参加的话，您可以通过场外互动平台 腾讯微博 #webrebuild年会# 话题与现场互动</p>
-<p><strong>报名截止</strong>：2012年09月13日 0点0分0秒</p>
-<p><strong>报名补充</strong>：如果未收到邀请邮件的同学，请访问这里 查询是否获得邀请并确认。更多资讯请收听<a href="http://t.qq.com/webrebuild" target="_blank" rel="external">官方微博 </a></p>
-<p><strong>分享嘉宾</strong>：来自百姓网的sofish,来自支付宝的王保平、来自腾讯ECD的王旭、来自携程旅行网UED的薛丽丽</p>
-<p><span style="color: #dc2523;"><strong>分享内容</strong></span>：</p>
-<p><img src="wp-content/uploads/2012/09/webrebuild-sh.jpg" alt="" title="webrebuild 上海站"></p>
-<p><strong>报名地址：<a href="http://webrebuild.org/shanghai/signup.html" target="_blank" rel="external">http://webrebuild.org/shanghai/signup.html</a></strong></p>
-<p><strong>详细地点：</strong>上海市徐汇区宜山路889号齐来工业城1号楼 五楼 上海篱笆信息科技有限公司（ <a href="http://webrebuild.org/shanghai/map.jpg" target="_blank" rel="external">路线指引</a>）</p>
-<p><strong>地铁线路：</strong>地铁9号线 漕河泾开发区站 1号口出站 沿宜山路向东前行 穿过桂平路后前方100米右侧 靠近路边的大楼5楼</p>
-<p>祝此次会议能够圆满举办，尤其是互动抽奖环节，有惊喜哦！！！</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-e9-82-a3-e4-ba-9b-e5-b9-b4-e6-88-91-e4-bb-ac-e4-b8-80-e8-b5-b7-e4-bd-bf-e7-94-a8-e8-bf-87-e7-9a-84-e4-bb-bf-e7-ab-99-ef-bc-88-e4-b8-8b-e7-ab-99-ef-bc-89-e5-b7-a5-e5-85-b7" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2012-09-10-e9-82-a3-e4-ba-9b-e5-b9-b4-e6-88-91-e4-bb-ac-e4-b8-80-e8-b5-b7-e4-bd-bf-e7-94-a8-e8-bf-87-e7-9a-84-e4-bb-bf-e7-ab-99-ef-bc-88-e4-b8-8b-e7-ab-99-ef-bc-89-e5-b7-a5-e5-85-b7.html" class="article-date">
-      <time datetime="2012-09-10T07:07:47.000Z" itemprop="datePublished">2012-09-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2012-09-10-e9-82-a3-e4-ba-9b-e5-b9-b4-e6-88-91-e4-bb-ac-e4-b8-80-e8-b5-b7-e4-bd-bf-e7-94-a8-e8-bf-87-e7-9a-84-e4-bb-bf-e7-ab-99-ef-bc-88-e4-b8-8b-e7-ab-99-ef-bc-89-e5-b7-a5-e5-85-b7.html">一键下载别人网站的工具</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>在某些特定的需求下本人仿过或者下载过别人的站点。比如“某同学老师布置了一个作业要做一个和某网站一模一样的静态页网站”然后找你帮忙，其方法也使用过多种，下面介绍下使用过的几种方法吧。</p>
-<h2 id="一、使用Teleport-pro网站整站下载器"><a href="#一、使用Teleport-pro网站整站下载器" class="headerlink" title="一、使用Teleport pro网站整站下载器"></a>一、使用Teleport pro网站整站下载器</h2><p><img src="wp-content/uploads/2012/09/teleport-pro1-300x170.jpg" alt="" title="teleport-pro网站整站下载器"></p>
-<p>这款软件非常强大，可以把目标网站的<span style="color: #ff0000;">所有相关链接、图片、css样式都打包一同下载，并保持目录结构不变。<span style="color: #000000;">使用方法就不多说了，下载了自然会用的，上手简单。</span></span></p>
-<p>在使用这款软件令人头痛的是该软件会在所有的相关文件中加入一些冗余代码。</p>
-<p>比如:</p>
-<p>&lt;  tppabs=”<a href="http://www.****.com/images/bg.gif" target="_blank" rel="external">http://www.****.com/images/bg.gif</a>“ style=”font-size:12px;”&gt; 中的tppabs标签(估计是Teleport pro为了方便其自身更新时加上的标记）</p>
-<p>清除所有的tppabs标签冗余代码我一般使用Dreamweaver的正则表达式替换功能来完成。在DW正则表达式替换中：</p>
-<p>查找:</p>
-<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">\btppabs</span>=<span style="color: #a11;">“h[^”</span>]*<span style="color: #a11;">“</span></pre><br>替换为：</p>
-<p>空</p>
-<p>查找：</p>
-<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">href</span>=<span style="color: #a11;">“javascript:if(confirm(“</span> <span style="color: #170;">target</span>=<span style="color: #a11;">“_blank”</span> <span style="color: #170;">rel</span>=<span style="color: #a11;">“nofollow”</span>&gt;</pre><br>替换为:</p>
-<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">href</span>=<span style="color: #a11;">“../“</span> <span style="color: #170;">target</span>=<span style="color: #a11;">“_blank”</span> <span style="color: #170;">rel</span>=<span style="color: #a11;">“nofollow”</span>&gt;</pre><br>查找：</p>
-<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">tpa</span>=<span style="color: #170;">http</span>://[<span style="color: #170;">^\s</span>]*.<span style="color: #170;">gif</span></pre><br>清除了冗余代码，就基本完美了，虽然可能会下载一下不需要的文件，但是因为目录结构的保持，文件清理非常方便。</p>
-<h2 id="二、直接从IE的缓存里面复制并改名"><a href="#二、直接从IE的缓存里面复制并改名" class="headerlink" title="二、直接从IE的缓存里面复制并改名"></a>二、直接从IE的缓存里面复制并改名</h2><p>从IE浏览器  菜单栏-&gt;工具-&gt;Internet选项-&gt;常规-&gt;设置-&gt;查看文件 可以得到浏览器缓存存的目录。</p>
-<p>原理嘛就是先清除所有的缓存，然后访问目标网站，然后缓存目录里的东西就都是目标网站的缓存的文件呢。</p>
-<p>然后复制出来，再整理一下就可以了。</p>
-<p>比较不好的是 <span style="color: #ff0000;">目录结构被破坏 <span style="color: #000000;">需要自己进行大整理，而且复制出来的文件名会带有[1]类似的格式，我以前是配合 <span style="color: #ff0000;">【文件批量改名器】</span>批量改掉的。这个方法是初学CSS的时候别人教我的一个方法，现在认为这个方法不太好。</span></span></p>
-<h2 id="三、使用浏览器自带的另存为"><a href="#三、使用浏览器自带的另存为" class="headerlink" title="三、使用浏览器自带的另存为"></a>三、使用浏览器自带的另存为</h2><p>这个呢，大家都知道吧。</p>
-<p>这个方法 <span style="color: #ff0000;">破坏原网站下载过来的目录结构 <span style="color: #000000;"> 也是需要自己花成本重新整理。</span></span></p>
-<h2 id="四、Chrome插件DownFaster-一键下载网页资源"><a href="#四、Chrome插件DownFaster-一键下载网页资源" class="headerlink" title="四、Chrome插件DownFaster 一键下载网页资源"></a>四、Chrome插件DownFaster 一键下载网页资源</h2><p><img src="wp-content/uploads/2012/09/DownFast.jpg" alt="" title="DownFast"></p>
-<p>&nbsp;</p>
-<p>这款产品主要功能是按需所求批量下载当前页面的JS文件、CSS文件和图片资源。界面主要根据文件的类型分为三个选项卡，你可以勾选自己需要的文件。如果切换到图片选项卡，还可以直观的看到图片。勾选完毕之后，点击右上方的”Download”按钮，去下载区域看看，你选择的这些文件已经放在downfaster的ZIP包里啦。<span style="color: #ff0000;">可以直接选择性下载，按需所取。</span></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-2013-e6-90-ba-e7-a8-8b-e6-8a-80-e6-9c-af-e7-a0-94-e5-8f-91-e4-b8-ad-e5-bf-83-e5-ba-94-e5-b1-8a-e6-8a-80-e6-9c-af-e5-9f-b9-e8-ae-ad-e7-94-9f-e6-a0-a1-e5-9b-ad-e6-8b-9b-e8-81-98" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2012-09-07-2013-e6-90-ba-e7-a8-8b-e6-8a-80-e6-9c-af-e7-a0-94-e5-8f-91-e4-b8-ad-e5-bf-83-e5-ba-94-e5-b1-8a-e6-8a-80-e6-9c-af-e5-9f-b9-e8-ae-ad-e7-94-9f-e6-a0-a1-e5-9b-ad-e6-8b-9b-e8-81-98.html" class="article-date">
-      <time datetime="2012-09-07T00:11:27.000Z" itemprop="datePublished">2012-09-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2012-09-07-2013-e6-90-ba-e7-a8-8b-e6-8a-80-e6-9c-af-e7-a0-94-e5-8f-91-e4-b8-ad-e5-bf-83-e5-ba-94-e5-b1-8a-e6-8a-80-e6-9c-af-e5-9f-b9-e8-ae-ad-e7-94-9f-e6-a0-a1-e5-9b-ad-e6-8b-9b-e8-81-98.html">携程2013校园招聘技术类启程</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>一年一度技术培训生的招聘时节到来啦~</p>
-<p>今年的技术培训生名额多，待遇好，职位多~有做C++，C# 开发的~有前端，交互，视觉的~有项目管理，数据分析的~有软件测试，用户体验的~</p>
-<p>我们需要性格开朗，善于沟通的MM~我们需要认真负责，吃苦耐劳的GG~总之，我们需要像你一样的潜力股哟~请不要犹豫的来吧</p>
-<h2 id="一、UI-设计（10-人）"><a href="#一、UI-设计（10-人）" class="headerlink" title="一、UI**设计（10**人）"></a><strong>一、UI**</strong>设计（10<strong>**人）</strong></h2><p><strong>UI工程师（Web前端研发）</strong></p>
-<p>岗位职责：</p>
-<p>1.基于框架的模块抽象开发，前端基础框架研究；</p>
-<p>2.日常前端开发维护，新项目前端架构设计；</p>
-<p>3.网站性能优化；</p>
-<p>任职要求：</p>
-<p>1.2013年全日制本科及以上学历应届毕业生，计算机/数学类/心理学专业(含统计学)尤佳；</p>
-<p>2.具有强烈的自我发展意愿，有志投身于电子商务互联网行业；</p>
-<p>3.务实诚信，有优良的服务意识；</p>
-<p>4.积极主动，具备较强抗压能力；</p>
-<p><strong>UI工程师（视觉设计）</strong></p>
-<p>岗位职责：</p>
-<p>1.日常项目及变更的视觉设计</p>
-<p>2.基于现有设计方案给出改进意见</p>
-<p>3.独立完成竞品分析</p>
-<p>岗位要求：</p>
-<p>1.具有创新能力，沟通能力及较强的理解能力强，善于团队合作；</p>
-<p>2.熟悉互联网UI风格的主要发展方向；</p>
-<p>3.具备良好的视觉感觉、手绘功底和互联网UI设计的基本技能，善于用视觉表达想法；</p>
-<p>4.优先考虑设计美术等相关专业，投递简历时请附带作品链接；</p>
-<p><strong>UI工程师（交互设计）</strong></p>
-<p>岗位职责：</p>
-<p>1.倾听和理解需求，完成日常项目及变更的交互设计</p>
-<p>2.基于用户体验和数据分析给出改进方案</p>
-<p>3.独立完成竞品分析</p>
-<p>岗位要求：</p>
-<p>1.具有创新能力，沟通能力及理解能力强，善于团队合作；</p>
-<p>2.乐于动脑，乐于分析，喜欢钻研，对电子商务有一定的了解；</p>
-<p>3.有视觉设计和前端开发的基础</p>
-<p>4.细致认真、有强烈的责任感</p>
-<p>5.心理学专业(含统计学)/工业设计专业尤佳；</p>
-<p><strong>助理项目经理</strong></p>
-<p>岗位职责：</p>
-<p>1.日常项目及变更的进度管理和工作规划</p>
-<p>2.监控项目进展，及时向内部和外部反馈潜在问题</p>
-<p>任职要求：</p>
-<p>1.协调能力强，较强的计划能力和组织能力；</p>
-<p>2.愿意承受较强的工作压力，勇于接受挑战；</p>
-<p>3.细致认真，有强烈的责任感</p>
-<p>4.具备一定的文档写作能力</p>
-<p>5.精通excel操作，会使用宏尤佳</p>
-<h2 id="二、-软件研发（70-人）"><a href="#二、-软件研发（70-人）" class="headerlink" title="二、**软件研发（70**人）"></a><strong>二、**</strong>软件研发（70<strong>**人）</strong></h2><p><strong>软件工程师/软件测试工程师</strong></p>
-<p>岗位职责：</p>
-<p>1.携程网站.net平台的开发、测试及维护；</p>
-<p>2.网站开发项目的设计及架构；</p>
-<p>3.研发团队项目管理；</p>
-<p>任职要求：</p>
-<p>1.2013年全日制本科及以上学历应届毕业生，计算机相关专业；</p>
-<p>2.熟悉微软C#语言，熟悉asp.net网站或应用程序开发平台和编程工具；</p>
-<p>3.熟悉SQL SERVER，有.net项目经验者优先考虑；</p>
-<p>4.优秀的分析问题和解决问题的能力，勇于解决难题；</p>
-<p>5.较强的沟通能力，对技术有钻研的热情，强烈的自我发展意愿；</p>
-<h2 id="三、网站产品（10-人）"><a href="#三、网站产品（10-人）" class="headerlink" title="三、网站产品（10**人）**"></a><strong>三、网站产品（10**</strong>人）**</h2><p><strong>UI工程师(用户体验分析)</strong></p>
-<p>岗位职责：</p>
-<p>1.根据业务需求设计调研问卷</p>
-<p>2.参与各种形式的用户访谈：可用性测试、用户研究、焦点小组访谈等</p>
-<p>3.整理问卷结果和访谈资料，撰写研究报告</p>
-<p>任职要求：</p>
-<p>1. 2013年全日制硕士学历应届毕业生，应用心理学、社会学、设计专业优先；</p>
-<p>2.乐于沟通，有良好的口头表达能力和文字总结能力；</p>
-<p>3.熟练使用Excel、Word、PPT、SPSS等办公软件；</p>
-<p>4.耐心，逻辑清晰；好学，愿意思考；</p>
-<p>5.有志于在互联网公司长期发展；</p>
-<p>6.有市场调研、用户研究、可用性测试等相关岗位的实习经历。</p>
-<p>数据分析师</p>
-<p>岗位职责：</p>
-<p>1.参与网站产品优化监测项目的推动和协调，参与出具分析报告；</p>
-<p>2.参与综合研究项目的沟通、项目设计、资源协调、项目管理和推动，参与出具综合报告和报告的推广应用；</p>
-<p>3.定期出具网站运营监测报告，提出阶段性调整建议；</p>
-<p>任职要求：</p>
-<p>1. 2013年全日制本科及以上学历应届毕业生，计算机、统计等相关专业，；</p>
-<p>2.熟练使用复杂SQL查询语句，对数据仓库有一定的了解；</p>
-<p>3.条理性逻辑性强，良好的沟通能力；</p>
-<p>4.工作细心，认真负责，有志于从事网站数据分析相关的工作；</p>
-<p><strong>助理产品经理</strong></p>
-<p>岗位职责：</p>
-<p>1.参与网站产品的规划，包括前期的网站用户需求调研，分析需求并协助产品经理完成产品需求；</p>
-<p>2.网站产品策划工作，包括功能白皮书撰写、功能需求文档撰写及部分交互设计工作；</p>
-<p>3.协助项目组跨部门之间的协调沟通，确保项目需求按质按量上线，并跟踪产品效果；</p>
-<p>4.定期关注并收集业界动态和客户对于产品各项功能的反馈，提高产品用户体验和运营的效率。</p>
-<p>任职要求：</p>
-<p>1.2013年全日制本科及以上学历应届毕业生，计算机或相关专业；</p>
-<p>2.较强的逻辑分析及学习能力，对互联网、电子商务有浓厚兴趣；</p>
-<p>3.良好的沟通能力、执行能力及团队合作能力，勇于承担高强度工作压力，较强的适应能力和可塑性；</p>
-<p>4.熟练使用各类office办公软件；</p>
-<h2 id="四、DBA-（5-人）"><a href="#四、DBA-（5-人）" class="headerlink" title="四、DBA**（5**人）"></a><strong>四、DBA**</strong>（5<strong>**人）</strong></h2><p><strong>数据库工程师</strong></p>
-<p>岗位职责：</p>
-<p>1.负责数据库系统安装、配置及数据库管理与维护；</p>
-<p>2.熟练SQL，熟悉SSIS，Replication，Mirror，Report Service，备份和还原尤佳；</p>
-<p>3.监督数据库的备份和恢复策略的执行，并及时上报；</p>
-<p>4.在项目实施中，承担数据库的实施工作；</p>
-<p>任职要求：</p>
-<p>1.2013年全日制本科学历应届毕业生，计算机相关专业；</p>
-<p>2.有责任心，具备良好的沟通能力和团队合作精神；</p>
-<p>3.有SQL Server方面实习经验者优先考虑；</p>
-<p>4.有一定的数据模型概念和关系型数据库理论知识；</p>
-<p>5.能够适应加班和翻班的工作制度；</p>
-<p>携程旅行网品牌创立于1999年，总部设在中国上海，目前已在北京、广州、深圳、成都、杭州、厦门、青岛、南京、武汉、沈阳、三亚、香港12个城市设立分公司，在南通设立呼叫中心，员工近14000人。</p>
-<p>携程旅行网于2003年12月9日在美国纳斯达克成功上市。</p>
-<p>携程旅行网技术研发中心是携程的一级部门同时也是携程创建的第一个部门，由超过800位精英工程师组成。技术研发中心潜心于培养、招募、吸引技术人才，力求建立一支人员充足、技能全面、水平突出的团队；致力于为公司业务的运作和开拓提供全面支持，并不断追求以应用技术创新为产品和服务创造价值；技术研发中心力求深入了解用户需求，以高速稳定的系统、丰富全面的产品、方便使用的功能、流畅贴心的体验，成为桌面和移动终端用户首选的旅游电子商务企业。</p>
-<p>我们</p>
-<p>爱开发，爱测试</p>
-<p>爱界面设计 也爱应用管理</p>
-<p>爱在工作中创新</p>
-<p>爱追求高效 却不忘科学的严谨</p>
-<p>我们要做白骨精 绝不做菜鸟</p>
-<p>心有多大　我们给你的舞台就有多大</p>
-<p>我们是——携程旅行网技术研发中心</p>
-<p>加入我们，与我们一起携手成就精彩人生旅程！</p>
-<p>公司地址：上海长宁区2号线松渱路站5口出站即到。</p>
-<p><strong>简历投递邮箱：**</strong> hrrd@ctrip.com**</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-wordpress-e4-bb-a3-e7-a0-81-e6-bc-94-e7-a4-ba-e6-b7-bb-e5-8a-a0" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2012-09-06-wordpress-e4-bb-a3-e7-a0-81-e6-bc-94-e7-a4-ba-e6-b7-bb-e5-8a-a0.html" class="article-date">
-      <time datetime="2012-09-06T01:10:34.000Z" itemprop="datePublished">2012-09-06</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2012-09-06-wordpress-e4-bb-a3-e7-a0-81-e6-bc-94-e7-a4-ba-e6-b7-bb-e5-8a-a0.html">wordpress 代码演示添加</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>代码演示对于一个技术博客来说很重要，为博客中介绍的代码提供一个可视化的效果，为用户直观的展示其效果。直观的让用户知道这个代码效果“怎么样”及是否符合自己的要求。</p>
-<p>代码演示的代码加在哪个地方呢？</p>
-<p>直接加在文章？NO，不稳定因素，样式冲突，直接写在文章里，给人不明显！</p>
-<p>为代码自动新建一个文章页面？NO，杀鸡用牛刀了，而且别人RSS会订阅到这种纯代码，非常不好！</p>
-<p>我使用的方法是使用wordpress的自定义字段把代码写在对应文章的自定义字段，方便易维护，而且稳定！</p>
-<p><span style="color: #ff0000;">原理：</span> 使用wordpress的自定义字段存储对应文章的代码，文章页代码演示按钮带文章参数ID，点击代码演示则讲文章ID传递给新建的一个DEMO代码演示页，DEMO演示页通过接收文章ID并向数据库请求这个自定义字段并展现在这个页面上。</p>
-<p><span style="color: #ff0000;">效果：</span>可以看下   <a href="861.html">CSS七种方法实现分割中线</a> 本站是置于底部的一个按钮。</p>
-<p>&nbsp;</p>
-<p><a href="wp-content/uploads/2012/09/1234.png"><img src="wp-content/uploads/2012/09/1234.png" alt="" title="1234"></a><a href="wp-content/uploads/2012/09/s2222.jpg">
-</a><br>那么下面来讲下具体怎么做吧!</p>
-<h2 id="一、创建自定义字段"><a href="#一、创建自定义字段" class="headerlink" title="一、创建自定义字段"></a>一、创建自定义字段</h2><p>1、在后台发布文章的右侧设置显示选项，勾选自定义自定义栏目。</p>
-<p><a href="wp-content/uploads/2012/09/s2223123123.jpg"><img src="wp-content/uploads/2012/09/s2223123123.jpg" alt="" title="get-option"></a></p>
-<p>2、在文章发布页发布文章编辑器的下方有个自定义栏目，我们创建一个名为 code 的自定义栏目</p>
-<p><a href="wp-content/uploads/2012/09/codeing.jpg"><img src="wp-content/uploads/2012/09/codeing.jpg" alt="" title="diy-category"></a></p>
-<h2 id="二、在function-php中加入提取字段函数信息代码"><a href="#二、在function-php中加入提取字段函数信息代码" class="headerlink" title="二、在function.php中加入提取字段函数信息代码"></a>二、在function.php中加入提取字段函数信息代码</h2><p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #708;">function</span> <span style="color: #000;">get_custom_field_value</span>(<span style="color: #00f;">$id</span>, <span style="color: #00f;">$szKey</span>, <span style="color: #00f;">$bPrint</span> = <span style="color: #219;">false</span>,<span style="color: #000;">$falsemsg</span>) {<br>    <span style="color: #000;">$szValue</span> = <span style="color: #000;">get_post_meta</span>(<span style="color: #000-2;">$id</span>, <span style="color: #000-2;">$szKey</span>, <span style="color: #219;">true</span>);<br>    <span style="color: #708;">if</span> ( <span style="color: #000-2;">$bPrint</span> == <span style="color: #219;">false</span> ) <span style="color: #708;">return</span> <span style="color: #000;">$szValue</span>; <span style="color: #708;">else</span> <span style="color: #000;">echo</span> <span style="color: #000;">$szValue</span>;<br>        <span style="color: #708;">if</span>(<span style="color: #000;">$falsemsg</span> !=<span style="color: #a11;">“”</span> &amp;&amp; <span style="color: #000;">$szValue</span>==<span style="color: #a11;">“”</span>) <span style="color: #000;">echo</span> <span style="color: #000;">$falsemsg</span>;<br>}</pre><br>&nbsp;</p>
-<h2 id="三、创建DEMO代码演示页面"><a href="#三、创建DEMO代码演示页面" class="headerlink" title="三、创建DEMO代码演示页面"></a>三、创建DEMO代码演示页面</h2><p>创建一个code.php的文件，该文件置于自己主题的根目录下。上代码</p>
-<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #555;">&lt;?php</span><br>    <span style="color: #708;">require_once</span>(<span style="color: #000-2;">$_SERVER</span>[<span style="color: #a11;">‘DOCUMENT_ROOT’</span>]. <span style="color: #a11;">‘/wp-load.php’</span>); <span style="color: #a50;">//使本文件可以使用WP自带的方法和属性</span><br>    <span style="color: #000-2;">$post_id</span> <span style="color: #000;">=</span> <span style="color: #000-2;">$_GET</span>[<span style="color: #@cm-word;">id</span>];<br>    <span style="color: #000-2;">$queried_post</span> <span style="color: #000;">=</span> <span style="color: #@cm-word;">get_post</span>(<span style="color: #000-2;">$post_id</span>);<br>    <span style="color: #708;">echo</span> <span style="color: #@cm-word;">get_custom_field_value</span>(<span style="color: #000-2;">$_GET</span>[<span style="color: #@cm-word;">id</span>], <span style="color: #a11;">‘code’</span>,<span style="color: #a11;">“该页面不存在演示代码”</span>);<br><span style="color: #555;">?&gt;</span></pre><br>上述代码就是表示接收一个ID的参数，并根据这个ID查询出这个ID的文章的自定义字段为code所含内容。</p>
-<h2 id="四、为文章页添加代码演示按钮"><a href="#四、为文章页添加代码演示按钮" class="headerlink" title="四、为文章页添加代码演示按钮"></a>四、为文章页添加代码演示按钮</h2><p>在文章页内容的下方添加如下代码，注意将下面代码中的网址换为您的网址。</p>
-<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #555;">&lt;?php</span> <span style="color: #708;">if</span>( <span style="color: #@cm-word;">get_post_custom_values</span>(<span style="color: #a11;">“code”</span>) <span style="color: #000;">!=</span> <span style="color: #a11;">“”</span>) {<span style="color: #555;">?&gt;</span><br><span style="color: #170;">&lt;div</span> <span style="color: #00c;">class</span>=<span style="color: #a11;">“article_foot”</span><span style="color: #170;">&gt;</span><br>     <span style="color: #170;">&lt;a</span> <span style="color: #00c;">target</span>=<span style="color: #a11;">“_blank”</span> <span style="color: #00c;">class</span>=<span style="color: #a11;">“code_demo”</span> <span style="color: #00c;">href</span>=<span style="color: #a11;">“&lt;?php bloginfo(‘template_directory’);?&gt;/code.php?id=&lt;?php the_ID()?&gt;”</span><span style="color: #170;">&gt;</span>点击查看演示DEMO<span style="color: #170;">&lt;/a</span><span style="color: #170;">&gt;</span><br><span style="color: #170;">&lt;/div</span><span style="color: #170;">&gt;</span><br><span style="color: #555;">&lt;?php</span> } <span style="color: #555;">?&gt;</span></pre><br>上述代码的意思是，如果这篇文章的code自定义字段不为空则显示代码演示按钮,a链接里通过?id=给code页面传文章ID参数。顺便贴个我的这个按钮的CSS样式吧。</p>
-<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.article_foot {<br>text-align: center;<br>border-bottom: 1px solid #DDD;<br>padding-bottom: 20px;<br>}<br>.code_demo {padding: 5px 8px;}<br>.code_demo {<br>background-color: #F79100;<br>background-position: 0 -33px;<br>background-repeat: repeat-x;<br>border: 1px solid #F79100;<br>border-radius: 2px 2px 2px 2px;<br>box-shadow: 1px 1px rgba(255, 255, 255, 0.3) inset, 0 0 0 3px rgba(204, 204, 204, 0.25);<br>color: #F9F9F9;<br>cursor: pointer;<br>display: inline-block;<br>font-size: 12px;<br>font-weight: 700;<br>margin: 4px;<br>padding: 6px 10px;<br>text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.12);<br>}</pre><br>&nbsp;</p>
-<h2 id="五、实例为文章添加代码"><a href="#五、实例为文章添加代码" class="headerlink" title="五、实例为文章添加代码"></a>五、实例为文章添加代码</h2><p>发布文章的时候，在文章编辑器下方的自定义栏目里选择 code自定义栏目，并把 要演示的代码粘贴进去。</p>
-<p><a href="wp-content/uploads/2012/09/1234567.jpg"><img src="wp-content/uploads/2012/09/1234567.jpg" alt="" title="input-diy-category"></a></p>
-<p>&nbsp;</p>
-<p>本代码演示实例置于文章的最下边，更为灵活的方式是按需添加到文章的对应位置，而由于wordpress对后台可编辑功能的局限性，不能在主题中直接更改【需要修改wordpress系统文件】，不方便实现，有代码基础的同学可以直接将  【DEMO演示】 按钮 的HTML在编辑文章的时候置于自己喜欢的位置而不在文章模板中添加。</p>
-<p>其实就是这么简单，来试一试吧！以前尝试过其他方法，最后把个人目前认为的最好方法共享出来!</p>
-<div></div>
       
     </div>
     
