@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>前端者</title>
-  
+  <subtitle>努力奔跑在路的前端！</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.qianduaner.com/"/>
@@ -9,7 +9,7 @@
   <id>http://www.qianduaner.com/</id>
   
   <author>
-    <name>前端者</name>
+    <name>梁宇轩</name>
     
   </author>
   
