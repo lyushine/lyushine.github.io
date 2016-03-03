@@ -232,11 +232,11 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-轻量级 css3 tooltips 信息提示框 - 副本" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-斜角滑动门导航条(DIV+CSS)" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/blog/2012-01-31-轻量级 css3 tooltips 信息提示框 - 副本.html" class="article-date">
-      <time datetime="2012-01-31T15:10:17.000Z" itemprop="datePublished">2012-01-31</time>
+      <a href="/blog/2010-08-28-斜角滑动门导航条(DIV+CSS).html" class="article-date">
+      <time datetime="2010-08-27T17:55:27.000Z" itemprop="datePublished">2010-08-28</time>
 </a>
     </div>
   
@@ -249,7 +249,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2012-01-31-轻量级 css3 tooltips 信息提示框 - 副本.html">轻量级 css3 tooltips 信息提示框</a>
+      <a class="article-title" href="/blog/2010-08-28-斜角滑动门导航条(DIV+CSS).html">斜角滑动门导航条(DIV+CSS)</a>
     </h1>
   
 
@@ -259,262 +259,309 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>在学习jquery的时候有幸自己写了一个jquery.tips插件，而这种插件的话有个时候并不需要这么多功能，所以需要轻量级的tooltip，而本款插件也是基于HTML4+CSS2+Jquery结构编写的。当今形势下，虽然IE国内为了兼容IE系列让CSS3受了很大应用限制，很多前端人员望而止步。但是，我觉得学习一下先进的东西，看到CSS3在很多大型网站已经使用了，基于渐进增强向下兼容的思想逐步实现，那么学习下新形势下tooltip的html/css写法。</p>
-<p><a href="tips" title="jquery.tips信息提示框插件">jquery.tips-信息提示框作品地址：tips
-</a></p>
-<p>如果你的图标或者按钮的提示信息文字不足或者根本没有，或者只是需要一些额外的解释，那么你肯定需要一个css3 tooltip工具提示。为什么会这样呢？因为它们（tooltip）已经证明了它们可以提高你的网站的易用性知道目前为止。</p>
-<p>我已经说过，在这片文章中你将学习如何创造你自己的css3 tooltips：不使用图片和javascript。</p>
-<p><a href="wp-content/uploads/2012/01/css3-tooltips.png"><img src="wp-content/uploads/2012/01/css3-tooltips.png" alt="" title="css3-tooltips"></a></p>
-<h3 id="查看演示：css3-tooltips-demo"><a href="#查看演示：css3-tooltips-demo" class="headerlink" title="查看演示：css3-tooltips-demo"></a><a href="wp-content/uploads/2012/01/css3-tooltips-demo1.html">查看演示：css3-tooltips-demo</a></h3><h2 id="“你真的需要他们吗？”"><a href="#“你真的需要他们吗？”" class="headerlink" title="“你真的需要他们吗？”"></a>“你真的需要他们吗？”</h2><p>你可以使用HTML的title属性默认补充信息，但是这个默认的title不能设计修饰。所以，如果你想要很酷的实现信息提示tooltip，你可以设计构思你的想法，然后定制一个css3 tooltip来解决。</p>
-<h2 id="如何制作"><a href="#如何制作" class="headerlink" title="如何制作"></a>如何制作</h2><p>这个方法可能是你熟悉的，一个绝对定位元素包裹在一个相对定位元素中。在本中中我不是要试图推倒重来，我只是向你展示如何创造一些很酷的css3 tooltips工具提示。</p>
-<p>下面你可以看到正确的结构，注意重迭的两个指针（使用 :before 和 :after 伪元素）。</p>
-<p><a href="../wp-content/uploads/2012/01/tooltip-structure.png"><img src="../wp-content/uploads/2012/01/tooltip-structure.png" alt="" title="tooltip-structure"></a></p>
-<p>“边界”指针如何制作</p>
-<p>这些是你需要使用的技巧来创造“边界”指针<br>CSS3渐变 Gradients<br>CSS3盒阴影 Box shadow<br>CSS3伪元素 Pseudo-elements</p>
-<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><pre>[
-  your text
-  <span>Your custom description</span>
-](#)</pre>
+        <p>斜角导航条看上去立体感比较强，但实现起来比较麻烦；这是前几天写的一个测试代码，实现时，本来想用简单的图片加负数来实现；但GIF图片对半透明的效果无法有很好的支持；所以一边写代码，一边在改图，图片改的比较乱，CSS也没有优化；但效果出来了； 写出来和大家分享一下；</p>
+<p>首先说一下，要实现的目标：</p>
+<p>滑动门，要兼容每个TAB可能出现的宽度（字数）不统一的问题；<br>后台程序实现起来简单，主要是标记TAB是否被选中；<br>浏览器的兼容以及放在较粗糙的代码环境中，有很好的表现；<br>始作了，我先用FW画了一个有点立体感的导航条，基本就是要实现的目标</p>
+<p><img src="http://www.pqshow.com/design/UploadFiles_5971/200808/2008080222234059.gif" alt="斜角滑动门导航条(DIV+CSS)（图一）" title="斜角滑动门导航条(DIV+CSS)">从后向前写布局</p>
+<p><pre style="margin:15px 0;font:100 12px/18px monaco, andale mono, courier new;padding:10px 12px;border:#ccc 1px solid;border-left-width:4px;background-color:#fefefe;box-shadow:0 0 4px #eee;word-break:break-all;word-wrap:break-word;color:#444"><span style="color:#170">&lt;ul</span><span style="color:#170">&gt;</span><br>    <span style="color:#170">&lt;li</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;a</span> <span style="color:#00c">href</span>=<span style="color:#a11">“index.php”</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;span</span><span style="color:#170">&gt;</span>城市首页<span style="color:#170">&lt;/span</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;/a</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;/li</span><span style="color:#170">&gt;</span><br><span style="color:#170">&lt;/ul</span><span style="color:#170">&gt;</span></pre><br>&nbsp;</p>
+<p><pre style="margin:15px 0;font:100 12px/18px monaco, andale mono, courier new;padding:10px 12px;border:#ccc 1px solid;border-left-width:4px;background-color:#fefefe;box-shadow:0 0 4px #eee;word-break:break-all;word-wrap:break-word;color:#444"><span style="color:#170">&lt;ul</span><span style="color:#170">&gt;</span><br>    <span style="color:#170">&lt;li</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;a</span> <span style="color:#00c">href</span>=<span style="color:#a11">“kAAE.php”</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;span</span><span style="color:#170">&gt;</span>房屋租售<span style="color:#170">&lt;/span</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;/a</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;/li</span><span style="color:#170">&gt;</span><br><span style="color:#170">&lt;/ul</span><span style="color:#170">&gt;</span></pre><br>&nbsp;</p>
+<p>&nbsp;</p>
+<p><pre style="margin:15px 0;font:100 12px/18px monaco, andale mono, courier new;padding:10px 12px;border:#ccc 1px solid;border-left-width:4px;background-color:#fefefe;box-shadow:0 0 4px #eee;word-break:break-all;word-wrap:break-word;color:#444"><span style="color:#170">&lt;ul</span><span style="color:#170">&gt;</span><br>    <span style="color:#170">&lt;li</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;a</span> <span style="color:#00c">href</span>=<span style="color:#a11">“kAAI.php”</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;span</span><span style="color:#170">&gt;</span>招聘求职<span style="color:#170">&lt;/span</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;/a</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;/li</span><span style="color:#170">&gt;</span><br><span style="color:#170">&lt;/ul</span><span style="color:#170">&gt;</span></pre><br>&nbsp;</p>
+<p>&nbsp;</p>
+<p><pre style="margin:15px 0;font:100 12px/18px monaco, andale mono, courier new;padding:10px 12px;border:#ccc 1px solid;border-left-width:4px;background-color:#fefefe;box-shadow:0 0 4px #eee;word-break:break-all;word-wrap:break-word;color:#444"><span style="color:#170">&lt;ul</span><span style="color:#170">&gt;</span><br>    <span style="color:#170">&lt;li</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;a</span> <span style="color:#00c">href</span>=<span style="color:#a11">“kAAk.php”</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;span</span><span style="color:#170">&gt;</span>同城活动<span style="color:#170">&lt;/span</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;/a</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;/li</span><span style="color:#170">&gt;</span><br><span style="color:#170">&lt;/ul</span><span style="color:#170">&gt;</span></pre><br>&nbsp;</p>
+<p>&nbsp;</p>
+<p><pre style="margin:15px 0;font:100 12px/18px monaco, andale mono, courier new;padding:10px 12px;border:#ccc 1px solid;border-left-width:4px;background-color:#fefefe;box-shadow:0 0 4px #eee;word-break:break-all;word-wrap:break-word;color:#444"><span style="color:#170">&lt;ul</span><span style="color:#170">&gt;</span><br>    <span style="color:#170">&lt;li</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;a</span> <span style="color:#00c">href</span>=<span style="color:#a11">“kAAU.php”</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;span</span><span style="color:#170">&gt;</span>家政服务<span style="color:#170">&lt;/span</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;/a</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;/li</span><span style="color:#170">&gt;</span><br><span style="color:#170">&lt;/ul</span><span style="color:#170">&gt;</span></pre><br>&nbsp;</p>
+<p>&nbsp;</p>
+<p><pre style="margin:15px 0;font:100 12px/18px monaco, andale mono, courier new;padding:10px 12px;border:#ccc 1px solid;border-left-width:4px;background-color:#fefefe;box-shadow:0 0 4px #eee;word-break:break-all;word-wrap:break-word;color:#444"><span style="color:#170">&lt;ul</span><span style="color:#170">&gt;</span><br>    <span style="color:#170">&lt;li</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;a</span> <span style="color:#00c">href</span>=<span style="color:#a11">“kAAt.php”</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;span</span><span style="color:#170">&gt;</span>同城寻缘<span style="color:#170">&lt;/span</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;/a</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;/li</span><span style="color:#170">&gt;</span><br><span style="color:#170">&lt;/ul</span><span style="color:#170">&gt;</span></pre><br>&nbsp;</p>
+<p>&nbsp;</p>
+<p><pre style="margin:15px 0;font:100 12px/18px monaco, andale mono, courier new;padding:10px 12px;border:#ccc 1px solid;border-left-width:4px;background-color:#fefefe;box-shadow:0 0 4px #eee;word-break:break-all;word-wrap:break-word;color:#444"><span style="color:#170">&lt;ul</span><span style="color:#170">&gt;</span><br>    <span style="color:#170">&lt;li</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;a</span> <span style="color:#00c">href</span>=<span style="color:#a11">“kAAs.php”</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;span</span><span style="color:#170">&gt;</span>二手市场<span style="color:#170">&lt;/span</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;/a</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;/li</span><span style="color:#170">&gt;</span><br><span style="color:#170">&lt;/ul</span><span style="color:#170">&gt;</span></pre><br>&nbsp;</p>
+<p>&nbsp;</p>
+<p><pre style="margin:15px 0;font:100 12px/18px monaco, andale mono, courier new;padding:10px 12px;border:#ccc 1px solid;border-left-width:4px;background-color:#fefefe;box-shadow:0 0 4px #eee;word-break:break-all;word-wrap:break-word;color:#444"><span style="color:#170">&lt;ul</span><span style="color:#170">&gt;</span><br>    <span style="color:#170">&lt;li</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;a</span> <span style="color:#00c">href</span>=<span style="color:#a11">“kAAh.php”</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;span</span><span style="color:#170">&gt;</span>车辆买卖<span style="color:#170">&lt;/span</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;/a</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;/li</span><span style="color:#170">&gt;</span><br><span style="color:#170">&lt;/ul</span><span style="color:#170">&gt;</span></pre><br>&nbsp;</p>
+<p>&nbsp;</p>
+<p><pre style="margin:15px 0;font:100 12px/18px monaco, andale mono, courier new;padding:10px 12px;border:#ccc 1px solid;border-left-width:4px;background-color:#fefefe;box-shadow:0 0 4px #eee;word-break:break-all;word-wrap:break-word;color:#444"><span style="color:#170">&lt;ul</span><span style="color:#170">&gt;</span><br>    <span style="color:#170">&lt;li</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;a</span> <span style="color:#00c">href</span>=<span style="color:#a11">“kAAO.php”</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;span</span><span style="color:#170">&gt;</span>学习培训<span style="color:#170">&lt;/span</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;/a</span><span style="color:#170">&gt;</span><span style="color:#170">&lt;/li</span><span style="color:#170">&gt;</span><br><span style="color:#170">&lt;/ul</span><span style="color:#170">&gt;</span></pre><br>&nbsp;</p>
+<p>class = one 部分作为第一个TAB的特殊处理；<br>class = on 作为选中状态；</p>
+<p>开写CSS部分：</p>
+<p>由于比较简单，我就不写注释了；</p>
+<p>用到的图片：</p>
+<p><img src="http://www.pqshow.com/design/UploadFiles_5971/200808/2008080222234007.gif" alt="斜角滑动门导航条(DIV+CSS)（图二）" title="斜角滑动门导航条(DIV+CSS)"></p>
 
-<h2 id="为什么增加一项？"><a href="#为什么增加一项？" class="headerlink" title="为什么增加一项？"></a>为什么增加一项？</h2><p>只是为了解决兼容性问题。有一个问题是IE6只支持 :hover伪元素在a标签上有效果而不支持在其他元素上。如果你想使用它们而a标签不选择你，那么你就可以用这些来触发IE6的tooltip。</p>
-<pre><script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript">
-  $(function() {
-    if ($.browser.msie &amp;&amp; $.browser.version.substr(0,1)<7)
-    {
-      $('.tooltip').mouseover(function(){
-            $(this).children('span').show();
-          }).mouseout(function(){
-            $(this).children('span').hide();
-          })
-    }
-  });
-</script></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
 
-<h2 id="css"><a href="#css" class="headerlink" title="css"></a>css</h2><pre>.tooltip
-{
-  position: relative;
-  background: #eaeaea;
-  cursor: help;
-  display: inline-block;
-  text-decoration: none;
-  color: #222;
-  outline: none;
-}
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
 
-.tooltip span
-{
-  visibility: hidden;
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  z-index: 999;
-  width: 230px;
-  margin-left: -127px;
-  padding: 10px;
-  border: 2px solid #ccc;
-  opacity: .9;
-  background-color: #ddd;
-  background-image: -webkit-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
-  background-image: -moz-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
-  background-image: -ms-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
-  background-image: -o-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
-  background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
-  box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
-  text-shadow: 0 1px 0 rgba(255,255,255,.4);
-}
 
-.tooltip:hover
-{
-  border: 0; /* IE6 fix */
-}
 
-.tooltip:hover span
-{
-  visibility: visible;
-}
 
-.tooltip span:before,
-.tooltip span:after
-{
-  content: "";
-  position: absolute;
-  z-index: 1000;
-  bottom: -7px;
-  left: 50%;
-  margin-left: -8px;
-  border-top: 8px solid #ddd;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 0;
-}
 
-.tooltip span:before
-{
-  border-top-color: #ccc;
-  bottom: -8px;
+
+
+
+  
+    <article id="post-IE7和Firefox浏览器下Div背景颜色有冲突问题的解决" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2010-08-28-IE7和Firefox浏览器下Div背景颜色有冲突问题的解决.html" class="article-date">
+      <time datetime="2010-08-27T17:53:06.000Z" itemprop="datePublished">2010-08-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2010-08-28-IE7和Firefox浏览器下Div背景颜色有冲突问题的解决.html">IE7和Firefox浏览器下Div背景颜色有冲突问题的解决方</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>今天网站改版有部分内容设置成了DIV模式，但是在IE和火狐浏览器下发现显示不同，在火狐浏览器下设置的DIV颜色并未如愿显示出来，经过一番参考，问题总算解决，以下是相应的解决方案：</p>
+<p>之前的网站由于在body标签中设置了背景颜色，所以div的的背景颜色得设置为白色，由于在遨游浏览器下调试，所以没有感觉有什么问题。使用IE7和Firefox打开却发现最外层Div的背景颜色不起作用，简单类似的代码如下：</p>
+<p>由于最外div的高度是根据内层div的高度自动伸展，所以不能在css中定义它的高度，这样看起很不美观。分析了一下，在最外层div的css中加了一个overflow:hidden;，再刷新页面，竟然正常了，代码如下：</p>
+<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">&lt;div</span> <span style="color: #00c;">id</span>=<span style="color: #a11;">“layout”</span><span style="color: #170;">&gt;</span><br>    <span style="color: #170;">&lt;div</span> <span style="color: #00c;">id</span>=<span style="color: #a11;">“left”</span><span style="color: #170;">&gt;</span><br>        <span style="color: #170;">&lt;strong</span><span style="color: #170;">&gt;</span><br>            XML<br>        <span style="color: #170;">&lt;/strong</span><span style="color: #170;">&gt;</span><br>        <span style="color: #170;">&lt;p</span><span style="color: #170;">&gt;</span><br>            前推荐遵循的是W3C于2000年10月6日发布的XML1.0和HTML一样，XML同样来源于SGML，但XML是一种能定义其它语言的语。<br>            <span style="color: #170;">&lt;br</span> <span style="color: #170;">/&gt;</span><br>            <span style="color: #170;">&lt;br</span> <span style="color: #170;">/&gt;</span><br>            XML最初设计的目的是弥补HTML的不足，以强大的扩展性满足网络信息发布的需要，后来逐渐用于网络数据的转换和描述。<br>        <span style="color: #170;">&lt;/p</span><span style="color: #170;">&gt;</span><br>    <span style="color: #170;">&lt;/div</span><span style="color: #170;">&gt;</span><br>    <span style="color: #170;">&lt;div</span> <span style="color: #00c;">id</span>=<span style="color: #a11;">“right”</span><span style="color: #170;">&gt;</span><br>        <span style="color: #170;">&lt;a</span> <span style="color: #00c;">href</span>=<span style="color: #a11;">“#”</span><span style="color: #170;">&gt;</span><br>            链接1<br>        <span style="color: #170;">&lt;/a</span><span style="color: #170;">&gt;</span><br>        <span style="color: #170;">&lt;a</span> <span style="color: #00c;">href</span>=<span style="color: #a11;">“#”</span><span style="color: #170;">&gt;</span><br>            链接2<br>        <span style="color: #170;">&lt;/a</span><span style="color: #170;">&gt;</span><br>        <span style="color: #170;">&lt;a</span> <span style="color: #00c;">href</span>=<span style="color: #a11;">“#”</span><span style="color: #170;">&gt;</span><br>            链接3<br>        <span style="color: #170;">&lt;/a</span><span style="color: #170;">&gt;</span><br>        <span style="color: #170;">&lt;a</span> <span style="color: #00c;">href</span>=<span style="color: #a11;">“#”</span><span style="color: #170;">&gt;</span><br>            链接4<br>        <span style="color: #170;">&lt;/a</span><span style="color: #170;">&gt;</span><br>    <span style="color: #170;">&lt;/div</span><span style="color: #170;">&gt;</span><br><span style="color: #170;">&lt;/div</span><span style="color: #170;">&gt;</span></pre><br>附overflow介绍：</p>
+<p>语法：<br>overflow : visible | auto | hidden | scroll</p>
+<p>参数：<br>visible : 　不剪切内容也不添加滚动条。假如显式声明此默认值，对象将被剪切为包含对象的window或frame的大小。并且clip属性设置将失效<br>auto : 　此为body对象和textarea的默认值。在需要时剪切内容并添加滚动条<br>hidden : 　不显示超过对象尺寸的内容<br>scroll : 　总是显示滚动条</p>
+<p>说明：<br>检索或设置当对象的内容超过其指定高度及宽度时如何管理内容。<br>设置textarea对象为hidden值将隐藏其滚动条。<br>对于table来说，假如table-layout属性设置为fixed，则td对象支持带有默认值为hidden的overflow属性。如果设为hidden，scroll或者auto，那么超出td尺寸的内容将被剪切。如果设为visible，将导致额外的文本溢出到右边或左边（视direction属性设置而定）的单元格。<br>自IE5开始，此属性在MAC平台上可用。<br>对应的脚本特性为overflow。请参阅我编写的其他书目。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-CSS IE6中解决断头台问题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2010-08-28-CSS IE6中解决断头台问题.html" class="article-date">
+      <time datetime="2010-08-27T17:52:00.000Z" itemprop="datePublished">2010-08-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2010-08-28-CSS IE6中解决断头台问题.html">CSS IE6中解决断头台问题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <div id="sina_keyword_ad_area2"><br><div>CSS IE6中解决断头台问题</div><br><div>2009-03-16 12:56</div><br><table><br><tbody><br><tr><br><td><br><div><br><br>断头台问题(IE/Win Guillotine bug)是国外的css设计者给这个问题起的一个非常形象的名字，就如同断头台一样，对象被无情的切断了一部分，不过与之相反的是，断头台问题中的对象切断的不是对象的头部，而是对象的底部。xhtml编码(<a href="http://www.allhtml.cn/article/resolution/2007/dtt.htm" target="_blank" rel="external"><span style="color: #765f47;">演示</span></a>)：<br><div id="layout"><br><div id="left"><br><strong>XML</strong><br><br>前推荐遵循的是W3C于2000年10月6日发布的XML1.0和HTML一样，XML同样来源于SGML，但XML是一种能定义其它语言的语。<br><br> XML最初设计的目的是弥补HTML的不足，以强大的扩展性满足网络信息发布的需要，后来逐渐用于网络数据的转换和描述。<br><br></div><br><a href="#">链接1</a><br><a href="#">链接2</a><br><a href="#">链接3</a><br><a href="#">链接4</a><br></div><br></div>
+
+<p>这段代码结构由三部分组成，一个是主对象#layput，主框架中有#left为左浮动对象，右侧为普通的链接文字，类似于左右分栏的二栏式布局。css编码：<br>a:hover {<br>background-color:#fff;<br>}</p>
+<p>#layout {<br>border: #35bb0c 5px solid;<br>width: 400px;<br>background-color: #f2f2f2;<br>}</p>
+<p>#left {<br>border: #d4ca25 5px solid;<br>width: 200px;<br>float: left;<br>background-color:#fff;<br>}</p>
+<p>在css代码部分，我们主要设置了链接的背景色、#left的左浮动及用于我们观察的粗边框效果，我们还是通过浏览器来查看问题是如何发生的，见图。</p>
+<p>这里列出了网页效果的两种状态，当网页被打开时，页面显示正常，与css编码中所指定的样式完全一致，而当鼠标指向对象右侧的”链接3”及”链接4”时，问题出现了，主对象#layout下面被切掉了，而剩下的高度刚好正是4个链接的高度。与此同时当鼠标再次回到”链接1”时，#layout对象的高度又恢复了正常。这便是断头台问题。</p>
+<p>笔者在实际开发中曾经遇到过一个这样的问题，类似于这种布局的情况很容易发生，例如左侧是网页主体右侧是垂直导航时就与此情况类似，但这还不是引发这个问题的核心原因，引发这个问题的原因在于链接上，注意本例中的代码，链接的a:hover状态下被设置了background-color:fff;背景改变为白色，我们不妨去尝试去除这段样式代码可以发现，如果不带这句样式页面是不会出现问题的，因此原因就在于a对象的a:hover状态。</p>
+<p>经过测试后，我们可以发现不仅仅是background-color的变化，如果改变a：hover状态下链接的其它属性，也会引发其它的问题，例如padding、border、加粗、斜体等，都会引发断头台问题。</p>
+<p>另外值得注意的是，#layout之中，#left对象是一个浮动对象，而右侧的链接则是非浮动对象，对于未指定高度的对象而言，IE浏览器会根据其中的所有内容，不管是非浮动的还是浮动的实际大小计算其高度，而当例子中的链接对象是一个非浮动对象，并且具有hover改变border、background及padding属性时，IE会认为这些属性会改变#layout的高度，因此重新计算对象高度，但是令人失望的IE的这个行为并没有达到预期目的，它会把非浮动对象的高度作为总高度给了#layout，从而切断了#left的内容。基于这样一些问题产生的原因，解决方案应当可以非常方便的做出。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>根据我们对这个问题产生原因理解，可以做出多套解决方案来应付这类问题，首先我们知道，因为非浮动与浮动对象都存在#layout中从而造成了这个问题，因此可以从浮动方式上入手，把非浮动对象也改为浮动对象，这样便可以解决这个问题，例如对xhtml做如下修改(<a href="http://www.allhtml.cn/article/resolution/2007/dtt2.htm" target="_blank" rel="external"><span style="color: #765f47;">演示</span></a>)：</p>
+<div id="layout"><br><div id="left"><strong>XML</strong><br><br>前推荐遵循的是W3C于2000年10月6日发布的XML1.0和HTML一样，XML同样来源于SGML，但XML是一种能定义其它语言的语。<br><br> XML最初设计的目的是弥补HTML的不足，以强大的扩展性满足网络信息发布的需要，后来逐渐用于网络数据的转换和描述。<br><br></div><br><div id="right"><br><a href="#">链接1</a><br><a href="#">链接2</a><br><a href="#">链接3</a><br><a href="#">链接4</a><br></div><br></div>
+
+<p>对链接加上一个div，并设置为浮动对象：#right {float:left;}这样使两个对象都成了浮动对象，因此不会引发问题。与此同时，也可以尝试另一个思路来修复这个问题，高度不适应问题在IE与Mozilla/Firefox浏览器中都存在，解决方案是通过一个空对象强制浏览器对高度进行重新计算，在本例中也是由于IE浏览器的高度计算失败造成的问题，因此不妨也增加对象尝试达到目的，可以尝试在#layout的最底部增加一个div来强制高度，代码如下(<a href="http://www.allhtml.cn/article/resolution/2007/dtt3.htm" target="_blank" rel="external"><span style="color: #765f47;">演示</span></a>）：</p>
+<div id="layout"><br><div id="left"><strong>XML</strong><br><br>前推荐遵循的是W3C于2000年10月6日发布的XML1.0和HTML一样，XML同样来源于SGML，但XML是一种能定义其它语言的语。<br><br> XML最初设计的目的是弥补HTML的不足，以强大的扩展性满足网络信息发布的需要，后来逐渐用于网络数据的转换和描述。<br><br></div><br><a href="#">链接1</a><br><a href="#">链接2</a><br><a href="#">链接3</a><br><a href="#">链接4</a><br></div><br><div style="clear: both"></div>
+
+<p>这样一个清除浮动对象的，会帮助浏览器重新找到合适的高度，从而解决了断头台问题</p>
+<p></p></td></tr></tbody></table></div><br><br><br><br><p></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post- css 控制图片大小 小于固定值 控制大小" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2010-08-28- css 控制图片大小 小于固定值 控制大小.html" class="article-date">
+      <time datetime="2010-08-27T17:50:30.000Z" itemprop="datePublished">2010-08-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2010-08-28- css 控制图片大小 小于固定值 控制大小.html">css 控制图片大小 小于固定值 控制大小</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>复制代码代码如下:</p>
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">div</span> <span style="color: #170;">img</span> {
+<span style="color: #000;">max-width</span>:<span style="color: #164;">600px</span>;
+<span style="color: #000;">width</span>:<span style="color: #164;">600px</span>;
+<span style="color: #000;">width</span>:<span style="color: #164;">expression_r</span><span style="color: #164;">(document</span>.<span style="color: #164;">body</span>.<span style="color: #164;">clientWidth</span>&gt;<span style="color: #164;">600</span><span style="color: #164;">?</span><span style="color: #a11;">"600px"</span>:<span style="color: #a11;">"auto"</span><span style="color: #164;">)</span>;
+<span style="color: #000;">overflow</span>:<span style="color: #164;">hidden</span>;
 }</pre>
+◎ max-width:600px; 在IE7、FF等其他非IE浏览器下最大宽度为600px。但在IE6中无效。
 
-<h3 id="查看演示：css3-tooltips-demo-1"><a href="#查看演示：css3-tooltips-demo-1" class="headerlink" title="查看演示：css3-tooltips-demo"></a><a href="../wp-content/uploads/2012/01/css3-tooltips-demo1.html">查看演示：css3-tooltips-demo</a></h3><h2 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h2><p>这是一个跨浏览器解决方案，它在IE6/IE7上也运行。尽管它们看起来很不同作为我们这里所说的渐进增强。</p>
-<p>原文地址：<a href="http://www.red-team-design.com/css3-tooltips" target="_blank" rel="external">http://www.red-team-design.com/css3-tooltips</a></p>
+◎ width:600px; 在所有浏览器中图片的大小为600px;
 
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
+◎ 当图片大小大于600px，自动缩小为600px。在IE6中有效。
 
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
+◎ overflow:hidden; 超出的部分隐藏，避免控制图片大小失败而引起的撑开变形。
 
-
-
-
-
-
-
-
-  
-    <article id="post-轻量级 css3 tooltips 信息提示框" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2012-01-31-轻量级 css3 tooltips 信息提示框.html" class="article-date">
-      <time datetime="2012-01-31T15:10:17.000Z" itemprop="datePublished">2012-01-31</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2012-01-31-轻量级 css3 tooltips 信息提示框.html">轻量级 css3 tooltips 信息提示框</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>在学习jquery的时候有幸自己写了一个jquery.tips插件，而这种插件的话有个时候并不需要这么多功能，所以需要轻量级的tooltip，而本款插件也是基于HTML4+CSS2+Jquery结构编写的。当今形势下，虽然IE国内为了兼容IE系列让CSS3受了很大应用限制，很多前端人员望而止步。但是，我觉得学习一下先进的东西，看到CSS3在很多大型网站已经使用了，基于渐进增强向下兼容的思想逐步实现，那么学习下新形势下tooltip的html/css写法。</p>
-<p><a href="tips" title="jquery.tips信息提示框插件">jquery.tips-信息提示框作品地址：tips
-</a></p>
-<p>如果你的图标或者按钮的提示信息文字不足或者根本没有，或者只是需要一些额外的解释，那么你肯定需要一个css3 tooltip工具提示。为什么会这样呢？因为它们（tooltip）已经证明了它们可以提高你的网站的易用性知道目前为止。</p>
-<p>我已经说过，在这片文章中你将学习如何创造你自己的css3 tooltips：不使用图片和javascript。</p>
-<p><a href="wp-content/uploads/2012/01/css3-tooltips.png"><img src="wp-content/uploads/2012/01/css3-tooltips.png" alt="" title="css3-tooltips"></a></p>
-<h3 id="查看演示：css3-tooltips-demo"><a href="#查看演示：css3-tooltips-demo" class="headerlink" title="查看演示：css3-tooltips-demo"></a><a href="wp-content/uploads/2012/01/css3-tooltips-demo1.html">查看演示：css3-tooltips-demo</a></h3><h2 id="“你真的需要他们吗？”"><a href="#“你真的需要他们吗？”" class="headerlink" title="“你真的需要他们吗？”"></a>“你真的需要他们吗？”</h2><p>你可以使用HTML的title属性默认补充信息，但是这个默认的title不能设计修饰。所以，如果你想要很酷的实现信息提示tooltip，你可以设计构思你的想法，然后定制一个css3 tooltip来解决。</p>
-<h2 id="如何制作"><a href="#如何制作" class="headerlink" title="如何制作"></a>如何制作</h2><p>这个方法可能是你熟悉的，一个绝对定位元素包裹在一个相对定位元素中。在本中中我不是要试图推倒重来，我只是向你展示如何创造一些很酷的css3 tooltips工具提示。</p>
-<p>下面你可以看到正确的结构，注意重迭的两个指针（使用 :before 和 :after 伪元素）。</p>
-<p><a href="../wp-content/uploads/2012/01/tooltip-structure.png"><img src="../wp-content/uploads/2012/01/tooltip-structure.png" alt="" title="tooltip-structure"></a></p>
-<p>“边界”指针如何制作</p>
-<p>这些是你需要使用的技巧来创造“边界”指针<br>CSS3渐变 Gradients<br>CSS3盒阴影 Box shadow<br>CSS3伪元素 Pseudo-elements</p>
-<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><pre>[
-  your text
-  <span>Your custom description</span>
-](#)</pre>
-
-<h2 id="为什么增加一项？"><a href="#为什么增加一项？" class="headerlink" title="为什么增加一项？"></a>为什么增加一项？</h2><p>只是为了解决兼容性问题。有一个问题是IE6只支持 :hover伪元素在a标签上有效果而不支持在其他元素上。如果你想使用它们而a标签不选择你，那么你就可以用这些来触发IE6的tooltip。</p>
-<pre><script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript">
-  $(function() {
-    if ($.browser.msie &amp;&amp; $.browser.version.substr(0,1)<7)
-    {
-      $('.tooltip').mouseover(function(){
-            $(this).children('span').show();
-          }).mouseout(function(){
-            $(this).children('span').hide();
-          })
-    }
-  });
-</script></pre>
-
-<h2 id="css"><a href="#css" class="headerlink" title="css"></a>css</h2><pre>.tooltip
-{
-  position: relative;
-  background: #eaeaea;
-  cursor: help;
-  display: inline-block;
-  text-decoration: none;
-  color: #222;
-  outline: none;
-}
-
-.tooltip span
-{
-  visibility: hidden;
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  z-index: 999;
-  width: 230px;
-  margin-left: -127px;
-  padding: 10px;
-  border: 2px solid #ccc;
-  opacity: .9;
-  background-color: #ddd;
-  background-image: -webkit-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
-  background-image: -moz-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
-  background-image: -ms-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
-  background-image: -o-linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
-  background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
-  box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;
-  text-shadow: 0 1px 0 rgba(255,255,255,.4);
-}
-
-.tooltip:hover
-{
-  border: 0; /* IE6 fix */
-}
-
-.tooltip:hover span
-{
-  visibility: visible;
-}
-
-.tooltip span:before,
-.tooltip span:after
-{
-  content: "";
-  position: absolute;
-  z-index: 1000;
-  bottom: -7px;
-  left: 50%;
-  margin-left: -8px;
-  border-top: 8px solid #ddd;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 0;
-}
-
-.tooltip span:before
-{
-  border-top-color: #ccc;
-  bottom: -8px;
+这个是超过宽度自动调整高度的，我想固定高度的，改成
+<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><span style="color: #170;">div</span> <span style="color: #170;">li</span> <span style="color: #170;">img</span> {
+<span style="color: #000;">max-width</span>:<span style="color: #164;">630px</span>;
+<span style="color: #000;">width</span>:<span style="color: #164;">630px</span>;
+<span style="color: #000;">max-height</span>:<span style="color: #164;">395px</span>;
+<span style="color: #000;">height</span>:<span style="color: #164;">395px</span>;
+<span style="color: #000;">overflow</span>:<span style="color: #164;">hidden</span>;
 }</pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
 
-<h3 id="查看演示：css3-tooltips-demo-1"><a href="#查看演示：css3-tooltips-demo-1" class="headerlink" title="查看演示：css3-tooltips-demo"></a><a href="../wp-content/uploads/2012/01/css3-tooltips-demo1.html">查看演示：css3-tooltips-demo</a></h3><h2 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h2><p>这是一个跨浏览器解决方案，它在IE6/IE7上也运行。尽管它们看起来很不同作为我们这里所说的渐进增强。</p>
-<p>原文地址：<a href="http://www.red-team-design.com/css3-tooltips" target="_blank" rel="external">http://www.red-team-design.com/css3-tooltips</a></p>
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-设计稿进行页面制作的流程和注意事项" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2010-08-28-设计稿进行页面制作的流程和注意事项.html" class="article-date">
+      <time datetime="2010-08-27T17:49:15.000Z" itemprop="datePublished">2010-08-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2010-08-28-设计稿进行页面制作的流程和注意事项.html">设计稿进行页面制作的流程和注意事项(</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>不过在这个还原的过程中应该也是需要一些基本的流程和注意一些东西的。<br>　　1、我们在拿到设计图后，通常会怎样做呢？</p>
+<p>　　 或许我们会在拿到图后二话不说，直接对着效果图，将代码从头敲到脚？</p>
+<p>　　请对这个做法say no！</p>
+<p>　　建议大家在拿到设计图后，不要急于开始制作，先仔细的看一次（不是看有多漂亮^_^）。如同庖丁解牛般，他看到的不是单纯的一头牛，而是看到了牛本体的机理结构。而我们要看出来的也正是设计图的骨架，只有顺骨架，才能知道这个图的结构应该怎么写。在把握好总体结构后才开始动手敲代码，以此避免在敲代码的时候，敲着敲着又要停下想想这块区域该怎样写。</p>
+<p>　　2、对结构做到心中有数后，是否可以敲代码了？</p>
+<p>　　不，我们似乎还有一些事情忘了做。比如说，设计稿上的某些效果，需要使用什么技术来实现？又或者是某个部分，需要做成怎样效果。我们只有对整个设计稿有了一个大致的了解，才会知道，要完成这个页面，需要用到哪些东西，并且准备哪些东西。</p>
+<p>　　而在等我们将上述的一些事情都做好后，接下来敲代码的工作将会顺畅很多。因为你的思绪早已经运作开了，对于设计稿的每个部位都已经了然于胸，敲起代码来，当然就会如有神助。 :)</p>
+<p>　　3、通常，我们都可以事先写好一个固定的html框架，以备在以后的工作中高频次的使用。</p>
+<p>假设以下是你写好的html固定框架：</p>
+<p>&lt;!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Transitional//EN”<br> “<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" target="_blank" rel="external">http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd</a>“&gt;</p>
+<html xmlns="[http://www.w3.org/1999/xhtml](http://www.w3.org/1999/xhtml)" xml:lang="zh-cn" lang="zh-cn"><br><head><br><meta http-equiv="Content-Type" content="text/html; charset=gb2312"><br><meta http-equiv="Content-Language" content="zh-cn"><br><title></title><br><meta http-equiv="imagetoolbar" content="no"><br><meta name="Robots" content="all"><br><meta name="Author" content=""><br><meta name="Copyright" content=""><br><meta name="Keywords" content=""><br><meta name="Description" content=""><br><link type="text/css" rel="stylesheet" href="skin/layout.css" media="all"><br></head><br><body><br><!--从这里敲你的代码--><br></body><br></html>
+
+<p>　　这样的话，你就可以省下每次都去其它页面寻找并且copy这些东西的时间。当然，如果你是在使用一些IDE的话，可能会自动帮你生成，不过自动生成的东西或许不一定适合你。</p>
+<p>　　4、同样，也会有一个类似的css框架</p>
+<p>　　说框架似乎有点不妥，这个所谓的css框架，其实只是一些公用的，复用性高的样式集合，比如一些reset样式或者其它。这样就可以不必每次都去重复写这些同样的东西，减少你敲样式的时间，提高工作效率。当然，这个集合应该是一个适合你工作需要的集合，而不是为了做一个集合而写的，且无法给自己的工作带来方便的集合，如果是这样，倒不如不写。</p>
+<p>　　对于html和css样式的好坏是否有一个可参照的标准？</p>
+<p>　　应该说是没有的，</p>
+<p>　　但一个良好的html结构，我觉得起码需要具备以下几个要素：<br>　　对于时效性短，修改次数少且结构固定的页面，需要做到简洁，清晰；对于时效性长，修改频繁且结构相对变动较多的页面，也需要做到让html结构尽量简洁，清晰，但更重要的是要有较强的可扩展性（在页面有较大改动时，也不会伤筋动骨，可以比较轻松的搞定）。</p>
+<p>　　那么一个良好的css，又该是怎样的呢？</p>
+<p>　　一个好的css文件，应该具备高复用，低耦合，当然，也需要注意简洁，能够缩写的尽量缩写，以减少字节。还有一个非常重要的，就是命名。好的命名，是可以共通的，比如说#header，只要是开发，不局限说前端，就是后端，也能够一眼就知道这块指的是“头部”，这就增强了你的代码可读性。当然，由于每个人的风格不一样，这或许就需要做成一个规范。其中的好处，不言而喻。另外还有就是hack，这个东东，虽然可以帮助我们解决很多难题，但可以不用尽量不要使用，因为它不仅会破坏代码的可读性，而且还会增加后期的维护成本，且不利于向后兼容。</p>
+<p>　　这以上所说的这些，对于团体作业来说都是极为重要的。因为一个团队，难免有人员的更换，就免不了一个项目会换多个接手人。这时，一个规范，或者说一个良好的可读性强的页面结构和css，都能让新接手的人快速进入到你当时做这个项目时的状态，对提高效率有很大帮助；也对整个团队的代码风格的形成和编写习惯有比较大的帮助。</p>
+<p>　　说了这些，其实还需要注意的是结构的语义化，当然还有一些微格式。现在是seo炒得火热，但语义化与seo并不冲突，且做好的了结构的语义化，其实对seo也是有极大帮助的，况且现在的一个总体趋势就是标准化，对于这个大环境，就是重量级的搜索引擎也不会轻视，蜘蛛对页面的结构也是非常敏感的。真正的seo并不仅仅是钻空子而已，而是要回到根源。</p>
+<p>　　三言两语还有很多细节方面是描述不到的，以后有时间再写。</p>
 
       
     </div>
@@ -540,11 +587,11 @@
 
 
   
-    <article id="post-【译】css渐变 快速教程 - 副本" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-CSS技巧 使用标签来创建导航菜单(滑动门教程)" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/blog/2012-01-29-【译】css渐变 快速教程 - 副本.html" class="article-date">
-      <time datetime="2012-01-29T04:23:46.000Z" itemprop="datePublished">2012-01-29</time>
+      <a href="/blog/2010-08-28-CSS技巧 使用标签来创建导航菜单(滑动门教程).html" class="article-date">
+      <time datetime="2010-08-27T17:47:41.000Z" itemprop="datePublished">2010-08-28</time>
 </a>
     </div>
   
@@ -557,7 +604,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2012-01-29-【译】css渐变 快速教程 - 副本.html">【译】css渐变 快速教程</a>
+      <a class="article-title" href="/blog/2010-08-28-CSS技巧 使用标签来创建导航菜单(滑动门教程).html">CSS技巧 使用标签来创建导航菜单(滑动门教程)(</a>
     </h1>
   
 
@@ -567,46 +614,63 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>css3 渐变已经不是新东西了，但是因为跨浏览器的兼容问题，目前为止还没有得到普遍使用。  然而，你应该知道在 safari,chrome(webkit) 和 firefox(3.6以上)浏览器可以使用它们。  知道了这个后我将向你展示如何使用 css渐变 在大多数浏览器：firefox,safari,chrome和ie(惊奇吧！). <a href="../wp-content/uploads/2012/01/1.bmp"><img src="../wp-content/uploads/2012/01/1.bmp" alt="" title="css3 渐变"></a></p>
-<p>但是 首先。。。我们为什么要使用css3 渐变？</p>
-<p>1、减少HTTP请求数</p>
-<p>2、css3 渐变是可扩展的，这意味着你可以减少头痛</p>
-<p>3、css3  很酷</p>
-<h2 id="firefox-语法"><a href="#firefox-语法" class="headerlink" title="firefox 语法"></a>firefox 语法</h2><pre>-moz-linear-gradient( [<point> || <angle>,]? <stop></stop>, <stop></stop> [, <stop></stop>]* )
+        <p>HTML和CSS代码如下:</p>
+<p>===========================<br>&lt;!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Strict//EN”<br>   “<a href="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" target="_blank" rel="external">http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd</a>“&gt;  </p>
+<html xmlns="[http://www.w3.org/1999/xhtml](http://www.w3.org/1999/xhtml)" lang="en-US"><br><head><br><title>Lists as navigation</title><br><meta http-equiv="content-type" content="text/html; charset=utf-8"><br><link rel="stylesheet" type="text/css" href="tabs.css"><br></head><br><body id="recipes"><br><div id="header"><br><br><em>   <a href="#">Recipes</a>
+</em>   <a href="#">Contact Us</a><br><em>   <a href="#">Articles</a>
+</em>   <a href="#">Buy Online</a><br></div><br><div id="content"><br><br># Recipes<br><br>Lorem ipsum dolor sit amet, …<br><br></div><br></body><br></html>
 
--moz-radial-gradient( [<position> || <angle>,]? [<shape> || <size>,]? <stop></stop>, <stop></stop>[, <stop></stop>]* )</size></shape></angle></position></angle></point></pre>
+<p>body {<br> font: .8em/1.8em verdana, arial, sans-serif;<br> background-color: #FFFFFF;<br> color: #000000;<br> margin: 0 10% 0 10%;<br>}  </p>
+<p>#header {<br> float: left;<br> width: 100%;<br> border-bottom: 1px solid #8DA5FF;<br> margin-bottom: 2em;<br>}  </p>
+<p>#header ul {<br> margin: 0;<br> padding: 2em 0 0 0;<br> list-style: none;<br>}  </p>
+<p>#header li {<br> float: left;<br> background-image: url(“images/tab_left.gif”);<br> background-repeat: no-repeat;<br> margin: 0 1px 0 0;<br> padding: 0 0 0 8px;<br>}  </p>
+<p>#header a {<br> float: left;<br> display: block;<br> background-image: url(“images/tab_right.gif”);<br> background-repeat: no-repeat;<br> background-position: right top;<br> padding: 0.2em 10px 0.2em 0;<br> text-decoration: none;<br> font-weight: bold;<br> color: #333366;<br>}  </p>
+<p>#recipes #header li.recipes,  </p>
+<p>#contact #header li.contact,  </p>
+<p>#articles #header li.articles,  </p>
+<p>#buy #header li.buy {<br> background-image: url(“images/tab_active_left.gif”);<br>}  </p>
+<p>#recipes #header li.recipes a,  </p>
+<p>#contact #header li.contact a,  </p>
+<p>#articles #header li.articles a,  </p>
+<p>#buy #header li.buy a {<br> background-image: url(“images/tab_active_right.gif”);<br> background-color: transparent;<br> color:#FFFFFF;<br>}  </p>
+<p>===========================<br>解决方案:</p>
+<p>在这里使用的是”滑动门技术”,它是标签创建导航的一种技术.首先编写导航菜单的HTML结构.(在前面几节已经说过如何去创建HTML,如有不懂的</p>
+<p>可以去看.)然后给每个标签分配一个类来描述链接.最后准备背景图像.</p>
+<p>在PS中创建四个像这样的图片,两个来表现链接的状态,别外两个来表现鼠标滑动过的状态.正如你所看到的,图像的大小比文本要大的多,这是现</p>
+<p>实随着文本变化而变化(即文本变大,那么背景图像还是可以看清楚的.)</p>
+<h1 id="这是导航的HTML代码"><a href="#这是导航的HTML代码" class="headerlink" title="这是导航的HTML代码:"></a>这是导航的HTML代码:</h1><div id="header">  
 
-<h2 id="webkit-语法"><a href="#webkit-语法" class="headerlink" title="webkit 语法"></a>webkit 语法</h2><pre>-webkit-gradient(<type>, <point> [, <radius>]?, <point> [, <radius>]? [, <stop></stop>]*)</radius></point></radius></point></type></pre>
+<ul>
+<li><a href="#">Recipes</a></li>
+<li><a href="#">Contact Us</a></li>
+<li><a href="#">Articles</a></li>
+<li><a href="#">Buy Online</a>  <h1 id=""><a href="#" class="headerlink" title=""></a></h1></li></ul></div>
 
-<h2 id="IE三叉戟梯度的例子"><a href="#IE三叉戟梯度的例子" class="headerlink" title="IE三叉戟梯度的例子"></a>IE三叉戟梯度的例子</h2><p>我建议你使用这些滤镜在有条件的CSS文件中，否则这些滤镜讲影响你文件的性能。</p>
-<pre>filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#6191bf, endColorstr=#cde6f9); /* IE6 &amp; IE7 */  -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#6191bf, endColorstr</pre>
-
-<h2 id="线性梯度跨浏览器渐变"><a href="#线性梯度跨浏览器渐变" class="headerlink" title="线性梯度跨浏览器渐变"></a>线性梯度跨浏览器渐变</h2><p>那么，让我们看它是如何运转的。一起使用以上代码你将得到一个跨浏览器渐变的盒子。</p>
-<p><a href="wp-content/uploads/2012/01/2.bmp"><img src="wp-content/uploads/2012/01/2.bmp" alt="" title="css3径向渐变"></a></p>
-<p>查看DEMO演示：<a href="wp-content/uploads/2012/01/css-linear-gradient.html">css-linear-gradient</a></p>
-<pre>/* Fallback background color for non supported browsers */
-
-background-image: -moz-linear-gradient(top, #81a8cb, #cde6f9); /* Firefox 3.6 */
-
-background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #cde6f9),color-stop(1, #81a8cb)); /* Safari &amp; Chrome */
-
-filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#81a8cb', endColorstr='#cde6f9'); /* IE6 &amp; IE7 */
-
--ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#81a8cb', endColorstr='#cde6f9')"; /* IE8 */</pre>
-
-<h2 id="css3-径向渐变"><a href="#css3-径向渐变" class="headerlink" title="css3 径向渐变"></a>css3 径向渐变</h2><p>IE 渐变滤镜 不支持Color-Stops （如果不需要从一个颜色到另一个颜色的100%渐变,这就是color stop起作用的时候)、梯度角度、径向渐变。 这意味着你只能使用两种颜色指定水平和垂直线性渐变（如上），一种为开始颜色，一种为结束颜色。  但是让我们看看如何定义一个CSS3径向渐变在firefox,safari和chrome上。  <a href="wp-content/uploads/2012/01/3.bmp"><img src="wp-content/uploads/2012/01/3.bmp" alt="" title="css3兼容径向渐变"></a></p>
-<p>查看DEMO演示：<a href="wp-content/uploads/2012/01/css-radialgradient.html">css-radialgradient</a></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>尽管CSS 渐变是伟大的，但是目前为止并不是所有浏览器都支持它。所以，你不应该完全依靠CSS渐变当 你设计网站的时候，你应该留一条退路。</p>
-<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><p>自从我写下这篇文章，webkit渐变语法被更新了，IE10发布了（很高兴看到对CSS3渐变的支持）并且OPERA 11也增加了对CSS3渐变的支持作为它的特点。</p>
-<p>这是最新的CSS3梯度句法:</p>
-<p><pre>background-color: #6191bf; /<em> Fallback background color for non supported browsers </em>/</pre></p>
-<p>background-image: -webkit-gradient(linear, left top, left bottom, from(#81a8cb), to(#cde6f9));</p>
-<p>background-image: -webkit-linear-gradient(top, #81a8cb, #cde6f9);</p>
-<p>background-image: -moz-linear-gradient(top, #81a8cb, #cde6f9);</p>
-<p>background-image: -ms-linear-gradient(top, #81a8cb, #cde6f9);</p>
-<p>background-image: -o-linear-gradient(top, #81a8cb, #cde6f9);</p>
-<p>background-image: linear-gradient(top, #81a8cb, #cde6f9);</p>
-<p>filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=’#81a8cb’, EndColorStr=’#cde6f9’); /<em> IE6–IE9 </em>/<br>原文：<a href="http://www.red-team-design.com/css-gradients-quick-tutorial" target="_blank" rel="external">http://www.red-team-design.com/css-gradients-quick-tutorial</a></p>
+<h1 id="第一步-我们先来设置容器的样式-给导航定义一个下边框"><a href="#第一步-我们先来设置容器的样式-给导航定义一个下边框" class="headerlink" title="第一步:我们先来设置容器的样式.给导航定义一个下边框."></a>第一步:我们先来设置容器的样式.给导航定义一个下边框.</h1><p>#header {<br> float: left;<br> width: 100%;<br> border-bottom: 1px solid #8DA5FF;<br> margin-bottom: 2em;  </p>
+<h1 id="-1"><a href="#-1" class="headerlink" title="}"></a>}</h1><p>再给<ul>定义样式.清除默认的小圆点,并设置填充.</ul></p>
+<p>=========================</p>
+<p>#header ul {<br> margin: 0;<br> padding: 2em 0 0 0;<br> list-style: none;  </p>
+<h1 id="-2"><a href="#-2" class="headerlink" title="}"></a>}</h1><p>效果如下:</p>
+<p>大家有没有发觉,我上面已给容器定义了浮动,那么为什么显示不是横向的.(PS:如何横向导航)</p>
+<p>现在来给<li>定义样式了.在这里利用浮动使导航横向,并使</li><li>为块级元素.然后加入”滑动门”的左边图像.</li></p>
+<p>==========================</p>
+<p>#header li {<br> float: left;<br> background-image: url(“images/tab_left.gif”);<br> background-repeat: no-repeat;<br> margin: 0 1px 0 0;<br> padding: 0 0 0 8px;  </p>
+<h1 id="-3"><a href="#-3" class="headerlink" title="}"></a>}</h1><p>把右边的图像放到<a>标签里,设置如下:</a></p>
+<p>=======================</p>
+<p>#header a {<br> float: left;<br> display: block;<br> background-image: url(“images/tab_right.gif”);<br> background-repeat: no-repeat;<br> background-position: right top;<br> padding: 0.2em 10px 0.2em 0;<br> text-decoration: none;<br> font-weight: bold;<br> color: #333366;  </p>
+<h1 id="-4"><a href="#-4" class="headerlink" title="}"></a>}</h1><p>效果如图所示<br>做到这里只是完成了半部分,细心的童学们一定会注意到我们在上面添加的那样”类”还没有使用.那么接下来看下如果运用所添加的”类”来使图</p>
+<p>像变换.<br>首先我们来给<body>添加一个ID.</body></p>
+<p>====================</p>
+<h1 id="-5"><a href="#-5" class="headerlink" title=""></a><body id="recipes"></body></h1><h1 id="CSS代码如下"><a href="#CSS代码如下" class="headerlink" title="CSS代码如下:"></a>CSS代码如下:</h1><p>#recipes #header li.recipes,  </p>
+<p>#contact #header li.contact,  </p>
+<p>#articles #header li.articles,  </p>
+<p>#buy #header li.buy {<br> background-image: url(“images/tab_active_left.gif”);<br>}  </p>
+<p>#recipes #header li.recipes a,  </p>
+<p>#contact #header li.contact a,  </p>
+<p>#articles #header li.articles a,  </p>
+<p>#buy #header li.buy a {<br> background-image: url(“images/tab_active_right.gif”);<br> background-color: transparent;<br> color: #FFFFFF;  </p>
+<h1 id="-6"><a href="#-6" class="headerlink" title="}"></a>}</h1><p>这时候可能有人会问在<body>中添加一个ID有什么作用.呵呵….这位同学很细心哟.在<body>对象中添加一个ID是非常有用的,比如说,你给网</body></body></p>
+<p>站划分几个颜色,来告诉用户他们正在浏览的是哪一部分.</p>
 
       
     </div>
@@ -632,11 +696,11 @@ filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=
 
 
   
-    <article id="post-【译】css渐变 快速教程" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-给程序员的七个建议" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/blog/2012-01-29-【译】css渐变 快速教程.html" class="article-date">
-      <time datetime="2012-01-29T04:23:46.000Z" itemprop="datePublished">2012-01-29</time>
+      <a href="/blog/2010-08-28-给程序员的七个建议.html" class="article-date">
+      <time datetime="2010-08-27T17:45:46.000Z" itemprop="datePublished">2010-08-28</time>
 </a>
     </div>
   
@@ -649,7 +713,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2012-01-29-【译】css渐变 快速教程.html">【译】css渐变 快速教程</a>
+      <a class="article-title" href="/blog/2010-08-28-给程序员的七个建议.html">给程序员的七个建议</a>
     </h1>
   
 
@@ -659,46 +723,67 @@ filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>css3 渐变已经不是新东西了，但是因为跨浏览器的兼容问题，目前为止还没有得到普遍使用。  然而，你应该知道在 safari,chrome(webkit) 和 firefox(3.6以上)浏览器可以使用它们。  知道了这个后我将向你展示如何使用 css渐变 在大多数浏览器：firefox,safari,chrome和ie(惊奇吧！). <a href="../wp-content/uploads/2012/01/1.bmp"><img src="../wp-content/uploads/2012/01/1.bmp" alt="" title="css3 渐变"></a></p>
-<p>但是 首先。。。我们为什么要使用css3 渐变？</p>
-<p>1、减少HTTP请求数</p>
-<p>2、css3 渐变是可扩展的，这意味着你可以减少头痛</p>
-<p>3、css3  很酷</p>
-<h2 id="firefox-语法"><a href="#firefox-语法" class="headerlink" title="firefox 语法"></a>firefox 语法</h2><pre>-moz-linear-gradient( [<point> || <angle>,]? <stop></stop>, <stop></stop> [, <stop></stop>]* )
+        <p>给程序员的七个建议</p>
+<pre><code>（1）练内功。不要只花功夫学习各种流行的编程语言和工具，以及某些公司招聘广告上要求的科目。要把数据结构、算法、数据库、操作系统原理、计算机体系结构、计算机网络，离散数学等基础课程学好。大家不妨试试高德纳所著The Art of Computer Programming里的题目，如果你能够解决其中的大部分题目，就说明你在算法方面有一定的功力了。
+（2）多实战。通过编程的实战积累经验、巩固知识。很多中国大学毕业生缺乏编程和调试经验；学习C语言，考试过关就算学会了；课题项目中，只要程序能够编译，运行，并且输入输出满足要求就算了事。这些做法是不行的。写程序的时候，大家必须多想想如何把程序写得更加精炼、高效、高质量。建议大家争取在大学四年中积累编写十万行代码的经验。我们必须明白的是：好程序员是写出来的，不是学出来的。
+（3）求实干。不要轻视任何实际工作，比如一些看似简单的编码或测试。要不懈追求对细节一丝不苟的实干作风与敬业精神。我发现不少程序员对于知识的掌握很肤浅，不求甚解，没有好奇心，不会刨根问底。比如，学会了C++，是否了解一个对象在编译后，在汇编代码中是如何被初始化的？这个对象的各个成员在内存中是如何存放的？当一个成员函数被调用时，编译器在汇编代码中加入了哪些额外的动作？虚函数的调用是如何实现的? 这些东西恐怕在编程语言或编译原理中都没 有详细提到，只有通过踏实的实干才能真正掌握。
+（4）重视数学学习。数学是思维的体操，数学无处不在。学计算机至少要学习离散数学、概率论、布尔代数、集合论和数理逻辑。这些知识并不难，但是对你未来的工作帮助会很大。尤其当你对一些“数学密集型”的领域如视频、图像处理等有兴趣时，这些知识将成为你手中的利器。
+（5）培养团队精神，学会与人合作。今天的软件工程早已经不是一个人可以单独操作的，而必须靠团队合作才能成功。不懂得合作的人是不能成大器的。大家要多去寻找可以与人一起做项目的机会。
+（6）激励创新意识，培养好奇心，不要死记硬背。没有掌握某种算法技术的根本原理，就不会有应变和创新的能力。想成为一位好程序员（其实从事任何一个行业都是如此），重要的是要养成钻研，好奇，创新，动手，合作的优秀习惯，不满足于填鸭，不满足于考试交差，不满足于表象。这不是学几门课能够一蹴而就的。
+（7）有策略地“打工”。在不影响学业的前提下，寻找真正有意义的暑期工作或兼职。去找一个重视技术的公司，在一个好的“老板”指导下完成真正会被用户使用的程序。不要急于去一个要你做“头”而独挡一面的地方，因为向别人学习才是你的目的。找工作也是一样，不要只看待遇和职衔，要挑一个你能够学习的环境，一个愿意培养员工的企业，一个重视你的专业的公司。最后，还要挑一个好老板。希望大家都能把握机会，养成好的学习习惯，把算法学精学透；希望大家都能有一个美好的未来！
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
 
--moz-radial-gradient( [<position> || <angle>,]? [<shape> || <size>,]? <stop></stop>, <stop></stop>[, <stop></stop>]* )</size></shape></angle></position></angle></point></pre>
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
 
-<h2 id="webkit-语法"><a href="#webkit-语法" class="headerlink" title="webkit 语法"></a>webkit 语法</h2><pre>-webkit-gradient(<type>, <point> [, <radius>]?, <point> [, <radius>]? [, <stop></stop>]*)</radius></point></radius></point></type></pre>
 
-<h2 id="IE三叉戟梯度的例子"><a href="#IE三叉戟梯度的例子" class="headerlink" title="IE三叉戟梯度的例子"></a>IE三叉戟梯度的例子</h2><p>我建议你使用这些滤镜在有条件的CSS文件中，否则这些滤镜讲影响你文件的性能。</p>
-<pre>filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#6191bf, endColorstr=#cde6f9); /* IE6 &amp; IE7 */  -ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#6191bf, endColorstr</pre>
 
-<h2 id="线性梯度跨浏览器渐变"><a href="#线性梯度跨浏览器渐变" class="headerlink" title="线性梯度跨浏览器渐变"></a>线性梯度跨浏览器渐变</h2><p>那么，让我们看它是如何运转的。一起使用以上代码你将得到一个跨浏览器渐变的盒子。</p>
-<p><a href="wp-content/uploads/2012/01/2.bmp"><img src="wp-content/uploads/2012/01/2.bmp" alt="" title="css3径向渐变"></a></p>
-<p>查看DEMO演示：<a href="wp-content/uploads/2012/01/css-linear-gradient.html">css-linear-gradient</a></p>
-<pre>/* Fallback background color for non supported browsers */
 
-background-image: -moz-linear-gradient(top, #81a8cb, #cde6f9); /* Firefox 3.6 */
 
-background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #cde6f9),color-stop(1, #81a8cb)); /* Safari &amp; Chrome */
 
-filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#81a8cb', endColorstr='#cde6f9'); /* IE6 &amp; IE7 */
 
--ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#81a8cb', endColorstr='#cde6f9')"; /* IE8 */</pre>
 
-<h2 id="css3-径向渐变"><a href="#css3-径向渐变" class="headerlink" title="css3 径向渐变"></a>css3 径向渐变</h2><p>IE 渐变滤镜 不支持Color-Stops （如果不需要从一个颜色到另一个颜色的100%渐变,这就是color stop起作用的时候)、梯度角度、径向渐变。 这意味着你只能使用两种颜色指定水平和垂直线性渐变（如上），一种为开始颜色，一种为结束颜色。  但是让我们看看如何定义一个CSS3径向渐变在firefox,safari和chrome上。  <a href="wp-content/uploads/2012/01/3.bmp"><img src="wp-content/uploads/2012/01/3.bmp" alt="" title="css3兼容径向渐变"></a></p>
-<p>查看DEMO演示：<a href="wp-content/uploads/2012/01/css-radialgradient.html">css-radialgradient</a></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>尽管CSS 渐变是伟大的，但是目前为止并不是所有浏览器都支持它。所以，你不应该完全依靠CSS渐变当 你设计网站的时候，你应该留一条退路。</p>
-<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><p>自从我写下这篇文章，webkit渐变语法被更新了，IE10发布了（很高兴看到对CSS3渐变的支持）并且OPERA 11也增加了对CSS3渐变的支持作为它的特点。</p>
-<p>这是最新的CSS3梯度句法:</p>
-<p><pre>background-color: #6191bf; /<em> Fallback background color for non supported browsers </em>/</pre></p>
-<p>background-image: -webkit-gradient(linear, left top, left bottom, from(#81a8cb), to(#cde6f9));</p>
-<p>background-image: -webkit-linear-gradient(top, #81a8cb, #cde6f9);</p>
-<p>background-image: -moz-linear-gradient(top, #81a8cb, #cde6f9);</p>
-<p>background-image: -ms-linear-gradient(top, #81a8cb, #cde6f9);</p>
-<p>background-image: -o-linear-gradient(top, #81a8cb, #cde6f9);</p>
-<p>background-image: linear-gradient(top, #81a8cb, #cde6f9);</p>
-<p>filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=’#81a8cb’, EndColorStr=’#cde6f9’); /<em> IE6–IE9 </em>/<br>原文：<a href="http://www.red-team-design.com/css-gradients-quick-tutorial" target="_blank" rel="external">http://www.red-team-design.com/css-gradients-quick-tutorial</a></p>
+  
+    <article id="post-怎样去阅读一份php源代码" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/blog/2010-08-28-怎样去阅读一份php源代码.html" class="article-date">
+      <time datetime="2010-08-27T17:44:50.000Z" itemprop="datePublished">2010-08-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2010-08-28-怎样去阅读一份php源代码.html">怎样去阅读一份php源代码</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>技术的快速进步，最好的途径就是阅读源代码了。自己也阅读了很多开源的程序，感觉方法很重要，好的方法可以达到事半功倍的效果。一下就是我自己的一些新的，希望对大家都有用。<br>    一份好的源代码例如 dz的论坛，wind论坛，帝国cms，dedecms等，都具有自己的一套设计思路和设计模式，所以在看某个产品之前就要做好心理准备，可以把自己的经验和这些产品做对比，但千万别一直用自己的思维去评判。一句话就是“以学习和批评的辩证思想去看待”。<br>     好吧！我们就开始吧！<br>     那具体的我们怎样去阅读一份php的源代码呢？<br>    一。先把源代码安装起来，结合它的文档和手册，熟悉其功能和它的应用方式。<br>    二。浏览源代码的目录结构，了解各个目录的功能。<br>    三。经过以上两步后相信你对这个开源的产品有了一个初步的了解了，那现在就开始分析它的源码吧。这一步我们开始分析源代码框架。例如入口方式是单入口还是多入口，页面之间的调用规则，能根据规则找出某个功能用到的页面。<br>    四。熟悉源代码的代码写作风格，例如缩进方式，排版格式等。<br>    五。熟悉一下源代码用到的数据库和表，可以参考它的技术支持文档。<br>    六。经过以上几步相信大家已经对这份源代码有了更深刻的了解，不过这种了解还只是表面的，下来我们从6个方面具体的去分析它吧：<br>           1.入口构造以及页面调用方式的具体实现，如果阅读时看到工具类和工具函数，尽量去熟悉一下。这一步的分析可以学习到源代码的系统架构方式。<br>           2.分析源代码用到的工具类和工具函数，这样可以学到很多程序编写技巧。可以提升自己编程功力。<br>           3.结合一些安全规则，研究这个源代码是怎样实现安全方面的设计的。这样可以提高自己在安全方面的意识和功力。<br>           4.如果有模板引擎的话，研究一下源代码的模板引擎。大致从实现方式，效率，易用性等几个方面去考虑。<br>           5.研究系统的各个功能模块，这样既能学习编程技巧还能打开自己的编程思路，下次遇到类似的东东就心里有谱了。<br>           6.研究系统所用到设计模式，一样的功能实现，用到的设计模式可能相差很多，对比我们之前所作的东东分析设计模式，是提升我们驾驭代码的不二法门。<br>           7.研究源代码对访问压力，执行效率，系统效率，数据库查询的优化。<br>       方法只是途径和工具，具体实践还需要大家的努力。自己的感想是不要着急，认真分析，把分析心得用到自己的具体项目上，呵呵！</p>
 
       
     </div>
@@ -724,11 +809,11 @@ filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=
 
 
   
-    <article id="post-select的最佳预设 - 副本" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-怎样提问" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/blog/2012-01-11-select的最佳预设 - 副本.html" class="article-date">
-      <time datetime="2012-01-11T06:56:38.000Z" itemprop="datePublished">2012-01-11</time>
+      <a href="/blog/2010-08-28-怎样提问.html" class="article-date">
+      <time datetime="2010-08-27T17:43:26.000Z" itemprop="datePublished">2010-08-28</time>
 </a>
     </div>
   
@@ -741,7 +826,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2012-01-11-select的最佳预设 - 副本.html">select的最佳预设</a>
+      <a class="article-title" href="/blog/2010-08-28-怎样提问.html">怎样提问</a>
     </h1>
   
 
@@ -751,73 +836,336 @@ filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>我们知道select标签在各个浏览器中的属性和各浏览器的支持各有些不同，从而造成select选择框在各浏览器的显示有不同，下面我们通过对主要 外形CSS属性的支持，打造全兼容select。</p>
-<p>我对select的height、padding、line-height分别利用控制变量的方法写了个DEMO在各浏览器上测试三种情况：height.100.padding.0、height.no.padding.100、no.height.no.padding，结果</p>
-<p>如  <a href="../wp-content/uploads/2012/01/demo.png"><img src="../wp-content/uploads/2012/01/demo-78x300.png" alt="" title="select height test"></a> （<a href="wp-content/uploads/2012/01/demo.png">图片很长请点击查看原图</a>），我们可以得出以下研究属性。</p>
-<p><table border="1" cellspacing="0" cellpadding="0"></table></p>
-<p><tbody></tbody></p>
-<p><tr></tr></p>
-<p><td valign="top" width="92"></td></p>
-<p><td valign="top" width="57">ie6</td></p>
-<p><td valign="top" width="57">ie7</td></p>
-<p><td valign="top" width="54">ie8</td></p>
-<p><td valign="top" width="61">ie9</td></p>
-<p><td valign="top" width="62">ff</td></p>
-<p><td valign="top" width="62">ch</td></p>
-<p><td valign="top" width="62">sf</td></p>
-<p><td valign="top" width="62">op</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top" width="92">默认高度</td></p>
-<p><td valign="top" width="57">22px</td></p>
-<p><td valign="top" width="57">22px</td></p>
-<p><td valign="top" width="54"></td></p>
-<p><td valign="top" width="61"></td></p>
-<p><td valign="top" width="62">19px</td></p>
-<p><td valign="top" width="62">20px</td></p>
-<p><td valign="top" width="62">19px</td></p>
-<p><td valign="top" width="62">19px</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top" width="92">height</td></p>
-<p><td valign="top" width="57">F</td></p>
-<p><td valign="top" width="57">T</td></p>
-<p><td valign="top" width="54">T</td></p>
-<p><td valign="top" width="61">T</td></p>
-<p><td valign="top" width="62">T</td></p>
-<p><td valign="top" width="62">T</td></p>
-<p><td valign="top" width="62">F</td></p>
-<p><td valign="top" width="62">T</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top" width="92">padding</td></p>
-<p><td valign="top" width="57">F</td></p>
-<p><td valign="top" width="57">F</td></p>
-<p><td valign="top" width="54">T</td></p>
-<p><td valign="top" width="61">T</td></p>
-<p><td valign="top" width="62">T</td></p>
-<p><td valign="top" width="62">T</td></p>
-<p><td valign="top" width="62">F</td></p>
-<p><td valign="top" width="62">T</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top" width="92">line-height</td></p>
-<p><td valign="top" width="57">F</td></p>
-<p><td valign="top" width="57">F</td></p>
-<p><td valign="top" width="54">F</td></p>
-<p><td valign="top" width="61">F</td></p>
-<p><td valign="top" width="62">F</td></p>
-<p><td valign="top" width="62">F</td></p>
-<p><td valign="top" width="62">T</td></p>
-<p><td valign="top" width="62">F</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top" width="92">文字垂直居中</td></p>
-<p><td valign="top" width="57">T</td></p>
-<p><td valign="top" width="57">T</td></p>
-<p><td valign="top" width="54">T</td></p>
-<p><td valign="top" width="61">F</td></p>
-<p><td valign="top" width="62">F</td></p>
-<p><td valign="top" width="62">T</td></p>
-<p><td valign="top" width="62">T</td></p>
-<p><td valign="top" width="62">T</td><br><br><br><br>通过上述的研究成果属性汇总，我们知道IE6是无论如何设置都是固定高度为22px不变的，而其他浏览器除safari都是支持height属性的，那么我们设置 height:22px。那么现在我们修正一下safari浏览器，，我们发现仅有safari支持line-height属性那么正好可以利用line-height修正其高度为22px,在font-size为12px的前提下设置 line-height:22px,最后FF和IE9里面的文字不居中，对其设定 padding:2px 0,我们发现FF和IE9都居中了，但是各个浏览器的select的高度也并没有增加，那么这里有点疑问，在高度设定的情况下，小量数字的padding不增加整体高度？</p>
-<p>下面是全兼容代码示例。</p>
-<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><br><span style="color: #170;">&lt;div</span> <span style="color: #00c;">style</span>=<span style="color: #a11;">“margin-top: 20px; margin-left: 20px; background: #000;”</span><span style="color: #170;">&gt;</span><br><span style="color: #170;">&lt;select</span><span style="color: #170;">&gt;</span><br>    <span style="color: #170;">&lt;option</span><span style="color: #170;">&gt;</span>演示问题一<span style="color: #170;">&lt;/option</span><span style="color: #170;">&gt;</span><br>     <span style="color: #170;">&lt;option</span><span style="color: #170;">&gt;</span>演示问题二<span style="color: #170;">&lt;/option</span><span style="color: #170;">&gt;</span><br>    <span style="color: #170;">&lt;option</span><span style="color: #170;">&gt;</span>演示问题三<span style="color: #170;">&lt;/option</span><span style="color: #170;">&gt;</span><br>    <span style="color: #170;">&lt;option</span><span style="color: #170;">&gt;</span>演示问题四<span style="color: #170;">&lt;/option</span><span style="color: #170;">&gt;</span><br>    <span style="color: #170;">&lt;option</span><span style="color: #170;">&gt;</span>演示问题五<span style="color: #170;">&lt;/option</span><span style="color: #170;">&gt;</span><br>    <span style="color: #170;">&lt;/select</span><span style="color: #170;">&gt;</span><br><span style="color: #170;">&lt;/div</span><span style="color: #170;">&gt;</span></pre><br>本文我写于2010年12月，整理文档找到现发出,此“最佳预设”仅供参考，个人研究。</p>
+        <p>本人发现有一些同学提问不太好。</p>
+<p>在本论坛中已经固顶了肖老师的“提问的诀窍”以及本人转贴的“提问的智慧”，请不太会提问的同学多看看。</p>
+<p><strong>1. 在提问的标题中，请尽量把问题的主题描述明白，避免出现很泛的语句</strong>，如</p>
+<p>“我有问题”</p>
+<p>“大家猜猜我的问题是什么？”</p>
+<p>[<a href="http://student.csdn.net/link.php?url=http://student.csdn.net%2Fspace.php%3Fdo%3Dmtag%26amp%3Btagid%3D10" target="_blank" rel="external"><span style="color: #2c629e;">辅导员办公室</span></a>] <a href="http://student.csdn.net/link.php?url=http://student.csdn.net%2Fspace.php%3Fuid%3D38489%26amp%3Bdo%3Dthread%26amp%3Bid%3D1722" target="_blank" rel="external"><span style="color: #2c629e;">SOS求助</span></a> –请某同学不要介意</p>
+<p>[<a href="http://student.csdn.net/link.php?url=http://student.csdn.net%2Fspace.php%3Fdo%3Dmtag%26amp%3Btagid%3D12" target="_blank" rel="external"><span style="color: #2c629e;">C/C++</span></a>] <a href="http://student.csdn.net/link.php?url=http://student.csdn.net%2Fspace.php%3Fuid%3D50404%26amp%3Bdo%3Dthread%26amp%3Bid%3D1712" target="_blank" rel="external"><span style="color: #2c629e;">小小问题</span></a>  –请某同学不要介意</p>
+<p>“<a href="http://student.csdn.net/link.php?url=http://student.csdn.net%2Fspace.php%3Fuid%3D22841%26amp%3Bdo%3Dthread%26amp%3Bid%3D1680" target="_blank" rel="external"><span style="color: #2c629e;">求助!!!!!!!!</span></a> “   –请某同学不要介意</p>
+<p><a href="http://student.csdn.net/link.php?url=http://student.csdn.net%2Fspace.php%3Fuid%3D46008%26amp%3Bdo%3Dthread%26amp%3Bid%3D1673" target="_blank" rel="external"><span style="color: #2c629e;">一个让我郁闷的问题</span></a>   –请某同学不要介意</p>
+<p>这样提问，阅读者不进入贴子看内容根本不知道提问者要提的是什么问题。</p>
+<p><strong>2. 在问题的正文中，请详细描述问题的现象，产生这个问题的环境和重现问题的操作步骤。</strong></p>
+<p>下面我举一个提问较好的格式，供参考。</p>
+<p>我使用的是visual studio 2008 sp1, windows xp sp3, 使用的winsock是2.2，ace库的版本是5.6.8</p>
+<p>我遇到的问题现象是</p>
+<p> 期望的结果是a，实际的结果是b</p>
+<p>重现问题的步骤是</p>
+<ol>
+<li>….</li>
+</ol>
+<p>2….</p>
+<p>相关源代码和出错的日志参见附件….</p>
+<p>How To Ask Questions The Smart Way </p>
+<p>提问的智慧 </p>
+<p>Big5码版 �C丘明义翻译<br>BG2312码版－skywalk翻译 </p>
+<p>Copyright (C) 2001 by Eric S. Raymond </p>
+<p>中文版Copyleft 2001 by D.H.Grand(nOBODY/Ginux) </p>
+<p>英文版：<a href="http://www.tuxedo.org/~esr/faqs/smart-questions.html" target="_blank" rel="external">http://www.tuxedo.org/~esr/faqs/smart-questions.html</a> </p>
+<p>感谢Eric的耐心指点和同意，本文才得以完成并发布，本指南英文版版权为Eric Steven </p>
+<p>Raymond所有，中文版版权由D.H.Grand[nOBODY/Ginux]所有。 </p>
+<p>目录 </p>
+<p>简介 </p>
+<p>提问之前 </p>
+<p>怎样提问 </p>
+<p>谨慎选择论坛 </p>
+<p>尽量使用邮件列表 </p>
+<p>用辞贴切，语法正确，拼写无误 </p>
+<p>用易读格式发送问题 </p>
+<p>使用含义丰富，描述准确的标题 </p>
+<p>精确描述，信息量大 </p>
+<p>话不在多 </p>
+<p>只说症状，不说猜想 </p>
+<p>按时间顺序列出症状 </p>
+<p>别要求私下答复 </p>
+<p>明白你想问什么 </p>
+<p>别问应该自己解决的问题 </p>
+<p>去除无意义的疑问 </p>
+<p>谦逊绝没有害处，而且常帮大忙 </p>
+<p>问题解决后，加个简短说明 </p>
+<p>如何理解答案 </p>
+<p>RTFM和STFW：别烦我啦 </p>
+<p>还是不懂 </p>
+<p>面对无礼 </p>
+<p>决不要象个失败者 </p>
+<p>三思而后问 </p>
+<p>好问题，坏问题 </p>
+<p>找不到答案怎么办 </p>
+<p>==== </p>
+<p>简介 </p>
+<p>==== </p>
+<p>在骇客世界里，当提出一个技术问题时，你能得到怎样的回答？这取决于挖出答案的难 </p>
+<p>度，同样取决于你提问的方法。本指南旨在帮助你提高发问技巧，以获取你最想要的答 </p>
+<p>案。 </p>
+<p>首先你必须明白，骇客们只偏爱艰巨的任务，或者能激发他们思维的好问题。如若不然， </p>
+<p>我们还来干吗？如果你有值得我们反复咀嚼玩味的好问题，我们自会对你感激不尽。好问 </p>
+<p>题是激励，是厚礼，可以提高我们的理解力，而且通常会暴露我们以前从没意识到或者思 </p>
+<p>考过的问题。对骇客而言，“问得好！”是发自内心的大力称赞。 </p>
+<p>尽管骇客们有蔑视简单问题和不友善的坏名声，有时看起来似乎我们对新手，对知识贫乏 </p>
+<p>者怀有敌意，但其实不是那样的。 </p>
+<p>我们不想掩饰对这样一些人的蔑视–他们不愿思考，或者在发问前不去完成他们应该做的 </p>
+<p>事。这种人只会谋杀时间–他们只愿索取，从不付出，无端消耗我们的时间，而我们本可 </p>
+<p>以把时间用在更有趣的问题或者更值得回答的人身上。我们称这样的人为“失败者”（由 </p>
+<p>于历史原因，我们有时把它拼作“lusers”）。 </p>
+<p>我们也知道，很多人只想使用我们编写的软件，对技术细节没什么兴趣。对多数人们而 </p>
+<p>言，计算机不过是一个工具，一种达到目的的手段；他们有更重要的事情要做，有更重要 </p>
+<p>的生活要过。我们明白这点，也并不奢望每个人都对另我们痴狂的技术问题有兴致。然 </p>
+<p>而，我们回答问题的风格是针对这样一群人–他们有兴趣，并且愿意积极参与问题的解 </p>
+<p>决。这点不会改变，也不应该改变；如果变了，我们将失去我们引以为傲的效率。 </p>
+<p>我们在很大程度上属于志愿者，从繁忙的生活中抽出时间来解惑答疑，而且时常被提问淹 </p>
+<p>没。所以我们无情的滤掉一些话题，特别是抛弃那些看起来象失败者的家伙，以便更高效 </p>
+<p>的利用时间来回答胜利者的问题。 </p>
+<p>如果你觉得我们过于傲慢的态度让你不爽，让你委屈，不妨设身处地想想。我们并没有要 </p>
+<p>求你向我们屈服–事实上，我们中的大多数人最喜欢公平交易不过了，只要你付出小小努 </p>
+<p>力来满足最起码的要求，我们就会欢迎你加入到我们的文化中来。但让我们帮助那些不愿 </p>
+<p>意帮助自己的人是没有意义的。如果你不能接受这种“歧视”，我们建议你花点钱找家商 </p>
+<p>业公司签个技术支持协议得了，别向骇客乞求帮助。 </p>
+<p>如果你决定向我们求助，当然不希望被视为失败者，更不愿成为失败者中的一员。立刻得 </p>
+<p>到有效答案的最好方法，就是象胜利者那样提问–聪明、自信、有解决问题的思路，只是 </p>
+<p>偶尔在特定的问题上需要获得一点帮助。 </p>
+<p>（欢迎对本指南提出改进意见。任何建议请E-mail至esr@thyrsus.com，然而请注意，本 </p>
+<p>文并非网络礼节的通用指南，我通常会拒绝无助于在技术论坛得到有用答案的建议。） </p>
+<p>（当然，如果你写中文，最好还是寄到DHGrand@hotmail.com;-） </p>
+<p>======== </p>
+<p>提问之前 </p>
+<p>======== </p>
+<p>在通过电邮、新闻组或者聊天室提出技术问题前，检查你有没有做到： </p>
+<p>1. 通读手册，试着自己找答案。 </p>
+<p>2. 在FAQ里找答案（一份维护得好的FAQ可以包罗万象:）。 </p>
+<p>3. 在网上搜索（个人推荐google~）。 </p>
+<p>4. 向你身边精于此道的朋友打听。 </p>
+<p>当你提出问题的时候，首先要说明在此之前你干了些什么；这将有助于树立你的形象：你 </p>
+<p>不是一个妄图不劳而获的乞讨者，不愿浪费别人的时间。能说明你从这些操作中学到了什 </p>
+<p>么就更好了。如果提问者能从答案中学到东西，我们更乐于回答他的问题。 </p>
+<p>周全的思考，准备好你的问题，草率的发问只能得到草率的回答，或者根本得不到任何答 </p>
+<p>案。越表现出在寻求帮助前为解决问题付出的努力，你越能得到实质性的帮助。 </p>
+<p>小心别问错了问题。如果你的问题基于错误的假设，普通骇客（J. Random Hacker）通 </p>
+<p>常会用无意义的字面解释来答复你，心里想着“蠢问题…”，希望着你会从问题的回答 </p>
+<p>（而非你想得到的答案）中汲取教训。 </p>
+<p>决不要自以为够资格得到答案，你没这种资格。毕竟你没有为这种服务支付任何报酬。你 </p>
+<p>要自己去“挣”回一个答案，靠提出一个有内涵的，有趣的，有思维激励作用的问题–一 </p>
+<p>个对社区的经验有潜在贡献的问题，而不仅仅是被动的从他人处索要知识–去挣到这个答 </p>
+<p>案。 </p>
+<p>另一方面，表明你愿意在找答案的过程中做点什么，是一个非常好的开端。“谁能给点提 </p>
+<p>示？”、“我这个例子里缺了什么？”以及“我应该检查什么地方？”比“请把确切的过 </p>
+<p>程贴出来”更容易得到答复。因为你显得只要有人指点正确的方向，你就有完成它的能力 </p>
+<p>和决心。 </p>
+<p>======== </p>
+<p>怎样提问 </p>
+<p>======== </p>
+<hr>
+<p>谨慎选择论坛 </p>
+<hr>
+<p>小心选择提问的场合。如果象下面描述的那样，你很可能被忽略掉或者被看作失败者： </p>
+<p>1. 在风马牛不相及的论坛贴出你的问题 </p>
+<p>2. 在探讨高级技巧的论坛张贴非常初级的问题；反之亦然 </p>
+<p>3. 在太多的不同新闻组交叉张贴 </p>
+<p>骇客们通常砍掉问错地方的问题，以保护自己的社区不被大量无关帖子淹没。你不会希望 </p>
+<p>自己的帖子被这样砍掉吧。 </p>
+<p>总的说来，问题发到精心挑选的公众论坛，比发到封闭的小圈子更容易得到有用的答案。 </p>
+<p>这一现象有多种原因，其中之一是公众论坛有更多潜在的问题回答者；另一个原因是公众 </p>
+<p>论坛有更多的听众。骇客们更愿意让尽量多的人–而非有限的一两个–从回答中受益。 </p>
+<hr>
+<p>尽量使用邮件列表 </p>
+<hr>
+<p>如果某项目有自己的开发邮件列表，要把问题发到这个邮件列表而不是某个开发者，即使 </p>
+<p>你很清楚谁最能回答你的问题。仔细查看项目文档和项目主页，找到这个项目的邮件列表 </p>
+<p>地址，这样做的理由有四： </p>
+<p>1. 任何值得问某位开发者的好问题，都值得向整个开发团体提出。反之，若你认为这个 </p>
+<p>问题不值得在邮件列表中提起，就没有理由用它来骚扰任何一位开发者。 </p>
+<p>2. 在邮件列表提问可以分担开发者的工作量。某位开发者（尤其当他是项目负责人的情 </p>
+<p>况下），可能忙得没时间回答你的问题。 </p>
+<p>3. 大多数邮件列表都有历史存盘，而且都能在搜索引擎中检索到。人们可以从中找到你 </p>
+<p>的问题和答案，不用一遍又一遍在列表中发问。 </p>
+<p>4. 如果某个问题经常被提出，开发者可以据此改进文文件或改进软件，以减少用户的困 </p>
+<p>惑。而如果问题总在私下提出，就不会有人对此有整体上的把握了。 </p>
+<p>如果你找不到项目的邮件列表地址，只能看到项目维护者的，那就写给维护者吧。在这种 </p>
+<p>情况下，也别以为邮件列表并不存在。在你的信中写明你已尽力寻找，仍无法找到邮件列 </p>
+<p>表。另外表明你不介意将此消息转给他人。（大多数人认为私信就应该是私下的，即使并 </p>
+<p>没有什么可保密的内容。允许你的消息被转寄给他人，给了收信者一种处理你邮件的选 </p>
+<p>择。） </p>
+<hr>
+<p>用辞贴切，语法正确，拼写无误 </p>
+<hr>
+<p>我们从经验中发现，粗心的写作者通常也是马虎的思考者（我敢打包票）。回答粗心大意 </p>
+<p>者的问题很不值得，我们宁愿把时间耗在别处。 </p>
+<p>因此，明确充分表述你的问题非常重要。如果你嫌这样做麻烦，我们也会懒得搭理你。注 </p>
+<p>意推敲你的用辞，不一定要用呆板正式的语言–事实上，骇客文化的价值观是不拘小节。 </p>
+<p>准确的运用俚语和富有幽默感的语言，但别乱用；一定要能表明你在思考，在关注。 </p>
+<p>正确的拼写，标点符号和大小写很重要。别把“its”和“it’s”或者“loose”和 </p>
+<p>“lose”搞混淆了。别用全部大写的形式，这被视为粗鲁的大声叫嚷（全都用小写也好不 </p>
+<p>到哪儿去，因为这会给阅读带来困难。Alan Cox可以用全部小写，但你不行）。 </p>
+<p>更一般的说，如果你的提问写得象个半文盲，你很有可能被忽视。如果写得象一个窥客 </p>
+<p>（破解爱好者）或者灰客（只会用现成工具的捣乱者）绝对是自己找死，保证你除了无情 </p>
+<p>的抵制什么也得不到（或者，最好的结局是得到一大堆挖苦嘲笑的“帮助”）。 </p>
+<p>如果你在使用非母语的论坛提问，你可以犯点拼写和语法上的小错–但决不能在思考上马 </p>
+<p>虎（没错，我们能弄清两者的分别）。另外，除非你确切知道你的回答者会使用什么语 </p>
+<p>言，否则请用英文。匆匆忙忙的骇客往往简单的跳过他们看不懂的问题，而英文是网络上 </p>
+<p>的工作语言。用英文可以降低你的问题未被阅读即遭抛弃的风险。 </p>
+<hr>
+<p>用易读格式发送问题 </p>
+<hr>
+<p>如果人为造成你的提问难以阅读和理解，将会更容易被人忽略。因此你要： </p>
+<p>1. 使用纯文本邮件，不要使用HTML（关掉HTML并不难）。 </p>
+<p>2. 通常可以附加MIME附件，但一定要有真正的内容（例如附加的源文件或者补丁），而 </p>
+<p>不仅仅是你的邮件客户端产生的文件模板（例如你邮件的一份拷贝）。 </p>
+<p>3. 不要把所有问题放在不停换行的一整段中。（这将让答复的人难于回答其中一部分问 </p>
+<p>题，即使能回答所有问题，我也更希望条理清楚的一个一个来:）。很可能收件人只能在 </p>
+<p>80个字符宽度的文本显示器上读信，因此要相应的把行环绕模式设在80字符以内。 </p>
+<p>4. 不要在英文论坛使用MIME Quoted-Printable编码发送；这种编码格式对ASCII码不 </p>
+<p>能表达的语言来说是非常必要的，但很多邮件代理不支持它，这时，满篇的“=20”符号 </p>
+<p>把文字分割开，既难看，又分散注意力。 </p>
+<p>5. 永远不要指望骇客会乐于阅读封闭所有权的文件格式，例如萎软的Word格式。多数黑 </p>
+<p>客对此的反应就象你在门口的阶梯上堆满热烘烘的猪粪（意即谁也不会踏进你的门–译者 </p>
+<p>注）。 </p>
+<p>6. 如果你通过一台安装Windows的计算机发送邮件，关闭萎软愚蠢的“智能引用”功能。这 </p>
+<p>能使你免于在邮件中夹带垃圾字符。 </p>
+<hr>
+<p>使用含义丰富，描述准确的标题 </p>
+<hr>
+<p>在邮件列表或者新闻组中，大约50字以内的主题标题是抓住资深专家注意力的黄金时机。 </p>
+<p>别用喋喋不休的“帮帮忙”（更别说“救命啊！！！！！”这样让人反感的话）来浪费这 </p>
+<p>个机会。不要妄想用你的痛苦程度来打动我们，别用空格代替问题的描述，哪怕是极其简 </p>
+<p>短的描述。 </p>
+<p>蠢问题： </p>
+<p>救命啊！我的膝上机不能正常显示了！ </p>
+<p>聪明问题： </p>
+<p>XFree86 4.1下鼠标光标变形，Fooware MV1005的显示芯片。 </p>
+<p>如果你在回复中提出问题，记得要修改内容标题，表明里面有一个问题。一个看起来象 </p>
+<p>“Re：测试”或者“Re：新bug”的问题很难引起足够重视。另外，引用并删减前文的内 </p>
+<p>容，给新来的读者留下线索。 </p>
+<hr>
+<p>精确描述，信息量大 </p>
+<hr>
+<p>1. 谨慎明确的描述症状。 </p>
+<p>2. 提供问题发生的环境（机器配置、操作系统、应用程序以及别的什么）。 </p>
+<p>3. 说明你在提问前是怎样去研究和理解这个问题的。 </p>
+<p>4. 说明你在提问前采取了什么步骤去解决它。 </p>
+<p>5. 罗列最近做过什么可能有影响的硬件、软件变更。 </p>
+<p>尽量想象一个骇客会怎样反问你，在提问的时候预先给他答案。 </p>
+<p>Simon Tatham写过一篇名为《如何有效的报告Bug》的出色短文。强力推荐你也读一读。 </p>
+<hr>
+<p>话不在多 </p>
+<hr>
+<p>你需要提供精确有效的信息。这并不是要求你简单的把成吨的出错代码或者资料完全转储 </p>
+<p>摘录到你的提问中。如果你有庞大而复杂的测试条件，尽量把它剪裁得越小越好。 </p>
+<p>这样做的用处至少有三点。第一，表现出你为简化问题付出了努力，这可以使你得到回答 </p>
+<p>的机会增加；第二，简化问题使你得到有用答案的机会增加；第三，在提炼你的bug报告 </p>
+<p>的过程中，也许你自己就能找出问题所在或作出更正。 </p>
+<hr>
+<p>只说症状，不说猜想 </p>
+<hr>
+<p>告诉骇客们你认为问题是怎样引起的没什么帮助。（如果你的推断如此有效，还用向别人 </p>
+<p>求助吗？），因此要确信你原原本本告诉了他们问题的症状，不要加进你自己的理解和推 </p>
+<p>论。让骇客们来诊断吧。 </p>
+<p>蠢问题： </p>
+<p>我在内核编译中一次又一次遇到SIG11错误，我怀疑某条飞线搭在主板的走线上了，这种 </p>
+<p>情况应该怎样检查最好？ </p>
+<p>聪明问题： </p>
+<p>我自制的一套K6/233系统，主板是FIC-PA2007 （VIA Apollo VP2芯片组），256MB </p>
+<p>Corsair PC133 SDRAM，在内核编译中频频产生SIG11错误，从开机20分钟以后就有这种 </p>
+<p>情况，开机前20分钟内从没发生过。重启也没有用，但是关机一晚上就又能工作20分钟。 </p>
+<p>所有内存都换过了，没有效果。相关部分的典型编译记录如下…。 </p>
+<hr>
+<p>按时间顺序列出症状 </p>
+<hr>
+<p>对找出问题最有帮助的线索，往往就是问题发生前的一系列操作，因此，你的说明应该包 </p>
+<p>含操作步骤，以及计算机的反应，直到问题产生。在命令行操作的情况下，保存一个操作记 </p>
+<p>录（例如使用脚本工具），并且引用相关的大约20条命令会大有帮助。 </p>
+<p>如果崩溃的程序有诊断选项（例如用-v转到详尽模式），试着仔细考虑选择选项以在操作 </p>
+<p>记录中增加有用的调试信息。 </p>
+<p>如果你的说明很长（超过四个段落），在开头简述问题会有所帮助，接下来按时间顺序详 </p>
+<p>述。这样骇客们就知道该在你的说明中找什么。 </p>
+<hr>
+<p>别要求私下答复 </p>
+<hr>
+<p>骇客们认为解决问题应该有公开、透明的流程。只要任何更有见地的人注意到答案的不完 </p>
+<p>善或者不正确，这个最初的答案就可以和应该得到纠正。同时，通过能力和知识被大家注 </p>
+<p>意，被大家接受，回答问题者得到了应有的奖励。 </p>
+<p>如果你要求对方私下回答你，这既破坏了整个流程，也破坏了奖励制度。别提这要求，这 </p>
+<p>是回答者的权利，由他来选择是否私下答复–如果他选择这样做，通常是因为他认为这个 </p>
+<p>答案过于显而易见或者有不良的公开影响，别人不会感兴趣。 </p>
+<p>只有一种有限的例外：如果你预计将收到大量雷同的答复，你可以说：“把答案寄给我， </p>
+<p>由我来汇总吧。”将邮件列表或者新闻组从大量重复的帖子中打救出来是很有君子之风的 </p>
+<p>–但请记住，履行自己关于汇总的承诺。 </p>
+<hr>
+<p>明白你想问什么 </p>
+<hr>
+<p>漫无边际的提问近乎无休无止的时间黑洞。最能给你有用答案的人也正是最忙的人（他们 </p>
+<p>忙是因为要亲自完成大部分工作）。这样的人对无节制的时间黑洞不太感冒，因此也可以 </p>
+<p>说他们对漫无边际的提问不大感冒。 </p>
+<p>如果你明确表述需要回答者做什么（提供建议，发送一段代码，检查你的补丁或是别 </p>
+<p>的），就最有可能得到有用的答案。这会定出一个时间和精力的上限，便于回答者集中精 </p>
+<p>力来帮你，这很凑效。 </p>
+<p>要理解专家们生活的世界，要把专业技能想象为充裕的资源，而回复的时间则是贫乏的资 </p>
+<p>源。解决你的问题需要的时间越少，越能从忙碌的专家口中掏出答案。 </p>
+<p>因此，优化问题的结构，尽量减少专家们解决它所需要的时间，会有很大的帮助–这通常 </p>
+<p>和简化问题有所区别。因此，问“我想更好的理解X，能给点提示吗？”通常比问“你能 </p>
+<p>解释一下X吗？”更好。如果你的代码不能工作，问问它有什么地方不对，比要求别人替 </p>
+<p>你修改要明智得多。 </p>
+<hr>
+<p>别问应该自己解决的问题 </p>
+<hr>
+<p>骇客们总是善于分辨哪些问题应该由你自己解决；因为我们中的大多数都曾自己解决这类 </p>
+<p>问题。同样，这些问题得由你来搞定，你会从中学到东西。你可以要求给点提示，但别要 </p>
+<p>求得到完整的解决方案。 </p>
+<hr>
+<p>去除无意义的疑问 </p>
+<hr>
+<p>别用无意义的话结束提问，例如“有人能帮我吗？”或者“有答案吗？”。首先：如果你 </p>
+<p>对问题的描述不很合适，这样问更是画蛇添足。其次：由于这样问是画蛇添足，骇客们会 </p>
+<p>很厌烦你–而且通常会用逻辑上正确的回答来表示他们的蔑视，例如：“没错，有人能帮 </p>
+<p>你”或者“不，没答案”。 </p>
+<hr>
+<p>谦逊绝没有害处，而且常帮大忙 </p>
+<hr>
+<p>彬彬有礼，多用“请”和“先道个谢了”。让大家都知道你对他们花费时间义务提供帮助 </p>
+<p>心存感激。 </p>
+<p>实话实说，虽然这不象合乎语法、清楚准确的描述，避免私有格式等等那么重要（也不能 </p>
+<p>用来替代它们）；骇客一般更喜欢直接了当然而技术上敏锐的bug报告，而不是彬彬有礼 </p>
+<p>的废话（如果这让你迷惑不解，请记住，我们衡量一个问题价值的标准是：它能让我们学 </p>
+<p>会多少）。 </p>
+<p>然而，如果你有很多问题无法解决，礼貌将会增加你得到有用答案的机会。 </p>
+<p>（我们注意到，自从本指南发布后，从资深骇客处得到的唯一严重缺陷反馈，就是对预先 </p>
+<p>道谢这一条。一些骇客觉得“先谢了”的言外之意是过后就不会再感谢任何人了。我们的 </p>
+<p>建议是：都道谢。） </p>
+<hr>
+<p>问题解决后，加个简短说明 </p>
+<hr>
+<p>问题解决后，向所有帮助过你的人发个说明，让他们知道问题是怎样解决的，并再一次向 </p>
+<p>他们表示感谢。如果问题在新闻组或者邮件列表中引起了广泛关注，应该在那里贴一个补 </p>
+<p>充说明。 </p>
+<p>补充说明不必很长或是很深入；简单的一句“你好，原来是网线出了问题！谢谢大家 </p>
+<p>–Bill”比什么也不说要强。事实上，除非结论真的很有技术含量，否则简短可爱的小结 </p>
+<p>比长篇学术论文更好。说明问题是怎样解决的，但大可不必将解决问题的过程复述一遍。 </p>
+<p>除了表示礼貌和反馈信息以外，这种补充有助于他人在邮件列表/新闻组/论坛中搜索对你 </p>
+<p>有过帮助的完整解决方案，这可能对他们也很有用。 </p>
+<p>最后（至少？），这种补充有助于所有提供过帮助的人从中得到满足感。如果你自己不是 </p>
+<p>老手或者骇客，那就相信我们，这种感觉对于那些你向他们求助的导师或者专家而言，是 </p>
+<p>非常重要的。问题久拖未决会让人灰心；骇客们渴望看到问题被解决。好人有好报，满足 </p>
+<p>他们的渴望，你会在下次贴出新问题时尝到甜头。 </p>
+<p>============ </p>
+<p>如何理解答案 </p>
+<p>============ </p>
+<hr>
+<p>RTFM和STFW：别烦我啦 </p>
+<hr>
+<p>有一个古老而神圣的传统：如果你收到“RTFM （Read The Fucking Manual）”的回 </p>
+<p>复，回答者认为你应该去读TMD手册。当然，基本上他是对的，你应该读一读。 </p>
+<p>RTFM有一个年轻的亲戚。如果答案是“STFW （Search The Fucking Web）”，回答者 </p>
+<p>认为你应该到TMD的网上去搜索。基本上，他也是对的，你就去找吧。 </p>
+<p>通常，用这两句之一回答你的人会给你一份包含你需要内容的手册或者一个网址，而且他 </p>
+<p>们打这些字的时候正在阅读着。这些答复意味着回答者认为(1). 你需要的信息非常容易 </p>
+<p>获得；(2). 你自己去搜索这些信息比灌给你能让你学到更多。 </p>
+<p>别为这个而不爽；依照骇客的标准，他没有对你的要求视而不见，已经能大致能表示对你 </p>
+<p>的关注。你应该对他祖母般的慈祥表示感谢。 </p>
+<hr>
+<p>还是不懂 </p>
+<hr>
+<p>如果你不是很理解答案，别立刻要求对方解释。象你以前试着自己解决问题时那样（利用 </p>
+<p>手册，FAQ，网络，身边的高手），去理解它。如果你真的需要对方解释，记得表现出你 </p>
+<p>已经学到了点什么。</p>
 
       
     </div>
@@ -843,11 +1191,11 @@ filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=
 
 
   
-    <article id="post-select的最佳预设" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-承接私活要注意的几点问题" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/blog/2012-01-11-select的最佳预设.html" class="article-date">
-      <time datetime="2012-01-11T06:56:38.000Z" itemprop="datePublished">2012-01-11</time>
+      <a href="/blog/2010-08-28-承接私活要注意的几点问题.html" class="article-date">
+      <time datetime="2010-08-27T17:41:47.000Z" itemprop="datePublished">2010-08-28</time>
 </a>
     </div>
   
@@ -860,7 +1208,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog/2012-01-11-select的最佳预设.html">select的最佳预设</a>
+      <a class="article-title" href="/blog/2010-08-28-承接私活要注意的几点问题.html">承接私活要注意的几点问题</a>
     </h1>
   
 
@@ -870,657 +1218,18 @@ filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>我们知道select标签在各个浏览器中的属性和各浏览器的支持各有些不同，从而造成select选择框在各浏览器的显示有不同，下面我们通过对主要 外形CSS属性的支持，打造全兼容select。</p>
-<p>我对select的height、padding、line-height分别利用控制变量的方法写了个DEMO在各浏览器上测试三种情况：height.100.padding.0、height.no.padding.100、no.height.no.padding，结果</p>
-<p>如  <a href="../wp-content/uploads/2012/01/demo.png"><img src="../wp-content/uploads/2012/01/demo-78x300.png" alt="" title="select height test"></a> （<a href="wp-content/uploads/2012/01/demo.png">图片很长请点击查看原图</a>），我们可以得出以下研究属性。</p>
-<p><table border="1" cellspacing="0" cellpadding="0"></table></p>
-<p><tbody></tbody></p>
-<p><tr></tr></p>
-<p><td valign="top" width="92"></td></p>
-<p><td valign="top" width="57">ie6</td></p>
-<p><td valign="top" width="57">ie7</td></p>
-<p><td valign="top" width="54">ie8</td></p>
-<p><td valign="top" width="61">ie9</td></p>
-<p><td valign="top" width="62">ff</td></p>
-<p><td valign="top" width="62">ch</td></p>
-<p><td valign="top" width="62">sf</td></p>
-<p><td valign="top" width="62">op</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top" width="92">默认高度</td></p>
-<p><td valign="top" width="57">22px</td></p>
-<p><td valign="top" width="57">22px</td></p>
-<p><td valign="top" width="54"></td></p>
-<p><td valign="top" width="61"></td></p>
-<p><td valign="top" width="62">19px</td></p>
-<p><td valign="top" width="62">20px</td></p>
-<p><td valign="top" width="62">19px</td></p>
-<p><td valign="top" width="62">19px</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top" width="92">height</td></p>
-<p><td valign="top" width="57">F</td></p>
-<p><td valign="top" width="57">T</td></p>
-<p><td valign="top" width="54">T</td></p>
-<p><td valign="top" width="61">T</td></p>
-<p><td valign="top" width="62">T</td></p>
-<p><td valign="top" width="62">T</td></p>
-<p><td valign="top" width="62">F</td></p>
-<p><td valign="top" width="62">T</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top" width="92">padding</td></p>
-<p><td valign="top" width="57">F</td></p>
-<p><td valign="top" width="57">F</td></p>
-<p><td valign="top" width="54">T</td></p>
-<p><td valign="top" width="61">T</td></p>
-<p><td valign="top" width="62">T</td></p>
-<p><td valign="top" width="62">T</td></p>
-<p><td valign="top" width="62">F</td></p>
-<p><td valign="top" width="62">T</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top" width="92">line-height</td></p>
-<p><td valign="top" width="57">F</td></p>
-<p><td valign="top" width="57">F</td></p>
-<p><td valign="top" width="54">F</td></p>
-<p><td valign="top" width="61">F</td></p>
-<p><td valign="top" width="62">F</td></p>
-<p><td valign="top" width="62">F</td></p>
-<p><td valign="top" width="62">T</td></p>
-<p><td valign="top" width="62">F</td><br></p>
-<p><tr></tr></p>
-<p><td valign="top" width="92">文字垂直居中</td></p>
-<p><td valign="top" width="57">T</td></p>
-<p><td valign="top" width="57">T</td></p>
-<p><td valign="top" width="54">T</td></p>
-<p><td valign="top" width="61">F</td></p>
-<p><td valign="top" width="62">F</td></p>
-<p><td valign="top" width="62">T</td></p>
-<p><td valign="top" width="62">T</td></p>
-<p><td valign="top" width="62">T</td><br><br><br><br>通过上述的研究成果属性汇总，我们知道IE6是无论如何设置都是固定高度为22px不变的，而其他浏览器除safari都是支持height属性的，那么我们设置 height:22px。那么现在我们修正一下safari浏览器，，我们发现仅有safari支持line-height属性那么正好可以利用line-height修正其高度为22px,在font-size为12px的前提下设置 line-height:22px,最后FF和IE9里面的文字不居中，对其设定 padding:2px 0,我们发现FF和IE9都居中了，但是各个浏览器的select的高度也并没有增加，那么这里有点疑问，在高度设定的情况下，小量数字的padding不增加整体高度？</p>
-<p>下面是全兼容代码示例。</p>
-<p><pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;"><br><span style="color: #170;">&lt;div</span> <span style="color: #00c;">style</span>=<span style="color: #a11;">“margin-top: 20px; margin-left: 20px; background: #000;”</span><span style="color: #170;">&gt;</span><br><span style="color: #170;">&lt;select</span><span style="color: #170;">&gt;</span><br>    <span style="color: #170;">&lt;option</span><span style="color: #170;">&gt;</span>演示问题一<span style="color: #170;">&lt;/option</span><span style="color: #170;">&gt;</span><br>     <span style="color: #170;">&lt;option</span><span style="color: #170;">&gt;</span>演示问题二<span style="color: #170;">&lt;/option</span><span style="color: #170;">&gt;</span><br>    <span style="color: #170;">&lt;option</span><span style="color: #170;">&gt;</span>演示问题三<span style="color: #170;">&lt;/option</span><span style="color: #170;">&gt;</span><br>    <span style="color: #170;">&lt;option</span><span style="color: #170;">&gt;</span>演示问题四<span style="color: #170;">&lt;/option</span><span style="color: #170;">&gt;</span><br>    <span style="color: #170;">&lt;option</span><span style="color: #170;">&gt;</span>演示问题五<span style="color: #170;">&lt;/option</span><span style="color: #170;">&gt;</span><br>    <span style="color: #170;">&lt;/select</span><span style="color: #170;">&gt;</span><br><span style="color: #170;">&lt;/div</span><span style="color: #170;">&gt;</span></pre><br>本文我写于2010年12月，整理文档找到现发出,此“最佳预设”仅供参考，个人研究。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-巧妙解决使用DD_belatedPNG解决IE6PNG透明问题引发的relative定位冲突" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2012-01-07-巧妙解决使用DD_belatedPNG解决IE6PNG透明问题引发的relative定位冲突.html" class="article-date">
-      <time datetime="2012-01-07T08:55:11.000Z" itemprop="datePublished">2012-01-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2012-01-07-巧妙解决使用DD_belatedPNG解决IE6PNG透明问题引发的relative定位冲突.html">巧妙解决使用DD_belatedPNG解决IE6PNG透明问题引发的relative定位冲突</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>在帮助同学完成湖南科技大学ACM判题系统的时候，由于需要解决PNG在IE6下的透明引入并使用了DD_belatedPNG.js(其他方式有弊端无法满足需求)。而在这过程中发现在  使用 DD_belatedPNG. 的元素上进行 position:relative; 会发生错位，而我又必须使用position:relative,这里是为了使用Z-INDEX实现满足需求的罩，z-index属性必须和position:relative或者position:absolute同时使用才奏效实现对应的层级遮罩关系。</p>
-<p>要求效果：<a href="wp-content/uploads/2012/01/1.jpg"><img src="wp-content/uploads/2012/01/1-300x129.jpg" alt="" title="湖南科技大学ACM在线评测系统"></a></p>
-<p>下面的主体内容要遮罩中间奖牌的一部分，那么奖牌和下面的主体部分都需要设置z-index和position:relative,那么必然导航即使用DD_belatedPNG又使用position:relative就会引起错位，这不在IE6下飘顶了。</p>
-<p><a href="wp-content/uploads/2012/01/2.jpg"><img src="wp-content/uploads/2012/01/2-300x90.jpg" alt="" title="湖南科技大学ACM系统"></a></p>
-<p><span style="color: #ff0000;">情形：使用DD_belatedPNG和position:relative会引起错位。</span></p>
-<p><span style="color: #ff0000;"> <span style="color: #000000;">那么如何解决这个错位了？在本需求中</span></span>DD_belatedPNG(处理PNG透明并允许图片定位)和position:relative(触发z-index有效)都是必须的。</p>
-<p>在一番纠结之后，我突然发现IE6下我没设置position:relative的话z-index也是有效的。我表怀疑态度Z-INDEX在IE6下不需要position:relative等触发，然后再自己写DEMO考证，IE6下是需要触发的。那么继续找线索，最后找到导航元素（含奖牌那）<span style="color: #ff0000;">是使用了DD_belatedPNG.js才导致不需要position:relative触发而使z-index有效的</span>。</p>
-<p>那么既然IE6下直接使用 position:static 结合 DD_belatedPNG就可以使z-index有效,而ie6下使用position:relative反而错位，那么写一个HACK，IE6下导航元素position:static，其他浏览器position:relative(触发z-index有效)。</p>
-<p>分析问题，利用DD_belatedPNG对不同浏览器不同position的不同效果和Z-INDEX的影响结合，解决了这个问题，个人认为这是一个较为好的解决方案。</p>
-<p>虽然用了一个HACK,关于HACK的使用。最开始学习CSS的时候利用过点，后来学习过程中知道提倡NO HACK，WEB标准什么的就走上了NO HACK 鄙视使用HACK之路，再后来思维又改变觉得在代码精简的基础上可以使用CSS HACK或者自己权衡各种需求可维护性等的情况下适当使用CSS HACK。</p>
-<p>在这里我个人认为使用一个CSS HACK是较为好的，为什么呢？本来  DD_belatedPNG 也是写了一个HACK判断，只在IE6下使用，而我也只在IE6下_position:static 这样无可厚非。 现在的历史环境下 ，HTML5 CSS3的部分支持下 不是写各种CSS HACK，让优秀的浏览器获的更好的用户体验么？而低版本的浏览器在效果体验率差依旧满足人们日常的使用。</p>
-<p>记得在边锋实习期间，也碰到了同样这个问题，那个时候没有好好分析研究。采用的是改变DIV的顺序，而使用margin-top实现遮罩，不得已绕道避开了DD_belatedPNG引起的定位错误，没有使用z-index，这次遇到了同一个问题终于没有放过它在研究实践中发现特征用一个个人认为更为普遍性的方法解决。</p>
-<p>而在这个帮同学ACM系统（设计+前端）中的需求而言，学校的内部使用项目，没有多大得用户量，不需要别人进行程序维护，那么我在这里没有对其进行优化兼容即可，满足开发使用需求即可。</p>
-<p>哎，最近老想出个什么作品，具有代表性的作品，可惜既想不出也还做不出，还是先好好打好基础。</p>
-<p><a href="wp-content/uploads/2012/01/2012-01-07_1651281.png"><img src="wp-content/uploads/2012/01/2012-01-07_1651281-300x185.png" alt="" title="湖南科技大学ACM在线评测系统"></a></p>
-<p>稍微发下代码：</p>
-<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">nav</span>{<span style="color: #000;">width</span>:<span style="color: #164;">100%</span>; <span style="color: #000;">height</span>:<span style="color: #164;">150px</span>; <span style="color: #000;">background</span>:<span style="color: #164;">url</span><span style="color: #164;">(</span>../<span style="color: #164;">i</span>/<span style="color: #164;">nav</span>.<span style="color: #164;">png</span><span style="color: #164;">)</span> <span style="color: #164;">no-repeat</span> <span style="color: #164;">top</span> <span style="color: #164;">center</span>;  <span style="color: #000;">z-index</span>:<span style="color: #164;">2</span>; <span style="color: #000;">overflow</span>:<span style="color: #164;">hidden</span>; <span style="color: #000;">margin-top</span>:<span style="color: #164;">-42px</span>; <span style="color: #000;">position</span>:<span style="color: #164;">relative</span>; <span style="color: #000;">_position</span>:<span style="color: #164;">static</span>}
-.<span style="color: #170;">Cbody</span>{<span style="color: #000;">background-color</span>:<span style="color: #219;">#005F9D</span>; <span style="color: #000;">width</span>:<span style="color: #164;">1002px</span>; <span style="color: #000;">margin</span>:<span style="color: #164;">0</span> <span style="color: #164;">auto</span> <span style="color: #164;">0</span>; <span style="color: #000;">overflow</span>:<span style="color: #164;">hidden</span>; <span style="color: #000;">position</span>:<span style="color: #164;">relative</span>; <span style="color: #000;">margin-top</span>:<span style="color: #164;">-50px</span>}</pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-巧妙解决使用DD_belatedPNG解决IE6PNG透明问题引发的relative定位冲突 - 副本" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2012-01-07-巧妙解决使用DD_belatedPNG解决IE6PNG透明问题引发的relative定位冲突 - 副本.html" class="article-date">
-      <time datetime="2012-01-07T08:55:11.000Z" itemprop="datePublished">2012-01-07</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2012-01-07-巧妙解决使用DD_belatedPNG解决IE6PNG透明问题引发的relative定位冲突 - 副本.html">巧妙解决使用DD_belatedPNG解决IE6PNG透明问题引发的relative定位冲突</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>在帮助同学完成湖南科技大学ACM判题系统的时候，由于需要解决PNG在IE6下的透明引入并使用了DD_belatedPNG.js(其他方式有弊端无法满足需求)。而在这过程中发现在  使用 DD_belatedPNG. 的元素上进行 position:relative; 会发生错位，而我又必须使用position:relative,这里是为了使用Z-INDEX实现满足需求的罩，z-index属性必须和position:relative或者position:absolute同时使用才奏效实现对应的层级遮罩关系。</p>
-<p>要求效果：<a href="wp-content/uploads/2012/01/1.jpg"><img src="wp-content/uploads/2012/01/1-300x129.jpg" alt="" title="湖南科技大学ACM在线评测系统"></a></p>
-<p>下面的主体内容要遮罩中间奖牌的一部分，那么奖牌和下面的主体部分都需要设置z-index和position:relative,那么必然导航即使用DD_belatedPNG又使用position:relative就会引起错位，这不在IE6下飘顶了。</p>
-<p><a href="wp-content/uploads/2012/01/2.jpg"><img src="wp-content/uploads/2012/01/2-300x90.jpg" alt="" title="湖南科技大学ACM系统"></a></p>
-<p><span style="color: #ff0000;">情形：使用DD_belatedPNG和position:relative会引起错位。</span></p>
-<p><span style="color: #ff0000;"> <span style="color: #000000;">那么如何解决这个错位了？在本需求中</span></span>DD_belatedPNG(处理PNG透明并允许图片定位)和position:relative(触发z-index有效)都是必须的。</p>
-<p>在一番纠结之后，我突然发现IE6下我没设置position:relative的话z-index也是有效的。我表怀疑态度Z-INDEX在IE6下不需要position:relative等触发，然后再自己写DEMO考证，IE6下是需要触发的。那么继续找线索，最后找到导航元素（含奖牌那）<span style="color: #ff0000;">是使用了DD_belatedPNG.js才导致不需要position:relative触发而使z-index有效的</span>。</p>
-<p>那么既然IE6下直接使用 position:static 结合 DD_belatedPNG就可以使z-index有效,而ie6下使用position:relative反而错位，那么写一个HACK，IE6下导航元素position:static，其他浏览器position:relative(触发z-index有效)。</p>
-<p>分析问题，利用DD_belatedPNG对不同浏览器不同position的不同效果和Z-INDEX的影响结合，解决了这个问题，个人认为这是一个较为好的解决方案。</p>
-<p>虽然用了一个HACK,关于HACK的使用。最开始学习CSS的时候利用过点，后来学习过程中知道提倡NO HACK，WEB标准什么的就走上了NO HACK 鄙视使用HACK之路，再后来思维又改变觉得在代码精简的基础上可以使用CSS HACK或者自己权衡各种需求可维护性等的情况下适当使用CSS HACK。</p>
-<p>在这里我个人认为使用一个CSS HACK是较为好的，为什么呢？本来  DD_belatedPNG 也是写了一个HACK判断，只在IE6下使用，而我也只在IE6下_position:static 这样无可厚非。 现在的历史环境下 ，HTML5 CSS3的部分支持下 不是写各种CSS HACK，让优秀的浏览器获的更好的用户体验么？而低版本的浏览器在效果体验率差依旧满足人们日常的使用。</p>
-<p>记得在边锋实习期间，也碰到了同样这个问题，那个时候没有好好分析研究。采用的是改变DIV的顺序，而使用margin-top实现遮罩，不得已绕道避开了DD_belatedPNG引起的定位错误，没有使用z-index，这次遇到了同一个问题终于没有放过它在研究实践中发现特征用一个个人认为更为普遍性的方法解决。</p>
-<p>而在这个帮同学ACM系统（设计+前端）中的需求而言，学校的内部使用项目，没有多大得用户量，不需要别人进行程序维护，那么我在这里没有对其进行优化兼容即可，满足开发使用需求即可。</p>
-<p>哎，最近老想出个什么作品，具有代表性的作品，可惜既想不出也还做不出，还是先好好打好基础。</p>
-<p><a href="wp-content/uploads/2012/01/2012-01-07_1651281.png"><img src="wp-content/uploads/2012/01/2012-01-07_1651281-300x185.png" alt="" title="湖南科技大学ACM在线评测系统"></a></p>
-<p>稍微发下代码：</p>
-<pre style="margin: 15px 0; font: 100 12px/18px monaco, andale mono, courier new; padding: 10px 12px; border: #ccc 1px solid; border-left-width: 4px; background-color: #fefefe; box-shadow: 0 0 4px #eee; word-break: break-all; word-wrap: break-word; color: #444;">.<span style="color: #170;">nav</span>{<span style="color: #000;">width</span>:<span style="color: #164;">100%</span>; <span style="color: #000;">height</span>:<span style="color: #164;">150px</span>; <span style="color: #000;">background</span>:<span style="color: #164;">url</span><span style="color: #164;">(</span>../<span style="color: #164;">i</span>/<span style="color: #164;">nav</span>.<span style="color: #164;">png</span><span style="color: #164;">)</span> <span style="color: #164;">no-repeat</span> <span style="color: #164;">top</span> <span style="color: #164;">center</span>;  <span style="color: #000;">z-index</span>:<span style="color: #164;">2</span>; <span style="color: #000;">overflow</span>:<span style="color: #164;">hidden</span>; <span style="color: #000;">margin-top</span>:<span style="color: #164;">-42px</span>; <span style="color: #000;">position</span>:<span style="color: #164;">relative</span>; <span style="color: #000;">_position</span>:<span style="color: #164;">static</span>}
-.<span style="color: #170;">Cbody</span>{<span style="color: #000;">background-color</span>:<span style="color: #219;">#005F9D</span>; <span style="color: #000;">width</span>:<span style="color: #164;">1002px</span>; <span style="color: #000;">margin</span>:<span style="color: #164;">0</span> <span style="color: #164;">auto</span> <span style="color: #164;">0</span>; <span style="color: #000;">overflow</span>:<span style="color: #164;">hidden</span>; <span style="color: #000;">position</span>:<span style="color: #164;">relative</span>; <span style="color: #000;">margin-top</span>:<span style="color: #164;">-50px</span>}</pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-zend-coding【前端开发利器】快捷键总结及其下载使用说明 - 副本" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2012-01-04-zend-coding【前端开发利器】快捷键总结及其下载使用说明 - 副本.html" class="article-date">
-      <time datetime="2012-01-04T04:02:22.000Z" itemprop="datePublished">2012-01-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2012-01-04-zend-coding【前端开发利器】快捷键总结及其下载使用说明 - 副本.html">zend-coding【前端开发利器】快捷键总结及其下载使用说明</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>zen-Conding下载地址：<a href="http://code.google.com/p/zen-coding/downloads/list" title="zen-Coding" target="_blank" rel="external">http://code.google.com/p/zen-coding/downloads/list</a> (进入下载页，选择相应的编辑器插件下载)</p>
-<p>zen-Coding是一款快速编写HTML,CSS（或其他格式化语言）代码的编辑器插件，这个插件可以用缩写方式完成大量重复的编码工作，是web前端从业者的利器。 zen-Coding插件支持多种编辑器，如DW,UltraEdit，Notepad++等。</p>
-<p>使用方法：建议看一下于亚东的Zen_Coding视频教程，讲解的很清楚形象。</p>
-<p>115网盘下载地址：<span style="font-family: arial;"><br><a href="http://u.115.com/file/f9ec3478ba" target="_blank" rel="external">Zen_Coding_1</a><br><a href="http://u.115.com/file/f9424471c4" target="_blank" rel="external">Zen_Coding_2</a><br><a href="http://u.115.com/file/f9bceaefdd" target="_blank" rel="external">Zen_Coding_3</a><br><a href="http://u.115.com/file/f9ce7e954e" target="_blank" rel="external">Zen_Coding_4</a><br><a href="http://u.115.com/file/f9b6f09fee" target="_blank" rel="external">Zen_Coding_5</a><br><a href="http://u.115.com/file/f9be036c6a" target="_blank" rel="external">Zen_Coding_6</a><br><a href="http://u.115.com/file/f9d48678c9" target="_blank" rel="external">Zen_Coding 素材</a><br></span></p>
-<p><span style="font-family: arial;">电驴下载地址：</span><a href="http://www.verycd.com/topics/2872883/" target="_blank" rel="external">http://www.verycd.com/topics/2872883/</a></p>
-<p>下面是我自己翻译总结的快捷键：</p>
-<p>HTML部分</p>
-<p>Expand Abbreviation             Tab or Ctrl+, (on selection only Ctrl+,)<br>Wrap with Abbreviation          Ctrl+H        包含相关元素<br>Re_flect CSS Value              Ctrl+R</p>
-<p>Balance Tag Outward             Alt+[          向外部选择标签内容<br>Balance Tag Inward              Alt+]          向内部选择标签内容<br>Next Edit Point                 Ctrl+Alt+Right 向下一个编辑点换位<br>Previous Edit Point             Ctrl+Alt+Left  向上一个编辑点换位<br>Go to Matching Pair             Alt+/          匹配对<br>Select Next Item                Alt+Right      选择下一个项目<br>Select Previous Item            Alt+Left       选择上一个项目</p>
-<p>Insert Formatted Newline        Ctrl+Enter    插入行<br>Select Line                     Ctrl+K        选择行<br>Merge Lines                     Ctrl+\        合并行<br>Toggle Comment                  Ctrl+/       切换添加注释<br>Split/Join Tag                  Ctrl+Shift+\ 把标签变成单标签<br>Rename Tag                      Ctrl+Shift+B 标签重命名<br>Remove Tag                      Alt+-           删除标签<br>Evaluate Math Expression        Alt+=         计算数学表达式</p>
-<p>Increment number by 1           Ctrl+Up<br>Decrement number by 1           Ctrl+Down<br>Increment number by 10          Ctrl+Alt+Up<br>Decrement number by 10          Ctrl+Alt+Down<br>Increment number by 0.1         Alt+Up<br>Decrement number by 0.1         Alt+Down</p>
-<p>CSS部分</p>
-<p>Zen CSS properties</p>
-<p>Based on CSS 3 draft specification</p>
-<p>Property                                    Alias</p>
-<p>Special Rules</p>
-<p>@import url();                              @i</p>
-<p>@media print {                              @m</p>
-<p>}</p>
-<p>@font-face {                                @f<br>font-family:;<br>src:url();<br>}</p>
-<p>!important                                  !</p>
-<p>expression()                                exp</p>
-<p>Properties Groups<br>Sorting Methods</p>
-<p>Positioning<br>Box behavior and properties<br>Sizing<br>Color appearance<br>Special content types<br>Text<br>Visual properties<br>Print</p>
-<p>Positioning</p>
-<p>position:;                                  pos<br>position:static;                            pos:s<br>position:absolute;                          pos:a<br>position:relative;                          pos:r<br>position:fixed;                             pos:f</p>
-<p>top:;                                       t<br>top:auto;                                   t:a</p>
-<p>right:;                                     r<br>right:auto;                                 r:a</p>
-<p>bottom:;                                    b<br>bottom:auto;                                b:a</p>
-<p>left:;                                      l<br>left:auto;                                  l:a</p>
-<p>z-index:;                                   z<br>z-index:auto;                               z:a</p>
-<p>Box behavior and properties</p>
-<p>float:;                                     fl<br>float:none;                                 fl:n<br>float:left;                                 fl:l<br>float:right;                                fl:r</p>
-<p>clear:;                                     cl<br>clear:none;                                 cl:n<br>clear:left;                                 cl:l<br>clear:right;                                cl:r<br>clear:both;                                 cl:b</p>
-<p>display:;                                   d<br>display:none;                               d:n<br>display:block;                              d:b<br>display:inline;                             d:i<br>display:inline-block;                       d:ib<br>display:-moz-inline-box;                   d:mib<br>display:-moz-inline-stack;                 d:mis<br>display:list-item;                          d:li<br>display:run-in;                             d:ri<br>display:compact;                            d:cp<br>display:table;                              d:tb<br>display:inline-table;                       d:itb<br>display:table-caption;                      d:tbcp<br>display:table-column;                       d:tbcl<br>display:table-column-group;                 d:tbclg<br>display:table-header-group;                 d:tbhg<br>display:table-footer-group;                 d:tbfg<br>display:table-row;                          d:tbr<br>display:table-row-group;                    d:tbrg<br>display:table-cell;                         d:tbc</p>
-<p>visibility:;                                v<br>visibility:visible;                         v:v<br>visibility:hidden;                          v:h<br>visibility:collapse;                        v:c</p>
-<p>overflow:;                                  ov<br>overflow:visible;                           ov:v<br>overflow:hidden;                            ov:h<br>overflow:scroll;                            ov:s<br>overflow:auto;                              ov:a</p>
-<p>overflow-x:;                                ovx<br>overflow-x:visible;                         ovx:v<br>overflow-x:hidden;                          ovx:h<br>overflow-x:scroll;                          ovx:s<br>overflow-x:auto;                            ovx:a</p>
-<p>overflow-y:;                                ovy<br>overflow-y:visible;                         ovy:v<br>overflow-y:hidden;                          ovy:h<br>overflow-y:scroll;                          ovy:s<br>overflow-y:auto;                            ovy:a</p>
-<p>overflow-style:;                            ovs<br>overflow-style:auto;                        ovs:a<br>overflow-style:scrollbar;                   ovs:s<br>overflow-style:panner;                      ovs:p<br>overflow-style:move;                        ovs:m<br>overflow-style:marquee;                     ovs:mq</p>
-<p>zoom:1;                                     zoo</p>
-<p>clip:;                                      cp<br>clip:auto;                                  cp:a<br>clip:rect(0 0 0 0);                         cp:r</p>
-<p>box-sizing:;                                bxz<br>box-sizing:content-box;                     bxz:cb<br>box-sizing:border-box;                      bxz:bb</p>
-<p>box-shadow:;                                bxsh<br>box-shadow:none;                            bxsh:n<br>box-shadow:0 0 0 #000;                      bxsh+<br>-webkit-box-shadow:;                        bxsh:w<br>-webkit-box-shadow:0 0 0 #000;              bxsh:w+<br>-moz-box-shadow:;                           bxsh:m<br>-moz-box-shadow:0 0 0 0 #000;               bxsh:m+</p>
-<p>Sizing</p>
-<p>margin:;                                    m<br>margin:auto;                                m:a<br>margin:0;                                   m:0<br>margin:0 0;                                 m:2<br>margin:0 0 0;                               m:3<br>margin:0 0 0 0;                             m:4</p>
-<p>margin-top:;                                mt<br>margin-top:auto;                            mt:a</p>
-<p>margin-right:;                              mr<br>margin-right:auto;                          mr:a</p>
-<p>margin-bottom:;                             mb<br>margin-bottom:auto;                         mb:a</p>
-<p>margin-left:;                               ml<br>margin-left:auto;                           ml:a</p>
-<p>padding:;                                   p<br>padding:0;                                  p:0<br>padding:0 0;                                p:2<br>padding:0 0 0;                              p:3<br>padding:0 0 0 0;                            p:4</p>
-<p>padding-top:;                               pt<br>padding-right:;                             pr<br>padding-bottom:;                            pb<br>padding-left:;                              pl</p>
-<p>width:;                                     w<br>width:auto;                                 w:a</p>
-<p>height:;                                    h<br>height:auto;                                h:a</p>
-<p>max-width:;                                 maw<br>max-width:none;                             maw:n</p>
-<p>max-height:;                                mah<br>max-height:none;                            mah:n</p>
-<p>min-width:;                                 miw<br>min-height:;                                mih</p>
-<p>Color appearance</p>
-<p>outline:;                                   o<br>outline:none;                               o:n<br>outline:1px solid #000;                     o+</p>
-<p>outline-offset:;                            oo<br>outline-width:;                             ow<br>outline-style:;                             os</p>
-<p>outline-color:#000;                         oc<br>outline-color:invert;                       oc:i</p>
-<p>border:;                                    bd<br>border:none;                                bd:n<br>border:1px solid #000;                      bd+</p>
-<p>border-break:;                              bdbk<br>border-break:close;                         bdbk:c</p>
-<p>border-collapse:;                           bdcl<br>border-collapse:collapse;                   bdcl:c<br>border-collapse:separate;                   bdcl:s</p>
-<p>border-color:#000;                          bdc</p>
-<p>border-image:;                                          bdi<br>border-image:none;                                      bdi:n<br>border-image:url() 0 repeat;                            bdi:+<br>-webkit-border-image:;                                  bdi:w<br>-webkit-border-image:url() 0 repeat;                    bdi:w+<br>-moz-border-image:;                                     bdi:m<br>-moz-border-image:url() 0 repeat;                       bdi:m+</p>
-<p>border-top-image:;                          bdti<br>border-top-image:none;                      bdti:n</p>
-<p>border-right-image:;                        bdri<br>border-right-image:none;                    bdri:n</p>
-<p>border-bottom-image:;                       bdbi<br>border-bottom-image:none;                   bdbi:n</p>
-<p>border-left-image:;                         bdli<br>border-left-image:none;                     bdli:n</p>
-<p>border-corner-image:;                       bdci<br>border-corner-image:none;                   bdci:n<br>border-corner-image:continue;               bdci:c</p>
-<p>border-top-left-image:;                     bdtli<br>border-top-left-image:none;                 bdtli:n<br>border-top-left-image:continue;             bdtli:c</p>
-<p>border-top-right-image:;                    bdtri<br>border-top-right-image:none;                bdtri:n<br>border-top-right-image:continue;            bdtri:c</p>
-<p>border-bottom-right-image:;                 bdbri<br>border-bottom-right-image:none;             bdbri:n<br>border-bottom-right-image:continue;         bdbri:c</p>
-<p>border-bottom-left-image:;                  bdbli<br>border-bottom-left-image:none;              bdbli:n<br>border-bottom-left-image:continue;          bdbli:c</p>
-<p>border-fit:;                                bdf<br>border-fit:clip;                            bdf:c<br>border-fit:repeat;                          bdf:r<br>border-fit:scale;                           bdf:sc<br>border-fit:stretch;                         bdf:st<br>border-fit:overwrite;                       bdf:ow<br>border-fit:overflow;                        bdf:of<br>border-fit:space;                           bdf:sp</p>
-<p>border-length:;                             bdlt<br>border-length:auto;                         bdlt:a</p>
-<p>border-spacing:;                            bdsp</p>
-<p>border-style:;                              bds<br>border-style:none;                          bds:n<br>border-style:hidden;                        bds:h<br>border-style:dotted;                        bds:dt<br>border-style:dashed;                        bds:ds<br>border-style:solid;                         bds:s<br>border-style:double;                        bds:db<br>border-style:dot-dash;                      bds:dtds<br>border-style:dot-dot-dash;                  bds:dtdtds<br>border-style:wave;                          bds:w<br>border-style:groove;                        bds:g<br>border-style:ridge;                         bds:r<br>border-style:inset;                         bds:i<br>border-style:outset;                        bds:o</p>
-<p>border-width:;                              bdw</p>
-<p>border-top:;                                bdt<br>border-top:none;                            bdt:n<br>border-top:1px solid #000;                  bdt+</p>
-<p>border-top-width:;                          bdtw</p>
-<p>border-top-style:;                          bdts<br>border-top-style:none;                      bdts:n</p>
-<p>border-top-color:#000;                      bdtc</p>
-<p>border-right:;                              bdr<br>border-right:none;                          bdr:n<br>border-right:1px solid #000;                bdr+</p>
-<p>border-right-width:;                        bdrw</p>
-<p>border-right-style:;                        bdrs<br>border-right-style:none;                    bdrs:n</p>
-<p>border-right-color:#000;                    bdrc</p>
-<p>border-bottom:;                             bdb<br>border-bottom:none;                         bdb:n<br>border-bottom:1px solid #000;               bdb+</p>
-<p>border-bottom-width:;                       bdbw</p>
-<p>border-bottom-style:;                       bdbs<br>border-bottom-style:none;                   bdbs:n</p>
-<p>border-bottom-color:#000;                   bdbc</p>
-<p>border-left:;                               bdl<br>border-left:none;                           bdl:n<br>border-left:1px solid #000;                 bdl+</p>
-<p>border-left-width:;                         bdlw</p>
-<p>border-left-style:;                         bdls<br>border-left-style:none;                     bdls:n</p>
-<p>border-left-color:#000;                     bdlc</p>
-<p>border-radius:;                             bdrz<br>-webkit-border-radius:;                     bdrz:w<br>-moz-border-radius:;                        bdrz:m<br>border-top-right-radius:;                   bdtrrz<br>border-top-left-radius:;                    bdtlrz<br>border-bottom-right-radius:;                bdbrrz<br>border-bottom-left-radius:;                 bdblrz</p>
-<p>background:;                                                                               bg<br>background:none;                                                                           bg:n<br>background:#FFF url() 0 0 no-repeat;                                                       bg+<br>filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=’’,sizingMethod=’crop’);     bg:ie</p>
-<p>background-color:#FFF;                      bgc<br>background-color:transparent;               bgc:t</p>
-<p>background-image:url();                     bgi<br>background-image:none;                      bgi:n</p>
-<p>background-repeat:;                         bgr<br>background-repeat:repeat;                   bgr:r<br>background-repeat:repeat-x;                 bgr:x<br>background-repeat:repeat-y;                 bgr:y<br>background-repeat:no-repeat;                bgr:n</p>
-<p>background-attachment:;                     bga<br>background-attachment:fixed;                bga:f<br>background-attachment:scroll;               bga:s</p>
-<p>background-position:0 0;                    bgp<br>background-position-x:;                     bgpx<br>background-position-y:;                     bgpy</p>
-<p>background-break:;                          bgbk<br>background-break:bounding-box;              bgbk:bb<br>background-break:each-box;                  bgbk:eb<br>background-break:continuous;                bgbk:c</p>
-<p>background-clip:;                           bgcp<br>background-clip:border-box;                 bgcp:bb<br>background-clip:padding-box;                bgcp:pb<br>background-clip:content-box;                bgcp:cb<br>background-clip:no-clip;                    bgcp:nc</p>
-<p>background-origin:;                         bgo<br>background-origin:padding-box;              bgo:pb<br>background-origin:border-box;               bgo:bb<br>background-origin:content-box;              bgo:cb</p>
-<p>background-size:;                           bgz<br>background-size:auto;                       bgz:a<br>background-size:contain;                    bgz:ct<br>background-size:cover;                      bgz:cv</p>
-<p>color:#000;                                 c</p>
-<p>Special content types</p>
-<p>table-layout:;                              tbl<br>table-layout:auto;                          tbl:a<br>table-layout:fixed;                         tbl:f</p>
-<p>caption-side:;                              cps<br>caption-side:top;                           cps:t<br>caption-side:bottom;                        cps:b</p>
-<p>empty-cells:;                               ec<br>empty-cells:show;                           ec:s<br>empty-cells:hide;                           ec:h</p>
-<p>list-style:;                                lis<br>list-style:none;                            lis:n</p>
-<p>list-style-position:;                       lisp<br>list-style-position:inside;                 lisp:i<br>list-style-position:outside;                lisp:o</p>
-<p>list-style-type:;                           list<br>list-style-type:none;                       list:n<br>list-style-type:disc;                       list:d<br>list-style-type:circle;                     list:c<br>list-style-type:square;                     list:s<br>list-style-type:decimal;                    list:dc<br>list-style-type:decimal-leading-zero;       list:dclz<br>list-style-type:lower-roman;                list:lr<br>list-style-type:upper-roman;                list:ur</p>
-<p>list-style-image:;                          lisi<br>list-style-image:none;                      lisi:n</p>
-<p>quotes:;                                    q<br>quotes:none;                                q:n<br>quotes:’\00AB’ ‘\00BB’ ‘\201E’ ‘\201C’;     q:ru<br>quotes:’\201C’ ‘\201D’ ‘\2018’ ‘\2019’;     q:en</p>
-<p>content:;                                   ct<br>content:normal;                             ct:n<br>content:open-quote;                         ct:oq<br>content:no-open-quote;                      ct:noq<br>content:close-quote;                        ct:cq<br>content:no-close-quote;                     ct:ncq<br>content:attr();                             ct:a<br>content:counter();                          ct:c<br>content:counters();                         ct:cs</p>
-<p>counter-increment:;                         coi<br>counter-reset:;                             cor</p>
-<p>Text</p>
-<p>vertical-align:;                            va<br>vertical-align:super;                       va:sup<br>vertical-align:top;                         va:t<br>vertical-align:text-top;                    va:tt<br>vertical-align:middle;                      va:m<br>vertical-align:baseline;                    va:bl<br>vertical-align:bottom;                      va:b<br>vertical-align:text-bottom;                 va:tb<br>vertical-align:sub;                         va:sub</p>
-<p>text-align:;                                ta<br>text-align:left;                            ta:l<br>text-align:center;                          ta:c<br>text-align:right;                           ta:r<br>text-align:justify;                         ta:j</p>
-<p>text-align-last:;                           tal<br>text-align-last:auto;                       tal:a<br>text-align-last:left;                       tal:l<br>text-align-last:center;                     tal:c<br>text-align-last:right;                      tal:r</p>
-<p>text-decoration:;                           td<br>text-decoration:none;                       td:n<br>text-decoration:overline;                   td:o<br>text-decoration:line-through;               td:l<br>text-decoration:underline;                  td:u</p>
-<p>text-emphasis:;                             te<br>text-emphasis:none;                         te:n<br>text-emphasis:accent;                       te:ac<br>text-emphasis:dot;                          te:dt<br>text-emphasis:circle;                       te:c<br>text-emphasis:disc;                         te:ds<br>text-emphasis:before;                       te:b<br>text-emphasis:after;                        te:a</p>
-<p>text-height:;                               th<br>text-height:auto;                           th:a<br>text-height:font-size;                      th:f<br>text-height:text-size;                      th:t<br>text-height:max-size;                       th:m</p>
-<p>text-indent:;                               ti<br>text-indent:-9999px;                        ti:-</p>
-<p>text-justify:;                              tj<br>text-justify:auto;                          tj:a<br>text-justify:inter-word;                    tj:iw<br>text-justify:inter-ideograph;               tj:ii<br>text-justify:inter-cluster;                 tj:ic<br>text-justify:distribute;                    tj:d<br>text-justify:kashida;                       tj:k<br>text-justify:tibetan;                       tj:t</p>
-<p>text-outline:;                              to<br>text-outline:none;                          to:n<br>text-outline:0 0 #000;                      to+</p>
-<p>text-replace:;                              tr<br>text-replace:none;                          tr:n</p>
-<p>text-transform:;                            tt<br>text-transform:none;                        tt:n<br>text-transform:uppercase;                   tt:u<br>text-transform:capitalize;                  tt:c<br>text-transform:lowercase;                   tt:l</p>
-<p>text-wrap:;                                 tw<br>text-wrap:normal;                           tw:n<br>text-wrap:none;                             tw:no<br>text-wrap:unrestricted;                     tw:u<br>text-wrap:suppress;                         tw:s</p>
-<p>text-shadow:;                               tsh<br>text-shadow:none;                           tsh:n<br>text-shadow:0 0 0 #000;                     tsh+</p>
-<p>line-height:;                               lh</p>
-<p>white-space:;                               whs<br>white-space:normal;                         whs:n<br>white-space:pre;                            whs:p<br>white-space:nowrap;                         whs:nw<br>white-space:pre-wrap;                       whs:pw<br>white-space:pre-line;                       whs:pl</p>
-<p>white-space-collapse:;                      whsc<br>white-space-collapse:normal;                whsc:n<br>white-space-collapse:keep-all;              whsc:k<br>white-space-collapse:loose;                 whsc:l<br>white-space-collapse:break-strict;          whsc:bs<br>white-space-collapse:break-all;             whsc:ba</p>
-<p>word-break:;                                wob<br>word-break:normal;                          wob:n<br>word-break:keep-all;                        wob:k<br>word-break:loose;                           wob:l<br>word-break:break-strict;                    wob:bs<br>word-break:break-all;                       wob:ba</p>
-<p>word-spacing:;                              wos</p>
-<p>word-wrap:;                                 wow<br>word-wrap:normal;                           wow:n<br>word-wrap:none;                             wow:no<br>word-wrap:unrestricted;                     wow:u<br>word-wrap:suppress;                         wow:s</p>
-<p>letter-spacing:;                            lts</p>
-<p>font:;                                      f<br>font:1em Arial,sans-serif;                  f+</p>
-<p>font-weight:;                               fw<br>font-weight:normal;                         fw:n<br>font-weight:bold;                           fw:b<br>font-weight:bolder;                         fw:br<br>font-weight:lighter;                        fw:lr</p>
-<p>font-style:;                                fs<br>font-style:normal;                          fs:n<br>font-style:italic;                          fs:i<br>font-style:oblique;                         fs:o</p>
-<p>font-variant:;                              fv<br>font-variant:normal;                        fv:n<br>font-variant:small-caps;                    fv:sc</p>
-<p>font-size:;                                 fz</p>
-<p>font-size-adjust:;                          fza<br>font-size-adjust:none;                      fza:n</p>
-<p>font-family:;                                               ff<br>font-family:Georgia,’Times New Roman’,serif;              ff:s<br>font-family:Helvetica,Arial,sans-serif;                     ff:ss<br>font-family:’Monotype Corsiva’,’Comic Sans MS’,cursive;     ff:c<br>font-family:Capitals,Impact,fantasy;                        ff:f<br>font-family:Monaco,’Courier New’,monospace;                 ff:m</p>
-<p>font-effect:;                               fef<br>font-effect:none;                           fef:n<br>font-effect:engrave;                        fef:eg<br>font-effect:emboss;                         fef:eb<br>font-effect:outline;                        fef:o</p>
-<p>font-emphasize:;                            fem</p>
-<p>font-emphasize-position:;                   femp<br>font-emphasize-position:before;             femp:b<br>font-emphasize-position:after;              femp:a</p>
-<p>font-emphasize-style:;                      fems<br>font-emphasize-style:none;                  fems:n<br>font-emphasize-style:accent;                fems:ac<br>font-emphasize-style:dot;                   fems:dt<br>font-emphasize-style:circle;                fems:c<br>font-emphasize-style:disc;                  fems:ds</p>
-<p>font-smooth:;                               fsm<br>font-smooth:auto;                           fsm:a<br>font-smooth:never;                          fsm:n<br>font-smooth:always;                         fsm:aw</p>
-<p>font-stretch:;                              fst<br>font-stretch:normal;                        fst:n<br>font-stretch:ultra-condensed;               fst:uc<br>font-stretch:extra-condensed;               fst:ec<br>font-stretch:condensed;                     fst:c<br>font-stretch:semi-condensed;                fst:sc<br>font-stretch:semi-expanded;                 fst:se<br>font-stretch:expanded;                      fst:e<br>font-stretch:extra-expanded;                fst:ee<br>font-stretch:ultra-expanded;                fst:ue</p>
-<p>Visual properties</p>
-<p>opacity:;                                                               op<br>filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=100);            op:ie<br>-ms-filter:’progid:DXImageTransform.Microsoft.Alpha(Opacity=100)’;      op:ms</p>
-<p>resize:;                                    rz<br>resize:none;                                rz:n<br>resize:both;                                rz:b<br>resize:horizontal;                          rz:h<br>resize:vertical;                            rz:v</p>
-<p>cursor:;                                    cur<br>cursor:auto;                                cur:a<br>cursor:default;                             cur:d<br>cursor:crosshair;                           cur:c<br>cursor:hand;                                cur:ha<br>cursor:help;                                cur:he<br>cursor:move;                                cur:m<br>cursor:pointer;                             cur:p<br>cursor:text;                                cur:t</p>
-<p>Print</p>
-<p>page-break-before:;                         pgbb<br>page-break-before:auto;                     pgbb:a<br>page-break-before:always;                   pgbb:aw<br>page-break-before:left;                     pgbb:l<br>page-break-before:right;                    pgbb:r</p>
-<p>page-break-inside:;                         pgbi<br>page-break-inside:auto;                     pgbi:a<br>page-break-inside:avoid;                    pgbi:av</p>
-<p>page-break-after:;                          pgba<br>page-break-after:auto;                      pgba:a<br>page-break-after:always;                    pgba:aw<br>page-break-after:left;                      pgba:l<br>page-break-after:right;                     pgba:r</p>
-<p>orphans:;                                   orp<br>widows:;                                    wid</p>
-<p>color:transparent;                             c:t<br>color:rgb();                                   c:r<br>color:rgba();                                  c:ra<br>color:hsl();                                   c:h<br>color:hsla();                                  c:ha</p>
-<p>text-overflow:;                                tov<br>text-overflow:””;                              tov+<br>text-overflow:clip;                            tov:c<br>text-overflow:ellipsis;                        tov:e</p>
-<p>box-decoration-break:clone;                    bxdb (the only non-default option)<br>box-decoration-break:slice;                    bxdb:s</p>
-<p>transition:                                    ts<br>transition-property:;                          tsp<br>transition-duration:;                          tsd<br>transition-delay:;                             tsdl<br>transition-timing-function:;                   tst<br>transition-timing-function:ease;               tst:e<br>transition-timing-function:linear;             tst:l<br>transition-timing-function:ease-in;            tst:i<br>transition-timing-function:ease-out;           tst:o<br>transition-timing-function:ease-in-out;        tst:io<br>transition-timing-function:step-start;         tst:ss<br>transition-timing-function:step-end;           tst:se<br>transition-timing-function:steps();            tst:s<br>transition-timing-function:cubic-bezier();     tst:cb</p>
-<p>direction                                      dir<br>direction:ltr                                  dir:l<br>direction:rtl                                  dir:r</p>
-<p>@page {}                                       @p<br>@top-left-corner {}                            @tlc<br>@top-left {}                                   @tl<br>@top-center {}                                 @tc<br>@top-right {}                                  @tr<br>@top-right-corner {}                           @trc<br>@bottom-left-corner {}                         @blc<br>@bottom-left {}                                @bl<br>@bottom-center {}                              @bc<br>@bottom-right {}                               @br<br>@bottom-right-corner {}                        @brc<br>@footnote {}                                   @fn<br>@counter-style   “”                            @cs</p>
-<p>HTML:<br>jq      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script><br>cc:ie8  <!--[if gte IE 8]><![endif]--><br>cc:ie9  <!--[if gte IE 9]><![endif]--></p>
-<p>CSS:<br>@md     @-moz-document url-prefix() {}</p>
-<p><span style="font-family: arial;"><br></span></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-zend-coding【前端开发利器】快捷键总结及其下载使用说明" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/blog/2012-01-04-zend-coding【前端开发利器】快捷键总结及其下载使用说明.html" class="article-date">
-      <time datetime="2012-01-04T04:02:22.000Z" itemprop="datePublished">2012-01-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2012-01-04-zend-coding【前端开发利器】快捷键总结及其下载使用说明.html">zend-coding【前端开发利器】快捷键总结及其下载使用说明</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>zen-Conding下载地址：<a href="http://code.google.com/p/zen-coding/downloads/list" title="zen-Coding" target="_blank" rel="external">http://code.google.com/p/zen-coding/downloads/list</a> (进入下载页，选择相应的编辑器插件下载)</p>
-<p>zen-Coding是一款快速编写HTML,CSS（或其他格式化语言）代码的编辑器插件，这个插件可以用缩写方式完成大量重复的编码工作，是web前端从业者的利器。 zen-Coding插件支持多种编辑器，如DW,UltraEdit，Notepad++等。</p>
-<p>使用方法：建议看一下于亚东的Zen_Coding视频教程，讲解的很清楚形象。</p>
-<p>115网盘下载地址：<span style="font-family: arial;"><br><a href="http://u.115.com/file/f9ec3478ba" target="_blank" rel="external">Zen_Coding_1</a><br><a href="http://u.115.com/file/f9424471c4" target="_blank" rel="external">Zen_Coding_2</a><br><a href="http://u.115.com/file/f9bceaefdd" target="_blank" rel="external">Zen_Coding_3</a><br><a href="http://u.115.com/file/f9ce7e954e" target="_blank" rel="external">Zen_Coding_4</a><br><a href="http://u.115.com/file/f9b6f09fee" target="_blank" rel="external">Zen_Coding_5</a><br><a href="http://u.115.com/file/f9be036c6a" target="_blank" rel="external">Zen_Coding_6</a><br><a href="http://u.115.com/file/f9d48678c9" target="_blank" rel="external">Zen_Coding 素材</a><br></span></p>
-<p><span style="font-family: arial;">电驴下载地址：</span><a href="http://www.verycd.com/topics/2872883/" target="_blank" rel="external">http://www.verycd.com/topics/2872883/</a></p>
-<p>下面是我自己翻译总结的快捷键：</p>
-<p>HTML部分</p>
-<p>Expand Abbreviation             Tab or Ctrl+, (on selection only Ctrl+,)<br>Wrap with Abbreviation          Ctrl+H        包含相关元素<br>Re_flect CSS Value              Ctrl+R</p>
-<p>Balance Tag Outward             Alt+[          向外部选择标签内容<br>Balance Tag Inward              Alt+]          向内部选择标签内容<br>Next Edit Point                 Ctrl+Alt+Right 向下一个编辑点换位<br>Previous Edit Point             Ctrl+Alt+Left  向上一个编辑点换位<br>Go to Matching Pair             Alt+/          匹配对<br>Select Next Item                Alt+Right      选择下一个项目<br>Select Previous Item            Alt+Left       选择上一个项目</p>
-<p>Insert Formatted Newline        Ctrl+Enter    插入行<br>Select Line                     Ctrl+K        选择行<br>Merge Lines                     Ctrl+\        合并行<br>Toggle Comment                  Ctrl+/       切换添加注释<br>Split/Join Tag                  Ctrl+Shift+\ 把标签变成单标签<br>Rename Tag                      Ctrl+Shift+B 标签重命名<br>Remove Tag                      Alt+-           删除标签<br>Evaluate Math Expression        Alt+=         计算数学表达式</p>
-<p>Increment number by 1           Ctrl+Up<br>Decrement number by 1           Ctrl+Down<br>Increment number by 10          Ctrl+Alt+Up<br>Decrement number by 10          Ctrl+Alt+Down<br>Increment number by 0.1         Alt+Up<br>Decrement number by 0.1         Alt+Down</p>
-<p>CSS部分</p>
-<p>Zen CSS properties</p>
-<p>Based on CSS 3 draft specification</p>
-<p>Property                                    Alias</p>
-<p>Special Rules</p>
-<p>@import url();                              @i</p>
-<p>@media print {                              @m</p>
-<p>}</p>
-<p>@font-face {                                @f<br>font-family:;<br>src:url();<br>}</p>
-<p>!important                                  !</p>
-<p>expression()                                exp</p>
-<p>Properties Groups<br>Sorting Methods</p>
-<p>Positioning<br>Box behavior and properties<br>Sizing<br>Color appearance<br>Special content types<br>Text<br>Visual properties<br>Print</p>
-<p>Positioning</p>
-<p>position:;                                  pos<br>position:static;                            pos:s<br>position:absolute;                          pos:a<br>position:relative;                          pos:r<br>position:fixed;                             pos:f</p>
-<p>top:;                                       t<br>top:auto;                                   t:a</p>
-<p>right:;                                     r<br>right:auto;                                 r:a</p>
-<p>bottom:;                                    b<br>bottom:auto;                                b:a</p>
-<p>left:;                                      l<br>left:auto;                                  l:a</p>
-<p>z-index:;                                   z<br>z-index:auto;                               z:a</p>
-<p>Box behavior and properties</p>
-<p>float:;                                     fl<br>float:none;                                 fl:n<br>float:left;                                 fl:l<br>float:right;                                fl:r</p>
-<p>clear:;                                     cl<br>clear:none;                                 cl:n<br>clear:left;                                 cl:l<br>clear:right;                                cl:r<br>clear:both;                                 cl:b</p>
-<p>display:;                                   d<br>display:none;                               d:n<br>display:block;                              d:b<br>display:inline;                             d:i<br>display:inline-block;                       d:ib<br>display:-moz-inline-box;                   d:mib<br>display:-moz-inline-stack;                 d:mis<br>display:list-item;                          d:li<br>display:run-in;                             d:ri<br>display:compact;                            d:cp<br>display:table;                              d:tb<br>display:inline-table;                       d:itb<br>display:table-caption;                      d:tbcp<br>display:table-column;                       d:tbcl<br>display:table-column-group;                 d:tbclg<br>display:table-header-group;                 d:tbhg<br>display:table-footer-group;                 d:tbfg<br>display:table-row;                          d:tbr<br>display:table-row-group;                    d:tbrg<br>display:table-cell;                         d:tbc</p>
-<p>visibility:;                                v<br>visibility:visible;                         v:v<br>visibility:hidden;                          v:h<br>visibility:collapse;                        v:c</p>
-<p>overflow:;                                  ov<br>overflow:visible;                           ov:v<br>overflow:hidden;                            ov:h<br>overflow:scroll;                            ov:s<br>overflow:auto;                              ov:a</p>
-<p>overflow-x:;                                ovx<br>overflow-x:visible;                         ovx:v<br>overflow-x:hidden;                          ovx:h<br>overflow-x:scroll;                          ovx:s<br>overflow-x:auto;                            ovx:a</p>
-<p>overflow-y:;                                ovy<br>overflow-y:visible;                         ovy:v<br>overflow-y:hidden;                          ovy:h<br>overflow-y:scroll;                          ovy:s<br>overflow-y:auto;                            ovy:a</p>
-<p>overflow-style:;                            ovs<br>overflow-style:auto;                        ovs:a<br>overflow-style:scrollbar;                   ovs:s<br>overflow-style:panner;                      ovs:p<br>overflow-style:move;                        ovs:m<br>overflow-style:marquee;                     ovs:mq</p>
-<p>zoom:1;                                     zoo</p>
-<p>clip:;                                      cp<br>clip:auto;                                  cp:a<br>clip:rect(0 0 0 0);                         cp:r</p>
-<p>box-sizing:;                                bxz<br>box-sizing:content-box;                     bxz:cb<br>box-sizing:border-box;                      bxz:bb</p>
-<p>box-shadow:;                                bxsh<br>box-shadow:none;                            bxsh:n<br>box-shadow:0 0 0 #000;                      bxsh+<br>-webkit-box-shadow:;                        bxsh:w<br>-webkit-box-shadow:0 0 0 #000;              bxsh:w+<br>-moz-box-shadow:;                           bxsh:m<br>-moz-box-shadow:0 0 0 0 #000;               bxsh:m+</p>
-<p>Sizing</p>
-<p>margin:;                                    m<br>margin:auto;                                m:a<br>margin:0;                                   m:0<br>margin:0 0;                                 m:2<br>margin:0 0 0;                               m:3<br>margin:0 0 0 0;                             m:4</p>
-<p>margin-top:;                                mt<br>margin-top:auto;                            mt:a</p>
-<p>margin-right:;                              mr<br>margin-right:auto;                          mr:a</p>
-<p>margin-bottom:;                             mb<br>margin-bottom:auto;                         mb:a</p>
-<p>margin-left:;                               ml<br>margin-left:auto;                           ml:a</p>
-<p>padding:;                                   p<br>padding:0;                                  p:0<br>padding:0 0;                                p:2<br>padding:0 0 0;                              p:3<br>padding:0 0 0 0;                            p:4</p>
-<p>padding-top:;                               pt<br>padding-right:;                             pr<br>padding-bottom:;                            pb<br>padding-left:;                              pl</p>
-<p>width:;                                     w<br>width:auto;                                 w:a</p>
-<p>height:;                                    h<br>height:auto;                                h:a</p>
-<p>max-width:;                                 maw<br>max-width:none;                             maw:n</p>
-<p>max-height:;                                mah<br>max-height:none;                            mah:n</p>
-<p>min-width:;                                 miw<br>min-height:;                                mih</p>
-<p>Color appearance</p>
-<p>outline:;                                   o<br>outline:none;                               o:n<br>outline:1px solid #000;                     o+</p>
-<p>outline-offset:;                            oo<br>outline-width:;                             ow<br>outline-style:;                             os</p>
-<p>outline-color:#000;                         oc<br>outline-color:invert;                       oc:i</p>
-<p>border:;                                    bd<br>border:none;                                bd:n<br>border:1px solid #000;                      bd+</p>
-<p>border-break:;                              bdbk<br>border-break:close;                         bdbk:c</p>
-<p>border-collapse:;                           bdcl<br>border-collapse:collapse;                   bdcl:c<br>border-collapse:separate;                   bdcl:s</p>
-<p>border-color:#000;                          bdc</p>
-<p>border-image:;                                          bdi<br>border-image:none;                                      bdi:n<br>border-image:url() 0 repeat;                            bdi:+<br>-webkit-border-image:;                                  bdi:w<br>-webkit-border-image:url() 0 repeat;                    bdi:w+<br>-moz-border-image:;                                     bdi:m<br>-moz-border-image:url() 0 repeat;                       bdi:m+</p>
-<p>border-top-image:;                          bdti<br>border-top-image:none;                      bdti:n</p>
-<p>border-right-image:;                        bdri<br>border-right-image:none;                    bdri:n</p>
-<p>border-bottom-image:;                       bdbi<br>border-bottom-image:none;                   bdbi:n</p>
-<p>border-left-image:;                         bdli<br>border-left-image:none;                     bdli:n</p>
-<p>border-corner-image:;                       bdci<br>border-corner-image:none;                   bdci:n<br>border-corner-image:continue;               bdci:c</p>
-<p>border-top-left-image:;                     bdtli<br>border-top-left-image:none;                 bdtli:n<br>border-top-left-image:continue;             bdtli:c</p>
-<p>border-top-right-image:;                    bdtri<br>border-top-right-image:none;                bdtri:n<br>border-top-right-image:continue;            bdtri:c</p>
-<p>border-bottom-right-image:;                 bdbri<br>border-bottom-right-image:none;             bdbri:n<br>border-bottom-right-image:continue;         bdbri:c</p>
-<p>border-bottom-left-image:;                  bdbli<br>border-bottom-left-image:none;              bdbli:n<br>border-bottom-left-image:continue;          bdbli:c</p>
-<p>border-fit:;                                bdf<br>border-fit:clip;                            bdf:c<br>border-fit:repeat;                          bdf:r<br>border-fit:scale;                           bdf:sc<br>border-fit:stretch;                         bdf:st<br>border-fit:overwrite;                       bdf:ow<br>border-fit:overflow;                        bdf:of<br>border-fit:space;                           bdf:sp</p>
-<p>border-length:;                             bdlt<br>border-length:auto;                         bdlt:a</p>
-<p>border-spacing:;                            bdsp</p>
-<p>border-style:;                              bds<br>border-style:none;                          bds:n<br>border-style:hidden;                        bds:h<br>border-style:dotted;                        bds:dt<br>border-style:dashed;                        bds:ds<br>border-style:solid;                         bds:s<br>border-style:double;                        bds:db<br>border-style:dot-dash;                      bds:dtds<br>border-style:dot-dot-dash;                  bds:dtdtds<br>border-style:wave;                          bds:w<br>border-style:groove;                        bds:g<br>border-style:ridge;                         bds:r<br>border-style:inset;                         bds:i<br>border-style:outset;                        bds:o</p>
-<p>border-width:;                              bdw</p>
-<p>border-top:;                                bdt<br>border-top:none;                            bdt:n<br>border-top:1px solid #000;                  bdt+</p>
-<p>border-top-width:;                          bdtw</p>
-<p>border-top-style:;                          bdts<br>border-top-style:none;                      bdts:n</p>
-<p>border-top-color:#000;                      bdtc</p>
-<p>border-right:;                              bdr<br>border-right:none;                          bdr:n<br>border-right:1px solid #000;                bdr+</p>
-<p>border-right-width:;                        bdrw</p>
-<p>border-right-style:;                        bdrs<br>border-right-style:none;                    bdrs:n</p>
-<p>border-right-color:#000;                    bdrc</p>
-<p>border-bottom:;                             bdb<br>border-bottom:none;                         bdb:n<br>border-bottom:1px solid #000;               bdb+</p>
-<p>border-bottom-width:;                       bdbw</p>
-<p>border-bottom-style:;                       bdbs<br>border-bottom-style:none;                   bdbs:n</p>
-<p>border-bottom-color:#000;                   bdbc</p>
-<p>border-left:;                               bdl<br>border-left:none;                           bdl:n<br>border-left:1px solid #000;                 bdl+</p>
-<p>border-left-width:;                         bdlw</p>
-<p>border-left-style:;                         bdls<br>border-left-style:none;                     bdls:n</p>
-<p>border-left-color:#000;                     bdlc</p>
-<p>border-radius:;                             bdrz<br>-webkit-border-radius:;                     bdrz:w<br>-moz-border-radius:;                        bdrz:m<br>border-top-right-radius:;                   bdtrrz<br>border-top-left-radius:;                    bdtlrz<br>border-bottom-right-radius:;                bdbrrz<br>border-bottom-left-radius:;                 bdblrz</p>
-<p>background:;                                                                               bg<br>background:none;                                                                           bg:n<br>background:#FFF url() 0 0 no-repeat;                                                       bg+<br>filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=’’,sizingMethod=’crop’);     bg:ie</p>
-<p>background-color:#FFF;                      bgc<br>background-color:transparent;               bgc:t</p>
-<p>background-image:url();                     bgi<br>background-image:none;                      bgi:n</p>
-<p>background-repeat:;                         bgr<br>background-repeat:repeat;                   bgr:r<br>background-repeat:repeat-x;                 bgr:x<br>background-repeat:repeat-y;                 bgr:y<br>background-repeat:no-repeat;                bgr:n</p>
-<p>background-attachment:;                     bga<br>background-attachment:fixed;                bga:f<br>background-attachment:scroll;               bga:s</p>
-<p>background-position:0 0;                    bgp<br>background-position-x:;                     bgpx<br>background-position-y:;                     bgpy</p>
-<p>background-break:;                          bgbk<br>background-break:bounding-box;              bgbk:bb<br>background-break:each-box;                  bgbk:eb<br>background-break:continuous;                bgbk:c</p>
-<p>background-clip:;                           bgcp<br>background-clip:border-box;                 bgcp:bb<br>background-clip:padding-box;                bgcp:pb<br>background-clip:content-box;                bgcp:cb<br>background-clip:no-clip;                    bgcp:nc</p>
-<p>background-origin:;                         bgo<br>background-origin:padding-box;              bgo:pb<br>background-origin:border-box;               bgo:bb<br>background-origin:content-box;              bgo:cb</p>
-<p>background-size:;                           bgz<br>background-size:auto;                       bgz:a<br>background-size:contain;                    bgz:ct<br>background-size:cover;                      bgz:cv</p>
-<p>color:#000;                                 c</p>
-<p>Special content types</p>
-<p>table-layout:;                              tbl<br>table-layout:auto;                          tbl:a<br>table-layout:fixed;                         tbl:f</p>
-<p>caption-side:;                              cps<br>caption-side:top;                           cps:t<br>caption-side:bottom;                        cps:b</p>
-<p>empty-cells:;                               ec<br>empty-cells:show;                           ec:s<br>empty-cells:hide;                           ec:h</p>
-<p>list-style:;                                lis<br>list-style:none;                            lis:n</p>
-<p>list-style-position:;                       lisp<br>list-style-position:inside;                 lisp:i<br>list-style-position:outside;                lisp:o</p>
-<p>list-style-type:;                           list<br>list-style-type:none;                       list:n<br>list-style-type:disc;                       list:d<br>list-style-type:circle;                     list:c<br>list-style-type:square;                     list:s<br>list-style-type:decimal;                    list:dc<br>list-style-type:decimal-leading-zero;       list:dclz<br>list-style-type:lower-roman;                list:lr<br>list-style-type:upper-roman;                list:ur</p>
-<p>list-style-image:;                          lisi<br>list-style-image:none;                      lisi:n</p>
-<p>quotes:;                                    q<br>quotes:none;                                q:n<br>quotes:’\00AB’ ‘\00BB’ ‘\201E’ ‘\201C’;     q:ru<br>quotes:’\201C’ ‘\201D’ ‘\2018’ ‘\2019’;     q:en</p>
-<p>content:;                                   ct<br>content:normal;                             ct:n<br>content:open-quote;                         ct:oq<br>content:no-open-quote;                      ct:noq<br>content:close-quote;                        ct:cq<br>content:no-close-quote;                     ct:ncq<br>content:attr();                             ct:a<br>content:counter();                          ct:c<br>content:counters();                         ct:cs</p>
-<p>counter-increment:;                         coi<br>counter-reset:;                             cor</p>
-<p>Text</p>
-<p>vertical-align:;                            va<br>vertical-align:super;                       va:sup<br>vertical-align:top;                         va:t<br>vertical-align:text-top;                    va:tt<br>vertical-align:middle;                      va:m<br>vertical-align:baseline;                    va:bl<br>vertical-align:bottom;                      va:b<br>vertical-align:text-bottom;                 va:tb<br>vertical-align:sub;                         va:sub</p>
-<p>text-align:;                                ta<br>text-align:left;                            ta:l<br>text-align:center;                          ta:c<br>text-align:right;                           ta:r<br>text-align:justify;                         ta:j</p>
-<p>text-align-last:;                           tal<br>text-align-last:auto;                       tal:a<br>text-align-last:left;                       tal:l<br>text-align-last:center;                     tal:c<br>text-align-last:right;                      tal:r</p>
-<p>text-decoration:;                           td<br>text-decoration:none;                       td:n<br>text-decoration:overline;                   td:o<br>text-decoration:line-through;               td:l<br>text-decoration:underline;                  td:u</p>
-<p>text-emphasis:;                             te<br>text-emphasis:none;                         te:n<br>text-emphasis:accent;                       te:ac<br>text-emphasis:dot;                          te:dt<br>text-emphasis:circle;                       te:c<br>text-emphasis:disc;                         te:ds<br>text-emphasis:before;                       te:b<br>text-emphasis:after;                        te:a</p>
-<p>text-height:;                               th<br>text-height:auto;                           th:a<br>text-height:font-size;                      th:f<br>text-height:text-size;                      th:t<br>text-height:max-size;                       th:m</p>
-<p>text-indent:;                               ti<br>text-indent:-9999px;                        ti:-</p>
-<p>text-justify:;                              tj<br>text-justify:auto;                          tj:a<br>text-justify:inter-word;                    tj:iw<br>text-justify:inter-ideograph;               tj:ii<br>text-justify:inter-cluster;                 tj:ic<br>text-justify:distribute;                    tj:d<br>text-justify:kashida;                       tj:k<br>text-justify:tibetan;                       tj:t</p>
-<p>text-outline:;                              to<br>text-outline:none;                          to:n<br>text-outline:0 0 #000;                      to+</p>
-<p>text-replace:;                              tr<br>text-replace:none;                          tr:n</p>
-<p>text-transform:;                            tt<br>text-transform:none;                        tt:n<br>text-transform:uppercase;                   tt:u<br>text-transform:capitalize;                  tt:c<br>text-transform:lowercase;                   tt:l</p>
-<p>text-wrap:;                                 tw<br>text-wrap:normal;                           tw:n<br>text-wrap:none;                             tw:no<br>text-wrap:unrestricted;                     tw:u<br>text-wrap:suppress;                         tw:s</p>
-<p>text-shadow:;                               tsh<br>text-shadow:none;                           tsh:n<br>text-shadow:0 0 0 #000;                     tsh+</p>
-<p>line-height:;                               lh</p>
-<p>white-space:;                               whs<br>white-space:normal;                         whs:n<br>white-space:pre;                            whs:p<br>white-space:nowrap;                         whs:nw<br>white-space:pre-wrap;                       whs:pw<br>white-space:pre-line;                       whs:pl</p>
-<p>white-space-collapse:;                      whsc<br>white-space-collapse:normal;                whsc:n<br>white-space-collapse:keep-all;              whsc:k<br>white-space-collapse:loose;                 whsc:l<br>white-space-collapse:break-strict;          whsc:bs<br>white-space-collapse:break-all;             whsc:ba</p>
-<p>word-break:;                                wob<br>word-break:normal;                          wob:n<br>word-break:keep-all;                        wob:k<br>word-break:loose;                           wob:l<br>word-break:break-strict;                    wob:bs<br>word-break:break-all;                       wob:ba</p>
-<p>word-spacing:;                              wos</p>
-<p>word-wrap:;                                 wow<br>word-wrap:normal;                           wow:n<br>word-wrap:none;                             wow:no<br>word-wrap:unrestricted;                     wow:u<br>word-wrap:suppress;                         wow:s</p>
-<p>letter-spacing:;                            lts</p>
-<p>font:;                                      f<br>font:1em Arial,sans-serif;                  f+</p>
-<p>font-weight:;                               fw<br>font-weight:normal;                         fw:n<br>font-weight:bold;                           fw:b<br>font-weight:bolder;                         fw:br<br>font-weight:lighter;                        fw:lr</p>
-<p>font-style:;                                fs<br>font-style:normal;                          fs:n<br>font-style:italic;                          fs:i<br>font-style:oblique;                         fs:o</p>
-<p>font-variant:;                              fv<br>font-variant:normal;                        fv:n<br>font-variant:small-caps;                    fv:sc</p>
-<p>font-size:;                                 fz</p>
-<p>font-size-adjust:;                          fza<br>font-size-adjust:none;                      fza:n</p>
-<p>font-family:;                                               ff<br>font-family:Georgia,’Times New Roman’,serif;              ff:s<br>font-family:Helvetica,Arial,sans-serif;                     ff:ss<br>font-family:’Monotype Corsiva’,’Comic Sans MS’,cursive;     ff:c<br>font-family:Capitals,Impact,fantasy;                        ff:f<br>font-family:Monaco,’Courier New’,monospace;                 ff:m</p>
-<p>font-effect:;                               fef<br>font-effect:none;                           fef:n<br>font-effect:engrave;                        fef:eg<br>font-effect:emboss;                         fef:eb<br>font-effect:outline;                        fef:o</p>
-<p>font-emphasize:;                            fem</p>
-<p>font-emphasize-position:;                   femp<br>font-emphasize-position:before;             femp:b<br>font-emphasize-position:after;              femp:a</p>
-<p>font-emphasize-style:;                      fems<br>font-emphasize-style:none;                  fems:n<br>font-emphasize-style:accent;                fems:ac<br>font-emphasize-style:dot;                   fems:dt<br>font-emphasize-style:circle;                fems:c<br>font-emphasize-style:disc;                  fems:ds</p>
-<p>font-smooth:;                               fsm<br>font-smooth:auto;                           fsm:a<br>font-smooth:never;                          fsm:n<br>font-smooth:always;                         fsm:aw</p>
-<p>font-stretch:;                              fst<br>font-stretch:normal;                        fst:n<br>font-stretch:ultra-condensed;               fst:uc<br>font-stretch:extra-condensed;               fst:ec<br>font-stretch:condensed;                     fst:c<br>font-stretch:semi-condensed;                fst:sc<br>font-stretch:semi-expanded;                 fst:se<br>font-stretch:expanded;                      fst:e<br>font-stretch:extra-expanded;                fst:ee<br>font-stretch:ultra-expanded;                fst:ue</p>
-<p>Visual properties</p>
-<p>opacity:;                                                               op<br>filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=100);            op:ie<br>-ms-filter:’progid:DXImageTransform.Microsoft.Alpha(Opacity=100)’;      op:ms</p>
-<p>resize:;                                    rz<br>resize:none;                                rz:n<br>resize:both;                                rz:b<br>resize:horizontal;                          rz:h<br>resize:vertical;                            rz:v</p>
-<p>cursor:;                                    cur<br>cursor:auto;                                cur:a<br>cursor:default;                             cur:d<br>cursor:crosshair;                           cur:c<br>cursor:hand;                                cur:ha<br>cursor:help;                                cur:he<br>cursor:move;                                cur:m<br>cursor:pointer;                             cur:p<br>cursor:text;                                cur:t</p>
-<p>Print</p>
-<p>page-break-before:;                         pgbb<br>page-break-before:auto;                     pgbb:a<br>page-break-before:always;                   pgbb:aw<br>page-break-before:left;                     pgbb:l<br>page-break-before:right;                    pgbb:r</p>
-<p>page-break-inside:;                         pgbi<br>page-break-inside:auto;                     pgbi:a<br>page-break-inside:avoid;                    pgbi:av</p>
-<p>page-break-after:;                          pgba<br>page-break-after:auto;                      pgba:a<br>page-break-after:always;                    pgba:aw<br>page-break-after:left;                      pgba:l<br>page-break-after:right;                     pgba:r</p>
-<p>orphans:;                                   orp<br>widows:;                                    wid</p>
-<p>color:transparent;                             c:t<br>color:rgb();                                   c:r<br>color:rgba();                                  c:ra<br>color:hsl();                                   c:h<br>color:hsla();                                  c:ha</p>
-<p>text-overflow:;                                tov<br>text-overflow:””;                              tov+<br>text-overflow:clip;                            tov:c<br>text-overflow:ellipsis;                        tov:e</p>
-<p>box-decoration-break:clone;                    bxdb (the only non-default option)<br>box-decoration-break:slice;                    bxdb:s</p>
-<p>transition:                                    ts<br>transition-property:;                          tsp<br>transition-duration:;                          tsd<br>transition-delay:;                             tsdl<br>transition-timing-function:;                   tst<br>transition-timing-function:ease;               tst:e<br>transition-timing-function:linear;             tst:l<br>transition-timing-function:ease-in;            tst:i<br>transition-timing-function:ease-out;           tst:o<br>transition-timing-function:ease-in-out;        tst:io<br>transition-timing-function:step-start;         tst:ss<br>transition-timing-function:step-end;           tst:se<br>transition-timing-function:steps();            tst:s<br>transition-timing-function:cubic-bezier();     tst:cb</p>
-<p>direction                                      dir<br>direction:ltr                                  dir:l<br>direction:rtl                                  dir:r</p>
-<p>@page {}                                       @p<br>@top-left-corner {}                            @tlc<br>@top-left {}                                   @tl<br>@top-center {}                                 @tc<br>@top-right {}                                  @tr<br>@top-right-corner {}                           @trc<br>@bottom-left-corner {}                         @blc<br>@bottom-left {}                                @bl<br>@bottom-center {}                              @bc<br>@bottom-right {}                               @br<br>@bottom-right-corner {}                        @brc<br>@footnote {}                                   @fn<br>@counter-style   “”                            @cs</p>
-<p>HTML:<br>jq      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script><br>cc:ie8  <!--[if gte IE 8]><![endif]--><br>cc:ie9  <!--[if gte IE 9]><![endif]--></p>
-<p>CSS:<br>@md     @-moz-document url-prefix() {}</p>
-<p><span style="font-family: arial;"><br></span></p>
+        <p>第一步：决心<br>　判断你是否要soho，是兼职的还是全职，如果全职是很辛苦的，基本上每天工作多于12小时，周日周末也在做，国内的外包报酬不太好。收入部分很可能比你打工还要少，我的打工的薪资水平在北京4k－6k，从程序员到技术经理。而且soho你的作品质量要很高，我在soho的时候，最差的时候每月赚1k，有时候为零，当然跟我判断单子的能力有关系，下面会详细谈到。</p>
+<p>第二步：包装自己<br>　　把你以前做过的案子都放在网上，ppt还要给人家下载，网上最直观，做个目录带缩略图的，当然这些案子最好是存活的网站，这样更有说服力。不要拿别人的做自己的，早晚要暴露，另外拿源码修改的一定要注明一下，否则行家一看就知道你用的xxx的源码，就露馅啦。总之就是你要做一个标准的演示网站说明自己做过什么可以做什么，简单一点，现在大家都没什么耐心的。一个blog放你所有的case就很好了。</p>
+<p>第三步：客户交流<br>　　以我的经验大概发100个mail会谈成一个单子所以大家要有心理准备，当然不包括朋友介绍你的单子。交流工具基本上是msn，qq，有些客户会要求skype，这类客户打字应该不是很快。关于报价方面，你要估计工作量多少小时，然后给自己定一个小时工资，然后报总价格。在谈的时候要注意的位置，因为客户是提供需求的，你就不要谈他的项目好不好有没有前景，你们唯一要谈的是更好的实现客户的要求。如果有些因为技术原因无法实现你最好有非常有说服力的理由。多交流总是没有坏处的。关于收费预付款比例，一般的有3/5/2，就是预付30％，交代码50％，后面20％一个之内月付款作为服务的一部分。如果小单可以先要50％，交活再给50％也可以留一个尾款作为技术支持的一段时间费用比如一个月。</p>
+<p>第四步、好的团队<br>　　程序员＋美工就可以接大部分的网站单子了，我现在用smarty做模板，xajax控制显示的动态部分，没有固定的美工就很难，50％的时间用来谈单子，30％的时间用来设计界面xhtml css，有的时候还要用illustrator和photoshop，其余才是写程序的时间。</p>
+<p>第五步、一些注意事项</p>
+<p>　　1 不要做所谓的测试题<br>　　好几次都是，给你出一堆题目，有的很复杂，理由是检测你的水平。这个基本上是变相的咨询，他自己不会找人解答。我就做过流量统计、字符处理、数据抓取还有很多，都是石沉大海没后话了</p>
+<p>　　2 不要出首页效果图,也不要出策划案 。出首页必须要付预付款，除非你作品太少或者想炼手。策划也是劳动也需要付款。上次有个宠物站，听说甲方找了很多人做首页风格，而我们都不知道甲方是不是最终用户就做了，做好了他们说不太满意，但是又说不出为什么不满意。就给我几个站叫我参考，还说现在第一批招标没满意的，叫我参加第2批。。。</p>
+<p>　　3 不要相信“这次价格很低，但是你做完这个我还会给你几个站做”，远期的期望值，呵呵</p>
+<p>　　4 不要做需求不明确的单子，要记住需求越明确你开发起来就越快，比如copy一个网站这种，对方不是在转包就是自己都不明白要做什么，这类单子很大可能性半途夭折，拿不到尾款。</p>
+<p>　　5 尽量不要接修改的单子，比如在vbb上面加商城啊，这种单子价格低，客户也不太认可你付出的劳动，认为改改就好了不用多少钱。其实像这种商业软件，都是很复杂的，你付出的工作量接近你重新开发一个的了。</p>
+<p>　　6 不要接合作类单子，给你股份，远期利益。</p>
+<p>　　7 尽量不要接中介单子，就是那种专门做网站的公司谈的单子包出来的，这种价格非常低。idc就是做主机的单子可以考虑，因为他们基本上空间域名网站一起卖的，他们的单子比较多，也不会太低除非是idc把网站类的都包给某个公司。<br>作为一名技术，不论你是善于前台美工，还是后台编程，可能都以个人的名义承接过网站制作或平面设计的工作，如果你还是个新手，还没接过“私活”，那么就看看我写的几点亲身体会吧!<br>　　首先，说一下网站吧，你要先询问好对方要设置哪些栏目，这些栏目哪些需要后台动态更新功能，再就是询问好对方对版面的设计要求，喜好的色彩，然后根据这些报价。网络公司对网站的报价一般就是先根据对方的规模，即：见人下菜碟，大集团上万，小公司几千。有时可能上万的网站一个成手技术不到一个周就搞定了。而个人报价需要结合实际了。根据自己的情况和对方提出的要求，大约需要多少精力和时间能完成，他提出的要求是否很苛刻，如果感觉一个周之内能完成，中小企业型的网站，现在一般报价在800-2000左右吧，这种网站功能无非新闻发布，产品展示，人才招聘，在线留言，公司概况，在线订单等，都是比较简单，说白了就是用以前的改吧改吧就出来了，这就不多说了。其实报价也是需要一定口才和经验的。<br>　　其次，就是谈好价钱后，别忘了先要定金啊，否则你很有可能白忙活。现在接活的人多，供活得人少。也许对方会在你正在开工制作时找别人了。所以要有一些定金保证，一般最少是总金额的20%这样就不怕他跑了。先做好首页，给对方看，这里要讲清楚，首页不满意可以修改，但确定好后，再提出修改那就得加钱了，否则你这网站一个月也鼓弄不出来了。如果是通过中间人接的活更要记清以上几点啊!<br>　　最后，记住要做好防盗措施，一个网站的灵魂往往就在首页或那几个漂亮的动画，千万别傻了吧唧的没给钱呢就直接都给人家看了。如果是先给程序后给尾款，那你一定要留个后手，你是程序员就不用我多说了吧。呵呵，以上都是本人做活的一些经验总结，希望对于新手们有所帮助哈，写的不好，大家见谅。PS:我是做网页设计出身，后来转做程序员，现在单挑了。呵</p>
 
       
     </div>
@@ -1548,7 +1257,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/10/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/12/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/10/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/12/">Next &raquo;</a>
     </nav>
   
 </div>
